@@ -19,35 +19,28 @@ export default function Home() {
       <Header />
 
       <main className="flex-1">
-        {/* App Icon + Hero Section */}
-        <section className="flex items-center justify-center px-4 pt-10 pb-12 md:py-20">
-          <div className="flex max-w-screen-md flex-col items-center space-y-6 text-center">
-            {/* App Icon */}
+        {/* Hero Section */}
+        <section className="w-full px-4 pt-16 pb-20 md:pt-24 md:pb-28">
+          <div className="mx-auto flex max-w-screen-md flex-col items-center space-y-8 text-center">
             <Image
               src="/flutter_guide_icon.png"
               alt="Flutter Guide App Icon"
-              width={96}
-              height={96}
-              className="rounded-2xl shadow-md"
+              width={100}
+              height={100}
+              className="rounded-2xl shadow-lg"
             />
-
-            <h1 className="text-3xl leading-tight font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-4xl leading-tight font-extrabold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
               Your Guide to Mastering Flutter
             </h1>
-
-            <p className="text-lg sm:text-xl">
-              Learn, practice, and build amazing apps with the best Flutter
-              content, right in your pocket.
+            <p className="max-w-prose text-lg text-gray-700 sm:text-xl dark:text-gray-300">
+              Learn, practice, and build amazing apps with curated Flutter
+              content in your pocket.
             </p>
-
-            <p className="text-md max-w-prose sm:text-lg">
-              An app developed to showcase the potential and versatility of
-              Flutter. Highlights include responsive interfaces, smooth
-              animations, optimized performance, and seamless API integration.
-              Built to demonstrate how Flutter enables efficient and visually
-              appealing apps for both Android and iOS using a single codebase.
+            <p className="max-w-prose text-base text-gray-600 sm:text-lg dark:text-gray-400">
+              Showcase of responsive UIs, smooth animations, optimized
+              performance, and seamless API integration — all built with Flutter
+              for Android and iOS.
             </p>
-
             <Button size="lg" asChild>
               <Link
                 href={playStoreUrl}
@@ -63,14 +56,16 @@ export default function Home() {
         {/* Screenshots Section */}
         <section
           id="screenshots"
-          className="flex items-center justify-center px-4 py-12 md:py-20"
+          className="w-full rounded-t-lg border-t border-gray-200 px-4 py-16 md:py-24 dark:border-gray-700"
         >
-          <div className="w-full max-w-screen-lg space-y-8 text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">App Screenshots</h2>
-            <p className="text-muted-foreground mx-auto max-w-2xl">
-              Take a look at some of the screens available in Flutter Guide.
+          <div className="mx-auto w-full max-w-screen-lg space-y-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+              App Screenshots
+            </h2>
+            <p className="mx-auto max-w-2xl text-base text-gray-700 dark:text-gray-300">
+              Explore some of the available screens and interface styles in
+              Flutter Guide.
             </p>
-
             <ScreenshotsCarousel />
           </div>
         </section>
@@ -78,59 +73,60 @@ export default function Home() {
         {/* Features Section */}
         <section
           id="features"
-          className="flex items-center justify-center bg-slate-50/50 px-4 py-10 md:py-16 lg:py-20 dark:bg-transparent"
+          className="w-full rounded-t-lg border-t border-gray-200 bg-slate-50/50 px-4 py-16 md:py-24 dark:border-gray-700 dark:bg-transparent"
         >
-          <div className="flex w-full max-w-screen-lg flex-col items-center space-y-10 text-center">
+          <div className="mx-auto w-full max-w-screen-lg space-y-10 text-center">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold sm:text-4xl">Key Features</h2>
-
-              <p className="mx-auto max-w-2xl text-base sm:text-lg">
+              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
+                Key Features
+              </h2>
+              <p className="mx-auto max-w-2xl text-base text-gray-700 sm:text-lg dark:text-gray-300">
                 Everything you need to become a skilled Flutter developer.
               </p>
             </div>
 
             <div className="grid w-full justify-center gap-6 sm:grid-cols-2 md:grid-cols-3">
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-lg font-medium">
+              <Card className="shadow-md">
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-lg font-semibold">
                     Widget of the Day
                   </CardTitle>
                   <Sparkles className="h-5 w-5" />
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm">
-                    Explore a new Flutter widget daily, complete with a
-                    practical example.
+                  <p className="text-muted-foreground text-sm">
+                    Discover a new widget every day with real examples and use
+                    cases.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-lg font-medium">
+              <Card className="shadow-md">
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-lg font-semibold">
                     Tips & Examples
                   </CardTitle>
                   <Code className="h-5 w-5" />
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm">
-                    Get concise coding tips and practical snippets to enhance
-                    your Flutter projects.
+                  <p className="text-muted-foreground text-sm">
+                    Access concise tips and code snippets to improve your
+                    productivity.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-lg font-medium">
+              <Card className="shadow-md">
+                <CardHeader className="flex flex-row items-center justify-between pb-2">
+                  <CardTitle className="text-lg font-semibold">
                     Practical Guidance
                   </CardTitle>
                   <Star className="h-5 w-5" />
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm">
-                    Benefit from straightforward guides designed to improve your
-                    Flutter development workflow.
+                  <p className="text-muted-foreground text-sm">
+                    Learn with clear, real-world examples to apply in your own
+                    projects.
                   </p>
                 </CardContent>
               </Card>
@@ -141,20 +137,21 @@ export default function Home() {
         {/* GitHub Section */}
         <section
           id="github"
-          className="flex items-center justify-center px-6 py-16"
+          className="w-full rounded-t-lg border-t border-gray-200 px-6 py-20 dark:border-gray-700"
         >
-          <div className="max-w-screen-md w-full mx-auto p-12 text-center">
-            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+          <div className="mx-auto max-w-screen-md space-y-6 text-center">
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">
               Open Source
             </h2>
-            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto mb-8">
-              Explore the source code, contribute, or follow updates on the official GitHub repository.
+            <p className="mx-auto max-w-xl text-lg text-gray-700 dark:text-gray-300">
+              Explore the codebase, contribute with improvements, or follow
+              updates on GitHub.
             </p>
 
             <Button
               size="lg"
               variant="outline"
-              className="mx-auto px-10 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              className="px-10 transition hover:bg-gray-100 dark:hover:bg-gray-800"
               asChild
             >
               <Link
@@ -171,39 +168,48 @@ export default function Home() {
         {/* About Me Section */}
         <section
           id="about"
-          className="flex flex-col items-center justify-center px-6 py-16 md:py-20 bg-slate-50/50 dark:bg-transparent text-center space-y-10 mx-auto"
+          className="w-full rounded-t-lg border-t border-gray-200 bg-slate-50/50 dark:border-gray-700 dark:bg-transparent"
         >
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-            About Me
-          </h2>
+          <div className="mx-auto flex max-w-screen-md flex-col items-center justify-center space-y-12 px-6 py-20 text-center md:py-28">
+            <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+              About Me
+            </h2>
 
-          <p className="max-w-prose text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            I am Dário Matias, a dedicated Full Stack developer specializing in Flutter and web technologies. My focus is on delivering high-quality applications and producing valuable educational content to support the developer community. I continuously strive to enhance my skills and contribute effectively to the growth of others in the field.
-          </p>
+            <div className="space-y-6">
+              <p className="max-w-prose text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                I'm Dário Matias, a Full Stack developer with a strong focus on
+                Flutter and modern web technologies. I specialize in building
+                efficient, scalable applications and crafting educational
+                resources for the tech community.
+              </p>
 
-          <p className="max-w-prose text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            Feel free to follow me on social media and get in touch.
-          </p>
+              <p className="max-w-prose text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                My work is driven by a commitment to quality, continuous
+                learning, and the belief that knowledge should be shared. I aim
+                to inspire and support developers around the world.
+              </p>
+            </div>
 
-          <div className="flex space-x-12 justify-center mt-8">
-            <a
-              href="https://www.instagram.com/dariomatias_dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-transform duration-200 hover:scale-110"
-            >
-              <Instagram className="h-7 w-7" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/dariomatias-dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-transform duration-200 hover:scale-110"
-            >
-              <Linkedin className="h-7 w-7" />
-            </a>
+            <div className="mt-6 flex items-center gap-6 rounded-xl border bg-white/60 px-6 py-4 shadow-sm dark:bg-white/5">
+              <a
+                href="https://www.instagram.com/dariomatias_dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="text-black transition-transform duration-200 hover:scale-110 hover:opacity-80 dark:text-white"
+              >
+                <Instagram className="h-6 w-6" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/dariomatias-dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="text-black transition-transform duration-200 hover:scale-110 hover:opacity-80 dark:text-white"
+              >
+                <Linkedin className="h-6 w-6" />
+              </a>
+            </div>
           </div>
         </section>
       </main>
