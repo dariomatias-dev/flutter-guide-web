@@ -177,10 +177,10 @@ export default function Home() {
 
             <div className="space-y-6">
               <p className="max-w-prose text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                I'm Dário Matias, a Full Stack developer with a strong focus on
-                Flutter and modern web technologies. I specialize in building
-                efficient, scalable applications and crafting educational
-                resources for the tech community.
+                I&apos;m Dário Matias, a Full Stack developer with a strong
+                focus on Flutter and modern web technologies. I specialize in
+                building efficient, scalable applications and crafting
+                educational resources for the tech community.
               </p>
 
               <p className="max-w-prose text-lg leading-relaxed text-gray-700 dark:text-gray-300">
