@@ -52,15 +52,23 @@ Visit [http://localhost:3000](http://localhost:3000) in your browser to see the 
 
 ---
 
-## License
+## Download the App
 
-This project is licensed under the [MIT License](./LICENSE).
+You can download Flutter Guide directly from the Google Play Store:
+
+[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide)
 
 ---
 
-## Download the App
+## Website
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide)
+Visit the official Flutter Guide website: [Official Website](https://flutter-guide-web.vercel.app/)
+
+---
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
 
 ---
 
