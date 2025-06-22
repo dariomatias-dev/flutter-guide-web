@@ -1,6 +1,6 @@
 "use client";
 
-import { Code, Sparkles, Star } from "lucide-react";
+import { Code, Instagram, Linkedin, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -165,6 +165,45 @@ export default function Home() {
                 View on GitHub
               </Link>
             </Button>
+          </div>
+        </section>
+
+        {/* About Me Section */}
+        <section
+          id="about"
+          className="flex flex-col items-center justify-center px-6 py-16 md:py-20 bg-slate-50/50 dark:bg-transparent text-center space-y-10 mx-auto"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            About Me
+          </h2>
+
+          <p className="max-w-prose text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            I am Dário Matias, a dedicated Full Stack developer specializing in Flutter and web technologies. My focus is on delivering high-quality applications and producing valuable educational content to support the developer community. I continuously strive to enhance my skills and contribute effectively to the growth of others in the field.
+          </p>
+
+          <p className="max-w-prose text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+            Feel free to follow me on social media and get in touch.
+          </p>
+
+          <div className="flex space-x-12 justify-center mt-8">
+            <a
+              href="https://www.instagram.com/dariomatias_dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-transform duration-200 hover:scale-110"
+            >
+              <Instagram className="h-7 w-7" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/dariomatias-dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-gray-900 dark:text-white hover:text-gray-700 dark:hover:text-gray-300 transition-transform duration-200 hover:scale-110"
+            >
+              <Linkedin className="h-7 w-7" />
+            </a>
           </div>
         </section>
       </main>
