@@ -137,6 +137,36 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* GitHub Section */}
+        <section
+          id="github"
+          className="flex items-center justify-center px-6 py-16"
+        >
+          <div className="max-w-screen-md w-full mx-auto p-12 text-center">
+            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+              Open Source
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto mb-8">
+              Explore the source code, contribute, or follow updates on the official GitHub repository.
+            </p>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="mx-auto px-10 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+              asChild
+            >
+              <Link
+                href="https://github.com/dariomatias-dev/flutter_guide_app"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on GitHub
+              </Link>
+            </Button>
+          </div>
+        </section>
       </main>
 
       <Footer />
