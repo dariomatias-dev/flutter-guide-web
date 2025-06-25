@@ -6,9 +6,8 @@ import Link from "next/link";
 
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScreenshotsCarousel } from "@/components/ScreenshotsCarousel";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const playStoreUrl =
@@ -53,111 +52,120 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Screenshots Section */}
+        {/* How It Works */}
+        <section
+          id="how-it-works"
+          aria-labelledby="how-it-works-title"
+          className="flex h-screen w-full flex-col justify-center border-t border-gray-300 bg-gradient-to-tr from-gray-50 via-white to-gray-50 px-12 py-28 dark:border-gray-700 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900"
+        >
+          <div className="mx-auto max-w-5xl text-center">
+            <h2
+              id="how-it-works-title"
+              tabIndex={0}
+              className="mb-6 text-5xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100"
+            >
+              How It Works
+            </h2>
+            <p className="mx-auto mb-16 max-w-3xl text-xl font-medium text-gray-700 dark:text-gray-300">
+              Learn Flutter step-by-step with daily widgets, concise tips, and
+              practical examples you can apply right away.
+            </p>
+
+            <div className="grid grid-cols-1 gap-14 sm:grid-cols-3">
+              {[
+                {
+                  icon: Sparkles,
+                  title: "Widget of the Day",
+                  description:
+                    "Discover and practice a new widget every day with code and usage tips.",
+                  iconColor: "text-[#02569B]",
+                },
+                {
+                  icon: Code,
+                  title: "Tips & Tricks",
+                  description:
+                    "Access concise tips and code snippets to improve your productivity.",
+                  iconColor: "text-[#02569B]",
+                },
+                {
+                  icon: Star,
+                  title: "Practical Guidance",
+                  description:
+                    "Learn with clear, real-world examples to apply in your own projects.",
+                  iconColor: "text-[#02569B]",
+                },
+              ].map(({ icon: Icon, title, description, iconColor }) => (
+                <article
+                  key={title}
+                  className="hover:shadow-4xl flex cursor-default flex-col items-center rounded-3xl bg-white p-10 shadow-2xl transition-shadow duration-400 dark:bg-gray-800"
+                  tabIndex={0}
+                  aria-label={title}
+                >
+                  <Icon
+                    className={`mb-6 h-14 w-14 ${iconColor} drop-shadow-md`}
+                    aria-hidden="true"
+                  />
+                  <h3 className="mb-4 text-3xl font-semibold">{title}</h3>
+                  <p className="max-w-xs text-center text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+                    {description}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Screenshots */}
         <section
           id="screenshots"
-          className="w-full rounded-t-lg border-t border-gray-200 px-4 py-16 md:py-24 dark:border-gray-700"
+          aria-labelledby="screenshots-title"
+          className="flex h-screen w-full flex-col justify-center border-t border-gray-200 px-6 py-28 sm:px-12 dark:border-gray-900 bg-white dark:bg-gray-950"
         >
-          <div className="mx-auto w-full max-w-screen-lg space-y-8 text-center">
-            <h2 className="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+          <div className="mx-auto max-w-6xl text-center">
+            <h2
+              id="screenshots-title"
+              tabIndex={0}
+              className="mb-6 text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+            >
               App Screenshots
             </h2>
-            <p className="mx-auto max-w-2xl text-base text-gray-700 dark:text-gray-300">
-              Explore some of the available screens and interface styles in
-              Flutter Guide.
+            <p className="mx-auto mb-14 max-w-3xl text-lg font-medium text-gray-600 sm:text-xl dark:text-gray-300">
+              Get a real look into the app's polished interface and experience
+              how intuitive Flutter learning can be.
             </p>
             <ScreenshotsCarousel />
           </div>
         </section>
 
-        {/* Features Section */}
-        <section
-          id="features"
-          className="w-full rounded-t-lg border-t border-gray-200 bg-slate-50/50 px-4 py-16 md:py-24 dark:border-gray-700 dark:bg-transparent"
-        >
-          <div className="mx-auto w-full max-w-screen-lg space-y-10 text-center">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl dark:text-white">
-                Key Features
-              </h2>
-              <p className="mx-auto max-w-2xl text-base text-gray-700 sm:text-lg dark:text-gray-300">
-                Everything you need to become a skilled Flutter developer.
-              </p>
-            </div>
-
-            <div className="grid w-full justify-center gap-6 sm:grid-cols-2 md:grid-cols-3">
-              <Card className="shadow-md">
-                <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-lg font-semibold">
-                    Widget of the Day
-                  </CardTitle>
-                  <Sparkles className="h-5 w-5" />
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">
-                    Discover a new widget every day with real examples and use
-                    cases.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-md">
-                <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-lg font-semibold">
-                    Tips & Examples
-                  </CardTitle>
-                  <Code className="h-5 w-5" />
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">
-                    Access concise tips and code snippets to improve your
-                    productivity.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-md">
-                <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-lg font-semibold">
-                    Practical Guidance
-                  </CardTitle>
-                  <Star className="h-5 w-5" />
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm">
-                    Learn with clear, real-world examples to apply in your own
-                    projects.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* GitHub Section */}
+        {/* GitHub */}
         <section
           id="github"
-          className="w-full rounded-t-lg border-t border-gray-200 px-6 py-20 dark:border-gray-700"
+          aria-labelledby="github-title"
+          className="w-full border-t border-gray-200 bg-gradient-to-r from-gray-50 via-white to-gray-50 px-6 py-28 sm:px-12 dark:border-gray-700 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900"
         >
-          <div className="mx-auto max-w-screen-md space-y-6 text-center">
-            <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white">
-              Open Source
+          <div className="mx-auto max-w-4xl space-y-10 text-center">
+            <h2
+              id="github-title"
+              tabIndex={0}
+              className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+            >
+              Open Source & Contributions
             </h2>
-            <p className="mx-auto max-w-xl text-lg text-gray-700 dark:text-gray-300">
-              Explore the codebase, contribute with improvements, or follow
-              updates on GitHub.
+
+            <p className="mx-auto max-w-2xl text-lg font-medium text-gray-600 sm:text-xl dark:text-gray-300">
+              Flutter Guide is 100% open source. Follow updates, fork the repo,
+              or contribute to make it even better.
             </p>
 
             <Button
-              size="lg"
-              variant="outline"
-              className="px-10 transition hover:bg-gray-100 dark:hover:bg-gray-800"
               asChild
+              className="inline-flex items-center justify-center rounded-3xl border border-[#1565C0] bg-transparent px-7 py-5 text-sm font-bold text-[#1565C0] transition-all duration-300 hover:bg-[#1565C0] hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1565C0]/50 dark:border-[#1565C0] dark:text-[#1565C0] dark:hover:bg-[#1565C0] dark:hover:text-white dark:focus-visible:ring-[#1565C0]/80"
             >
               <Link
                 href="https://github.com/dariomatias-dev/flutter_guide_app"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="View Flutter Guide App repository on GitHub"
               >
                 View on GitHub
               </Link>
@@ -165,49 +173,56 @@ export default function Home() {
           </div>
         </section>
 
-        {/* About Me Section */}
+        {/* About Me */}
         <section
           id="about"
-          className="w-full rounded-t-lg border-t border-gray-200 bg-slate-50/50 dark:border-gray-700 dark:bg-transparent"
+          aria-labelledby="about-title"
+          className="w-full border-t border-gray-200 px-6 py-32 sm:px-16 dark:border-gray-900 bg-white dark:bg-gray-950"
         >
-          <div className="mx-auto flex max-w-screen-md flex-col items-center justify-center space-y-12 px-6 py-20 text-center md:py-28">
-            <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-              About Me
+          <div className="mx-auto max-w-4xl space-y-16 text-center">
+            <h2
+              id="about-title"
+              tabIndex={0}
+              className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl"
+            >
+              About the Creator
             </h2>
 
-            <div className="space-y-6">
-              <p className="max-w-prose text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                I&apos;m Dário Matias, a Full Stack developer with a strong
-                focus on Flutter and modern web technologies. I specialize in
-                building efficient, scalable applications and crafting
-                educational resources for the tech community.
+            <div className="space-y-8 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl font-semibold leading-relaxed text-gray-800 dark:text-gray-300">
+                I'm <strong>Dário Matias</strong>, a Full Stack developer specializing in
+                <span className="text-[#02569B] font-bold"> Flutter</span> and modern frontend
+                technologies. I'm passionate about building meaningful software and helping others
+                grow through educational content.
               </p>
 
-              <p className="max-w-prose text-lg leading-relaxed text-gray-700 dark:text-gray-300">
-                My work is driven by a commitment to quality, continuous
-                learning, and the belief that knowledge should be shared. I aim
-                to inspire and support developers around the world.
+              <p className="text-lg sm:text-xl font-semibold leading-relaxed text-gray-800 dark:text-gray-300">
+                Flutter Guide was born from my desire to simplify learning and
+                make high-quality resources accessible to everyone.
               </p>
             </div>
 
-            <div className="mt-6 flex items-center gap-6 rounded-xl border bg-white/60 px-6 py-4 shadow-sm dark:bg-white/5">
+            <div className="mt-12 flex justify-center gap-6">
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/dariomatias_dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="text-black transition-transform duration-200 hover:scale-110 hover:opacity-80 dark:text-white"
+                aria-label="Instagram profile"
+                className="flex items-center justify-center h-10 w-10 rounded-full border border-[#1565C0] bg-transparent text-[#1565C0] shadow-md transition duration-300 ease-in-out hover:bg-[#1565C0] hover:text-white dark:border-[#1565C0] dark:text-[#1565C0] dark:hover:bg-[#1565C0] dark:hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1565C0]/50 focus-visible:ring-opacity-80 cursor-pointer"
               >
-                <Instagram className="h-6 w-6" />
+                <Instagram className="h-5 w-5" />
               </a>
+
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/dariomatias-dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="text-black transition-transform duration-200 hover:scale-110 hover:opacity-80 dark:text-white"
+                aria-label="LinkedIn profile"
+                className="flex items-center justify-center h-10 w-10 rounded-full border border-[#1565C0] bg-transparent text-[#1565C0] shadow-md transition duration-300 ease-in-out hover:bg-[#1565C0] hover:text-white dark:border-[#1565C0] dark:text-[#1565C0] dark:hover:bg-[#1565C0] dark:hover:text-white focus:outline-none focus-visible:ring-4 focus-visible:ring-[#1565C0]/50 focus-visible:ring-opacity-80 cursor-pointer"
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
