@@ -6,18 +6,12 @@ import Image from "next/image";
 
 import { Testimonial } from "@/@types/Testimonial";
 import { AboutMeSection } from "@/components/AboutMeSection";
+import { FaqSection } from "@/components/FaqSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { SampleSection } from "@/components/SampleSection";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { faqs } from "@/constants/faqs";
 import { sectionAnimation } from "@/utils/sectionAnimation";
 
 const CommunityMarquee = ({
@@ -200,37 +194,7 @@ export default function Home() {
           </motion.section>
         )}
 
-        {/* --- FAQ Section --- */}
-        <motion.section
-          {...sectionAnimation}
-          id="faq"
-          className="w-full px-4 py-20 sm:px-8 md:py-28"
-        >
-          <div className="mx-auto max-w-3xl">
-            <div className="text-center">
-              <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
-                Frequently Asked Questions
-              </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
-                Have a question? Find the answer here.
-              </p>
-            </div>
-
-            <Accordion type="single" collapsible className="mt-12 w-full">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-left text-lg hover:no-underline">
-                    {faq.question}
-                  </AccordionTrigger>
-
-                  <AccordionContent className="text-base text-zinc-400">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </motion.section>
+        <FaqSection />
 
         <AboutMeSection />
       </main>
