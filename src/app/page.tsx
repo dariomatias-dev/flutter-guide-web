@@ -1,79 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 import Image from "next/image";
 
-import { Testimonial } from "@/@types/Testimonial";
 import { AboutMeSection } from "@/components/AboutMeSection";
+import { CommunitySection } from "@/components/CommunitySection";
 import { FaqSection } from "@/components/FaqSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { SampleSection } from "@/components/SampleSection";
-import { sectionAnimation } from "@/utils/sectionAnimation";
-
-const CommunityMarquee = ({
-  testimonials,
-}: {
-  testimonials: Testimonial[];
-}) => {
-  const extendedTestimonials = [...testimonials, ...testimonials];
-
-  return (
-    <div className="relative w-full overflow-hidden">
-      <motion.div
-        className="flex gap-6"
-        animate={{ x: "-100%" }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 40,
-            ease: "linear",
-          },
-        }}
-      >
-        {extendedTestimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="w-[350px] flex-shrink-0 rounded-2xl border border-zinc-800 bg-zinc-900/80 p-8 shadow-lg shadow-black/20 backdrop-blur-sm"
-          >
-            <div className="flex items-center gap-4">
-              <Image
-                src={testimonial.avatar}
-                alt={testimonial.name}
-                width={48}
-                height={48}
-                className="rounded-full"
-              />
-
-              <div>
-                <h3 className="font-semibold text-white">{testimonial.name}</h3>
-                <p className="text-sm text-zinc-400">{testimonial.handle}</p>
-              </div>
-            </div>
-
-            <div className="mt-4 flex gap-0.5">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                />
-              ))}
-            </div>
-
-            <p className="mt-6 text-zinc-300">"{testimonial.comment}"</p>
-          </div>
-        ))}
-      </motion.div>
-
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-zinc-950 to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-zinc-950 to-transparent" />
-    </div>
-  );
-};
+import { testimonials } from "@/constants/testimonials";
 
 const screenshots = Array.from({ length: 6 }, (_, i) => ({
   src: `/screenshots/flutter_guide_screen_${i + 1}.jpeg`,
@@ -81,8 +19,6 @@ const screenshots = Array.from({ length: 6 }, (_, i) => ({
 }));
 
 export default function Home() {
-  const testimonials: Testimonial[] = [];
-
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
       {/* Background Glows */}
@@ -165,34 +101,7 @@ export default function Home() {
 
         <SampleSection />
 
-        {/* --- Community Section --- */}
-        {testimonials.length != 0 && (
-          <motion.section
-            {...sectionAnimation}
-            id="community"
-            className="relative w-full py-20 sm:py-28"
-          >
-            <div className="absolute inset-0 -z-10 flex items-center justify-center">
-              <div className="h-[40rem] w-full max-w-screen-lg rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(29,78,216,0.15)_0%,_transparent_50%)]" />
-            </div>
-
-            <div className="mx-auto max-w-screen-xl px-4">
-              <div className="text-center">
-                <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
-                  Loved by the Community
-                </h2>
-
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
-                  See what developers are saying about Flutter Guide.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-16">
-              <CommunityMarquee testimonials={testimonials} />
-            </div>
-          </motion.section>
-        )}
+        {testimonials.length != 0 && <CommunitySection />}
 
         <FaqSection />
 
