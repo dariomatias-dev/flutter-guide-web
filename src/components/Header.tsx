@@ -16,7 +16,7 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-800/50 bg-zinc-950/50 backdrop-blur-lg">
+    <header className="fixed top-0 z-50 w-full border-b border-zinc-800/50 bg-zinc-950/50 backdrop-blur-lg">
       <div className="container mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <span className="text-lg font-bold">Flutter Guide</span>
