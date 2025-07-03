@@ -78,7 +78,7 @@ export default function Home() {
                 size="lg"
                 variant="outline"
                 asChild
-                className="w-full sm:w-auto"
+                className="w-full text-black sm:w-auto"
               >
                 <Link
                   href={githubUrl}
