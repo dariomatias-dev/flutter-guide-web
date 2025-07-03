@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { faqs } from "@/constants/faqs";
 import { features } from "@/constants/features";
+import { sectionAnimation } from "@/utils/sectionAnimation";
 
 const CommunityMarquee = ({
   testimonials,
@@ -92,12 +93,6 @@ export default function Home() {
   const githubUrl = "https://github.com/dariomatias-dev/flutter_guide_app";
 
   const testimonials: Testimonial[] = [];
-
-  const sectionAnimation = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-  };
 
   const codeExample = `
 import 'package:flutter/material.dart';
