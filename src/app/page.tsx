@@ -7,6 +7,7 @@ import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
+import { Testimonial } from "@/@types/Testimonial";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import {
@@ -18,13 +19,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { faqs } from "@/constants/faqs";
 import { features } from "@/constants/features";
-
-type Testimonial = {
-  name: string;
-  handle: string;
-  avatar: string;
-  comment: string;
-};
 
 const CommunityMarquee = ({
   testimonials,
