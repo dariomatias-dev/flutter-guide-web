@@ -2,8 +2,6 @@
 
 import Link from "next/link";
 
-import { ToggleThemeButton } from "./toggleThemeButton";
-
 export const Header = () => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
@@ -48,10 +46,6 @@ export const Header = () => {
             Privacy Policy
           </Link>
         </nav>
-
-        <div className="flex items-center gap-4">
-          <ToggleThemeButton />
-        </div>
       </div>
     </header>
   );
