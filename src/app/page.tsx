@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown, Code, Sparkles, Star } from "lucide-react";
+import { ArrowRight, ChevronDown, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { faqs } from "@/constants/faqs";
+import { features } from "@/constants/features";
 
 type Testimonial = {
   name: string;
@@ -95,27 +96,6 @@ export default function Home() {
   const playStoreUrl =
     "https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide";
   const githubUrl = "https://github.com/dariomatias-dev/flutter_guide_app";
-
-  const features = [
-    {
-      icon: Sparkles,
-      title: "Widget of the Day",
-      description:
-        "Discover a new widget daily with interactive examples and ready-to-use code.",
-    },
-    {
-      icon: Code,
-      title: "UI's & Snippets",
-      description:
-        "Browse a curated collection of interfaces and code snippets to speed up your development.",
-    },
-    {
-      icon: Star,
-      title: "Curated Content",
-      description:
-        "Learn with practical guides and real-world examples you can apply immediately.",
-    },
-  ];
 
   const testimonials: Testimonial[] = [];
 
