@@ -144,13 +144,15 @@ export const Header = () => {
           >
             <div className="flex h-full flex-col p-4">
               <div className="flex h-8 items-center justify-between">
-                <a
+                <Link
                   href="/"
+                  scroll={false}
                   className="flex cursor-pointer items-center space-x-2"
                   onClick={(e) => handleNavigation(e, "/#hero")}
                 >
                   <span className="text-lg font-bold">FlutterGuide</span>
-                </a>
+                </Link>
+
                 <button
                   onClick={() => setIsMenuOpen(false)}
                   className="rounded-md p-2 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white"
@@ -163,14 +165,14 @@ export const Header = () => {
               <nav className="flex flex-grow flex-col items-center justify-center gap-8 text-center text-2xl font-medium">
                 {navLinks.map((link) =>
                   link.isScrollLink ? (
-                    <a
+                    <Link
                       key={link.href}
                       href={link.href}
                       onClick={(e) => handleNavigation(e, link.href)}
                       className="cursor-pointer text-zinc-300 hover:text-white"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ) : (
                     <Link
                       key={link.href}
