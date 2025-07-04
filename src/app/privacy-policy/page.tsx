@@ -13,16 +13,12 @@ import { Header } from "@/components/Header";
 
 export default function PrivacyPolicy() {
   return (
-    // 1. Aplicando a estrutura principal com fundo escuro e branco
     <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-zinc-950 text-white">
-      {/* 2. Adicionando o brilho de fundo para consistência visual */}
       <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.1),_transparent_40%)]" />
 
       <Header />
 
-      {/* 3. Ajustando espaçamento e largura para consistência com o resto do site */}
       <main className="container mx-auto max-w-4xl flex-grow px-4 pt-28 pb-16">
-        {/* 4. Estilizando o Breadcrumb para o tema escuro */}
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -41,7 +37,6 @@ export default function PrivacyPolicy() {
           </BreadcrumbList>
         </Breadcrumb>
 
-        {/* Os estilos do H1 e da Section abaixo foram MANTIDOS exatamente como no seu código original */}
         <h1 className="my-8 text-center text-3xl font-bold md:text-4xl">
           Privacy Policy
         </h1>
