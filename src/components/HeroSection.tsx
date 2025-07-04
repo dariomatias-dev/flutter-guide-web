@@ -7,7 +7,10 @@ import { Button } from "./ui/button";
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center px-4 text-center">
+    <section
+      id="hero"
+      className="relative flex min-h-screen w-full items-center justify-center px-4 text-center"
+    >
       <motion.div
         initial="hidden"
         animate="visible"
