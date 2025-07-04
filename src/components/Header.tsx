@@ -6,6 +6,9 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import { githubUrl, playStoreUrl } from "@/constants/constants";
+import { Button } from "./ui/button";
+
 const navLinks = [
   { href: "#showcase", label: "Showcase", isScrollLink: true },
   { href: "#features", label: "Features", isScrollLink: true },
@@ -91,21 +94,31 @@ export const Header = () => {
             )}
           </nav>
 
-          <div className="hidden items-center space-x-4 lg:flex">
-            <a
-              href="https://github.com/your-repo/flutterguide"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-zinc-300 transition-colors hover:text-white"
+          <div className="hidden items-center space-x-2 lg:flex">
+            <Button
+              size="lg"
+              variant="ghost"
+              asChild
+              className="text-sm font-medium text-zinc-300 transition-colors hover:bg-transparent hover:text-white"
             >
-              GitHub
-            </a>
-            <a
-              href="#"
-              className="transform rounded-md bg-gradient-to-br from-blue-600 to-cyan-500 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:scale-105 hover:brightness-110"
+              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </Link>
+            </Button>
+
+            <Button
+              size="lg"
+              asChild
+              className="h-9 w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:200%_auto] text-sm font-semibold text-white transition-all duration-300 hover:bg-right hover:brightness-110 sm:w-auto"
             >
-              Download App
-            </a>
+              <Link
+                href={playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download App
+              </Link>
+            </Button>
           </div>
 
           <div className="lg:hidden">
@@ -172,20 +185,33 @@ export const Header = () => {
               </nav>
 
               <div className="flex flex-col gap-4 pb-4">
-                <a
-                  href="#"
-                  className="block w-full transform rounded-md bg-gradient-to-br from-blue-600 to-cyan-500 py-3 text-center font-semibold text-white transition-all duration-300 hover:brightness-110"
+                <Button
+                  size="lg"
+                  asChild
+                  className="w-full transform rounded-md bg-gradient-to-br from-blue-600 to-cyan-500 py-3 text-center font-semibold text-white transition-all duration-300 hover:brightness-110"
                 >
-                  Download App
-                </a>
-                <a
-                  href="https://github.com/your-repo/flutterguide"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full rounded-md bg-zinc-800 py-3 text-center font-semibold text-zinc-300 transition-colors hover:bg-zinc-700"
+                  <Link
+                    href={playStoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Download App
+                  </Link>
+                </Button>
+
+                <Button
+                  size="lg"
+                  asChild
+                  className="w-full rounded-md bg-zinc-800 py-3 text-center font-semibold text-zinc-300 transition-colors hover:bg-zinc-700"
                 >
-                  GitHub
-                </a>
+                  <Link
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </Link>
+                </Button>
               </div>
             </div>
           </motion.div>
