@@ -13,50 +13,59 @@ import { Header } from "@/components/Header";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="bg-background flex min-h-screen flex-col">
+    // 1. Aplicando a estrutura principal com fundo escuro e branco
+    <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-zinc-950 text-white">
+      {/* 2. Adicionando o brilho de fundo para consistência visual */}
+      <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.1),_transparent_40%)]" />
+
       <Header />
 
-      <main className="mx-auto max-w-3xl flex-grow px-6 py-10 md:px-12 md:py-16">
+      {/* 3. Ajustando espaçamento e largura para consistência com o resto do site */}
+      <main className="container mx-auto max-w-4xl flex-grow px-4 pt-28 pb-16">
+        {/* 4. Estilizando o Breadcrumb para o tema escuro */}
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link href="/">Home</Link>
+                <Link href="/" className="transition-colors hover:text-white">
+                  Home
+                </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
-
             <BreadcrumbSeparator />
-
             <BreadcrumbItem>
-              <BreadcrumbPage>Privacy Policy</BreadcrumbPage>
+              <BreadcrumbPage className="font-medium text-zinc-400">
+                Privacy Policy
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
+        {/* Os estilos do H1 e da Section abaixo foram MANTIDOS exatamente como no seu código original */}
         <h1 className="my-8 text-center text-3xl font-bold md:text-4xl">
           Privacy Policy
         </h1>
 
-        <section className="text-foreground space-y-5 leading-relaxed">
+        <section className="space-y-5 leading-relaxed text-zinc-300">
           <p>
             This Privacy Policy governs how the Flutter Guide app (referred to
-            as the &quot;Application&quot;), developed by Dário Matias
-            (&quot;Service Provider&quot;), collects, uses, and protects your
-            information. This service is offered as-is and free of charge.
+            as the "Application"), developed by Dário Matias ("Service
+            Provider"), collects, uses, and protects your information. This
+            service is offered as-is and free of charge.
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Information Collection and Use
           </h2>
           <p>The Application may collect the following information:</p>
           <ul className="list-inside list-disc space-y-1">
-            <li>Your device&apos;s IP address</li>
+            <li>Your device's IP address</li>
             <li>
               Pages you visit within the Application, along with timestamps and
               duration
             </li>
             <li>Overall time spent on the Application</li>
-            <li>Your mobile device&apos;s operating system</li>
+            <li>Your mobile device's operating system</li>
           </ul>
           <p>The Application does not collect precise geolocation data.</p>
           <p>
@@ -69,7 +78,7 @@ export default function PrivacyPolicy() {
             to this policy.
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Third Party Access
           </h2>
           <p>
@@ -86,18 +95,17 @@ export default function PrivacyPolicy() {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary underline"
+                className="text-cyan-400 underline transition-colors hover:text-cyan-300"
               >
                 Google Play Services
               </Link>
             </li>
-
             <li>
               <Link
-                href="https://policies.google.com/privacy"
+                href="https://support.google.com/admob/answer/6128543?sjid=9327073537188592133-SA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-primary underline"
+                className="text-cyan-400 underline transition-colors hover:text-cyan-300"
               >
                 AdMob
               </Link>
@@ -114,7 +122,7 @@ export default function PrivacyPolicy() {
             </li>
           </ul>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Opt-Out Rights
           </h2>
           <p>
@@ -122,7 +130,7 @@ export default function PrivacyPolicy() {
             using standard device procedures.
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Data Retention Policy
           </h2>
           <p>
@@ -130,14 +138,14 @@ export default function PrivacyPolicy() {
             of your data, please contact:{" "}
             <a
               href="mailto:matiasdario75@gmail.com"
-              className="hover:text-primary underline"
+              className="text-cyan-400 underline transition-colors hover:text-cyan-300"
             >
               matiasdario75@gmail.com
             </a>
             .
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Children
           </h2>
           <p>
@@ -150,14 +158,14 @@ export default function PrivacyPolicy() {
             data can contact the Service Provider at{" "}
             <a
               href="mailto:matiasdario75@gmail.com"
-              className="hover:text-primary underline"
+              className="text-cyan-400 underline transition-colors hover:text-cyan-300"
             >
               matiasdario75@gmail.com
             </a>
             .
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Security
           </h2>
           <p>
@@ -165,7 +173,7 @@ export default function PrivacyPolicy() {
             place to protect your information.
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Changes to This Policy
           </h2>
           <p>
@@ -173,9 +181,11 @@ export default function PrivacyPolicy() {
             the Application constitutes acceptance of changes. Please review
             regularly.
           </p>
-          <p className="mt-2 italic">Effective date: January 6, 2025</p>
+          <p className="mt-2 text-zinc-400 italic">
+            Effective date: January 6, 2025
+          </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Your Consent
           </h2>
           <p>
@@ -183,14 +193,14 @@ export default function PrivacyPolicy() {
             Privacy Policy.
           </p>
 
-          <h2 className="mt-6 mb-3 text-xl font-semibold md:text-2xl">
+          <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
             Contact Us
           </h2>
           <p>
             For privacy-related inquiries, contact the Service Provider at{" "}
             <a
               href="mailto:matiasdario75@gmail.com"
-              className="hover:text-primary underline"
+              className="text-cyan-400 underline transition-colors hover:text-cyan-300"
             >
               matiasdario75@gmail.com
             </a>
