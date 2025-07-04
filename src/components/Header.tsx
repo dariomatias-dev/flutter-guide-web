@@ -56,13 +56,16 @@ export const Header = () => {
     <>
       <header className="fixed top-0 z-50 w-full border-b border-zinc-800/50 bg-zinc-950/50 backdrop-blur-lg">
         <div className="container mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
-          <a
-            href="/"
+          <Link
+            href="/#hero"
             className="flex cursor-pointer items-center space-x-2"
-            onClick={(e) => handleNavigation(e, "/#hero")}
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavigation(e, "/#hero");
+            }}
           >
             <span className="text-lg font-bold">FlutterGuide</span>
-          </a>
+          </Link>
 
           <nav className="hidden items-center space-x-8 text-sm font-medium text-zinc-300 lg:flex">
             {navLinks.map((link) =>

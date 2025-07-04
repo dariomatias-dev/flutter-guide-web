@@ -50,7 +50,9 @@ export const CommunityMarquee = () => {
               ))}
             </div>
 
-            <p className="mt-6 text-zinc-300">"{testimonial.comment}"</p>
+            <p className="mt-6 text-zinc-300">
+              &quot;{testimonial.comment}&quot;
+            </p>
           </div>
         ))}
       </motion.div>
