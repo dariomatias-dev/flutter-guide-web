@@ -1,10 +1,6 @@
 import { motion } from "framer-motion";
-import { ScreenshotCard } from "./ScreenshotCard";
 
-const screenshots = Array.from({ length: 6 }, (_, i) => ({
-  src: `/screenshots/flutter_guide_screen_${i + 1}.jpeg`,
-  alt: `Flutter Guide screen ${i + 1}`,
-}));
+import { ScreenshotsCarousel } from "./ScreenshotsCarousel";
 
 export const ScreenshotsSection = () => {
   return (
@@ -29,22 +25,9 @@ export const ScreenshotsSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-16 grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+          className="mt-8"
         >
-          <ScreenshotCard src={screenshots[0].src} alt={screenshots[0].alt} />
-          <ScreenshotCard
-            className="lg:mt-16"
-            src={screenshots[1].src}
-            alt={screenshots[1].alt}
-          />
-          <ScreenshotCard src={screenshots[2].src} alt={screenshots[2].alt} />
-          <ScreenshotCard src={screenshots[3].src} alt={screenshots[3].alt} />
-          <ScreenshotCard
-            className="lg:mt-16"
-            src={screenshots[4].src}
-            alt={screenshots[4].alt}
-          />
-          <ScreenshotCard src={screenshots[5].src} alt={screenshots[5].alt} />
+          <ScreenshotsCarousel />
         </motion.div>
       </div>
       <div className="pointer-events-none absolute bottom-0 left-0 h-1/3 w-full bg-gradient-to-t from-zinc-950 to-transparent" />
