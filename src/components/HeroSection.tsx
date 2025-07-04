@@ -1,35 +1,12 @@
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
+import { textVariants } from "@/constants/variants/textVariants";
+import { titleContainerVariants } from "@/constants/variants/titleContainerVariants";
+import { titleWordVariants } from "@/constants/variants/titleWordVariants";
 import { Button } from "./ui/button";
-
-const textVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 100, damping: 20, duration: 0.8 },
-  },
-};
-
-const titleContainerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-  },
-};
-
-const titleWordVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 120, damping: 20 },
-  },
-};
 
 export const HeroSection = () => {
   return (
