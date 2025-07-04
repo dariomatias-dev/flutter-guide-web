@@ -24,9 +24,10 @@ export const AboutMeSection = () => (
       </h2>
 
       <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300">
-        I'm <strong>Dário Matias</strong>, a Full Stack developer. Flutter Guide
-        is my open source contribution to the community, born out of a desire to
-        make high-quality development resources accessible to everyone.
+        I&apos;m <strong>Dário Matias</strong>, a Full Stack developer. Flutter
+        Guide is my open source contribution to the community, born out of a
+        desire to make high-quality development resources accessible to
+        everyone.
       </p>
 
       <div className="mt-8 flex justify-center gap-4 text-zinc-400">
