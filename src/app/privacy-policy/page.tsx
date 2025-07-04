@@ -54,13 +54,13 @@ export default function PrivacyPolicy() {
           </h2>
           <p>The Application may collect the following information:</p>
           <ul className="list-inside list-disc space-y-1">
-            <li>Your device's IP address</li>
+            <li>Your device&#39;s IP address</li>
             <li>
               Pages you visit within the Application, along with timestamps and
               duration
             </li>
             <li>Overall time spent on the Application</li>
-            <li>Your mobile device's operating system</li>
+            <li>Your mobile device&#39;s operating system</li>
           </ul>
           <p>The Application does not collect precise geolocation data.</p>
           <p>

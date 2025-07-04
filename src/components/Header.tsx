@@ -70,14 +70,15 @@ export const Header = () => {
           <nav className="hidden items-center space-x-8 text-sm font-medium text-zinc-300 lg:flex">
             {navLinks.map((link) =>
               link.isScrollLink ? (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
+                  scroll={false}
                   onClick={(e) => handleNavigation(e, link.href)}
                   className="cursor-pointer transition-colors hover:text-white"
                 >
                   {link.label}
-                </a>
+                </Link>
               ) : (
                 <Link
                   key={link.href}
