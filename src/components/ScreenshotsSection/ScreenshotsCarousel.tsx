@@ -19,17 +19,18 @@ export const ScreenshotsCarousel = () => {
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  // 2. Função para atualizar o estado dos botões
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
+
     setCanScrollPrev(emblaApi.canScrollPrev());
     setCanScrollNext(emblaApi.canScrollNext());
   }, [emblaApi]);
 
-  // 3. Efeito que escuta as mudanças no carrossel e atualiza o estado
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect(); // Define o estado inicial
+
+    onSelect();
+
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
 
