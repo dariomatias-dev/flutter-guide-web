@@ -1,14 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
+import { HeaderMenu } from "./HeaderMenu";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,10 +43,6 @@ export const Header = () => {
       const elem = document.getElementById(targetId);
       elem?.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const handleNormalLinkClick = () => {
-    setIsMenuOpen(false);
   };
 
   return (
@@ -127,92 +123,12 @@ export const Header = () => {
         </div>
       </header>
 
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-50 bg-zinc-950 lg:hidden"
-          >
-            <div className="flex h-full flex-col p-4">
-              <div className="flex h-8 items-center justify-between">
-                <Link
-                  href="/"
-                  scroll={false}
-                  className="flex cursor-pointer items-center space-x-2"
-                  onClick={(e) => handleNavigation(e, "/#hero")}
-                >
-                  <span className="text-lg font-bold">FlutterGuide</span>
-                </Link>
-
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="rounded-md p-2 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white"
-                  aria-label="Close menu"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              <nav className="flex flex-grow flex-col items-center justify-center gap-8 text-center text-2xl font-medium">
-                {navLinks.map((link) =>
-                  link.isScrollLink ? (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={(e) => handleNavigation(e, link.href)}
-                      className="cursor-pointer text-zinc-300 hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={handleNormalLinkClick}
-                      className="text-zinc-300 hover:text-white"
-                    >
-                      {link.label}
-                    </Link>
-                  ),
-                )}
-              </nav>
-
-              <div className="flex flex-col gap-4 pb-4">
-                <Button
-                  size="lg"
-                  asChild
-                  className="w-full transform rounded-md bg-gradient-to-br from-blue-600 to-cyan-500 py-3 text-center font-semibold text-white transition-all duration-300 hover:brightness-110"
-                >
-                  <Link
-                    href={playStoreUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Download App
-                  </Link>
-                </Button>
-
-                <Button
-                  size="lg"
-                  asChild
-                  className="w-full rounded-md bg-zinc-800 py-3 text-center font-semibold text-zinc-300 transition-colors hover:bg-zinc-700"
-                >
-                  <Link
-                    href={githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isMenuOpen && (
+        <HeaderMenu
+          setIsMenuOpen={setIsMenuOpen}
+          handleNavigation={handleNavigation}
+        />
+      )}
     </>
   );
 };
