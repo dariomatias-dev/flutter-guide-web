@@ -49,13 +49,13 @@ export const ScreenshotsCarousel = () => {
               key={index}
               className="min-w-0 flex-[0_0_100%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"
             >
-              <div className="flex max-h-[80vh] items-center justify-center overflow-hidden rounded-2xl">
+              <div className="flex max-h-[70vh] items-center justify-center overflow-hidden rounded-2xl">
                 <Image
                   src={src}
                   alt={`Flutter Guide App Screenshot ${index + 1}`}
                   width={540}
                   height={960}
-                  className="h-auto max-h-[80vh] w-auto rounded-2xl object-contain"
+                  className="h-auto max-h-[70vh] w-auto rounded-2xl object-contain"
                 />
               </div>
             </div>
