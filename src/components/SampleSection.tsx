@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { codeExample } from "@/constants/codeExample";
 import { sectionAnimation } from "@/utils/sectionAnimation";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const SampleSection = () => {
   return (

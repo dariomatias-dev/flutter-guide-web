@@ -21,6 +21,7 @@ export const FaqSection = () => {
           <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
             Frequently Asked Questions
           </h2>
+
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
             Have a question? Find the answer here.
           </p>
