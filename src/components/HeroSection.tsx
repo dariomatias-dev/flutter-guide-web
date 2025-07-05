@@ -37,7 +37,6 @@ export const HeroSection = () => {
           animate={{ y: [-10, 10], rotate: [-2, 2] }}
           transition={{
             duration: 10,
-            repeat: Infinity,
             repeatType: "mirror",
             ease: "easeInOut",
           }}
@@ -47,7 +46,6 @@ export const HeroSection = () => {
           animate={{ y: [15, -15], x: [-10, 10], rotate: [5, -5] }}
           transition={{
             duration: 12,
-            repeat: Infinity,
             repeatType: "mirror",
             ease: "easeInOut",
           }}
@@ -82,16 +80,6 @@ export const HeroSection = () => {
             className="relative inline-block"
           >
             <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-              Faster.
-            </span>
-            <span
-              aria-hidden
-              className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent opacity-0"
-              style={{
-                animation: "shimmer 4s infinite",
-                WebkitTextStroke: "1px transparent",
-              }}
-            >
               Faster.
             </span>
           </motion.span>
