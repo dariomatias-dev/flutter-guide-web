@@ -5,7 +5,7 @@ import { CommunitySection } from "@/components/CommunitySection";
 import { FaqSection } from "@/components/FaqSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { Header } from "@/components/Header/Header";
 import { HeroSection } from "@/components/HeroSection";
 import { SampleSection } from "@/components/SampleSection";
 import { ScreenshotsSection } from "@/components/ScreenshotsSection";
