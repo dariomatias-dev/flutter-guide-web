@@ -30,9 +30,9 @@ export const AboutMeSection = () => (
         everyone.
       </p>
 
-      <div className="mt-8 flex justify-center gap-4 text-zinc-400">
+      <div className="mt-8 flex flex-wrap justify-center gap-y-2 text-sm text-zinc-400 sm:text-base">
         {links.map(({ href, label, aria }, i) => (
-          <span key={href} className="flex items-center">
+          <div key={href} className="flex items-center">
             {i > 0 && <span className="mx-2 text-zinc-600">|</span>}
 
             <a
@@ -44,7 +44,7 @@ export const AboutMeSection = () => (
             >
               {label}
             </a>
-          </span>
+          </div>
         ))}
       </div>
     </div>
