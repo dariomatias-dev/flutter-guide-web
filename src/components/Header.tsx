@@ -7,19 +7,12 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
+import { navLinks } from "@/constants/navLinks";
 import { Button } from "./ui/button";
-
-const navLinks = [
-  { href: "#showcase", label: "Showcase", isScrollLink: true },
-  { href: "#features", label: "Features", isScrollLink: true },
-  { href: "#sample", label: "Sample", isScrollLink: true },
-  { href: "#faq", label: "FAQ", isScrollLink: true },
-  { href: "#about", label: "About", isScrollLink: true },
-  { href: "/privacy-policy", label: "Privacy Policy", isScrollLink: false },
-];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -29,6 +22,7 @@ export const Header = () => {
     } else {
       document.body.classList.remove("overflow-hidden");
     }
+
     return () => {
       document.body.classList.remove("overflow-hidden");
     };

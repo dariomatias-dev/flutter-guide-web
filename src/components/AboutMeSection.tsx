@@ -34,6 +34,7 @@ export const AboutMeSection = () => (
         {links.map(({ href, label, aria }, i) => (
           <span key={href} className="flex items-center">
             {i > 0 && <span className="mx-2 text-zinc-600">|</span>}
+
             <a
               href={href}
               target="_blank"
