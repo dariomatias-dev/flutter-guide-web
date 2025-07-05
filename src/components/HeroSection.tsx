@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import Link from "next/link";
@@ -7,8 +9,15 @@ import { textVariants } from "@/constants/variants/textVariants";
 import { titleContainerVariants } from "@/constants/variants/titleContainerVariants";
 import { titleWordVariants } from "@/constants/variants/titleWordVariants";
 import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
 
 export const HeroSection = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -56,7 +65,7 @@ export const HeroSection = () => {
         <motion.div
           variants={textVariants}
           initial="hidden"
-          animate="visible"
+          animate={isMounted ? "visible" : "hidden"}
           className="mb-4 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-300"
         >
           <Sparkles className="mr-2 h-4 w-4 text-blue-400" />
@@ -66,7 +75,7 @@ export const HeroSection = () => {
         <motion.h1
           variants={titleContainerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isMounted ? "visible" : "hidden"}
           className="text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl"
         >
           <motion.span variants={titleWordVariants} className="inline-block">
@@ -88,7 +97,7 @@ export const HeroSection = () => {
         <motion.p
           variants={textVariants}
           initial="hidden"
-          animate="visible"
+          animate={isMounted ? "visible" : "hidden"}
           transition={{ delay: 0.8 }}
           className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 md:text-xl"
         >
@@ -99,7 +108,7 @@ export const HeroSection = () => {
         <motion.div
           variants={textVariants}
           initial="hidden"
-          animate="visible"
+          animate={isMounted ? "visible" : "hidden"}
           transition={{ delay: 1 }}
           className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
