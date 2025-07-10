@@ -1,37 +1,64 @@
 export const codeExample = `
 import 'package:flutter/material.dart';
 
-// A custom card with a gradient and shadow
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: GradientCard(),
+      ),
+    ),
+  );
+}
+
 class GradientCard extends StatelessWidget {
   const GradientCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 250,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(
-          colors: [Colors.blue, Colors.cyan],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.blue.withOpacity(0.4),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+    return Expanded(
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Color(0xFF2563EB),
+              Color(0xFF22D3EE),
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-        ],
-      ),
-      child: const Center(
-        child: Text(
-          'Flutter!',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+        ),
+        child: Center(
+          child: Container(
+            width: 260,
+            height: 460,
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: <Color>[
+                  Color(0xFF3B82F6),
+                  Color(0xFF06B6D4),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(32.0),
+              border: Border.all(
+                color: const Color(0xFF27272a),
+                width: 16.0,
+              ),
+            ),
+            child: const Center(
+              child: Text(
+                'Flutter!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.1,
+                ),
+              ),
+            ),
           ),
         ),
       ),
