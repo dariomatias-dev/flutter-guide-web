@@ -85,7 +85,7 @@ export default function NotFoundPage() {
           <Button
             size="lg"
             asChild
-            className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:200%_auto] text-sm font-semibold text-white transition-all duration-300 hover:bg-right hover:brightness-110"
+            className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:200%_auto] bg-[position:0%_0%] text-sm font-semibold text-white transition-all duration-300 hover:brightness-110"
           >
             <Link href="/">Back to Home</Link>
           </Button>
