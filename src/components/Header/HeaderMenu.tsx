@@ -80,6 +80,16 @@ export const HeaderMenu = ({
             <Button
               size="lg"
               asChild
+              className="text-md w-full rounded-md bg-zinc-800 py-3 text-center font-semibold text-zinc-300 transition-colors hover:bg-zinc-700"
+            >
+              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </Link>
+            </Button>
+
+            <Button
+              size="lg"
+              asChild
               className="text-md w-full transform rounded-md bg-gradient-to-br from-blue-600 to-cyan-500 py-3 text-center font-semibold text-white transition-all duration-300 hover:brightness-110"
             >
               <Link
@@ -88,16 +98,6 @@ export const HeaderMenu = ({
                 rel="noopener noreferrer"
               >
                 Download App
-              </Link>
-            </Button>
-
-            <Button
-              size="lg"
-              asChild
-              className="text-md w-full rounded-md bg-zinc-800 py-3 text-center font-semibold text-zinc-300 transition-colors hover:bg-zinc-700"
-            >
-              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-                GitHub
               </Link>
             </Button>
           </div>

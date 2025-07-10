@@ -11,7 +11,7 @@ import {
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header/Header";
 
-export default function PrivacyPolicy() {
+export default function Page() {
   return (
     <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-zinc-950 text-white">
       <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.1),_transparent_40%)]" />
