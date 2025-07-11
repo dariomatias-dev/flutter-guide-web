@@ -120,3 +120,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes aurora {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(40px) translateY(20px) rotate(10deg) scale(1.1);
+  }
+}
