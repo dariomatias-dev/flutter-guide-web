@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "../components/LinkButton";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -117,13 +116,9 @@ export default function NotFoundPage() {
         </motion.p>
 
         <motion.div variants={itemVariants} className="mt-10">
-          <Button
-            size="lg"
-            asChild
-            className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:150%_auto] bg-left-top text-sm font-semibold text-white transition-all duration-300 hover:bg-right-bottom hover:brightness-110"
-          >
-            <Link href="/">Back to Home</Link>
-          </Button>
+          <LinkButton href="/" target="_self" className="py-5">
+            Back to Home
+          </LinkButton>
         </motion.div>
       </motion.div>
     </main>

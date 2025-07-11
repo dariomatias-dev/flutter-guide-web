@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
+import { LinkButton } from "./LinkButton";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -94,11 +95,10 @@ export const HeroSection = () => {
           variants={itemVariants}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <Link href={playStoreUrl} target="_blank" rel="noopener noreferrer">
-            <motion.button className="w-full rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:200%_auto] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:bg-right hover:brightness-110 sm:w-auto">
-              Download on Google Play
-            </motion.button>
-          </Link>
+
+          <LinkButton href={playStoreUrl} className="h-auto">
+            Download on Google Play
+          </LinkButton>
 
           <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
             <motion.button className="group flex w-full items-center justify-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/50 px-8 py-3 text-base font-medium text-zinc-300 backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white sm:w-auto">
