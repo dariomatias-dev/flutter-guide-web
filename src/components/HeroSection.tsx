@@ -22,9 +22,9 @@ const itemVariants: Variants = {
     y: 0,
     opacity: 1,
     transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12,
+      type: "tween",
+      ease: "easeOut",
+      duration: 0.5,
     },
   },
 };
@@ -95,7 +95,6 @@ export const HeroSection = () => {
           variants={itemVariants}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-
           <LinkButton href={playStoreUrl} className="h-auto">
             Download on Google Play
           </LinkButton>
