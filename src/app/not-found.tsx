@@ -10,8 +10,8 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
-      delayChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
@@ -30,62 +30,97 @@ const itemVariants: Variants = {
 
 export default function NotFoundPage() {
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 text-center text-white">
+    <main className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 text-white">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
       >
-        <div
-          className="absolute -top-40 -left-40 h-[30rem] w-[30rem] rounded-full bg-cyan-500/10 blur-3xl"
-          style={{ animation: "blob 10s infinite alternate" }}
-        />
-        <div
-          className="absolute -right-20 -bottom-20 h-[30rem] w-[30rem] rounded-full bg-blue-500/10 blur-3xl"
-          style={{ animation: "blob 12s infinite alternate-reverse" }}
-        />
+        <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-zinc-950 via-zinc-950 to-blue-900/20" />
       </div>
+
+      <motion.div
+        className="pointer-events-none absolute top-1/4 left-[10%] h-32 w-32 rounded-2xl border border-blue-500/20 bg-zinc-900/50"
+        initial={{ opacity: 0, y: 50, rotate: -10 }}
+        animate={{
+          opacity: 1,
+          y: [0, -20],
+          rotate: 10,
+        }}
+        transition={{
+          opacity: { duration: 0.5, delay: 0.8 },
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          },
+          rotate: {
+            duration: 8,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          },
+        }}
+      />
+
+      <motion.div
+        className="pointer-events-none absolute right-[10%] bottom-1/4 h-20 w-40 rounded-full border border-cyan-500/20 bg-zinc-900/50"
+        initial={{ opacity: 0, y: -50, rotate: 10 }}
+        animate={{
+          opacity: 1,
+          y: [0, 25],
+          rotate: -15,
+        }}
+        transition={{
+          opacity: { duration: 0.5, delay: 1 },
+          y: {
+            duration: 5,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          },
+          rotate: {
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          },
+        }}
+      />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="z-10 flex flex-col items-center"
+        className="z-10 flex flex-col items-center text-center"
       >
-        <motion.div
+        <motion.span
           variants={itemVariants}
-          animate={{
-            translateY: ["-5px", "5px", "-5px"],
-            transition: {
-              duration: 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            },
-          }}
+          className="bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text font-mono text-9xl font-bold tracking-tighter text-transparent sm:text-[12rem] md:text-[14rem]"
         >
-          <span className="bg-gradient-to-br from-blue-500 to-cyan-400 bg-clip-text font-mono text-9xl font-bold tracking-tighter text-transparent sm:text-[12rem] md:text-[14rem]">
-            404
-          </span>
-        </motion.div>
+          404
+        </motion.span>
 
         <motion.h1
           variants={itemVariants}
-          className="mt-6 text-4xl font-extrabold tracking-tighter text-zinc-100 sm:text-5xl"
+          className="mt-4 text-4xl font-extrabold tracking-tighter text-zinc-100 sm:text-5xl"
         >
-          Page Not Found
+          Oops! The UI has broken.
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
           className="mx-auto mt-4 max-w-md text-base text-zinc-400 md:text-lg"
         >
-          The link you followed may be broken or the page may have been removed.
+          We couldn't render this screen. It seems the route you followed
+          doesn't exist in our widget tree.
         </motion.p>
 
         <motion.div variants={itemVariants} className="mt-10">
           <Button
             size="lg"
             asChild
-            className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:200%_auto] bg-[position:0%_0%] text-sm font-semibold text-white transition-all duration-300 hover:brightness-110"
+            className="w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:150%_auto] bg-left-top text-sm font-semibold text-white transition-all duration-300 hover:bg-right-bottom hover:brightness-110"
           >
             <Link href="/">Back to Home</Link>
           </Button>
