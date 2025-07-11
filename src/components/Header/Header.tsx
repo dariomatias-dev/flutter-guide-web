@@ -9,6 +9,7 @@ import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
 import { Button } from "../ui/button";
 import { HeaderMenu } from "./HeaderMenu";
+import { LinkButton } from "../LinkButton";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -96,19 +97,9 @@ export const Header = () => {
               </Link>
             </Button>
 
-            <Button
-              size="lg"
-              asChild
-              className="h-9 w-full bg-gradient-to-br from-blue-600 to-cyan-500 bg-[length:200%_auto] text-sm font-semibold text-white transition-all duration-300 hover:bg-right hover:brightness-110 sm:w-auto"
-            >
-              <Link
-                href={playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download App
-              </Link>
-            </Button>
+            <LinkButton href={playStoreUrl} className="text-sm h-9">
+              Download App
+            </LinkButton>
           </div>
 
           <div className="lg:hidden">
