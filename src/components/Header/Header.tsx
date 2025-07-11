@@ -97,7 +97,7 @@ export const Header = () => {
               </Link>
             </Button>
 
-            <LinkButton href={playStoreUrl} className="text-sm h-9">
+            <LinkButton href={playStoreUrl} className="h-9 text-sm">
               Download App
             </LinkButton>
           </div>

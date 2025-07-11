@@ -111,8 +111,8 @@ export default function NotFoundPage() {
           variants={itemVariants}
           className="mx-auto mt-4 max-w-md text-base text-zinc-400 md:text-lg"
         >
-          We couldn't render this screen. It seems the route you followed
-          doesn't exist in our widget tree.
+          We couldn&apos;t render this screen. It seems the route you followed
+          doesn&apos;t exist in our widget tree.
         </motion.p>
 
         <motion.div variants={itemVariants} className="mt-10">
