@@ -25,6 +25,7 @@
 ## Table of Contents
 
 - [About The Project](#about-the-project)
+- [Features](#features)
 - [Built With](#built-with)
 - [Getting Started](#getting-started)
 - [Screenshots](#screenshots)
@@ -40,6 +41,13 @@ Its purpose is to showcase the application, present its main features, display s
 
 **Note**: This repository contains only the code for the official landing page.  
 The source code for the Flutter mobile application is available in a separate repository.
+
+## Features
+
+- **Comprehensive Content:** Access a wide range of tutorials and guides covering various aspects of Flutter development.  
+- **Categorized Information:** Content is organized into logical categories for easy navigation and learning.  
+- **Code Snippets:** Includes practical code examples to help understand and implement Flutter concepts.  
+- **Responsive Design:** Fully responsive for a great experience on all devices.  
 
 ## Built With
 
@@ -106,7 +114,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ## Download the App
 
-Get Flutter Guide directly from the Google Play Store:
+Get **Flutter Guide** directly from the **Google Play Store**:
 
 <a href="https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide" target="_blank">
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="200">
