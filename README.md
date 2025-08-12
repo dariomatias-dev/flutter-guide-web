@@ -1,79 +1,173 @@
-# Flutter Guide – Official Website
+<br>
+<div align="center">
+<img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+</div>
+<br>
 
-This is the **official website repository** for the [Flutter Guide](https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide) mobile application, available on the Google Play Store.
+<h1 align="center">Flutter Guide – Official Website</h1>
 
-The purpose of this website is to showcase the app, present its main features, display screenshots, share the privacy policy, and provide a direct download link.
-
-> **Note:** This repository **does not contain** the source code of the Flutter mobile application. It contains only the code for the **official landing website**.
+<p align="center">
+Official website of the Flutter Guide mobile application, built with Next.js, TypeScript, and Tailwind CSS.
+<br>
+<a href="#about-the-project"><strong>Explore the docs »</strong></a>
+<br>
+<br>
+<a href="https://flutter-guide-web.vercel.app/">View Live Version</a>
+·
+<a href="https://github.com/dariomatias-dev/flutter_guide_web/issues">Report Bug</a>
+·
+<a href="https://github.com/dariomatias-dev/flutter_guide_web/issues">Request Feature</a>
+</p>
 
 ---
 
-## Tech Stack
+## Table of Contents
 
-The website was built using modern tools and technologies to ensure performance, scalability, and developer productivity:
+- [About The Project](#about-the-project)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+- [Screenshots](#screenshots)
+- [Download the App](#download-the-app)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- **Framework:** [Next.js 14](https://nextjs.org/) with the App Router
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/) for utility-first design
-- **UI Components:** [shadcn/ui](https://ui.shadcn.com/) for accessible, customizable components
-- **Programming Language:** [TypeScript](https://www.typescriptlang.org/) for type-safe development
-- **Carousel:** [Embla Carousel](https://www.embla-carousel.com/) for smooth and responsive slides
-- **Icons:** [Lucide Icons](https://lucide.dev/) for clean, consistent iconography
-- **Theming:** [next-themes](https://ui.shadcn.com/docs/dark-mode/next) for light/dark mode toggle
-- **Code Quality:** Prettier and ESLint for formatting and linting
+---
+
+## About The Project
+
+This is the repository for the **official website** of the **Flutter Guide** mobile app.  
+Its purpose is to **showcase the application**, present its main features, display screenshots, and provide a direct download link.
+
+> **Note**: This repository contains only the code for the official landing page.  
+> The source code for the Flutter mobile application is available in a [separate repository](https://github.com/dariomatias-dev/flutter_guide_app).
+
+---
+
+## Built With
+
+The website was built using a **modern tech stack** to ensure performance, scalability, and a great developer experience:
+
+- **[Next.js](https://nextjs.org/)** – A React framework for production.
+- **[React](https://react.dev/)** – A JavaScript library for building user interfaces.
+- **[Tailwind CSS](https://tailwindcss.com/)** – A utility-first CSS framework.
+- **[TypeScript](https://www.typescriptlang.org/)** – A typed superset of JavaScript.
+- **[shadcn/ui](https://ui.shadcn.com/)** – Reusable components built using Radix UI and Tailwind CSS.
+- **[Embla Carousel](https://www.embla-carousel.com/)** – Lightweight and performant carousel library.
+- **[next-themes](https://github.com/pacocoursey/next-themes)** – Light and dark mode toggling.
+- **[Lucide Icons](https://lucide.dev/)** – A beautiful and consistent icon toolkit.
+
+---
+
+## Getting Started
+
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+- **[Node.js](https://nodejs.org/en/)**
+- **[pnpm](https://pnpm.io/)**
+
+### Installation
+
+1. **Clone the repository**
+
+   ```sh
+   git clone https://github.com/dariomatias-dev/flutter_guide_web.git
+   ```
+
+2. **Navigate into the project directory**
+
+   ```sh
+   cd flutter_guide_web
+   ```
+
+3. **Install dependencies**
+
+   ```sh
+   pnpm install
+   ```
+
+### Running the Project
+
+To run the development server:
+
+```sh
+pnpm run dev
+```
+
+Then open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ---
 
 ## Screenshots
 
 <div align="center">
-  <img src="public/screenshots/flutter_guide_screen_1.jpeg" width="200"/>
-  <img src="public/screenshots/flutter_guide_screen_2.jpeg" width="200"/>
-  <img src="public/screenshots/flutter_guide_screen_3.jpeg" width="200"/>
-  <img src="public/screenshots/flutter_guide_screen_4.jpeg" width="200"/>
-  <img src="public/screenshots/flutter_guide_screen_5.jpeg" width="200"/>
-  <img src="public/screenshots/flutter_guide_screen_6.jpeg" width="200"/>
+<img src="public/screenshots/flutter_guide_screen_1.jpeg" width="200" alt="Screenshot 1"/>
+<img src="public/screenshots/flutter_guide_screen_2.jpeg" width="200" alt="Screenshot 2"/>
+<img src="public/screenshots/flutter_guide_screen_3.jpeg" width="200" alt="Screenshot 3"/>
+<img src="public/screenshots/flutter_guide_screen_4.jpeg" width="200" alt="Screenshot 4"/>
+<img src="public/screenshots/flutter_guide_screen_5.jpeg" width="200" alt="Screenshot 5"/>
+<img src="public/screenshots/flutter_guide_screen_6.jpeg" width="200" alt="Screenshot 6"/>
 </div>
-
----
-
-## Getting Started
-
-```bash
-git clone https://github.com/dariomatias-dev/flutter_guide_web.git
-
-cd flutter_guide_web
-
-pnpm install
-
-pnpm dev
-```
-
-Visit [http://localhost:3000](http://localhost:3000) in your browser to see the website locally.
 
 ---
 
 ## Download the App
 
-You can download Flutter Guide directly from the Google Play Store:
+Get **Flutter Guide** directly from the **Google Play Store**:
 
-[![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide)
+<a href="https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="200">
+</a>
 
 ---
 
-## Website
+## Contributing
 
-Visit the official Flutter Guide website: [Official Website](https://flutter-guide-web.vercel.app/)
+Contributions make the open-source community an amazing place to learn and create.
+Any contributions you make are greatly appreciated.
+
+To get started:
+
+1. **Fork the Project**
+2. **Create your Feature Branch**
+
+   ```sh
+   git checkout -b feature/AmazingFeature
+   ```
+
+3. **Commit your Changes**
+
+   ```sh
+   git commit -m 'Add some AmazingFeature'
+   ```
+
+4. **Push to the Branch**
+
+   ```sh
+   git push origin feature/AmazingFeature
+   ```
+
+5. **Open a Pull Request**
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE).
+Distributed under the **MIT License**. See the `LICENSE` file for more information.
 
 ---
 
-## Credits
+## Contact
 
-Developed by [Dário Matias](https://github.com/dariomatias-dev).
+I am always open to discussing new projects and ideas.
+Feel free to get in touch.
 
-Design inspired by modern app landing pages focused on accessibility, responsiveness, and user experience.
+- **Email**: [matiasdario75@gmail.com](mailto:matiasdario75@gmail.com)
+- **Instagram**: [@dariomatias_dev](https://instagram.com/dariomatias_dev)
+- **LinkedIn**: [linkedin.com/in/dariomatias-dev](https://linkedin.com/in/dariomatias-dev)
+- **Portfolio**: [dariomatias-dev](https://dariomatias-dev.com)
