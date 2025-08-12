@@ -142,13 +142,13 @@ To get started:
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
 
 ## Contact
 
 I am always open to discussing new projects and ideas. Feel free to get in touch.
 
-* Portfolio: [dariomatias-dev](https://dariomatias-dev)
-* Email: [matiasdario75@gmail.com](mailto:matiasdario75@gmail.com)
-* Instagram: @dariomatias\_dev
-* LinkedIn: [linkedin.com/in/dariomatias-dev](https://linkedin.com/in/dariomatias-dev)
+- **Portfolio**: [dariomatias-dev](https://dariomatias-dev.com)
+- **Email**: [matiasdario75@gmail.com](mailto:matiasdario75@gmail.com)
+- **Instagram**: [@dariomatias_dev](https://instagram.com/dariomatias_dev)
+- **LinkedIn**: [linkedin.com/in/dariomatias-dev](https://linkedin.com/in/dariomatias-dev)
