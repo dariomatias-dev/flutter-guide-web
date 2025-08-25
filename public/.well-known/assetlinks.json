@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dariomatias.flutter_guide",
+      "sha256_cert_fingerprints": [
+        "C9:C6:6E:6D:38:AF:4B:FE:15:35:A5:C2:BD:22:82:7C:13:63:1E:A2:37:5B:A8:73:E1:47:7B:7C:6B:77:8B:6E" 
+      ]
+    }
+  }
+]
