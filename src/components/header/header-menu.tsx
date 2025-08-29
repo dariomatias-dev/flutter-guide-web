@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
-import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
@@ -9,16 +9,9 @@ import { Button } from "../ui/button";
 
 interface HeaderMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
-  handleNavigation: (
-    e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
-    href: string,
-  ) => void;
 }
 
-export const HeaderMenu = ({
-  setIsMenuOpen,
-  handleNavigation,
-}: HeaderMenuProps) => {
+export const HeaderMenu = ({ setIsMenuOpen }: HeaderMenuProps) => {
   const handleNormalLinkClick = () => {
     setIsMenuOpen(false);
   };
@@ -38,7 +31,6 @@ export const HeaderMenu = ({
               href="/"
               scroll={false}
               className="flex cursor-pointer items-center space-x-2"
-              onClick={(e) => handleNavigation(e, "/#hero")}
             >
               <span className="text-lg font-bold">FlutterGuide</span>
             </Link>
@@ -53,27 +45,16 @@ export const HeaderMenu = ({
           </div>
 
           <nav className="flex flex-grow flex-col items-center justify-center gap-8 text-center text-2xl font-medium">
-            {navLinks.map((link) =>
-              link.isScrollLink ? (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleNavigation(e, link.href)}
-                  className="cursor-pointer text-zinc-300 hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleNormalLinkClick}
-                  className="text-zinc-300 hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ),
-            )}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={handleNormalLinkClick}
+                className="text-zinc-300 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="flex flex-col gap-4 pb-4">
