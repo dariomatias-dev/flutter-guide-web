@@ -79,7 +79,7 @@ export const ImageViewer = ({ src, alt, onClose }: ImageViewerProps) => {
           alt={alt}
           width={1920}
           height={1080}
-          className={`pointer-events-auto h-auto max-h-[90vh] w-auto max-w-full rounded-lg border border-zinc-700 bg-zinc-900 object-contain shadow-xl transition-opacity duration-300 ${
+          className={`pointer-events-auto h-auto max-h-[90vh] w-auto max-w-full rounded-lg border border-zinc-900 bg-zinc-900 object-contain shadow-xl transition-opacity duration-300 ${
             isLoading || hasError ? "opacity-0" : "opacity-100"
           }`}
           onLoad={handleLoad}

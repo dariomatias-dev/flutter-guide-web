@@ -8,8 +8,8 @@ import { AnimatePresence } from "framer-motion";
 import { ImageViewer } from "./image-viewer";
 
 const screenshots: string[] = Array.from(
-  { length: 6 },
-  (_, i) => `/screenshots/flutter_guide_screen_${i + 1}.jpeg`,
+  { length: 12 },
+  (_, i) => `/screenshots/flutter_guide_screen_${i + 1}.jpg`,
 );
 
 export const ScreenshotsCarousel = () => {
