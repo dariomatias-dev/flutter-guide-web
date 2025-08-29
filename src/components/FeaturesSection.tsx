@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+"use client";
 
-import { features } from "@/constants/features";
+import { motion } from "framer-motion";
 import { sectionAnimation } from "@/utils/sectionAnimation";
+import { features } from "@/constants/features";
 
 export const FeaturesSection = () => {
   return (
@@ -15,30 +16,27 @@ export const FeaturesSection = () => {
           <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
             A Powerful Toolkit in Your Pocket
           </h2>
-
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
             Flutter Guide is packed with features designed to accelerate your
             learning and productivity.
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="rounded-2xl bg-gradient-to-b from-zinc-50/10 to-transparent p-px shadow-2xl shadow-blue-900/10"
+              className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
             >
-              <div className="flex h-full flex-col gap-4 rounded-[15px] bg-zinc-900 p-8">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500">
-                  <feature.icon className="h-6 w-6 text-white" />
-                </div>
-
-                <h3 className="text-2xl font-semibold tracking-tight">
-                  {feature.title}
-                </h3>
-
-                <p className="text-zinc-400">{feature.description}</p>
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
+                <feature.icon className="h-8 w-8" />
               </div>
+
+              <h3 className="mt-6 text-2xl font-semibold tracking-tight">
+                {feature.title}
+              </h3>
+
+              <p className="mt-2 text-zinc-400">{feature.description}</p>
             </div>
           ))}
         </div>
