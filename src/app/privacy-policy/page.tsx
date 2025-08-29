@@ -8,8 +8,8 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header/Header";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 
 export default function Page() {
   return (

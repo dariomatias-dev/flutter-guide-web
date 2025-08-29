@@ -1,14 +1,14 @@
 "use client";
 
-import { AboutMeSection } from "@/components/AboutMeSection";
-import { CommunitySection } from "@/components/CommunitySection";
-import { FaqSection } from "@/components/FaqSection";
-import { FeaturesSection } from "@/components/FeaturesSection";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header/Header";
-import { HeroSection } from "@/components/HeroSection";
-import { SampleSection } from "@/components/SampleSection";
-import { ScreenshotsSection } from "@/components/ScreenshotsSection";
+import { AboutMeSection } from "@/components/about-me-section";
+import { CommunitySection } from "@/components/community-section";
+import { FaqSection } from "@/components/faq-section";
+import { FeaturesSection } from "@/components/features-section";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { HeroSection } from "@/components/hero-section";
+import { SampleSection } from "@/components/sample-section";
+import { ScreenshotsSection } from "@/components/screenshots-section";
 import { testimonials } from "@/constants/testimonials";
 
 import { LearningPathSection } from "@/components/learning-path-section";

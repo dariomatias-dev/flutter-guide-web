@@ -8,8 +8,8 @@ import { useEffect, useState } from "react";
 import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
 import { Button } from "../ui/button";
-import { HeaderMenu } from "./HeaderMenu";
-import { LinkButton } from "../LinkButton";
+import { HeaderMenu } from "./header-menu";
+import { LinkButton } from "../link-button";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
