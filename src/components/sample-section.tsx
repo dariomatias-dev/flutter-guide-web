@@ -1,13 +1,12 @@
-"use client";
-
 import { motion } from "framer-motion";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import { codeExample } from "@/constants/codeExample";
 import { sectionAnimation } from "@/utils/sectionAnimation";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export const SampleSection = () => {
+export const SampleSection: React.FC = () => {
   return (
     <motion.section
       {...sectionAnimation}
@@ -41,7 +40,7 @@ export const SampleSection = () => {
           </div>
 
           <div className="relative h-[30rem] overflow-hidden rounded-xl border border-zinc-800 bg-[#282c34]">
-            <div className="absolute top-0 left-0 flex w-full items-center gap-2 border-b border-zinc-700 bg-zinc-900 px-4 py-3">
+            <div className="flex w-full items-center gap-2 rounded-t-xl border-b border-zinc-700 bg-zinc-900 px-4 py-3">
               <div className="h-3 w-3 rounded-full bg-red-500"></div>
               <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
               <div className="h-3 w-3 rounded-full bg-green-500"></div>
@@ -50,7 +49,7 @@ export const SampleSection = () => {
               </span>
             </div>
 
-            <div className="h-full overflow-y-auto pt-12">
+            <ScrollArea className="h-full rounded-xl">
               <SyntaxHighlighter
                 language="dart"
                 style={atomOneDark}
@@ -58,6 +57,8 @@ export const SampleSection = () => {
                   backgroundColor: "transparent",
                   fontSize: "14px",
                   padding: "1rem",
+                  paddingTop: "1rem",
+                  paddingBottom: "4rem",
                   height: "100%",
                 }}
                 codeTagProps={{ style: { fontFamily: "var(--font-mono)" } }}
@@ -65,7 +66,9 @@ export const SampleSection = () => {
               >
                 {codeExample.trim()}
               </SyntaxHighlighter>
-            </div>
+
+              <ScrollBar />
+            </ScrollArea>
           </div>
         </div>
       </div>
