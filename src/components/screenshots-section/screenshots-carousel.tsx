@@ -4,8 +4,10 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { ImageViewer } from "./image-viewer";
 
-const screenshots = Array.from(
+const screenshots: string[] = Array.from(
   { length: 6 },
   (_, i) => `/screenshots/flutter_guide_screen_${i + 1}.jpeg`,
 );
@@ -13,9 +15,13 @@ const screenshots = Array.from(
 export const ScreenshotsCarousel = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
 
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
+  const [canScrollNext, setCanScrollNext] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
+  const [currentPreviewImageSrc, setCurrentPreviewImageSrc] =
+    useState<string>("");
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -35,6 +41,16 @@ export const ScreenshotsCarousel = () => {
     setCanScrollNext(emblaApi.canScrollNext());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
+
+  const openViewer = useCallback((src: string) => {
+    setCurrentPreviewImageSrc(src);
+    setIsViewerOpen(true);
+  }, []);
+
+  const closeViewer = useCallback(() => {
+    setIsViewerOpen(false);
+    setCurrentPreviewImageSrc("");
+  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -59,7 +75,11 @@ export const ScreenshotsCarousel = () => {
               key={index}
               className="min-w-0 flex-[0_0_100%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"
             >
-              <div className="flex max-h-[70vh] items-center justify-center overflow-hidden rounded-2xl">
+              <button
+                onClick={() => openViewer(src)}
+                className="flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
+                aria-label={`Visualizar screenshot ${index + 1}`}
+              >
                 <Image
                   src={src}
                   alt={`Flutter Guide App Screenshot ${index + 1}`}
@@ -67,7 +87,7 @@ export const ScreenshotsCarousel = () => {
                   height={960}
                   className="h-auto max-h-[70vh] w-auto rounded-2xl object-contain"
                 />
-              </div>
+              </button>
             </div>
           ))}
         </div>
@@ -107,6 +127,16 @@ export const ScreenshotsCarousel = () => {
           <ChevronRight className="h-6 w-6" />
         </button>
       </div>
+
+      <AnimatePresence>
+        {isViewerOpen && currentPreviewImageSrc && (
+          <ImageViewer
+            src={currentPreviewImageSrc}
+            alt={`Flutter Guide App Screenshot ${selectedIndex + 1}`}
+            onClose={closeViewer}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
