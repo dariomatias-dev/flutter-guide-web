@@ -1,12 +1,11 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
-import Link from "next/link";
+import { ChevronDown, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { githubUrl, playStoreUrl } from "@/constants/constants";
-import { LinkButton } from "./link-button";
+import { GithubButton } from "./buttons/github-button";
+import { PlayStoreButton } from "./buttons/play-store-button";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -95,16 +94,9 @@ export const HeroSection = () => {
           variants={itemVariants}
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <LinkButton href={playStoreUrl} className="h-auto">
-            Download on Google Play
-          </LinkButton>
+          <PlayStoreButton />
 
-          <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-            <motion.button className="group flex w-full items-center justify-center gap-2 rounded-full border border-zinc-700 bg-zinc-800/50 px-8 py-3 text-base font-medium text-zinc-300 backdrop-blur-sm transition-colors hover:border-zinc-500 hover:text-white sm:w-auto">
-              View on GitHub{" "}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </motion.button>
-          </Link>
+          <GithubButton />
         </motion.div>
 
         <motion.div variants={itemVariants} className="mt-16 text-center">

@@ -3,9 +3,9 @@ import { X } from "lucide-react";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 
-import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
-import { Button } from "../ui/button";
+import { GithubButton } from "../buttons/github-button";
+import { PlayStoreButton } from "../buttons/play-store-button";
 
 interface HeaderMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -45,42 +45,28 @@ export const HeaderMenu = ({ setIsMenuOpen }: HeaderMenuProps) => {
           </div>
 
           <nav className="flex flex-grow flex-col items-center justify-center gap-8 text-center text-2xl font-medium">
-            {navLinks.map((link) => (
-              <Link
+            {navLinks.map((link, index) => (
+              <motion.div
                 key={link.href}
-                href={link.href}
-                onClick={handleNormalLinkClick}
-                className="text-zinc-300 hover:text-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.4 }}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  onClick={handleNormalLinkClick}
+                  className="group relative text-zinc-300 transition-colors hover:text-white"
+                >
+                  {link.label}
+                  <span className="absolute bottom-0 left-1/2 h-0.5 w-0 bg-gradient-to-r from-indigo-500 to-cyan-500 transition-all group-hover:left-0 group-hover:w-full"></span>
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
           <div className="flex flex-col gap-4 pb-4">
-            <Button
-              size="lg"
-              asChild
-              className="text-md w-full rounded-md bg-zinc-800 py-3 text-center font-semibold text-zinc-300 transition-colors hover:bg-zinc-700"
-            >
-              <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </Link>
-            </Button>
-
-            <Button
-              size="lg"
-              asChild
-              className="text-md w-full transform rounded-md bg-gradient-to-br from-blue-600 to-cyan-500 py-3 text-center font-semibold text-white transition-all duration-300 hover:brightness-110"
-            >
-              <Link
-                href={playStoreUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Download App
-              </Link>
-            </Button>
+            <GithubButton />
+            <PlayStoreButton />
           </div>
         </div>
       </motion.div>
