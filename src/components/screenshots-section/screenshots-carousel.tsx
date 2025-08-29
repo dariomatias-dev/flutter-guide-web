@@ -15,15 +15,25 @@ export const ScreenshotsCarousel = () => {
 
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
+  const onDotButtonClick = useCallback(
+    (index: number) => {
+      if (!emblaApi) return;
+      emblaApi.scrollTo(index);
+    },
+    [emblaApi],
+  );
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
 
     setCanScrollPrev(emblaApi.canScrollPrev());
     setCanScrollNext(emblaApi.canScrollNext());
+    setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
   useEffect(() => {
@@ -72,6 +82,21 @@ export const ScreenshotsCarousel = () => {
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
+
+        <div className="flex gap-2">
+          {screenshots.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className={`h-2 rounded-full transition-all duration-200 ${
+                index === selectedIndex
+                  ? "w-4 bg-blue-500"
+                  : "w-2 bg-zinc-600 hover:bg-zinc-500"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
 
         <button
           onClick={scrollNext}
