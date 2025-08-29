@@ -104,12 +104,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 ## Screenshots
 
 <div align="center">
-  <img src="public/screenshots/flutter_guide_screen_1.jpeg" width="200" alt="Screenshot 1"/>
-  <img src="public/screenshots/flutter_guide_screen_2.jpeg" width="200" alt="Screenshot 2"/>
-  <img src="public/screenshots/flutter_guide_screen_3.jpeg" width="200" alt="Screenshot 3"/>
-  <img src="public/screenshots/flutter_guide_screen_4.jpeg" width="200" alt="Screenshot 4"/>
-  <img src="public/screenshots/flutter_guide_screen_5.jpeg" width="200" alt="Screenshot 5"/>
-  <img src="public/screenshots/flutter_guide_screen_6.jpeg" width="200" alt="Screenshot 6"/>
+  <img src="public/screenshots/flutter_guide_screen_1.jpg" width="200" alt="Screenshot 1"/>
+  <img src="public/screenshots/flutter_guide_screen_2.jpg" width="200" alt="Screenshot 2"/>
+  <img src="public/screenshots/flutter_guide_screen_3.jpg" width="200" alt="Screenshot 3"/>
+  <img src="public/screenshots/flutter_guide_screen_4.jpg" width="200" alt="Screenshot 4"/>
+  <img src="public/screenshots/flutter_guide_screen_5.jpg" width="200" alt="Screenshot 5"/>
+  <img src="public/screenshots/flutter_guide_screen_6.jpg" width="200" alt="Screenshot 6"/>
+  <img src="public/screenshots/flutter_guide_screen_7.jpg" width="200" alt="Screenshot 7"/>
+  <img src="public/screenshots/flutter_guide_screen_8.jpg" width="200" alt="Screenshot 8"/>
+  <img src="public/screenshots/flutter_guide_screen_9.jpg" width="200" alt="Screenshot 9"/>
+  <img src="public/screenshots/flutter_guide_screen_10.jpg" width="200" alt="Screenshot 10"/>
+  <img src="public/screenshots/flutter_guide_screen_11.jpg" width="200" alt="Screenshot 11"/>
+  <img src="public/screenshots/flutter_guide_screen_12.jpg" width="200" alt="Screenshot 12"/>
 </div>
 
 ## Download the App
