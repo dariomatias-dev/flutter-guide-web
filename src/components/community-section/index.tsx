@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import { sectionAnimation } from "@/utils/sectionAnimation";
-import { CommunityMarquee } from "./CommunityMarquee";
+import { CommunityMarquee } from "./community-marquee";
 
 export const CommunitySection = () => {
   return (

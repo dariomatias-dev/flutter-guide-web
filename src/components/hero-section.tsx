@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
-import { LinkButton } from "./LinkButton";
+import { LinkButton } from "./link-button";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

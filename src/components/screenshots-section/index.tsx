@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import { ScreenshotsCarousel } from "./ScreenshotsCarousel";
+import { ScreenshotsCarousel } from "./screenshots-carousel";
 
 export const ScreenshotsSection = () => {
   return (

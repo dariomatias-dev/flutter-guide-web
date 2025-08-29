@@ -2,7 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 
-import { LinkButton } from "../components/LinkButton";
+import { LinkButton } from "../components/link-button";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
