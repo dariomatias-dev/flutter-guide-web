@@ -2,20 +2,16 @@
 
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
+import { LinkButton } from "../link-button";
 import { Button } from "../ui/button";
 import { HeaderMenu } from "./header-menu";
-import { LinkButton } from "../link-button";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -29,60 +25,24 @@ export const Header = () => {
     };
   }, [isMenuOpen]);
 
-  const handleNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    href: string,
-  ) => {
-    e.preventDefault();
-    setIsMenuOpen(false);
-
-    const targetId = href.replace(/.*#/, "");
-
-    if (pathname !== "/") {
-      router.push(`/#${targetId}`);
-    } else {
-      const elem = document.getElementById(targetId);
-      elem?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <>
       <header className="fixed top-0 z-50 w-full border-b border-zinc-800/50 bg-zinc-950/50 backdrop-blur-lg">
         <div className="container mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4">
-          <Link
-            href="/#hero"
-            className="flex cursor-pointer items-center space-x-2"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavigation(e, "/#hero");
-            }}
-          >
+          <Link href="/" className="flex cursor-pointer items-center space-x-2">
             <span className="text-lg font-bold">FlutterGuide</span>
           </Link>
 
-          <nav className="hidden items-center space-x-8 text-sm font-medium text-zinc-300 lg:flex">
-            {navLinks.map((link) =>
-              link.isScrollLink ? (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  scroll={false}
-                  onClick={(e) => handleNavigation(e, link.href)}
-                  className="cursor-pointer transition-colors hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="transition-colors hover:text-white"
-                >
-                  {link.label}
-                </Link>
-              ),
-            )}
+          <nav className="ml-auto hidden items-center space-x-8 text-sm font-medium text-zinc-300 lg:flex pr-12">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           <div className="hidden items-center space-x-2 lg:flex">
@@ -114,12 +74,7 @@ export const Header = () => {
         </div>
       </header>
 
-      {isMenuOpen && (
-        <HeaderMenu
-          setIsMenuOpen={setIsMenuOpen}
-          handleNavigation={handleNavigation}
-        />
-      )}
+      {isMenuOpen && <HeaderMenu setIsMenuOpen={setIsMenuOpen} />}
     </>
   );
 };
