@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 import { sectionAnimation } from "@/utils/sectionAnimation";
@@ -6,7 +8,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
+} from "@/components/ui/accordion";
 import { faqs } from "@/constants/faqs";
 
 export const FaqSection = () => {

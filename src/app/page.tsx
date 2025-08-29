@@ -11,6 +11,11 @@ import { SampleSection } from "@/components/SampleSection";
 import { ScreenshotsSection } from "@/components/ScreenshotsSection";
 import { testimonials } from "@/constants/testimonials";
 
+import { LearningPathSection } from "@/components/learning-path-section";
+import { OfficialResourcesSection } from "@/components/official-resources-section";
+import { ThemeCustomizationSection } from "@/components/theme-customization-section";
+import { ContributionSection } from "@/components/contribution-section";
+
 export default function Home() {
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
@@ -28,7 +33,15 @@ export default function Home() {
 
         <FeaturesSection />
 
+        <LearningPathSection />
+
         <SampleSection />
+
+        <OfficialResourcesSection />
+
+        <ThemeCustomizationSection />
+
+        <ContributionSection />
 
         {testimonials.length != 0 && <CommunitySection />}
 
