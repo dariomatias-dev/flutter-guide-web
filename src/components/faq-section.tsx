@@ -43,7 +43,7 @@ const accordionItemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const MotionAccordionItem = motion(AccordionItem);
+const MotionAccordionItem = motion.create(AccordionItem);
 
 export const FaqSection = () => {
   return (
