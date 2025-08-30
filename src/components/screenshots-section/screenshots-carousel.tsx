@@ -1,10 +1,10 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
+import { AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { ImageViewer } from "./image-viewer";
 
 const screenshots: string[] = Array.from(
@@ -103,25 +103,29 @@ export const ScreenshotsCarousel = () => {
           <ChevronLeft className="h-6 w-6" />
         </button>
 
-        <div className="flex gap-2">
+        <div className="flex w-[236px] gap-1">
           {screenshots.map((_, index) => (
-            <button
+            <div
               key={index}
-              onClick={() => onDotButtonClick(index)}
-              className={`h-2 rounded-full transition-all duration-200 ${
-                index === selectedIndex
-                  ? "w-4 bg-blue-500"
-                  : "w-2 bg-zinc-600 hover:bg-zinc-500"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
+              className="flex h-2 w-4 items-center justify-center"
+            >
+              <button
+                onClick={() => onDotButtonClick(index)}
+                className={`h-2 cursor-pointer rounded-full transition-all duration-200 ${
+                  index === selectedIndex
+                    ? "w-4 bg-blue-500"
+                    : "w-2 bg-zinc-600 hover:bg-zinc-500"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            </div>
           ))}
         </div>
 
         <button
           onClick={scrollNext}
           disabled={!canScrollNext}
-          className="flex rounded-full border border-zinc-700 bg-zinc-800 p-2 text-zinc-300 shadow-lg transition-colors duration-200 hover:bg-zinc-700 hover:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+          className="flex cursor-pointer rounded-full border border-zinc-700 bg-zinc-800 p-2 text-zinc-300 shadow-lg transition-colors duration-200 hover:bg-zinc-700 hover:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Next screenshot"
         >
           <ChevronRight className="h-6 w-6" />

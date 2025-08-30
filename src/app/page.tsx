@@ -36,9 +36,9 @@ export default function Home() {
 
         <ThemeCustomizationSection />
 
-        <OfficialResourcesSection />
-
         <ContributionSection />
+
+        <OfficialResourcesSection />
 
         {testimonials.length != 0 && <CommunitySection />}
 
