@@ -18,6 +18,9 @@ export const ScreenshotsCarousel = () => {
   const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
   const [canScrollNext, setCanScrollNext] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const [imageLoadingStates, setImageLoadingStates] = useState<boolean[]>(
+    Array(screenshots.length).fill(true),
+  );
 
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [currentPreviewImageSrc, setCurrentPreviewImageSrc] =
@@ -52,6 +55,14 @@ export const ScreenshotsCarousel = () => {
     setCurrentPreviewImageSrc("");
   }, []);
 
+  const handleImageLoad = useCallback((index: number) => {
+    setImageLoadingStates((prevStates) => {
+      const newStates = [...prevStates];
+      newStates[index] = false;
+      return newStates;
+    });
+  }, []);
+
   useEffect(() => {
     if (!emblaApi) return;
 
@@ -77,7 +88,7 @@ export const ScreenshotsCarousel = () => {
             >
               <button
                 onClick={() => openViewer(src)}
-                className="flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
+                className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
                 aria-label={`Visualizar screenshot ${index + 1}`}
               >
                 <Image
@@ -85,8 +96,22 @@ export const ScreenshotsCarousel = () => {
                   alt={`FlutterGuide App Screenshot ${index + 1}`}
                   width={540}
                   height={960}
-                  className="h-auto max-h-[70vh] w-auto rounded-2xl object-contain"
+                  className={`h-auto max-h-[70vh] w-auto rounded-2xl object-contain transition-opacity duration-300 ${
+                    imageLoadingStates[index] ? "opacity-0" : "opacity-100"
+                  }`}
+                  onLoad={() => handleImageLoad(index)}
+                  priority={index < 4}
                 />
+                {imageLoadingStates[index] && (
+                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-zinc-900/80">
+                    <div
+                      className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-white/20 border-t-white"
+                      role="status"
+                    >
+                      <span className="sr-only">Carregando imagem...</span>
+                    </div>
+                  </div>
+                )}
               </button>
             </div>
           ))}

@@ -71,7 +71,7 @@ export const ImageViewer = ({ src, alt, onClose }: ImageViewerProps) => {
         animate={{ scale: 1, y: 0 }}
         exit={{ scale: 0.9, y: 10 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="pointer-events-none relative flex h-auto max-h-[90vh] w-full max-w-5xl items-center justify-center"
+        className="pointer-events-none relative flex h-auto max-h-[90vh] w-full max-w-5xl items-center justify-center p-5"
         onClick={(e) => e.stopPropagation()}
       >
         <Image

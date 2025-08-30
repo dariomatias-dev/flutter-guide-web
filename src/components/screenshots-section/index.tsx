@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 import { ScreenshotsCarousel } from "./screenshots-carousel";
@@ -22,9 +24,10 @@ export const ScreenshotsSection = () => {
         </motion.div>
 
         <motion.div
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-8"
         >
           <ScreenshotsCarousel />
