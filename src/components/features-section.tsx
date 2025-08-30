@@ -1,32 +1,79 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { features } from "@/constants/features";
-import { elementAnimation } from "@/utils/sectionAnimation";
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const textItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const cardsContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export const FeaturesSection = () => {
   return (
-    <motion.section
-      {...elementAnimation}
-      id="features"
-      className="w-full px-4 py-20 sm:px-8 md:py-28"
-    >
+    <section id="features" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-screen-xl">
-        <div className="text-center">
-          <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
+        <motion.div
+          className="text-center"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <motion.h2
+            variants={textItemVariants}
+            className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
+          >
             A Powerful Toolkit in Your Pocket
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
+          </motion.h2>
+          <motion.p
+            variants={textItemVariants}
+            className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
+          >
             FlutterGuide is packed with features designed to accelerate your
             learning and productivity.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <motion.div
+          className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3"
+          variants={cardsContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={cardItemVariants}
               className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
@@ -38,10 +85,10 @@ export const FeaturesSection = () => {
               </h3>
 
               <p className="mt-2 text-zinc-400">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
