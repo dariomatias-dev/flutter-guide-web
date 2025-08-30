@@ -3,30 +3,79 @@
 import { motion } from "framer-motion";
 import { Code, Eye, Rocket } from "lucide-react";
 
-import { elementAnimation } from "@/utils/sectionAnimation";
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const textItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const cardsContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export const LearningPathSection = () => {
   return (
-    <motion.section
-      {...elementAnimation}
-      id="learning-path"
-      className="w-full px-4 py-20 sm:px-8 md:py-28"
-    >
+    <section id="learning-path" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-screen-xl">
-        <div className="text-center">
-          <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
+        <motion.div
+          className="text-center"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <motion.h2
+            variants={textItemVariants}
+            className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
+          >
             Demystifying Flutter: Learn Directly and Visually
-          </h2>
+          </motion.h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
+          <motion.p
+            variants={textItemVariants}
+            className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
+          >
             FlutterGuide transforms learning into an intuitive experience. See
             components in action, copy the source code, and understand the
             concepts behind each feature.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg">
+        <motion.div
+          className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3"
+          variants={cardsContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div
+            variants={cardItemVariants}
+            className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+          >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
               <Eye className="h-8 w-8" />
             </div>
@@ -37,9 +86,12 @@ export const LearningPathSection = () => {
               See how components behave and look before even writing a single
               line of code.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg">
+          <motion.div
+            variants={cardItemVariants}
+            className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+          >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
               <Code className="h-8 w-8" />
             </div>
@@ -50,9 +102,12 @@ export const LearningPathSection = () => {
               Access and copy the complete Flutter code for each example,
               accelerating your development.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg">
+          <motion.div
+            variants={cardItemVariants}
+            className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+          >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 text-purple-400">
               <Rocket className="h-8 w-8" />
             </div>
@@ -63,9 +118,9 @@ export const LearningPathSection = () => {
               Understand concepts and implement them in your own projects with
               ease.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
