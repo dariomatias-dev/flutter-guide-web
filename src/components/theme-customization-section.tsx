@@ -83,7 +83,7 @@ export const ThemeCustomizationSection = () => {
                 <div className="flex">
                   <span className="w-6 text-zinc-400">8</span>
                   <span className="ml-4 text-[#6a737d]">
-                    /* ... build method ... */
+                    {"/* ... build method ... */"}
                   </span>
                 </div>
                 <div className="flex">
@@ -153,7 +153,7 @@ export const ThemeCustomizationSection = () => {
                 <div className="flex">
                   <span className="w-6 text-zinc-500">8</span>
                   <span className="ml-4 text-[#6272a4]">
-                    /* ... build method ... */
+                    {"/* ... build method ... */"}
                   </span>
                 </div>
                 <div className="flex">
