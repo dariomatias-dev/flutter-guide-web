@@ -2,34 +2,82 @@
 
 import { motion } from "framer-motion";
 
-import { elementAnimation } from "@/utils/sectionAnimation";
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const textItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const cardsContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 export const ThemeCustomizationSection = () => {
   return (
-    <motion.section
-      {...elementAnimation}
-      id="themes"
-      className="relative w-full py-20 sm:py-28"
-    >
+    <section id="themes" className="relative w-full py-20 sm:py-28">
       <div className="absolute inset-0 -z-10 flex items-center justify-center">
         <div className="h-[40rem] w-full max-w-screen-lg rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(29,78,216,0.15)_0%,_transparent_50%)]" />
       </div>
 
       <div className="mx-auto max-w-screen-xl px-4">
-        <div className="text-center">
-          <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
+        <motion.div
+          className="text-center"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <motion.h2
+            variants={textItemVariants}
+            className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
+          >
             Elevate Your Coding: Choose Your Code Theme
-          </h2>
+          </motion.h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
+          <motion.p
+            variants={textItemVariants}
+            className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
+          >
             Personalize your development environment with a selection of popular
             and vibrant code themes, enhancing readability and visual comfort.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center">
-          {/* Light theme */}
-          <div className="relative h-[30rem] w-[20rem] rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-50 p-px shadow-2xl shadow-blue-500/10">
+        <motion.div
+          className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center"
+          variants={cardsContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            variants={cardItemVariants}
+            className="relative h-[30rem] w-[20rem] rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-50 p-px shadow-2xl shadow-blue-500/10"
+          >
             <div className="flex h-full w-full flex-col overflow-hidden rounded-[0.7rem] bg-white text-[#24292e]">
               <div className="flex w-full items-center gap-2 rounded-t-[0.7rem] border-b border-[#e1e4e8] bg-[#f6f8fa] px-3 py-2">
                 <div className="h-3 w-3 rounded-full bg-red-500"></div>
@@ -39,7 +87,6 @@ export const ThemeCustomizationSection = () => {
               </div>
 
               <div className="flex-1 space-y-1 px-4 pt-4 font-mono text-sm">
-                {" "}
                 <div className="flex">
                   <span className="w-6 text-zinc-400">1</span>
                   <span className="text-[#005cc5]">import</span>
@@ -92,14 +139,15 @@ export const ThemeCustomizationSection = () => {
                 </div>
               </div>
               <p className="mt-6 mb-4 px-4 text-center text-2xl font-semibold tracking-tight">
-                {" "}
                 GitHub Light
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Dark theme */}
-          <div className="relative h-[30rem] w-[20rem] rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-950 p-px shadow-2xl shadow-purple-500/20">
+          <motion.div
+            variants={cardItemVariants}
+            className="relative h-[30rem] w-[20rem] rounded-xl bg-gradient-to-br from-zinc-800 to-zinc-950 p-px shadow-2xl shadow-purple-500/20"
+          >
             <div className="flex h-full w-full flex-col overflow-hidden rounded-[0.7rem] bg-[#282a36] text-[#f8f8f2]">
               <div className="flex w-full items-center gap-2 rounded-t-[0.7rem] border-b border-[#3b3e4f] bg-[#21222c] px-3 py-2">
                 <div className="h-3 w-3 rounded-full bg-red-500"></div>
@@ -109,7 +157,6 @@ export const ThemeCustomizationSection = () => {
               </div>
 
               <div className="flex-1 space-y-1 px-4 pt-4 font-mono text-sm">
-                {" "}
                 <div className="flex">
                   <span className="w-6 text-zinc-500">1</span>
                   <span className="text-[#ff79c6]">import</span>
@@ -162,13 +209,12 @@ export const ThemeCustomizationSection = () => {
                 </div>
               </div>
               <p className="mt-6 mb-4 px-4 text-center text-2xl font-semibold tracking-tight">
-                {" "}
                 Dracula
               </p>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
