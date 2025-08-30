@@ -115,7 +115,7 @@ export const ImageViewer = ({ src, alt, onClose }: ImageViewerProps) => {
         animate={{ scale: 1 }}
         exit={{ scale: 0 }}
         onClick={onClose}
-        className="absolute top-4 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/75"
+        className="absolute top-3 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/75"
         aria-label="Close Image Viewer"
       >
         <X size={20} />
