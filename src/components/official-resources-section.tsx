@@ -4,87 +4,141 @@ import { motion } from "framer-motion";
 import { BookOpen, Package, Youtube } from "lucide-react";
 import Link from "next/link";
 
-import { elementAnimation } from "@/utils/sectionAnimation";
+const headerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delayChildren: 0.1,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const textItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const cardsContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, scale: 0.9, y: 20 },
+  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export const OfficialResourcesSection = () => {
   return (
-    <motion.section
-      {...elementAnimation}
+    <section
       id="official-resources"
       className="w-full px-4 py-20 sm:px-8 md:py-28"
     >
       <div className="mx-auto max-w-screen-xl">
-        <div className="text-center">
-          <h2 className="text-4xl font-extrabold tracking-tighter sm:text-5xl">
+        <motion.div
+          className="text-center"
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+        >
+          <motion.h2
+            variants={textItemVariants}
+            className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
+          >
             Your Hub for Official Flutter Resources
-          </h2>
+          </motion.h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
+          <motion.p
+            variants={textItemVariants}
+            className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
+          >
             Connect directly with the source of knowledge. Access official
             documentation, explore packages on pub.dev, and watch tutorials on
             the official Flutter YouTube channel.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <Link
-            href="https://docs.flutter.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-blue-700 hover:bg-blue-900/20">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
-                <BookOpen className="h-8 w-8" />
+        <motion.div
+          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3"
+          variants={cardsContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div variants={cardItemVariants}>
+            <Link
+              href="https://docs.flutter.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-blue-700 hover:bg-blue-900/20">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
+                  <BookOpen className="h-8 w-8" />
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight">
+                  Official Documentation
+                </h3>
+                <p className="mt-2 text-zinc-400">
+                  Explore guides, APIs, and examples to master Flutter.
+                </p>
               </div>
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                Official Documentation
-              </h3>
-              <p className="mt-2 text-zinc-400">
-                Explore guides, APIs, and examples to master Flutter.
-              </p>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
 
-          <Link
-            href="https://pub.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-cyan-700 hover:bg-cyan-900/20">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
-                <Package className="h-8 w-8" />
+          <motion.div variants={cardItemVariants}>
+            <Link
+              href="https://pub.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-cyan-700 hover:bg-cyan-900/20">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
+                  <Package className="h-8 w-8" />
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight">
+                  pub.dev Packages
+                </h3>
+                <p className="mt-2 text-zinc-400">
+                  Find and utilize thousands of community packages.
+                </p>
               </div>
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                pub.dev Packages
-              </h3>
-              <p className="mt-2 text-zinc-400">
-                Find and utilize thousands of community packages.
-              </p>
-            </div>
-          </Link>
+            </Link>
+          </motion.div>
 
-          <Link
-            href="https://www.youtube.com/@flutterdev"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-red-700 hover:bg-red-900/20">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-600/20 text-red-400">
-                <Youtube className="h-8 w-8" />
+          <motion.div variants={cardItemVariants}>
+            <Link
+              href="https://www.youtube.com/@flutterdev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-red-700 hover:bg-red-900/20">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-600/20 text-red-400">
+                  <Youtube className="h-8 w-8" />
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight">
+                  YouTube Channel
+                </h3>
+                <p className="mt-2 text-zinc-400">
+                  Watch tutorials, news, and official Flutter events.
+                </p>
               </div>
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                YouTube Channel
-              </h3>
-              <p className="mt-2 text-zinc-400">
-                Watch tutorials, news, and official Flutter events.
-              </p>
-            </div>
-          </Link>
-        </div>
+            </Link>
+          </motion.div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
