@@ -44,7 +44,7 @@ export const ThemeCustomizationSection = () => {
                   <span className="w-6 text-zinc-400">1</span>
                   <span className="text-[#005cc5]">import</span>
                   <span className="ml-1 text-[#e3116c]">
-                    'package:flutter/material.dart'
+                    &lsquo;package:flutter/material.dart&lsquo;
                   </span>
                   <span className="text-[#24292e]">;</span>
                 </div>
@@ -114,7 +114,7 @@ export const ThemeCustomizationSection = () => {
                   <span className="w-6 text-zinc-500">1</span>
                   <span className="text-[#ff79c6]">import</span>
                   <span className="ml-1 text-[#f1fa8c]">
-                    'package:flutter/material.dart'
+                    &lsquo;package:flutter/material.dart&lsquo;
                   </span>
                   <span className="text-[#ff79c6]">;</span>
                 </div>
