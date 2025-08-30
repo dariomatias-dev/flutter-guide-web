@@ -17,7 +17,7 @@ export const FeaturesSection = () => {
             A Powerful Toolkit in Your Pocket
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
-            Flutter Guide is packed with features designed to accelerate your
+            FlutterGuide is packed with features designed to accelerate your
             learning and productivity.
           </p>
         </div>

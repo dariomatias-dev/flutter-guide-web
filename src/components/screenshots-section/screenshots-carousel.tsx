@@ -82,7 +82,7 @@ export const ScreenshotsCarousel = () => {
               >
                 <Image
                   src={src}
-                  alt={`Flutter Guide App Screenshot ${index + 1}`}
+                  alt={`FlutterGuide App Screenshot ${index + 1}`}
                   width={540}
                   height={960}
                   className="h-auto max-h-[70vh] w-auto rounded-2xl object-contain"
@@ -132,7 +132,7 @@ export const ScreenshotsCarousel = () => {
         {isViewerOpen && currentPreviewImageSrc && (
           <ImageViewer
             src={currentPreviewImageSrc}
-            alt={`Flutter Guide App Screenshot ${selectedIndex + 1}`}
+            alt={`FlutterGuide App Screenshot ${selectedIndex + 1}`}
             onClose={closeViewer}
           />
         )}

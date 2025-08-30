@@ -16,7 +16,7 @@ export const ScreenshotsSection = () => {
             The App in Action
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
-            See how Flutter Guide brings concepts to life with a clean,
+            See how FlutterGuide brings concepts to life with a clean,
             intuitive, and powerful interface.
           </p>
         </motion.div>
