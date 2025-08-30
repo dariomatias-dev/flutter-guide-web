@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 
-import { sectionAnimation } from "@/utils/sectionAnimation";
+import { elementAnimation } from "@/utils/sectionAnimation";
 import { CommunityMarquee } from "./community-marquee";
 
 export const CommunitySection = () => {
   return (
     <motion.section
-      {...sectionAnimation}
+      {...elementAnimation}
       id="community"
       className="relative w-full py-20 sm:py-28"
     >

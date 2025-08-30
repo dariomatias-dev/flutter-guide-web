@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { links } from "@/constants/links";
-import { sectionAnimation } from "@/utils/sectionAnimation";
+import { elementAnimation } from "@/utils/sectionAnimation";
 
 export const AboutMeSection = () => (
   <motion.section
-    {...sectionAnimation}
+    {...elementAnimation}
     id="about"
     className="bg-zinc-900/50 py-20 md:py-28"
   >

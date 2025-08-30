@@ -2,18 +2,14 @@
 
 import { motion } from "framer-motion";
 
+import { elementAnimation } from "@/utils/sectionAnimation";
 import { ScreenshotsCarousel } from "./screenshots-carousel";
 
 export const ScreenshotsSection = () => {
   return (
     <section id="showcase" className="relative w-full py-20 sm:py-24">
       <div className="mx-auto flex max-w-6xl flex-col items-center px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.6 }}
-        >
+        <motion.div {...elementAnimation}>
           <h2 className="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">
             The App in Action
           </h2>

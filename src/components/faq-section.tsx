@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 
-import { sectionAnimation } from "@/utils/sectionAnimation";
 import {
   Accordion,
   AccordionContent,
@@ -10,11 +9,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { faqs } from "@/constants/faqs";
+import { elementAnimation } from "@/utils/sectionAnimation";
 
 export const FaqSection = () => {
   return (
     <motion.section
-      {...sectionAnimation}
+      {...elementAnimation}
       id="faq"
       className="w-full px-4 py-20 sm:px-8 md:py-28"
     >

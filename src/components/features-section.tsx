@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { sectionAnimation } from "@/utils/sectionAnimation";
+
 import { features } from "@/constants/features";
+import { elementAnimation } from "@/utils/sectionAnimation";
 
 export const FeaturesSection = () => {
   return (
     <motion.section
-      {...sectionAnimation}
+      {...elementAnimation}
       id="features"
       className="w-full px-4 py-20 sm:px-8 md:py-28"
     >

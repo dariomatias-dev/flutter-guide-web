@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { BookOpen, Package, Youtube } from "lucide-react";
 import Link from "next/link";
 
-import { sectionAnimation } from "@/utils/sectionAnimation";
+import { elementAnimation } from "@/utils/sectionAnimation";
 
 export const OfficialResourcesSection = () => {
   return (
     <motion.section
-      {...sectionAnimation}
+      {...elementAnimation}
       id="official-resources"
       className="w-full px-4 py-20 sm:px-8 md:py-28"
     >
