@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import Image from "next/image";
@@ -11,12 +13,12 @@ export const CommunityMarquee = () => {
     <div className="relative w-full overflow-hidden">
       <motion.div
         className="flex gap-6"
-        animate={{ x: "-100%" }}
+        animate={{ x: "-50%" }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 40,
+            duration: 20,
             ease: "linear",
           },
         }}
