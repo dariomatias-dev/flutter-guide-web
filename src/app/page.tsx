@@ -7,7 +7,6 @@ import { FeaturesSection } from "@/components/features-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
-import { SampleSection } from "@/components/sample-section";
 import { ScreenshotsSection } from "@/components/screenshots-section";
 import { testimonials } from "@/constants/testimonials";
 
@@ -35,11 +34,9 @@ export default function Home() {
 
         <LearningPathSection />
 
-        <SampleSection />
+        <ThemeCustomizationSection />
 
         <OfficialResourcesSection />
-
-        <ThemeCustomizationSection />
 
         <ContributionSection />
 
