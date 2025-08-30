@@ -21,7 +21,7 @@ export const CommunitySection = () => {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">
-            See what developers are saying about Flutter Guide.
+            See what developers are saying about FlutterGuide.
           </p>
         </div>
       </div>

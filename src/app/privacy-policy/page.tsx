@@ -43,8 +43,8 @@ export default function Page() {
 
         <section className="space-y-5 leading-relaxed text-zinc-300">
           <p>
-            This Privacy Policy governs how the Flutter Guide app (referred to
-            as the &quot;Application&quot;), developed by Dário Matias
+            This Privacy Policy governs how the FlutterGuide app (referred to as
+            the &quot;Application&quot;), developed by Dário Matias
             (&quot;Service Provider&quot;), collects, uses, and protects your
             information. This service is offered as-is and free of charge.
           </p>
