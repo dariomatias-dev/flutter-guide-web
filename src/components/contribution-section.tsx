@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { Lightbulb, Share2, Users } from "lucide-react";
 
-import { sectionAnimation } from "@/utils/sectionAnimation";
+import { elementAnimation } from "@/utils/sectionAnimation";
 
 export const ContributionSection = () => {
   return (
     <motion.section
-      {...sectionAnimation}
+      {...elementAnimation}
       id="contribution"
       className="w-full bg-zinc-900/50 px-4 py-20 md:py-28"
     >

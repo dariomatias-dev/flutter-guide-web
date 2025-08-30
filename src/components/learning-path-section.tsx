@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Eye, Code, Rocket } from "lucide-react";
+import { Code, Eye, Rocket } from "lucide-react";
 
-import { sectionAnimation } from "@/utils/sectionAnimation";
+import { elementAnimation } from "@/utils/sectionAnimation";
 
 export const LearningPathSection = () => {
   return (
     <motion.section
-      {...sectionAnimation}
+      {...elementAnimation}
       id="learning-path"
       className="w-full px-4 py-20 sm:px-8 md:py-28"
     >
