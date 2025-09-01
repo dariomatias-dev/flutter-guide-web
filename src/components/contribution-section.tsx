@@ -3,38 +3,10 @@
 import { motion } from "framer-motion";
 import { Lightbulb, Share2, Users } from "lucide-react";
 
-const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delayChildren: 0.1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const textItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const itemsContainerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { cardsContainerVariants } from "@/constants/variants/cardsContainerVariants";
+import { headerVariants } from "@/constants/variants/headerVariants";
+import { textItemVariants } from "@/constants/variants/textItemVariants";
+import { cardItemVariants } from "@/constants/variants/cardItemVariants";
 
 export const ContributionSection = () => {
   return (
@@ -68,13 +40,13 @@ export const ContributionSection = () => {
 
         <motion.div
           className="mt-16 flex flex-col justify-center gap-8 md:flex-row"
-          variants={itemsContainerVariants}
+          variants={cardsContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div
-            variants={itemVariants}
+            variants={cardItemVariants}
             className="flex flex-col items-center"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
@@ -86,7 +58,7 @@ export const ContributionSection = () => {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={cardItemVariants}
             className="flex flex-col items-center"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
@@ -96,7 +68,7 @@ export const ContributionSection = () => {
           </motion.div>
 
           <motion.div
-            variants={itemVariants}
+            variants={cardItemVariants}
             className="flex flex-col items-center"
           >
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 text-purple-400">

@@ -2,25 +2,9 @@
 
 import { motion } from "framer-motion";
 
+import { headerVariants } from "@/constants/variants/headerVariants";
+import { textItemVariants } from "@/constants/variants/textItemVariants";
 import { CommunityMarquee } from "./community-marquee";
-
-const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delayChildren: 0.1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const textItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
 
 const marqueeVariants = {
   hidden: { opacity: 0, y: 50 },
