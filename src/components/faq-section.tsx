@@ -9,24 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { faqs } from "@/constants/faqs";
-
-const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delayChildren: 0.1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const textItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { headerVariants } from "@/constants/variants/headerVariants";
+import { textItemVariants } from "@/constants/variants/textItemVariants";
 
 const accordionContainerVariants = {
   hidden: {},
@@ -84,7 +68,7 @@ export const FaqSection = () => {
                 value={`item-${index}`}
                 variants={accordionItemVariants}
               >
-                <AccordionTrigger className="text-left text-lg hover:no-underline cursor-pointer focus-visible:ring-0">
+                <AccordionTrigger className="cursor-pointer text-left text-lg hover:no-underline focus-visible:ring-0">
                   {faq.question}
                 </AccordionTrigger>
 

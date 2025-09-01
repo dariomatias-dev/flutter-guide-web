@@ -4,38 +4,10 @@ import { motion } from "framer-motion";
 import { BookOpen, Package, Youtube } from "lucide-react";
 import Link from "next/link";
 
-const headerVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delayChildren: 0.1,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const textItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const cardsContainerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardItemVariants = {
-  hidden: { opacity: 0, scale: 0.9, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.5 } },
-};
+import { cardItemVariants } from "@/constants/variants/cardItemVariants";
+import { cardsContainerVariants } from "@/constants/variants/cardsContainerVariants";
+import { headerVariants } from "@/constants/variants/headerVariants";
+import { textItemVariants } from "@/constants/variants/textItemVariants";
 
 export const OfficialResourcesSection = () => {
   return (
