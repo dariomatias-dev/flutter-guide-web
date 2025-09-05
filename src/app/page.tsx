@@ -1,14 +1,17 @@
 "use client";
 
-import { AboutMeSection } from "@/components/AboutMeSection";
-import { CommunitySection } from "@/components/CommunitySection";
-import { FaqSection } from "@/components/FaqSection";
-import { FeaturesSection } from "@/components/FeaturesSection";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header/Header";
-import { HeroSection } from "@/components/HeroSection";
-import { SampleSection } from "@/components/SampleSection";
-import { ScreenshotsSection } from "@/components/ScreenshotsSection";
+import { AboutMeSection } from "@/components/about-me-section";
+import { CommunitySection } from "@/components/community-section";
+import { ContributionSection } from "@/components/contribution-section";
+import { FaqSection } from "@/components/faq-section";
+import { FeaturesSection } from "@/components/features-section";
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { HeroSection } from "@/components/hero-section";
+import { LearningPathSection } from "@/components/learning-path-section";
+import { OfficialResourcesSection } from "@/components/official-resources-section";
+import { ScreenshotsSection } from "@/components/screenshots-section";
+import { ThemeCustomizationSection } from "@/components/theme-customization-section";
 import { testimonials } from "@/constants/testimonials";
 
 export default function Home() {
@@ -28,7 +31,13 @@ export default function Home() {
 
         <FeaturesSection />
 
-        <SampleSection />
+        <LearningPathSection />
+
+        <ThemeCustomizationSection />
+
+        <ContributionSection />
+
+        <OfficialResourcesSection />
 
         {testimonials.length != 0 && <CommunitySection />}
 

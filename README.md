@@ -7,10 +7,10 @@
 </div>
 <br>
 
-<h1 align="center">Flutter Guide – Official Website</h1>
+<h1 align="center">FlutterGuide – Official Website</h1>
 
 <p align="center">
-  Official website of the Flutter Guide mobile application, built with Next.js, TypeScript, and Tailwind CSS.
+  Official website of the FlutterGuide mobile application, built with Next.js, TypeScript, and Tailwind CSS.
   <br>
   <a href="#about-the-project"><strong>Explore the docs »</strong></a>
   <br>
@@ -36,7 +36,7 @@
 
 ## About The Project
 
-This is the repository for the official website of the Flutter Guide mobile app.  
+This is the repository for the official website of the FlutterGuide mobile app.  
 Its purpose is to showcase the application, present its main features, display screenshots, and provide a direct download link.
 
 **Note**: This repository contains only the code for the official landing page.  
@@ -44,10 +44,10 @@ The source code for the Flutter mobile application is available in a separate re
 
 ## Features
 
-- **Comprehensive Content:** Access a wide range of tutorials and guides covering various aspects of Flutter development.  
-- **Categorized Information:** Content is organized into logical categories for easy navigation and learning.  
-- **Code Snippets:** Includes practical code examples to help understand and implement Flutter concepts.  
-- **Responsive Design:** Fully responsive for a great experience on all devices.  
+- **Comprehensive Content:** Access a wide range of tutorials and guides covering various aspects of Flutter development.
+- **Categorized Information:** Content is organized into logical categories for easy navigation and learning.
+- **Code Snippets:** Includes practical code examples to help understand and implement Flutter concepts.
+- **Responsive Design:** Fully responsive for a great experience on all devices.
 
 ## Built With
 
@@ -77,7 +77,7 @@ Clone the repository:
 
 ```bash
 git clone https://github.com/dariomatias-dev/flutter_guide_web.git
-````
+```
 
 Navigate into the project directory:
 
@@ -104,17 +104,23 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 ## Screenshots
 
 <div align="center">
-  <img src="public/screenshots/flutter_guide_screen_1.jpeg" width="200" alt="Screenshot 1"/>
-  <img src="public/screenshots/flutter_guide_screen_2.jpeg" width="200" alt="Screenshot 2"/>
-  <img src="public/screenshots/flutter_guide_screen_3.jpeg" width="200" alt="Screenshot 3"/>
-  <img src="public/screenshots/flutter_guide_screen_4.jpeg" width="200" alt="Screenshot 4"/>
-  <img src="public/screenshots/flutter_guide_screen_5.jpeg" width="200" alt="Screenshot 5"/>
-  <img src="public/screenshots/flutter_guide_screen_6.jpeg" width="200" alt="Screenshot 6"/>
+  <img src="public/screenshots/flutter_guide_screen_1.jpg" width="200" alt="Screenshot 1"/>
+  <img src="public/screenshots/flutter_guide_screen_2.jpg" width="200" alt="Screenshot 2"/>
+  <img src="public/screenshots/flutter_guide_screen_3.jpg" width="200" alt="Screenshot 3"/>
+  <img src="public/screenshots/flutter_guide_screen_4.jpg" width="200" alt="Screenshot 4"/>
+  <img src="public/screenshots/flutter_guide_screen_5.jpg" width="200" alt="Screenshot 5"/>
+  <img src="public/screenshots/flutter_guide_screen_6.jpg" width="200" alt="Screenshot 6"/>
+  <img src="public/screenshots/flutter_guide_screen_7.jpg" width="200" alt="Screenshot 7"/>
+  <img src="public/screenshots/flutter_guide_screen_8.jpg" width="200" alt="Screenshot 8"/>
+  <img src="public/screenshots/flutter_guide_screen_9.jpg" width="200" alt="Screenshot 9"/>
+  <img src="public/screenshots/flutter_guide_screen_10.jpg" width="200" alt="Screenshot 10"/>
+  <img src="public/screenshots/flutter_guide_screen_11.jpg" width="200" alt="Screenshot 11"/>
+  <img src="public/screenshots/flutter_guide_screen_12.jpg" width="200" alt="Screenshot 12"/>
 </div>
 
 ## Download the App
 
-Get **Flutter Guide** directly from the **Google Play Store**:
+Get **FlutterGuide** directly from the **Google Play Store**:
 
 <a href="https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide" target="_blank">
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="200">

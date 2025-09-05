@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Flutter Guide",
-  description: "Flutter Guide WebSite",
+  title: "FlutterGuide",
+  description: "FlutterGuide WebSite",
 };
 
 export default function RootLayout({

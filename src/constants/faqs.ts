@@ -4,7 +4,7 @@ export const faqs: FAQ[] = [
   {
     question: "Is the app completely free?",
     answer:
-      "Yes, Flutter Guide is 100% free and open-source. My goal is to provide a high-quality resource for the community at no cost.",
+      "Yes, FlutterGuide is 100% free and open-source. My goal is to provide a high-quality resource for the community at no cost.",
   },
   {
     question: "How often is the content updated?",
