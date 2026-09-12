@@ -6,8 +6,7 @@ export const features: Feature[] = [
   {
     icon: Sparkles,
     title: "Widget of the Day",
-    description:
-      "Discover a new widget daily with interactive examples and ready-to-use code.",
+    description: "Discover a new widget daily with interactive examples and ready-to-use code.",
   },
   {
     icon: Code,
@@ -18,7 +17,6 @@ export const features: Feature[] = [
   {
     icon: Star,
     title: "Curated Content",
-    description:
-      "Learn with practical guides and real-world examples you can apply immediately.",
+    description: "Learn with practical guides and real-world examples you can apply immediately.",
   },
 ];

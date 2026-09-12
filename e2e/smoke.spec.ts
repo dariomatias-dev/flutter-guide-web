@@ -11,9 +11,7 @@ test.describe("smoke", () => {
     const response = await page.goto("/");
     expect(response?.status()).toBe(200);
 
-    await expect(page.getByRole("heading", { level: 1 })).toContainText(
-      "Master Flutter,",
-    );
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Master Flutter,");
 
     expect(consoleErrors).toEqual([]);
   });
@@ -28,9 +26,7 @@ test.describe("smoke", () => {
     const response = await page.goto("/privacy-policy");
     expect(response?.status()).toBe(200);
 
-    await expect(
-      page.getByRole("heading", { level: 1, name: "Privacy Policy" }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Privacy Policy" })).toBeVisible();
 
     expect(consoleErrors).toEqual([]);
   });

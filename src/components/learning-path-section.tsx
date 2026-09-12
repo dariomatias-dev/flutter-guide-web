@@ -40,9 +40,8 @@ export const LearningPathSection = () => {
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            FlutterGuide transforms learning into an intuitive experience. See
-            components in action, copy the source code, and understand the
-            concepts behind each feature.
+            FlutterGuide transforms learning into an intuitive experience. See components in action,
+            copy the source code, and understand the concepts behind each feature.
           </motion.p>
         </motion.div>
 
@@ -60,12 +59,9 @@ export const LearningPathSection = () => {
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
               <Eye className="h-8 w-8" />
             </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-              Visual Preview
-            </h3>
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight">Visual Preview</h3>
             <p className="mt-2 text-zinc-400">
-              See how components behave and look before even writing a single
-              line of code.
+              See how components behave and look before even writing a single line of code.
             </p>
           </motion.div>
 
@@ -76,12 +72,10 @@ export const LearningPathSection = () => {
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
               <Code className="h-8 w-8" />
             </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-              Instant Source Code
-            </h3>
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight">Instant Source Code</h3>
             <p className="mt-2 text-zinc-400">
-              Access and copy the complete Flutter code for each example,
-              accelerating your development.
+              Access and copy the complete Flutter code for each example, accelerating your
+              development.
             </p>
           </motion.div>
 
@@ -92,12 +86,9 @@ export const LearningPathSection = () => {
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 text-purple-400">
               <Rocket className="h-8 w-8" />
             </div>
-            <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-              Practical Implementation
-            </h3>
+            <h3 className="mt-6 text-2xl font-semibold tracking-tight">Practical Implementation</h3>
             <p className="mt-2 text-zinc-400">
-              Understand concepts and implement them in your own projects with
-              ease.
+              Understand concepts and implement them in your own projects with ease.
             </p>
           </motion.div>
         </motion.div>

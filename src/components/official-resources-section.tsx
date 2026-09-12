@@ -11,10 +11,7 @@ import { textItemVariants } from "@/constants/variants/textItemVariants";
 
 export const OfficialResourcesSection = () => {
   return (
-    <section
-      id="official-resources"
-      className="w-full px-4 py-20 sm:px-8 md:py-28"
-    >
+    <section id="official-resources" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-screen-xl">
         <motion.div
           className="text-center"
@@ -34,9 +31,8 @@ export const OfficialResourcesSection = () => {
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            Connect directly with the source of knowledge. Access official
-            documentation, explore packages on pub.dev, and watch tutorials on
-            the official Flutter YouTube channel.
+            Connect directly with the source of knowledge. Access official documentation, explore
+            packages on pub.dev, and watch tutorials on the official Flutter YouTube channel.
           </motion.p>
         </motion.div>
 
@@ -79,9 +75,7 @@ export const OfficialResourcesSection = () => {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
                   <Package className="h-8 w-8" />
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                  pub.dev Packages
-                </h3>
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight">pub.dev Packages</h3>
                 <p className="mt-2 text-zinc-400">
                   Find and utilize thousands of community packages.
                 </p>
@@ -100,9 +94,7 @@ export const OfficialResourcesSection = () => {
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-600/20 text-red-400">
                   <Youtube className="h-8 w-8" />
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                  YouTube Channel
-                </h3>
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight">YouTube Channel</h3>
                 <p className="mt-2 text-zinc-400">
                   Watch tutorials, news, and official Flutter events.
                 </p>
