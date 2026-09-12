@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { cardItemVariants } from "@/constants/variants/cardItemVariants";
 import { cardsContainerVariants } from "@/constants/variants/cardsContainerVariants";
