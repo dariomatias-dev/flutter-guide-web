@@ -3,3 +3,6 @@ node_modules
 dist
 public
 pnpm-lock.yaml
+# Not tracked by git.
+plan.md
+.pnpm-store
