@@ -33,10 +33,7 @@ export const AboutMeSection = () => (
         Dário Matias
       </motion.h2>
 
-      <motion.h3
-        variants={textItemVariants}
-        className="mt-2 text-xl font-semibold text-zinc-400"
-      >
+      <motion.h3 variants={textItemVariants} className="mt-2 text-xl font-semibold text-zinc-400">
         Software Developer | Full Stack & Mobile
       </motion.h3>
 
@@ -44,17 +41,13 @@ export const AboutMeSection = () => (
         variants={textItemVariants}
         className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-zinc-300"
       >
-        I work on developing complete, scalable solutions that are easy to
-        maintain, with a focus on quality, performance, and usability.
+        I work on developing complete, scalable solutions that are easy to maintain, with a focus on
+        quality, performance, and usability.
       </motion.p>
 
       <motion.div className="mt-8 flex flex-wrap justify-center gap-y-2 text-sm text-zinc-400 sm:text-base">
         {links.map(({ href, label, aria }, i) => (
-          <motion.div
-            key={href}
-            className="flex items-center"
-            variants={textItemVariants}
-          >
+          <motion.div key={href} className="flex items-center" variants={textItemVariants}>
             {i > 0 && <span className="mx-2 text-zinc-600">|</span>}
             <a
               href={href}

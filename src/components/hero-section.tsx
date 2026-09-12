@@ -40,10 +40,7 @@ export const HeroSection = () => {
       id="hero"
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 text-center"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-zinc-950 via-zinc-950 to-blue-950/20" />
         <div
           className="absolute -top-60 -left-80 h-[40rem] w-[40rem] rounded-full bg-cyan-500/10 blur-3xl"
@@ -86,8 +83,8 @@ export const HeroSection = () => {
           variants={itemVariants}
           className="mx-auto mt-8 max-w-xl text-lg text-zinc-400 md:text-xl"
         >
-          Learn, practice, and build amazing, high-performance apps with curated
-          content in your pocket.
+          Learn, practice, and build amazing, high-performance apps with curated content in your
+          pocket.
         </motion.p>
 
         <motion.div
@@ -100,9 +97,7 @@ export const HeroSection = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="mt-16 text-center">
-          <p className="text-sm text-zinc-500">
-            Used by developers at companies like:
-          </p>
+          <p className="text-sm text-zinc-500">Used by developers at companies like:</p>
 
           <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 grayscale">
             <span className="font-semibold text-zinc-400">Google</span>

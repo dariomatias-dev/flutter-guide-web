@@ -45,16 +45,11 @@ export const CommunityMarquee = () => {
 
             <div className="mt-4 flex gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-4 w-4 fill-yellow-400 text-yellow-400"
-                />
+                <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
 
-            <p className="mt-6 text-zinc-300">
-              &quot;{testimonial.comment}&quot;
-            </p>
+            <p className="mt-6 text-zinc-300">&quot;{testimonial.comment}&quot;</p>
           </div>
         ))}
       </motion.div>
