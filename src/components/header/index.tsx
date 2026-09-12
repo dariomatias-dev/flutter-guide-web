@@ -56,10 +56,7 @@ export const Header = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.3 }}
           >
-            <Link
-              href="/"
-              className="flex cursor-pointer items-center space-x-2"
-            >
+            <Link href="/" className="flex cursor-pointer items-center space-x-2">
               <span className="text-lg font-bold text-white">FlutterGuide</span>
             </Link>
           </motion.div>
@@ -72,10 +69,7 @@ export const Header = () => {
           >
             {navLinks.map((link) => (
               <motion.div key={link.href} variants={itemVariants}>
-                <Link
-                  href={link.href}
-                  className="transition-colors hover:text-white"
-                >
+                <Link href={link.href} className="transition-colors hover:text-white">
                   {link.label}
                 </Link>
               </motion.div>
@@ -94,11 +88,7 @@ export const Header = () => {
                 asChild
                 className="text-sm font-medium text-zinc-300 transition-colors hover:bg-transparent hover:text-white"
               >
-                <Link
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </Link>
               </Button>

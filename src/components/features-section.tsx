@@ -29,8 +29,8 @@ export const FeaturesSection = () => {
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            FlutterGuide is packed with features designed to accelerate your
-            learning and productivity.
+            FlutterGuide is packed with features designed to accelerate your learning and
+            productivity.
           </motion.p>
         </motion.div>
 
@@ -51,9 +51,7 @@ export const FeaturesSection = () => {
                 <feature.icon className="h-8 w-8" />
               </div>
 
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                {feature.title}
-              </h3>
+              <h3 className="mt-6 text-2xl font-semibold tracking-tight">{feature.title}</h3>
 
               <p className="mt-2 text-zinc-400">{feature.description}</p>
             </motion.div>
