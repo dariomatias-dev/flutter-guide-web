@@ -33,8 +33,8 @@ export const ThemeCustomizationSection = () => {
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            Personalize your development environment with a selection of popular
-            and vibrant code themes, enhancing readability and visual comfort.
+            Personalize your development environment with a selection of popular and vibrant code
+            themes, enhancing readability and visual comfort.
           </motion.p>
         </motion.div>
 
@@ -100,9 +100,7 @@ export const ThemeCustomizationSection = () => {
                 </div>
                 <div className="flex">
                   <span className="w-6 text-zinc-400">8</span>
-                  <span className="ml-4 text-[#6a737d]">
-                    {"/* ... build method ... */"}
-                  </span>
+                  <span className="ml-4 text-[#6a737d]">{"/* ... build method ... */"}</span>
                 </div>
                 <div className="flex">
                   <span className="w-6 text-zinc-400">9</span>
@@ -170,9 +168,7 @@ export const ThemeCustomizationSection = () => {
                 </div>
                 <div className="flex">
                   <span className="w-6 text-zinc-500">8</span>
-                  <span className="ml-4 text-[#6272a4]">
-                    {"/* ... build method ... */"}
-                  </span>
+                  <span className="ml-4 text-[#6272a4]">{"/* ... build method ... */"}</span>
                 </div>
                 <div className="flex">
                   <span className="w-6 text-zinc-500">9</span>

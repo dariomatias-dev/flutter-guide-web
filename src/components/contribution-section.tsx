@@ -10,10 +10,7 @@ import { cardItemVariants } from "@/constants/variants/cardItemVariants";
 
 export const ContributionSection = () => {
   return (
-    <section
-      id="contribution"
-      className="w-full bg-[#101011] px-4 py-20 md:py-28"
-    >
+    <section id="contribution" className="w-full bg-[#101011] px-4 py-20 md:py-28">
       <div className="mx-auto max-w-screen-xl text-center">
         <motion.div
           variants={headerVariants}
@@ -32,9 +29,8 @@ export const ContributionSection = () => {
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            Contribute to the FlutterGuide community! Share your widgets,
-            favorite packages, UI ideas, and more. Together, we build a
-            knowledge repository for everyone.
+            Contribute to the FlutterGuide community! Share your widgets, favorite packages, UI
+            ideas, and more. Together, we build a knowledge repository for everyone.
           </motion.p>
         </motion.div>
 
@@ -45,38 +41,25 @@ export const ContributionSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div
-            variants={cardItemVariants}
-            className="flex flex-col items-center"
-          >
+          <motion.div variants={cardItemVariants} className="flex flex-col items-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
               <Share2 className="h-8 w-8" />
             </div>
-            <p className="mt-3 text-lg font-medium text-white">
-              Widgets & Packages
-            </p>
+            <p className="mt-3 text-lg font-medium text-white">Widgets & Packages</p>
           </motion.div>
 
-          <motion.div
-            variants={cardItemVariants}
-            className="flex flex-col items-center"
-          >
+          <motion.div variants={cardItemVariants} className="flex flex-col items-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
               <Lightbulb className="h-8 w-8" />
             </div>
             <p className="mt-3 text-lg font-medium text-white">UI Ideas</p>
           </motion.div>
 
-          <motion.div
-            variants={cardItemVariants}
-            className="flex flex-col items-center"
-          >
+          <motion.div variants={cardItemVariants} className="flex flex-col items-center">
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 text-purple-400">
               <Users className="h-8 w-8" />
             </div>
-            <p className="mt-3 text-lg font-medium text-white">
-              Knowledge Sharing
-            </p>
+            <p className="mt-3 text-lg font-medium text-white">Knowledge Sharing</p>
           </motion.div>
         </motion.div>
       </div>

@@ -23,8 +23,7 @@ export const ScreenshotsCarousel = () => {
   );
 
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
-  const [currentPreviewImageSrc, setCurrentPreviewImageSrc] =
-    useState<string>("");
+  const [currentPreviewImageSrc, setCurrentPreviewImageSrc] = useState<string>("");
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -130,16 +129,11 @@ export const ScreenshotsCarousel = () => {
 
         <div className="flex w-[236px] gap-1">
           {screenshots.map((_, index) => (
-            <div
-              key={index}
-              className="flex h-2 w-4 items-center justify-center"
-            >
+            <div key={index} className="flex h-2 w-4 items-center justify-center">
               <button
                 onClick={() => onDotButtonClick(index)}
                 className={`h-2 cursor-pointer rounded-full transition-all duration-200 ${
-                  index === selectedIndex
-                    ? "w-4 bg-blue-500"
-                    : "w-2 bg-zinc-600 hover:bg-zinc-500"
+                  index === selectedIndex ? "w-4 bg-blue-500" : "w-2 bg-zinc-600 hover:bg-zinc-500"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />

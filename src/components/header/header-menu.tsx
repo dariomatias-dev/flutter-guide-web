@@ -27,11 +27,7 @@ export const HeaderMenu = ({ setIsMenuOpen }: HeaderMenuProps) => {
       >
         <div className="flex h-full flex-col p-4">
           <div className="flex h-8 items-center justify-between">
-            <Link
-              href="/"
-              scroll={false}
-              className="flex cursor-pointer items-center space-x-2"
-            >
+            <Link href="/" scroll={false} className="flex cursor-pointer items-center space-x-2">
               <span className="text-lg font-bold">FlutterGuide</span>
             </Link>
 

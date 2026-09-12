@@ -32,13 +32,7 @@ const itemVariants: Variants = {
 const NotFoundPage = () => {
   useEffect(() => {
     const path = window.location.pathname;
-    const appBasePaths = [
-      "/widgets",
-      "/packages",
-      "/functions",
-      "/elements",
-      "/uis",
-    ];
+    const appBasePaths = ["/widgets", "/packages", "/functions", "/elements", "/uis"];
 
     const matchedBasePath = appBasePaths.find(
       (p) => path.startsWith(p + "/") && path.length > (p + "/").length,
@@ -51,10 +45,7 @@ const NotFoundPage = () => {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10"
-      >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-zinc-950 via-zinc-950 to-blue-900/20" />
 
         <motion.div
@@ -224,8 +215,8 @@ const NotFoundPage = () => {
             variants={itemVariants}
             className="mx-auto mt-4 max-w-md text-base text-zinc-400 md:text-lg"
           >
-            We couldn&apos;t render this screen. It seems the route you followed
-            doesn&apos;t exist in our widget tree.
+            We couldn&apos;t render this screen. It seems the route you followed doesn&apos;t exist
+            in our widget tree.
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-10">
