@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { BookOpen, Package, Youtube } from "lucide-react";
+import { motion } from "motion/react";
+import { BookOpen, Package, SquarePlay } from "lucide-react";
 import Link from "next/link";
 
 import { cardItemVariants } from "@/constants/variants/cardItemVariants";
@@ -92,7 +92,7 @@ export const OfficialResourcesSection = () => {
             >
               <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-red-700 hover:bg-red-900/20">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-600/20 text-red-400">
-                  <Youtube className="h-8 w-8" />
+                  <SquarePlay className="h-8 w-8" />
                 </div>
                 <h3 className="mt-6 text-2xl font-semibold tracking-tight">YouTube Channel</h3>
                 <p className="mt-2 text-zinc-400">
