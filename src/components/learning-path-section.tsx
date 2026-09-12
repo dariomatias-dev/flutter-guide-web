@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Code, Eye, Rocket } from "lucide-react";
 
 import { cardItemVariants } from "@/constants/variants/cardItemVariants";
