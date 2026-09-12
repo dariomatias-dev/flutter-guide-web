@@ -1,11 +1,13 @@
-import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
-import { Dispatch, SetStateAction } from "react";
 
 import { navLinks } from "@/constants/navLinks";
+
 import { GithubButton } from "../buttons/github-button";
 import { PlayStoreButton } from "../buttons/play-store-button";
+
+import type { Dispatch, SetStateAction } from "react";
 
 interface HeaderMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;

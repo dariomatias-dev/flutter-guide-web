@@ -1,15 +1,16 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Menu } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { githubUrl, playStoreUrl } from "@/constants/constants";
 import { navLinks } from "@/constants/navLinks";
+
 import { LinkButton } from "../link-button";
-import { Button } from "../ui/button";
 import { HeaderMenu } from "./header-menu";
+import { Button } from "../ui/button";
 
 const containerVariants = {
   hidden: { opacity: 0 },

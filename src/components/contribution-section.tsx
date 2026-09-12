@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Lightbulb, Share2, Users } from "lucide-react";
+import { motion } from "motion/react";
 
+import { cardItemVariants } from "@/constants/variants/cardItemVariants";
 import { cardsContainerVariants } from "@/constants/variants/cardsContainerVariants";
 import { headerVariants } from "@/constants/variants/headerVariants";
 import { textItemVariants } from "@/constants/variants/textItemVariants";
-import { cardItemVariants } from "@/constants/variants/cardItemVariants";
 
 export const ContributionSection = () => {
   return (

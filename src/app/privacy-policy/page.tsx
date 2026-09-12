@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -8,8 +10,6 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from "@/components/ui/breadcrumb";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 
 export default function Page() {
   return (
