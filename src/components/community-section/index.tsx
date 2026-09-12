@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 
 import { headerVariants } from "@/constants/variants/headerVariants";
 import { textItemVariants } from "@/constants/variants/textItemVariants";
+
 import { CommunityMarquee } from "./community-marquee";
 
 const marqueeVariants = {

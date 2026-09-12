@@ -1,7 +1,8 @@
 "use client";
 
-import { LinkButton } from "../link-button";
 import { playStoreUrl } from "@/constants/constants";
+
+import { LinkButton } from "../link-button";
 
 export const PlayStoreButton = () => {
   return (

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 
 import { elementAnimation } from "@/utils/sectionAnimation";
+
 import { ScreenshotsCarousel } from "./screenshots-carousel";
 
 export const ScreenshotsSection = () => {
