@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Code, Eye, Rocket } from "lucide-react";
+import { motion } from "motion/react";
 
 import { cardItemVariants } from "@/constants/variants/cardItemVariants";
 import { headerVariants } from "@/constants/variants/headerVariants";

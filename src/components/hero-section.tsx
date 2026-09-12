@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, Variants } from "motion/react";
 import { ChevronDown, Sparkles } from "lucide-react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 import { GithubButton } from "./buttons/github-button";
 import { PlayStoreButton } from "./buttons/play-store-button";
+
+import type { Variants } from "motion/react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

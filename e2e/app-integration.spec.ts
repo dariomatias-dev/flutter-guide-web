@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+import type { Page } from "@playwright/test";
+
 // The app depends on these routes to keep working: breaking any of them
 // breaks something for real users of the FlutterGuide Android app, not just
 // the site. See plan.md's "Invariantes" section.
@@ -51,7 +53,7 @@ test.describe("app integration invariants", () => {
     });
   }
 
-  const collectDeepLinkRequests = (page: import("@playwright/test").Page) => {
+  const collectDeepLinkRequests = (page: Page) => {
     const urls: string[] = [];
     page.on("request", (request) => {
       if (request.url().startsWith("flutterguide://")) urls.push(request.url());

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import { BookOpen, Package, SquarePlay } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 
 import { cardItemVariants } from "@/constants/variants/cardItemVariants";
