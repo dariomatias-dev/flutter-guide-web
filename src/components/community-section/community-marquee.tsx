@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
 import { Star } from "lucide-react";
+import { motion } from "motion/react";
 import Image from "next/image";
 
 import { testimonials } from "@/constants/testimonials";

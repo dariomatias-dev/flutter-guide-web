@@ -1,6 +1,6 @@
 import { Code, Sparkles, Star } from "lucide-react";
 
-import { Feature } from "@/@types/Feature";
+import type { Feature } from "@/@types/Feature";
 
 export const features: Feature[] = [
   {

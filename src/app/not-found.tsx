@@ -1,10 +1,13 @@
 "use client";
 
-import { motion, Variants } from "motion/react";
-import { LinkButton } from "@/components/link-button";
+import { motion } from "motion/react";
+import { useEffect } from "react";
+
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { useEffect } from "react";
+import { LinkButton } from "@/components/link-button";
+
+import type { Variants } from "motion/react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

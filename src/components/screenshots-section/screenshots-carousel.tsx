@@ -1,10 +1,11 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
-import { AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+
 import { ImageViewer } from "./image-viewer";
 
 const screenshots: string[] = Array.from(
