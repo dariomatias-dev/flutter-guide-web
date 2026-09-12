@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion, Variants } from "motion/react";
 import { LinkButton } from "@/components/link-button";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
