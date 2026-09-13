@@ -1,0 +1,18 @@
+name: Content update
+description: The site's text, screenshots, or data are out of sync with the app.
+labels: ["content"]
+body:
+  - type: textarea
+    id: outdated
+    attributes:
+      label: What's outdated
+      description: Section, copy, screenshot, or data affected.
+    validations:
+      required: true
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current state in flutter_guide_app
+      description: What the app actually shows or does now.
+    validations:
+      required: true
