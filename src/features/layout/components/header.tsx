@@ -3,11 +3,12 @@
 import { Menu } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { navLinks } from "@/features/layout/data/nav-links";
 import { LinkButton } from "@/shared/components/link-button";
 import { Button } from "@/shared/components/ui/button";
+import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
 import { githubUrl, playStoreUrl } from "@/shared/lib/site";
 
 import { HeaderMenu } from "./header-menu";
@@ -31,20 +32,8 @@ const itemVariants = {
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add("overflow-hidden");
-    } else {
-      document.body.classList.remove("overflow-hidden");
-    }
-
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-    };
-  }, [isMenuOpen]);
-
   return (
-    <>
+    <Dialog open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -112,18 +101,17 @@ export const Header = () => {
             transition={{ delay: 0.5, duration: 0.3 }}
             className="lg:hidden"
           >
-            <button
-              onClick={() => setIsMenuOpen(true)}
+            <DialogTrigger
               className="rounded-md p-2 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white"
               aria-label="Open menu"
             >
               <Menu size={24} />
-            </button>
+            </DialogTrigger>
           </motion.div>
         </div>
       </motion.header>
 
-      {isMenuOpen && <HeaderMenu setIsMenuOpen={setIsMenuOpen} />}
-    </>
+      <HeaderMenu onNavigate={() => setIsMenuOpen(false)} />
+    </Dialog>
   );
 };

@@ -47,6 +47,27 @@ test.describe("mobile menu", () => {
     await page.getByRole("button", { name: "Close menu" }).click();
     await expect(page.getByRole("button", { name: "Close menu" })).not.toBeVisible();
   });
+
+  test("opens as an accessible dialog, traps focus, and returns it on Escape", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 800 });
+    await page.goto("/");
+
+    const openButton = page.getByRole("button", { name: "Open menu" });
+    await openButton.click();
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+
+    // Tabbing through the whole menu should never leave the dialog.
+    for (let i = 0; i < 10; i++) {
+      await page.keyboard.press("Tab");
+      await expect(dialog.locator(":focus")).toHaveCount(1);
+    }
+
+    await page.keyboard.press("Escape");
+    await expect(dialog).not.toBeVisible();
+    await expect(openButton).toBeFocused();
+  });
 });
 
 test.describe("screenshots carousel", () => {
