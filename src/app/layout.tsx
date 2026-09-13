@@ -1,14 +1,29 @@
 import { Footer, Header } from "@/features/layout";
 import { MotionProvider } from "@/shared/components/motion-provider";
-import { siteDescription, siteName } from "@/shared/lib/site";
+import { siteDescription, siteName, siteUrl } from "@/shared/lib/site";
 
 import type { Metadata } from "next";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: siteName,
+  metadataBase: new URL(siteUrl),
+  title: { default: siteName, template: `%s | ${siteName}` },
   description: siteDescription,
+  alternates: { canonical: "/" },
+  icons: { icon: "/favicon.ico", apple: "/flutter_guide_icon.png" },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName,
+    title: siteName,
+    description: siteDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteName,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

@@ -1,7 +1,8 @@
 import { env } from "@/shared/lib/env";
 
 export const siteName = "FlutterGuide";
-export const siteDescription = "FlutterGuide WebSite";
+export const siteDescription =
+  "A free, open-source companion app for Flutter developers, with curated widgets, functions, packages, and UI ideas to build apps faster.";
 export const siteUrl = env.NEXT_PUBLIC_SITE_URL;
 
 export const playStoreUrl =
