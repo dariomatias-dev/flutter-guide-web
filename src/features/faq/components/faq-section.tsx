@@ -68,7 +68,7 @@ export const FaqSection = () => {
                 value={`item-${index}`}
                 variants={accordionItemVariants}
               >
-                <AccordionTrigger className="cursor-pointer text-left text-lg hover:no-underline focus-visible:ring-0">
+                <AccordionTrigger className="cursor-pointer text-left text-lg hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
 
