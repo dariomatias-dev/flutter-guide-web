@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://github.com/dariomatias-dev/flutter_guide_web/actions/workflows/ci.yml/badge.svg" alt="CI: estado">
-  <img src="https://codecov.io/github/dariomatias-dev/flutter_guide_web/graph/badge.svg" alt="Cobertura: codecov">
-  <img src="https://img.shields.io/github/license/dariomatias-dev/flutter_guide_web" alt="Licencia: MIT">
+  <img src="https://github.com/dariomatias-dev/flutter-guide-web/actions/workflows/ci.yml/badge.svg" alt="CI: estado">
+  <img src="https://codecov.io/github/dariomatias-dev/flutter-guide-web/graph/badge.svg" alt="Cobertura: codecov">
+  <img src="https://img.shields.io/github/license/dariomatias-dev/flutter-guide-web" alt="Licencia: MIT">
 </p>
 
 <p align="center">
@@ -21,9 +21,9 @@
 <p align="center">
   <a href="#acerca-de"><strong>Explorar la documentación »</strong></a>
   ·
-  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues/new?template=bug_report.yml">Reportar Error</a>
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=bug_report.yml">Reportar Error</a>
   ·
-  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues/new?template=feature_request.yml">Solicitar Función</a>
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=feature_request.yml">Solicitar Función</a>
 </p>
 
 ## Índice
@@ -101,8 +101,8 @@ compartido en `src/shared/`. La dirección de dependencia (`app` →
 ### Instalación
 
 ```sh
-git clone https://github.com/dariomatias-dev/flutter_guide_web.git
-cd flutter_guide_web
+git clone https://github.com/dariomatias-dev/flutter-guide-web.git
+cd flutter-guide-web
 pnpm install
 ```
 
