@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 
 import { GithubButton } from "@/shared/components/github-button";
 import { PlayStoreButton } from "@/shared/components/play-store-button";
+import { catalogStats, catalogTotal } from "@/shared/lib/catalog-stats";
 
 import type { Variants } from "motion/react";
 
@@ -89,6 +90,18 @@ export const HeroSection = () => {
           <PlayStoreButton />
 
           <GithubButton />
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="mt-16 text-center">
+          <p className="text-sm text-zinc-400">{catalogTotal}+ components in the catalog:</p>
+
+          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-400">
+            <span>{catalogStats.widgets} Widgets</span>
+            <span>{catalogStats.packages} Packages</span>
+            <span>{catalogStats.functions} Functions</span>
+            <span>{catalogStats.elements} Elements</span>
+            <span>{catalogStats.uis} UIs</span>
+          </div>
         </motion.div>
       </motion.div>
 
