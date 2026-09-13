@@ -1,3 +1,5 @@
+import { Footer, Header } from "@/features/layout";
+
 import type { Metadata } from "next";
 
 import "./globals.css";
@@ -14,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
+          <Header />
+          {children}
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

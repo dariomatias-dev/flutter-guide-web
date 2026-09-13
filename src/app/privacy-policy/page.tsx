@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { Footer, Header } from "@/features/layout";
 import { PrivacyPolicyContent } from "@/features/legal";
 import {
   Breadcrumb,
@@ -13,10 +12,8 @@ import {
 
 export default function Page() {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-x-hidden bg-zinc-950 text-white">
+    <>
       <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[60rem] w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,_rgba(29,78,216,0.1),_transparent_40%)]" />
-
-      <Header />
 
       <main className="container mx-auto max-w-4xl flex-grow px-4 pt-28 pb-16">
         <Breadcrumb>
@@ -39,8 +36,6 @@ export default function Page() {
 
         <PrivacyPolicyContent />
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }
