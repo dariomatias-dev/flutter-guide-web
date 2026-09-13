@@ -3,9 +3,8 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
 
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { LinkButton } from "@/components/link-button";
+import { Footer, Header } from "@/features/layout";
+import { LinkButton } from "@/shared/components/link-button";
 
 import type { Variants } from "motion/react";
 
