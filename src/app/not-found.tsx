@@ -3,7 +3,6 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
 
-import { Footer, Header } from "@/features/layout";
 import { LinkButton } from "@/shared/components/link-button";
 
 import type { Variants } from "motion/react";
@@ -46,7 +45,7 @@ const NotFoundPage = () => {
   }, []);
 
   return (
-    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
+    <>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-zinc-950 via-zinc-950 to-blue-900/20" />
 
@@ -190,8 +189,6 @@ const NotFoundPage = () => {
         />
       </div>
 
-      <Header />
-
       <main className="z-10 flex flex-1 flex-col items-center justify-center px-4 text-center">
         <motion.div
           variants={containerVariants}
@@ -228,9 +225,7 @@ const NotFoundPage = () => {
           </motion.div>
         </motion.div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 };
 
