@@ -1,18 +1,16 @@
 "use client";
 
-import { AboutMeSection } from "@/components/about-me-section";
-import { CommunitySection } from "@/components/community-section";
-import { ContributionSection } from "@/components/contribution-section";
-import { FaqSection } from "@/components/faq-section";
-import { FeaturesSection } from "@/components/features-section";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { HeroSection } from "@/components/hero-section";
-import { LearningPathSection } from "@/components/learning-path-section";
-import { OfficialResourcesSection } from "@/components/official-resources-section";
-import { ScreenshotsSection } from "@/components/screenshots-section";
-import { ThemeCustomizationSection } from "@/components/theme-customization-section";
-import { testimonials } from "@/constants/testimonials";
+import { AboutMeSection } from "@/features/about";
+import { CommunitySection, testimonials } from "@/features/community";
+import { ContributionSection } from "@/features/contribution";
+import { FaqSection } from "@/features/faq";
+import { FeaturesSection } from "@/features/features-showcase";
+import { HeroSection } from "@/features/hero";
+import { Footer, Header } from "@/features/layout";
+import { LearningPathSection } from "@/features/learning-path";
+import { OfficialResourcesSection } from "@/features/official-resources";
+import { ScreenshotsSection } from "@/features/screenshots";
+import { ThemeCustomizationSection } from "@/features/theme-customization";
 
 export default function Home() {
   return (
