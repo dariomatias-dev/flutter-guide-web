@@ -1,105 +1,152 @@
-<br>
-<div align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
-  <img src="https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
-</div>
-<br>
-
-<h1 align="center">FlutterGuide – Official Website</h1>
+<p align="center">
+  <img src="https://github.com/dariomatias-dev/flutter_guide_web/actions/workflows/ci.yml/badge.svg" alt="CI: status">
+  <img src="https://codecov.io/github/dariomatias-dev/flutter_guide_web/graph/badge.svg" alt="Coverage: codecov">
+  <img src="https://img.shields.io/github/license/dariomatias-dev/flutter_guide_web" alt="License: MIT">
+</p>
 
 <p align="center">
-  Official website of the FlutterGuide mobile application, built with Next.js, TypeScript, and Tailwind CSS.
-  <br>
-  <a href="#about-the-project"><strong>Explore the docs »</strong></a>
-  <br>
-  <br>
-  <a href="https://flutter-guide-web.vercel.app/">View Live Version</a>
+  <strong>English</strong> ·
+  <a href="README.es.md">Español</a> ·
+  <a href="README.pt-BR.md">Português (BR)</a>
+</p>
+
+<h1 align="center">FlutterGuide</h1>
+
+<p align="center">
+  The official website for the FlutterGuide Android app: a free, open-source
+  companion with curated widgets, functions, packages, and UI ideas for
+  Flutter developers.
+</p>
+
+<p align="center">
+  <a href="#about"><strong>Explore the docs »</strong></a>
   ·
-  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues">Report Bug</a>
+  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues/new?template=bug_report.yml">Report Bug</a>
   ·
-  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues">Request Feature</a>
+  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues/new?template=feature_request.yml">Request Feature</a>
 </p>
 
 ## Table of Contents
 
-- [About The Project](#about-the-project)
-- [Features](#features)
-- [Built With](#built-with)
+- [About](#about)
+- [Contents](#contents)
+- [Tech Stack](#tech-stack)
+- [Architecture](#architecture)
 - [Getting Started](#getting-started)
+- [Testing](#testing)
+- [Scripts](#scripts)
+- [Documentation](#documentation)
 - [Screenshots](#screenshots)
 - [Download the App](#download-the-app)
 - [Contributing](#contributing)
+- [Changelog](#changelog)
 - [License](#license)
 - [Author](#author)
 
-## About The Project
+## About
 
-This is the repository for the official website of the FlutterGuide mobile app.  
-Its purpose is to showcase the application, present its main features, display screenshots, and provide a direct download link.
+This is the repository for the official website of the FlutterGuide mobile
+app, live at [flutter-guide-web.vercel.app](https://flutter-guide-web.vercel.app/).
+It showcases the app, presents its content categories, displays screenshots,
+and links to the Play Store listing.
 
-**Note**: This repository contains only the code for the official landing page.  
-The source code for the Flutter mobile application is available in a separate repository.
+This repository contains only the website's code. The FlutterGuide mobile
+app itself lives in a separate repository.
 
-## Features
+## Contents
 
-- **Comprehensive Content:** Access a wide range of tutorials and guides covering various aspects of Flutter development.
-- **Categorized Information:** Content is organized into logical categories for easy navigation and learning.
-- **Code Snippets:** Includes practical code examples to help understand and implement Flutter concepts.
-- **Responsive Design:** Fully responsive for a great experience on all devices.
+The app organizes Flutter content into five categories, each with its own
+deep link from the site (`flutterguide://open.app/<category>/<slug>`):
 
-## Built With
+| Category  | What it covers                       |
+| --------- | ------------------------------------ |
+| Widgets   | Built-in and custom Flutter widgets  |
+| Functions | Reusable Dart functions and snippets |
+| Packages  | Notable community packages           |
+| Elements  | Smaller UI building blocks           |
+| UIs       | Full UI patterns and screen ideas    |
 
-This project was developed using the following core technologies:
+## Tech Stack
 
-- **[React](https://reactjs.org/)** – A JavaScript library for building user interfaces.
-- **[Next.js](https://nextjs.org/)** – A React framework optimized for performance and SEO.
-- **[TypeScript](https://www.typescriptlang.org/)** – A typed superset of JavaScript that compiles to plain JavaScript.
-- **[Tailwind CSS](https://tailwindcss.com/)** – A utility-first CSS framework for rapid UI development.
-- **[shadcn/ui](https://ui.shadcn.com/)** – Reusable components built using Radix UI and Tailwind CSS.
-- **[Embla Carousel](https://www.embla-carousel.com/)** – Lightweight and performant carousel library.
+- **[Next.js](https://nextjs.org/)** (App Router) - React framework, fully
+  statically generated.
+- **[React](https://react.dev/)** and **[TypeScript](https://www.typescriptlang.org/)**.
+- **[Tailwind CSS](https://tailwindcss.com/)** - utility-first styling.
+- **[Radix UI](https://www.radix-ui.com/)** - accessible primitives (dialog,
+  accordion), wrapped shadcn-style.
+- **[Motion](https://motion.dev/)** - animation.
+- **[Embla Carousel](https://www.embla-carousel.com/)** - the screenshots
+  carousel.
+- **[Vitest](https://vitest.dev/)** and **[Testing Library](https://testing-library.com/)** - unit and component tests.
+- **[Playwright](https://playwright.dev/)** - end-to-end tests.
+
+## Architecture
+
+Feature-first structure under `src/features/<name>/`, with shared code in
+`src/shared/`. Dependency direction (`app` → `features` → `shared`) is
+enforced by ESLint. See [`docs/architecture.md`](docs/architecture.md) for
+the full write-up.
 
 ## Getting Started
 
-To get a local copy up and running, follow these simple steps.
-
 ### Prerequisites
 
-Ensure you have Node.js and a package manager (pnpm) installed on your machine.
-
-- Node.js
-- pnpm
+- Node.js 24+
+- [pnpm](https://pnpm.io/) 10 (pinned in `package.json`'s `packageManager` field)
 
 ### Installation
 
-Clone the repository:
-
-```bash
+```sh
 git clone https://github.com/dariomatias-dev/flutter_guide_web.git
-```
-
-Navigate into the project directory:
-
-```bash
 cd flutter_guide_web
-```
-
-Install the required packages:
-
-```bash
 pnpm install
 ```
 
-### Running The Project
+### Running locally
 
-To run the development server:
-
-```bash
+```sh
 pnpm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
+
+## Testing
+
+```sh
+pnpm run test        # unit/component tests, watch mode
+pnpm run test:e2e    # end-to-end tests (Playwright)
+pnpm run verify       # the full local gate: typecheck, lint, format, coverage, build, e2e
+```
+
+Coverage has a floor enforced in CI; see
+[`docs/testing.md`](docs/testing.md) for what's tested, what's
+intentionally excluded, and why.
+
+## Scripts
+
+| Script                       | Description                                      |
+| ---------------------------- | ------------------------------------------------ |
+| `pnpm run dev`               | Start the dev server                             |
+| `pnpm run build`             | Production build                                 |
+| `pnpm run start`             | Serve a production build                         |
+| `pnpm run lint`              | ESLint                                           |
+| `pnpm run typecheck`         | `tsc --noEmit`                                   |
+| `pnpm run format`            | Format with Prettier                             |
+| `pnpm run test`              | Unit/component tests (watch mode)                |
+| `pnpm run test:e2e`          | End-to-end tests                                 |
+| `pnpm run check-bundle-size` | Check the JS bundle budget (needs a build first) |
+| `pnpm run verify`            | The full local gate CI also runs                 |
+
+## Documentation
+
+| Document                                       | Covers                                 |
+| ---------------------------------------------- | -------------------------------------- |
+| [`docs/architecture.md`](docs/architecture.md) | Project structure, dependency rules    |
+| [`docs/testing.md`](docs/testing.md)           | What's tested, coverage floor, gaps    |
+| [`docs/ci.md`](docs/ci.md)                     | CI/CD pipeline, running checks locally |
+| [`docs/dependencies.md`](docs/dependencies.md) | Pinned versions, Renovate, triage      |
+| [`docs/performance.md`](docs/performance.md)   | Bundle size budget                     |
+| [`docs/security.md`](docs/security.md)         | Headers, CSP, dependency scanning      |
 
 ## Screenshots
 
@@ -120,7 +167,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ## Download the App
 
-Get **FlutterGuide** directly from the **Google Play Store**:
+Get **FlutterGuide** on the **Google Play Store**:
 
 <a href="https://play.google.com/store/apps/details?id=com.dariomatias.flutter_guide" target="_blank">
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" width="200">
@@ -128,42 +175,25 @@ Get **FlutterGuide** directly from the **Google Play Store**:
 
 ## Contributing
 
-Contributions make the open-source community an amazing place to learn and create.
-Any contributions you make are greatly appreciated.
+Contributions are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for
+the local setup, the verification gate, and the pull request checklist.
 
-To get started:
+## Changelog
 
-1. **Fork the Project**
-2. **Create your Feature Branch**
-
-   ```sh
-   git checkout -b feature/AmazingFeature
-   ```
-
-3. **Commit your Changes**
-
-   ```sh
-   git commit -m 'Add some AmazingFeature'
-   ```
-
-4. **Push to the Branch**
-
-   ```sh
-   git push origin feature/AmazingFeature
-   ```
-
-5. **Open a Pull Request**
+Generated automatically by [release-please](https://github.com/googleapis/release-please)
+from Conventional Commits. Once a release has shipped, see `CHANGELOG.md`.
 
 ## License
 
-Distributed under the **MIT License**. See the [LICENSE](LICENSE) file for more information.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for the
+full text.
 
 ## Author
 
 Developed by **Dário Matias**:
 
-- **Portfolio**: [dariomatias-dev](https://dariomatias-dev.com)
-- **GitHub**: [dariomatias-dev](https://github.com/dariomatias-dev)
+- **Portfolio**: [dariomatias-dev.com](https://dariomatias-dev.com)
+- **GitHub**: [@dariomatias-dev](https://github.com/dariomatias-dev)
 - **Email**: [matiasdario75@gmail.com](mailto:matiasdario75@gmail.com)
 - **Instagram**: [@dariomatias_dev](https://instagram.com/dariomatias_dev)
 - **LinkedIn**: [linkedin.com/in/dariomatias-dev](https://linkedin.com/in/dariomatias-dev)
