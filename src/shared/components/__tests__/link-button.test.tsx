@@ -24,4 +24,10 @@ describe("LinkButton", () => {
     expect(link).toHaveAttribute("href", "/");
     expect(link).toHaveAttribute("target", "_self");
   });
+
+  it("renders a single link with no nested button", () => {
+    render(<LinkButton href="https://example.com">Click me</LinkButton>);
+
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+  });
 });
