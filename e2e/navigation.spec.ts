@@ -141,4 +141,18 @@ test.describe("FAQ", () => {
     await question.click();
     await expect(answer).toBeVisible();
   });
+
+  test("shows a visible focus ring on keyboard focus", async ({ page }) => {
+    await page.goto("/");
+
+    const question = page.getByRole("button", {
+      name: "Is the app completely free?",
+    });
+    await question.focus();
+
+    await expect(async () => {
+      const boxShadow = await question.evaluate((el) => getComputedStyle(el).boxShadow);
+      expect(boxShadow).toContain("3px");
+    }).toPass();
+  });
 });
