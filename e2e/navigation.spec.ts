@@ -105,6 +105,25 @@ test.describe("screenshots carousel", () => {
     await page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
   });
+
+  test("traps focus while open and returns it to the thumbnail on Escape", async ({ page }) => {
+    await page.goto("/");
+
+    const thumbnail = page.getByRole("button", { name: "Visualizar screenshot 1", exact: true });
+    await thumbnail.click();
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+
+    for (let i = 0; i < 5; i++) {
+      await page.keyboard.press("Tab");
+      await expect(dialog.locator(":focus")).toHaveCount(1);
+    }
+
+    await page.keyboard.press("Escape");
+    await expect(dialog).not.toBeVisible();
+    await expect(thumbnail).toBeFocused();
+  });
 });
 
 test.describe("FAQ", () => {

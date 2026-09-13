@@ -30,10 +30,11 @@ const eslintConfig = [
   ...nextTypescript,
   {
     rules: {
-      // hero-section.tsx's isMounted pattern (plan.md's B6) is fixed.
-      // Stays off for two legitimate remaining cases: image-viewer.tsx's
-      // SSR-safe portal-target check, and screenshots-carousel.tsx's
-      // syncing embla-carousel's imperative state into React state.
+      // hero-section.tsx's isMounted pattern (plan.md's B6) is fixed, and
+      // image-viewer.tsx no longer needs its own mount guard now that
+      // Radix Dialog owns its portal. Stays off for the one legitimate
+      // case left: screenshots-carousel.tsx syncing embla-carousel's
+      // imperative state into React state.
       "react-hooks/set-state-in-effect": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
