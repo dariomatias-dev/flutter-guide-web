@@ -1,0 +1,83 @@
+# Pruebas
+
+## Qué merece realmente una prueba aquí
+
+La cobertura es un piso, no una meta. Ver los umbrales y su razón de ser
+en `vitest.config.mts`. Lo que importa más que el número es _qué_
+probar:
+
+- **Lógica real**: un cálculo, una rama, un fragmento de estado que
+  puede estar mal. El emparejamiento de categoría de
+  `resolveAppDeepLink`, el estado abierto/cerrado del menú del header, el
+  expandir/colapsar del accordion de la FAQ — todos merecen una prueba.
+- **Interacción real del usuario**: hacer clic en algo, esperar un
+  resultado específico. Las pruebas de componentes aquí renderizan el
+  componente real e interactúan con él mediante consultas de Testing
+  Library (`getByRole`, `getByText`), no accediendo a los internos.
+- **Destinos de enlaces**: todo botón o enlace que apunte a algún lugar
+  externo (GitHub, la Play Store, el portafolio del autor) merece una
+  verificación — es exactamente el tipo de cosa que un error de copiar y
+  pegar rompe silenciosamente.
+
+Lo que deliberadamente **no** se persigue, y queda excluido de la
+cobertura en `vitest.config.mts`:
+
+- **Secciones estáticas sin ramas**: `learning-path-section.tsx`,
+  `theme-customization-section.tsx`, `contribution-section.tsx`,
+  `official-resources-section.tsx`, `features-section.tsx`,
+  `about-me-section.tsx`, `community-section.tsx` (el wrapper),
+  `screenshots-section.tsx` (el wrapper) y `privacy-policy-content.tsx`.
+  Markup fijo sin props ni renderizado condicional — no hay lógica que
+  pueda fallar.
+- **Datos puros y objetos de variantes**: `shared/motion/**` y los
+  arreglos estáticos en `features/*/data/*.ts` (excepto `faqs.ts`,
+  ejercitado indirectamente vía `faq-section.test.tsx`). Nada que
+  ramificar.
+- **Primitivas shadcn/Radix** (`shared/components/ui/**`): solo estilos,
+  sin lógica propia.
+- **`app/page.tsx` y `app/privacy-policy/page.tsx`**: composición pura de
+  componentes de feature ya probados, sin lógica propia. Cubiertos de
+  verdad por `e2e/smoke.spec.ts` en su lugar.
+
+## Brechas conocidas, no exclusiones
+
+Estas siguen contando contra el piso de cobertura, a propósito, para que
+arreglarlas suba el número en vez de olvidarse en silencio:
+
+- **`community-marquee.tsx`**: lógica real de arreglo duplicado, pero
+  `testimonials.ts` está vacío por ahora, así que no se renderiza nada.
+  Agregar pruebas cuando entre un testimonio real.
+- **`hero-section.tsx`**: todavía sin prueba unitaria dedicada; su
+  animación de entrada y los fondos de blob están cubiertos
+  indirectamente por `e2e/no-js.spec.ts` y `e2e/reduced-motion.spec.ts`.
+- **Algunas ramas en `image-viewer.tsx` y `screenshots-carousel.tsx`**:
+  estados de error y casos límite aún no cubiertos.
+
+## Dobles de prueba
+
+- **Las brechas de jsdom son reales y merecen un comentario, no un
+  parche.** `IntersectionObserver`, `ResizeObserver` y `matchMedia`
+  simplemente no existen en jsdom; ver los polyfills en
+  `vitest.setup.ts` — el `whileInView` de `framer-motion` necesita el
+  primero, `embla-carousel` necesita los otros dos.
+- **La propagación de stagger de Framer Motion no siempre se resuelve en
+  jsdom** incluso con el polyfill de `IntersectionObserver` (ver el
+  comentario en `faq-section.test.tsx`): un elemento anidado bajo un
+  padre `whileInView` puede quedarse en su variante `hidden`. Verifica
+  `toBeInTheDocument()`/atributos de estado ahí en vez de
+  `toBeVisible()`, y deja la verificación visual real para e2e.
+- **embla-carousel necesita layout real** (anchos de slide, entradas de
+  `ResizeObserver` con dimensiones reales) para decidir hasta dónde
+  puede desplazarse, algo que jsdom no puede proveer. La navegación real
+  es solo e2e (`e2e/navigation.spec.ts`); la prueba de componente solo
+  verifica el estado inicial y las partes que no dependen del layout
+  medido (el visor de imagen abriéndose y cerrándose).
+
+## Ejecutar las suites
+
+```bash
+pnpm test              # Vitest en modo watch
+pnpm run test:run       # Vitest una vez
+pnpm run test:coverage  # Vitest una vez, con los umbrales de cobertura exigidos
+pnpm run test:e2e       # Playwright, contra una app ya compilada
+```
