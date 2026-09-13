@@ -33,10 +33,10 @@ importers:
         specifier: 16.3.5
         version: 16.3.5(@babel/core@7.29.7)(@playwright/test@1.63.0)(@types/node@24.13.4)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       react:
-        specifier: ^19.3.0
+        specifier: 19.3.0
         version: 19.3.0
       react-dom:
-        specifier: ^19.3.0
+        specifier: 19.3.0
         version: 19.3.0(react@19.3.0)
       tailwind-merge:
         specifier: ^3.7.0
