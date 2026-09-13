@@ -10,6 +10,14 @@ import {
   BreadcrumbPage,
 } from "@/shared/components/ui/breadcrumb";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How the FlutterGuide app collects, uses, and protects your data.",
+  alternates: { canonical: "/privacy-policy" },
+};
+
 export default function Page() {
   return (
     <>
