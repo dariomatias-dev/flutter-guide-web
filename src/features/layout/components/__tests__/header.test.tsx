@@ -39,4 +39,15 @@ describe("Header", () => {
     await user.click(screen.getByRole("button", { name: "Close menu" }));
     expect(screen.queryByRole("button", { name: "Close menu" })).not.toBeInTheDocument();
   });
+
+  it("opens the mobile menu as an accessible dialog and closes it with Escape", async () => {
+    const user = userEvent.setup();
+    render(<Header />);
+
+    await user.click(screen.getByRole("button", { name: "Open menu" }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
 });
