@@ -43,14 +43,14 @@ export const HeroSection = () => {
       className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 text-center"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-zinc-950 via-zinc-950 to-blue-950/20" />
+        <div className="absolute top-0 left-0 h-full w-full bg-linear-to-br from-zinc-950 via-zinc-950 to-blue-950/20" />
         <div
-          className="absolute -top-60 -left-80 h-[40rem] w-[40rem] rounded-full bg-cyan-500/10 blur-3xl"
-          style={{ animation: "blob 15s infinite alternate" }}
+          className="absolute -top-60 -left-80 h-160 w-160 rounded-full bg-cyan-500/10 blur-3xl"
+          style={{ animation: "aurora 15s infinite alternate" }}
         />
         <div
-          className="absolute -right-40 -bottom-40 h-[40rem] w-[40rem] rounded-full bg-blue-500/10 blur-3xl"
-          style={{ animation: "blob 18s infinite alternate-reverse" }}
+          className="absolute -right-40 -bottom-40 h-160 w-160 rounded-full bg-blue-500/10 blur-3xl"
+          style={{ animation: "aurora 18s infinite alternate-reverse" }}
         />
       </div>
 
@@ -75,7 +75,7 @@ export const HeroSection = () => {
           <span>Master Flutter,</span>
 
           <span className="relative inline-block">
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
               Faster.
             </span>
           </span>
