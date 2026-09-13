@@ -2,7 +2,6 @@
 
 import { ChevronDown, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
-import { useEffect, useState } from "react";
 
 import { GithubButton } from "@/shared/components/github-button";
 import { PlayStoreButton } from "@/shared/components/play-store-button";
@@ -31,12 +30,6 @@ const itemVariants: Variants = {
 };
 
 export const HeroSection = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
   return (
     <section
       id="hero"
@@ -57,8 +50,8 @@ export const HeroSection = () => {
       <motion.div
         className="flex flex-col items-center"
         variants={containerVariants}
-        initial="hidden"
-        animate={isMounted ? "visible" : "hidden"}
+        initial={false}
+        animate="visible"
       >
         <motion.div
           variants={itemVariants}

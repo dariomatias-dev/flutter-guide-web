@@ -30,9 +30,10 @@ const eslintConfig = [
   ...nextTypescript,
   {
     rules: {
-      // Flags the isMounted-in-useEffect pattern in hero-section.tsx,
-      // image-viewer.tsx and screenshots-carousel.tsx. Real issue (see
-      // plan.md's B6), fixed in a later step, not part of this upgrade.
+      // hero-section.tsx's isMounted pattern (plan.md's B6) is fixed.
+      // Stays off for two legitimate remaining cases: image-viewer.tsx's
+      // SSR-safe portal-target check, and screenshots-carousel.tsx's
+      // syncing embla-carousel's imperative state into React state.
       "react-hooks/set-state-in-effect": "off",
       "@typescript-eslint/no-unused-vars": [
         "error",
