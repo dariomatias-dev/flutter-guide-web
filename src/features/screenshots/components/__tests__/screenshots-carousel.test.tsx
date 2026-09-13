@@ -18,7 +18,7 @@ describe("ScreenshotsCarousel", () => {
     const user = userEvent.setup();
     render(<ScreenshotsCarousel />);
 
-    await user.click(screen.getByRole("button", { name: "Visualizar screenshot 1" }));
+    await user.click(screen.getByRole("button", { name: "View screenshot 1" }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Close Image Viewer" }));
@@ -29,7 +29,7 @@ describe("ScreenshotsCarousel", () => {
     const user = userEvent.setup();
     render(<ScreenshotsCarousel />);
 
-    await user.click(screen.getByRole("button", { name: "Visualizar screenshot 3" }));
+    await user.click(screen.getByRole("button", { name: "View screenshot 3" }));
 
     expect(
       screen.getByRole("dialog", { name: "FlutterGuide App Screenshot 3" }),
@@ -40,7 +40,7 @@ describe("ScreenshotsCarousel", () => {
     const user = userEvent.setup();
     render(<ScreenshotsCarousel />);
 
-    await user.click(screen.getByRole("button", { name: "Visualizar screenshot 1" }));
+    await user.click(screen.getByRole("button", { name: "View screenshot 1" }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();
 
     await user.keyboard("{Escape}");

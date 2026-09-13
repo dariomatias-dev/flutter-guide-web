@@ -53,7 +53,7 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
                 className="h-10 w-10 animate-spin rounded-full border-4 border-solid border-white/20 border-t-white"
                 role="status"
               >
-                <span className="sr-only">Carregando...</span>
+                <span className="sr-only">Loading...</span>
               </div>
             </div>
           )}
