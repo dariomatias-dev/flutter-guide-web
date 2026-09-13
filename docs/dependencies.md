@@ -13,7 +13,7 @@ pinned to an exact version on purpose:
 
 Renovate is configured to leave `next`, `eslint-config-next`, `react`, and
 `react-dom` alone (see `renovate.json`). Bumping any of them is its own
-plan step, not a Renovate PR.
+dedicated change, not a Renovate PR.
 
 ## Renovate configuration
 
@@ -34,5 +34,5 @@ plan step, not a Renovate PR.
    `tailwindcss`, `@radix-ui/*`), check the app in a browser before merging,
    not just the test suite — visual regressions do not fail tests.
 5. If `verify` fails, decide whether the fix belongs in the same PR (small,
-   mechanical) or as a follow-up plan step (anything that touches `src/`
+   mechanical) or as a follow-up change (anything that touches `src/`
    behavior beyond an import rename).
