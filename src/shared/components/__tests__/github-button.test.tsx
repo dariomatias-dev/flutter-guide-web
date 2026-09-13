@@ -12,4 +12,10 @@ describe("GithubButton", () => {
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
+
+  it("renders a single link with no nested button", () => {
+    render(<GithubButton />);
+
+    expect(screen.queryByRole("button")).not.toBeInTheDocument();
+  });
 });
