@@ -13,6 +13,7 @@ const FEATURES = [
   "about",
   "community",
   "contribution",
+  "deep-links",
   "faq",
   "features-showcase",
   "hero",
@@ -102,7 +103,7 @@ const eslintConfig = [
   // `next lint` auto-ignores these generated paths; the bare `eslint` CLI
   // does not, so this is required to keep `pnpm lint` behaving the same
   // way it did under `next lint`, not a new rule.
-  globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts"]),
+  globalIgnores([".next/**", "out/**", "build/**", "coverage/**", "next-env.d.ts"]),
 ];
 
 export default eslintConfig;
