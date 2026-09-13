@@ -12,5 +12,4 @@ dependency bumps, `chore` for repo maintenance with no source change,
 - All code (identifiers, comments) is in English. User-facing text is in
   English too, until a step adds another locale on purpose.
 - Where things live and how features are organized: see
-  `docs/architecture.md` once it exists; until then, match the structure
-  already in `src/`.
+  `docs/architecture.md`.
