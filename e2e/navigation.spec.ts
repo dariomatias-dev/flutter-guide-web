@@ -92,14 +92,14 @@ test.describe("screenshots carousel", () => {
   test("opens and closes the image viewer, with click and with Escape", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("button", { name: "Visualizar screenshot 1", exact: true }).click();
+    await page.getByRole("button", { name: "View screenshot 1", exact: true }).click();
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
 
     await page.getByRole("button", { name: "Close Image Viewer" }).click();
     await expect(dialog).not.toBeVisible();
 
-    await page.getByRole("button", { name: "Visualizar screenshot 1", exact: true }).click();
+    await page.getByRole("button", { name: "View screenshot 1", exact: true }).click();
     await expect(dialog).toBeVisible();
 
     await page.keyboard.press("Escape");
@@ -109,7 +109,7 @@ test.describe("screenshots carousel", () => {
   test("traps focus while open and returns it to the thumbnail on Escape", async ({ page }) => {
     await page.goto("/");
 
-    const thumbnail = page.getByRole("button", { name: "Visualizar screenshot 1", exact: true });
+    const thumbnail = page.getByRole("button", { name: "View screenshot 1", exact: true });
     await thumbnail.click();
 
     const dialog = page.getByRole("dialog");

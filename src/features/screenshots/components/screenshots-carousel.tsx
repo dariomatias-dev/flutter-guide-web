@@ -82,7 +82,7 @@ export const ScreenshotsCarousel = () => {
               >
                 <DialogTrigger
                   className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
-                  aria-label={`Visualizar screenshot ${index + 1}`}
+                  aria-label={`View screenshot ${index + 1}`}
                 >
                   <Image
                     src={src}
@@ -101,7 +101,7 @@ export const ScreenshotsCarousel = () => {
                         className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-white/20 border-t-white"
                         role="status"
                       >
-                        <span className="sr-only">Carregando imagem...</span>
+                        <span className="sr-only">Loading image...</span>
                       </div>
                     </div>
                   )}
