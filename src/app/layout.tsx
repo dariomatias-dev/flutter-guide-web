@@ -1,3 +1,6 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 import { Footer, Header } from "@/features/layout";
 import { MotionProvider } from "@/shared/components/motion-provider";
 import { siteDescription, siteName, siteUrl } from "@/shared/lib/site";
@@ -31,6 +34,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // The Analytics/SpeedInsights scripts resolve only on Vercel's platform
+  // (production and preview deployments), where VERCEL is set to "1".
+  const isVercelDeployment = process.env.VERCEL === "1";
+
   return (
     <html lang="en">
       <body>
@@ -41,6 +48,13 @@ export default function RootLayout({
             <Footer />
           </div>
         </MotionProvider>
+
+        {isVercelDeployment && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );
