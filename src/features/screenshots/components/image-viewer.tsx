@@ -1,6 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
+import { ImageOff, X } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useState, useCallback } from "react";
@@ -98,14 +98,9 @@ export const ImageViewer = ({ src, alt, onClose }: ImageViewerProps) => {
         )}
 
         {hasError && (
-          <div className="absolute inset-0 flex items-center justify-center p-4">
-            <Image
-              src="/image_placeholder.png"
-              width={256}
-              height={256}
-              alt="Erro ao carregar imagem"
-              className="w-2/5 opacity-60 sm:w-1/3"
-            />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-zinc-500">
+            <ImageOff className="h-16 w-16" aria-hidden="true" />
+            <span className="text-sm">Failed to load image</span>
           </div>
         )}
       </motion.div>

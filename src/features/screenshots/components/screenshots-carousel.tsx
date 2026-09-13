@@ -25,6 +25,7 @@ export const ScreenshotsCarousel = () => {
 
   const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
   const [currentPreviewImageSrc, setCurrentPreviewImageSrc] = useState<string>("");
+  const [currentPreviewIndex, setCurrentPreviewIndex] = useState<number>(0);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -45,8 +46,9 @@ export const ScreenshotsCarousel = () => {
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  const openViewer = useCallback((src: string) => {
+  const openViewer = useCallback((src: string, index: number) => {
     setCurrentPreviewImageSrc(src);
+    setCurrentPreviewIndex(index);
     setIsViewerOpen(true);
   }, []);
 
@@ -87,7 +89,7 @@ export const ScreenshotsCarousel = () => {
               className="min-w-0 flex-[0_0_100%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"
             >
               <button
-                onClick={() => openViewer(src)}
+                onClick={() => openViewer(src, index)}
                 className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
                 aria-label={`Visualizar screenshot ${index + 1}`}
               >
@@ -156,7 +158,7 @@ export const ScreenshotsCarousel = () => {
         {isViewerOpen && currentPreviewImageSrc && (
           <ImageViewer
             src={currentPreviewImageSrc}
-            alt={`FlutterGuide App Screenshot ${selectedIndex + 1}`}
+            alt={`FlutterGuide App Screenshot ${currentPreviewIndex + 1}`}
             onClose={closeViewer}
           />
         )}

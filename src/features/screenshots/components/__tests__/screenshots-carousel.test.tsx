@@ -24,4 +24,15 @@ describe("ScreenshotsCarousel", () => {
     await user.click(screen.getByRole("button", { name: "Close Image Viewer" }));
     await waitForElementToBeRemoved(() => screen.queryByRole("dialog"));
   });
+
+  it("labels the viewer with the clicked screenshot, not the active slide", async () => {
+    const user = userEvent.setup();
+    render(<ScreenshotsCarousel />);
+
+    await user.click(screen.getByRole("button", { name: "Visualizar screenshot 3" }));
+
+    expect(
+      screen.getByRole("dialog", { name: "FlutterGuide App Screenshot 3" }),
+    ).toBeInTheDocument();
+  });
 });
