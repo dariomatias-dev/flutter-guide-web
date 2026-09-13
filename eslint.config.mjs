@@ -1,7 +1,28 @@
+import path from "node:path";
+
 import { globalIgnores } from "eslint/config";
 import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 import nextTypescript from "eslint-config-next/typescript";
 import eslintConfigPrettier from "eslint-config-prettier";
+
+// Resolves an except pattern to an absolute path.
+const abs = (p) => path.resolve(import.meta.dirname, p);
+
+// Add a feature here when you add one under src/features/.
+const FEATURES = [
+  "about",
+  "community",
+  "contribution",
+  "faq",
+  "features-showcase",
+  "hero",
+  "layout",
+  "learning-path",
+  "legal",
+  "official-resources",
+  "screenshots",
+  "theme-customization",
+];
 
 const eslintConfig = [
   ...nextCoreWebVitals,
@@ -28,6 +49,34 @@ const eslintConfig = [
           pathGroups: [{ pattern: "@/**", group: "internal" }],
           "newlines-between": "always",
           alphabetize: { order: "asc" },
+        },
+      ],
+      "import/no-restricted-paths": [
+        "error",
+        {
+          zones: [
+            {
+              target: "./src/shared/**/*",
+              from: "./src/features/**/*",
+              message: "shared/ must not depend on features/. Move the shared piece down instead.",
+            },
+            // app/ composes features; it may only reach a feature's public
+            // API (its index.ts barrel), never a file inside it.
+            {
+              target: "./src/app/**/*",
+              from: "./src/features/**/*",
+              except: [abs("./src/features/*/index.ts")],
+              message: "Import from the feature's barrel (index.ts), not an internal file.",
+            },
+            // A feature may freely import its own files, but never reach
+            // directly inside another feature.
+            ...FEATURES.map((name) => ({
+              target: `./src/features/${name}/**/*`,
+              from: "./src/features/**/*",
+              except: [abs(`./src/features/${name}/**/*`), abs("./src/features/*/index.ts")],
+              message: "Import from the other feature's barrel (index.ts), not an internal file.",
+            })),
+          ],
         },
       ],
     },
