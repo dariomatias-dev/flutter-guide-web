@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { useEffect } from "react";
 
+import { resolveAppDeepLink } from "@/features/deep-links";
 import { LinkButton } from "@/shared/components/link-button";
 
 import type { Variants } from "motion/react";
@@ -32,22 +33,14 @@ const itemVariants: Variants = {
 
 const NotFoundPage = () => {
   useEffect(() => {
-    const path = window.location.pathname;
-    const appBasePaths = ["/widgets", "/packages", "/functions", "/elements", "/uis"];
-
-    const matchedBasePath = appBasePaths.find(
-      (p) => path.startsWith(p + "/") && path.length > (p + "/").length,
-    );
-
-    if (matchedBasePath) {
-      window.location.href = `flutterguide://open.app${path}`;
-    }
+    const deepLink = resolveAppDeepLink(window.location.pathname);
+    if (deepLink) window.location.href = deepLink;
   }, []);
 
   return (
     <>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-br from-zinc-950 via-zinc-950 to-blue-900/20" />
+        <div className="absolute top-0 left-0 h-full w-full bg-linear-to-br from-zinc-950 via-zinc-950 to-blue-900/20" />
 
         <motion.div
           className="pointer-events-none absolute top-1/4 left-[10%] h-32 w-32 rounded-2xl border border-blue-500/20 bg-zinc-900/50"
@@ -164,7 +157,7 @@ const NotFoundPage = () => {
         />
 
         <motion.div
-          className="pointer-events-none absolute top-[60%] left-[5%] h-10 w-10 border border-cyan-500/10 bg-zinc-900/20 [clip-path:polygon(50%_0%,_0%_100%,_100%_100%)]"
+          className="pointer-events-none absolute top-[60%] left-[5%] h-10 w-10 border border-cyan-500/10 bg-zinc-900/20 [clip-path:polygon(50%_0%,0%_100%,100%_100%)]"
           initial={{ opacity: 0, y: -20, rotate: 45 }}
           animate={{
             opacity: 1,
@@ -198,7 +191,7 @@ const NotFoundPage = () => {
         >
           <motion.span
             variants={itemVariants}
-            className="bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text font-mono text-9xl font-bold tracking-tighter text-transparent sm:text-[12rem] md:text-[14rem]"
+            className="bg-linear-to-br from-cyan-400 to-blue-500 bg-clip-text font-mono text-9xl font-bold tracking-tighter text-transparent sm:text-[12rem] md:text-[14rem]"
           >
             404
           </motion.span>
