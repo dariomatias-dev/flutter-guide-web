@@ -1,6 +1,6 @@
 import { ImageOff, X } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
   DialogClose,
@@ -15,8 +15,19 @@ interface ImageViewerProps {
 }
 
 export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
+  const imgRef = useRef<HTMLImageElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
+
+  // A cached image can finish loading before this effect attaches the
+  // onLoad handler, in which case that event never fires. Checking
+  // `complete` here catches that case instead of leaving the image
+  // permanently hidden.
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoading(false);
+    }
+  }, []);
 
   const handleLoad = useCallback(() => {
     setIsLoading(false);
@@ -36,10 +47,12 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
 
         <div className="relative flex h-auto max-h-[90vh] w-full max-w-5xl items-center justify-center p-5">
           <Image
+            ref={imgRef}
             src={src}
             alt={alt}
             width={1920}
             height={1080}
+            sizes="(max-width: 1280px) 100vw, 1280px"
             className={`h-auto max-h-[90vh] w-auto max-w-full rounded-lg border border-zinc-900 bg-zinc-900 object-contain shadow-xl transition-opacity duration-300 ${
               isLoading || hasError ? "opacity-0" : "opacity-100"
             }`}

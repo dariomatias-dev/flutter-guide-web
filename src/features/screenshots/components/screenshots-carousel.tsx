@@ -2,12 +2,12 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 
 import { Dialog, DialogPortal, DialogTrigger } from "@/shared/components/ui/dialog";
 
 import { ImageViewer } from "./image-viewer";
+import { ScreenshotThumbnail } from "./screenshot-thumbnail";
 
 const screenshots: string[] = Array.from(
   { length: 12 },
@@ -20,10 +20,6 @@ export const ScreenshotsCarousel = () => {
   const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
   const [canScrollNext, setCanScrollNext] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-  const [imageLoadingStates, setImageLoadingStates] = useState<boolean[]>(
-    Array(screenshots.length).fill(true),
-  );
-
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -44,14 +40,6 @@ export const ScreenshotsCarousel = () => {
     setCanScrollNext(emblaApi.canScrollNext());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
-
-  const handleImageLoad = useCallback((index: number) => {
-    setImageLoadingStates((prevStates) => {
-      const newStates = [...prevStates];
-      newStates[index] = false;
-      return newStates;
-    });
-  }, []);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -84,27 +72,11 @@ export const ScreenshotsCarousel = () => {
                   className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
                   aria-label={`View screenshot ${index + 1}`}
                 >
-                  <Image
+                  <ScreenshotThumbnail
                     src={src}
                     alt={`FlutterGuide App Screenshot ${index + 1}`}
-                    width={540}
-                    height={960}
-                    className={`h-auto max-h-[70vh] w-auto rounded-2xl object-contain transition-opacity duration-300 ${
-                      imageLoadingStates[index] ? "opacity-0" : "opacity-100"
-                    }`}
-                    onLoad={() => handleImageLoad(index)}
-                    priority={index < 4}
+                    priority={index === 0}
                   />
-                  {imageLoadingStates[index] && (
-                    <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-zinc-900/80">
-                      <div
-                        className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-white/20 border-t-white"
-                        role="status"
-                      >
-                        <span className="sr-only">Loading image...</span>
-                      </div>
-                    </div>
-                  )}
                 </DialogTrigger>
 
                 <DialogPortal>
