@@ -32,8 +32,8 @@ for how Renovate and release-please interact.
 Every workflow file is validated (YAML/JSON, `eslint`, `commitlint`,
 schema) before being committed, but not every job can run end-to-end on
 this machine — some need a real PR, a real push, or a GitHub API that
-`act` can't simulate. See rule 9 in `plan.md`'s working notes: for those
-jobs, "done" means the file exists and is valid, not a real run.
+`act` can't simulate. For those jobs, "done" means the file exists and is
+valid, not a real run.
 
 Testable via `act`:
 
