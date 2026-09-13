@@ -3,8 +3,8 @@
 ## Configuração
 
 ```sh
-git clone https://github.com/dariomatias-dev/flutter_guide_web.git
-cd flutter_guide_web
+git clone https://github.com/dariomatias-dev/flutter-guide-web.git
+cd flutter-guide-web
 pnpm install
 ```
 

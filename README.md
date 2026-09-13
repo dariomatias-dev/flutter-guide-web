@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://github.com/dariomatias-dev/flutter_guide_web/actions/workflows/ci.yml/badge.svg" alt="CI: status">
-  <img src="https://codecov.io/github/dariomatias-dev/flutter_guide_web/graph/badge.svg" alt="Coverage: codecov">
-  <img src="https://img.shields.io/github/license/dariomatias-dev/flutter_guide_web" alt="License: MIT">
+  <img src="https://github.com/dariomatias-dev/flutter-guide-web/actions/workflows/ci.yml/badge.svg" alt="CI: status">
+  <img src="https://codecov.io/github/dariomatias-dev/flutter-guide-web/graph/badge.svg" alt="Coverage: codecov">
+  <img src="https://img.shields.io/github/license/dariomatias-dev/flutter-guide-web" alt="License: MIT">
 </p>
 
 <p align="center">
@@ -21,9 +21,9 @@
 <p align="center">
   <a href="#about"><strong>Explore the docs »</strong></a>
   ·
-  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues/new?template=bug_report.yml">Report Bug</a>
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=bug_report.yml">Report Bug</a>
   ·
-  <a href="https://github.com/dariomatias-dev/flutter_guide_web/issues/new?template=feature_request.yml">Request Feature</a>
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=feature_request.yml">Request Feature</a>
 </p>
 
 ## Table of Contents
@@ -97,8 +97,8 @@ the full write-up.
 ### Installation
 
 ```sh
-git clone https://github.com/dariomatias-dev/flutter_guide_web.git
-cd flutter_guide_web
+git clone https://github.com/dariomatias-dev/flutter-guide-web.git
+cd flutter-guide-web
 pnpm install
 ```
 
