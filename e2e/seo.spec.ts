@@ -73,4 +73,27 @@ test.describe("SEO metadata", () => {
       "/manifest.webmanifest",
     );
   });
+
+  test("home sets an og:image", async ({ page, request }) => {
+    await page.goto("/");
+
+    const ogImage = page.locator('meta[property="og:image"]');
+    await expect(ogImage).toHaveAttribute("content", /\/opengraph-image/);
+
+    const imageUrl = await ogImage.getAttribute("content");
+    const imagePath = new URL(imageUrl!).pathname + new URL(imageUrl!).search;
+    const response = await request.get(imagePath);
+    expect(response.headers()["content-type"]).toBe("image/png");
+  });
+
+  test("home has MobileApplication JSON-LD", async ({ page }) => {
+    await page.goto("/");
+
+    const jsonLd = await page.locator('script[type="application/ld+json"]').textContent();
+    const data = JSON.parse(jsonLd!);
+
+    expect(data["@type"]).toBe("MobileApplication");
+    expect(data.operatingSystem).toBe("ANDROID");
+    expect(data.downloadUrl).toContain("play.google.com");
+  });
 });
