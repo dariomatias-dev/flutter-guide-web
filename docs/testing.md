@@ -43,9 +43,9 @@ raises the number instead of quietly being forgotten:
 - **`community-marquee.tsx`**: real duplicate-array logic, but
   `testimonials.ts` is currently empty, so nothing renders. Add tests once a
   real testimonial gets added.
-- **`hero-section.tsx`**: the `isMounted`-gated entrance animation is the
-  bug tracked as B6 in `plan.md`, fixed at a later step. Testing it before
-  that fix would just encode the bug.
+- **`hero-section.tsx`**: no dedicated unit test yet; its entrance
+  animation and blob backgrounds are covered indirectly by
+  `e2e/no-js.spec.ts` and `e2e/reduced-motion.spec.ts`.
 - **A few branches in `image-viewer.tsx` and `screenshots-carousel.tsx`**:
   error states and edge cases not yet covered.
 
