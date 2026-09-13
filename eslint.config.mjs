@@ -4,6 +4,7 @@ import { globalIgnores } from "eslint/config";
 import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 import nextTypescript from "eslint-config-next/typescript";
 import eslintConfigPrettier from "eslint-config-prettier";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 // Resolves an except pattern to an absolute path.
 const abs = (p) => path.resolve(import.meta.dirname, p);
@@ -30,6 +31,8 @@ const eslintConfig = [
   ...nextTypescript,
   {
     rules: {
+      // Rules only; eslint-config-next already registers the jsx-a11y plugin.
+      ...jsxA11y.flatConfigs.recommended.rules,
       // hero-section.tsx's isMounted pattern (plan.md's B6) is fixed, and
       // image-viewer.tsx no longer needs its own mount guard now that
       // Radix Dialog owns its portal. Stays off for the one legitimate
