@@ -1,4 +1,5 @@
 import { Footer, Header } from "@/features/layout";
+import { MotionProvider } from "@/shared/components/motion-provider";
 
 import type { Metadata } from "next";
 
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <MotionProvider>
+          <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
+            <Header />
+            {children}
+            <Footer />
+          </div>
+        </MotionProvider>
       </body>
     </html>
   );
