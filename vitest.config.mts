@@ -39,20 +39,30 @@ export default defineConfig({
         "src/features/screenshots/components/screenshots-section.tsx",
         "src/features/about/components/about-me-section.tsx",
         "src/features/legal/components/privacy-policy-content.tsx",
+        // Next.js metadata route conventions: static data or markup, no
+        // branches of our own.
+        "src/app/manifest.ts",
+        "src/app/robots.ts",
+        "src/app/sitemap.ts",
+        "src/app/opengraph-image.tsx",
+        // Trivial passthrough wrapper, no logic of our own.
+        "src/shared/components/motion-provider.tsx",
       ],
       // Floor, not a target: measured minus a small margin (actual was
-      // 76.22/70.73/64.7/77.94 on 2026-09-13). Known gaps — community-marquee.tsx
-      // (untestable while testimonials.ts is empty, see E77),
-      // hero-section.tsx (the isMounted bug tracked as B6/E48), and a few
-      // branches in image-viewer.tsx/screenshots-carousel.tsx — are a
-      // backlog, not a reason to lower this further. Raise it whenever a
-      // change measurably improves the aggregate; lowering it needs a
-      // reason in the commit message.
+      // 76.99/70.58/65.78/79.43 on 2026-09-13, after excluding the metadata
+      // route files above). Known gaps — community-marquee.tsx (untestable
+      // while testimonials.ts is empty), hero-section.tsx (no dedicated
+      // test, covered indirectly by e2e/no-js.spec.ts and
+      // e2e/reduced-motion.spec.ts), and a few branches in
+      // image-viewer.tsx/screenshots-carousel.tsx — are a backlog, not a
+      // reason to lower this further. Raise it whenever a change
+      // measurably improves the aggregate; lowering it needs a reason in
+      // the commit message.
       thresholds: {
-        statements: 74,
-        branches: 68,
-        functions: 62,
-        lines: 75,
+        statements: 75,
+        branches: 69,
+        functions: 64,
+        lines: 78,
       },
     },
   },

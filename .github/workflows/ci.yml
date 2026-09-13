@@ -45,6 +45,9 @@ jobs:
       - name: Typecheck
         run: pnpm run typecheck
 
+      - name: Docs locale parity
+        run: pnpm run check-docs-locales
+
   unit:
     name: Unit tests
     runs-on: ubuntu-latest

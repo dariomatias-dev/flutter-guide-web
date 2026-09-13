@@ -39,6 +39,7 @@ run_step() {
 run_step "Typecheck" pnpm run typecheck
 run_step "Lint" pnpm run lint
 run_step "Format check" pnpm run format:check
+run_step "Docs locale parity" pnpm run check-docs-locales
 run_step "Unit tests with coverage" pnpm run test:coverage
 
 if [ "$fast" = true ]; then
