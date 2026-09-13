@@ -90,17 +90,6 @@ export const HeroSection = () => {
 
           <GithubButton />
         </motion.div>
-
-        <motion.div variants={itemVariants} className="mt-16 text-center">
-          <p className="text-sm text-zinc-400">Used by developers at companies like:</p>
-
-          <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 grayscale">
-            <span className="font-semibold text-zinc-400">Google</span>
-            <span className="font-semibold text-zinc-400">Alibaba</span>
-            <span className="font-semibold text-zinc-400">Nubank</span>
-            <span className="font-semibold text-zinc-400">iFood</span>
-          </div>
-        </motion.div>
       </motion.div>
 
       <motion.div
