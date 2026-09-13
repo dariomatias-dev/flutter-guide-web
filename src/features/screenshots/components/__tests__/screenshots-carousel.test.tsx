@@ -1,4 +1,4 @@
-import { render, screen, waitForElementToBeRemoved } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
@@ -22,7 +22,7 @@ describe("ScreenshotsCarousel", () => {
     expect(screen.getByRole("dialog")).toBeInTheDocument();
 
     await user.click(screen.getByRole("button", { name: "Close Image Viewer" }));
-    await waitForElementToBeRemoved(() => screen.queryByRole("dialog"));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
   it("labels the viewer with the clicked screenshot, not the active slide", async () => {
@@ -34,5 +34,16 @@ describe("ScreenshotsCarousel", () => {
     expect(
       screen.getByRole("dialog", { name: "FlutterGuide App Screenshot 3" }),
     ).toBeInTheDocument();
+  });
+
+  it("closes the image viewer with Escape", async () => {
+    const user = userEvent.setup();
+    render(<ScreenshotsCarousel />);
+
+    await user.click(screen.getByRole("button", { name: "Visualizar screenshot 1" }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 });

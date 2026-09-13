@@ -2,9 +2,10 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+
+import { Dialog, DialogPortal, DialogTrigger } from "@/shared/components/ui/dialog";
 
 import { ImageViewer } from "./image-viewer";
 
@@ -23,9 +24,7 @@ export const ScreenshotsCarousel = () => {
     Array(screenshots.length).fill(true),
   );
 
-  const [isViewerOpen, setIsViewerOpen] = useState<boolean>(false);
-  const [currentPreviewImageSrc, setCurrentPreviewImageSrc] = useState<string>("");
-  const [currentPreviewIndex, setCurrentPreviewIndex] = useState<number>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -45,17 +44,6 @@ export const ScreenshotsCarousel = () => {
     setCanScrollNext(emblaApi.canScrollNext());
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
-
-  const openViewer = useCallback((src: string, index: number) => {
-    setCurrentPreviewImageSrc(src);
-    setCurrentPreviewIndex(index);
-    setIsViewerOpen(true);
-  }, []);
-
-  const closeViewer = useCallback(() => {
-    setIsViewerOpen(false);
-    setCurrentPreviewImageSrc("");
-  }, []);
 
   const handleImageLoad = useCallback((index: number) => {
     setImageLoadingStates((prevStates) => {
@@ -88,33 +76,41 @@ export const ScreenshotsCarousel = () => {
               key={index}
               className="min-w-0 flex-[0_0_100%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"
             >
-              <button
-                onClick={() => openViewer(src, index)}
-                className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
-                aria-label={`Visualizar screenshot ${index + 1}`}
+              <Dialog
+                open={openIndex === index}
+                onOpenChange={(open) => setOpenIndex(open ? index : null)}
               >
-                <Image
-                  src={src}
-                  alt={`FlutterGuide App Screenshot ${index + 1}`}
-                  width={540}
-                  height={960}
-                  className={`h-auto max-h-[70vh] w-auto rounded-2xl object-contain transition-opacity duration-300 ${
-                    imageLoadingStates[index] ? "opacity-0" : "opacity-100"
-                  }`}
-                  onLoad={() => handleImageLoad(index)}
-                  priority={index < 4}
-                />
-                {imageLoadingStates[index] && (
-                  <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-zinc-900/80">
-                    <div
-                      className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-white/20 border-t-white"
-                      role="status"
-                    >
-                      <span className="sr-only">Carregando imagem...</span>
+                <DialogTrigger
+                  className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
+                  aria-label={`Visualizar screenshot ${index + 1}`}
+                >
+                  <Image
+                    src={src}
+                    alt={`FlutterGuide App Screenshot ${index + 1}`}
+                    width={540}
+                    height={960}
+                    className={`h-auto max-h-[70vh] w-auto rounded-2xl object-contain transition-opacity duration-300 ${
+                      imageLoadingStates[index] ? "opacity-0" : "opacity-100"
+                    }`}
+                    onLoad={() => handleImageLoad(index)}
+                    priority={index < 4}
+                  />
+                  {imageLoadingStates[index] && (
+                    <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-zinc-900/80">
+                      <div
+                        className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-white/20 border-t-white"
+                        role="status"
+                      >
+                        <span className="sr-only">Carregando imagem...</span>
+                      </div>
                     </div>
-                  </div>
-                )}
-              </button>
+                  )}
+                </DialogTrigger>
+
+                <DialogPortal>
+                  <ImageViewer src={src} alt={`FlutterGuide App Screenshot ${index + 1}`} />
+                </DialogPortal>
+              </Dialog>
             </div>
           ))}
         </div>
@@ -130,7 +126,7 @@ export const ScreenshotsCarousel = () => {
           <ChevronLeft className="h-6 w-6" />
         </button>
 
-        <div className="flex w-[236px] gap-1">
+        <div className="flex w-59 gap-1">
           {screenshots.map((_, index) => (
             <div key={index} className="flex h-2 w-4 items-center justify-center">
               <button
@@ -153,16 +149,6 @@ export const ScreenshotsCarousel = () => {
           <ChevronRight className="h-6 w-6" />
         </button>
       </div>
-
-      <AnimatePresence>
-        {isViewerOpen && currentPreviewImageSrc && (
-          <ImageViewer
-            src={currentPreviewImageSrc}
-            alt={`FlutterGuide App Screenshot ${currentPreviewIndex + 1}`}
-            onClose={closeViewer}
-          />
-        )}
-      </AnimatePresence>
     </div>
   );
 };
