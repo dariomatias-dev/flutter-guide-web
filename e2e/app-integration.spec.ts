@@ -47,11 +47,51 @@ test.describe("app integration invariants", () => {
   for (const category of ["widgets", "functions", "packages", "elements", "uis"]) {
     test(`/${category}/x tries to open the app`, async ({ page }) => {
       const deepLinkRequest = page.waitForRequest(`flutterguide://open.app/${category}/x`);
-      await page.goto(`/${category}/x`);
+      const response = await page.goto(`/${category}/x`);
       const request = await deepLinkRequest;
+
+      expect(response?.status()).toBe(200);
       expect(request.url()).toBe(`flutterguide://open.app/${category}/x`);
     });
   }
+
+  test("an app link page is not indexable", async ({ page }) => {
+    await page.goto("/widgets/x");
+
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  });
+
+  test("an app link page offers to open the app and download it from the Play Store", async ({
+    page,
+  }) => {
+    await page.goto("/widgets/x");
+
+    await expect(page.getByRole("link", { name: "Open in App" })).toHaveAttribute(
+      "href",
+      "flutterguide://open.app/widgets/x",
+    );
+    await expect(page.getByRole("link", { name: "Download on Google Play" })).toBeVisible();
+  });
+
+  test("an app link preserves the query string", async ({ page }) => {
+    const deepLinkRequest = page.waitForRequest("flutterguide://open.app/widgets/x?ref=share");
+    await page.goto("/widgets/x?ref=share");
+    const request = await deepLinkRequest;
+
+    expect(request.url()).toBe("flutterguide://open.app/widgets/x?ref=share");
+  });
+
+  test("an app link preserves the hash in the fallback link", async ({ page }) => {
+    // A URL fragment is never sent as part of a network request, so this
+    // checks the rendered fallback link's href instead of a request, unlike
+    // the query string case above.
+    await page.goto("/widgets/x#section");
+
+    await expect(page.getByRole("link", { name: "Open in App" })).toHaveAttribute(
+      "href",
+      "flutterguide://open.app/widgets/x#section",
+    );
+  });
 
   const collectDeepLinkRequests = (page: Page) => {
     const urls: string[] = [];

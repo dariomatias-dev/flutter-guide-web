@@ -1,9 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useEffect } from "react";
 
-import { resolveAppDeepLink } from "@/features/deep-links";
 import { LinkButton } from "@/shared/components/link-button";
 
 import type { Variants } from "motion/react";
@@ -32,11 +30,6 @@ const itemVariants: Variants = {
 };
 
 const NotFoundPage = () => {
-  useEffect(() => {
-    const deepLink = resolveAppDeepLink(window.location.pathname);
-    if (deepLink) window.location.href = deepLink;
-  }, []);
-
   return (
     <>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
