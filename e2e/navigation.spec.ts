@@ -133,7 +133,7 @@ test.describe("FAQ", () => {
     const question = page.getByRole("button", {
       name: "Is the app completely free?",
     });
-    const answer = page.getByText("Yes, FlutterGuide is 100% free and open-source.", {
+    const answer = page.getByText("Yes, FlutterGuide is free and open-source", {
       exact: false,
     });
 

@@ -4,7 +4,7 @@ export const faqs: FAQ[] = [
   {
     question: "Is the app completely free?",
     answer:
-      "Yes, FlutterGuide is 100% free and open-source. My goal is to provide a high-quality resource for the community at no cost.",
+      "Yes, FlutterGuide is free and open-source, with no premium tier or paywall. It's supported by ads.",
   },
   {
     question: "How often is the content updated?",
@@ -18,7 +18,20 @@ export const faqs: FAQ[] = [
   },
   {
     question: "Is the app available for iOS?",
+    answer: "Currently, the app is only available on the Google Play Store for Android.",
+  },
+  {
+    question: "What languages does the app support?",
+    answer: "FlutterGuide is available in English, Spanish, and Portuguese.",
+  },
+  {
+    question: "Can I share a link to a specific widget or example?",
     answer:
-      "Currently, the app is only available on the Google Play Store for Android. An iOS version is planned for the future, depending on community support and interest.",
+      "Yes, every widget, function, package, element, and UI has its own link that opens directly to it in the app.",
+  },
+  {
+    question: "How can I contribute?",
+    answer:
+      "FlutterGuide is open-source. Check out the project's GitHub repository — issues, pull requests, and ideas are all welcome.",
   },
 ];
