@@ -22,8 +22,7 @@ What's deliberately **not** chased, and excluded from coverage in
 - **Static sections with no branches**: `learning-path-section.tsx`,
   `theme-customization-section.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
-  `about-me-section.tsx`, `community-section.tsx` (the wrapper),
-  `screenshots-section.tsx` (the wrapper) and
+  `about-me-section.tsx`, `screenshots-section.tsx` (the wrapper) and
   `privacy-policy-content.tsx`. Hardcoded markup with no props and no
   conditional rendering — there's no logic to get wrong.
 - **Plain data and variant objects**: `shared/motion/**` and the static
@@ -40,9 +39,6 @@ What's deliberately **not** chased, and excluded from coverage in
 These stay counted against the coverage floor, on purpose, so fixing them
 raises the number instead of quietly being forgotten:
 
-- **`community-marquee.tsx`**: real duplicate-array logic, but
-  `testimonials.ts` is currently empty, so nothing renders. Add tests once a
-  real testimonial gets added.
 - **`hero-section.tsx`**: no dedicated unit test yet; its entrance
   animation and blob backgrounds are covered indirectly by
   `e2e/no-js.spec.ts` and `e2e/reduced-motion.spec.ts`.

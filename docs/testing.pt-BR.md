@@ -24,8 +24,8 @@ em `vitest.config.mts`:
 - **Seções estáticas sem branch**: `learning-path-section.tsx`,
   `theme-customization-section.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
-  `about-me-section.tsx`, `community-section.tsx` (o wrapper),
-  `screenshots-section.tsx` (o wrapper) e `privacy-policy-content.tsx`.
+  `about-me-section.tsx`, `screenshots-section.tsx` (o wrapper) e
+  `privacy-policy-content.tsx`.
   Markup fixo sem props e sem renderização condicional — não há lógica
   pra dar errado.
 - **Dado puro e objetos de variante**: `shared/motion/**` e os arrays
@@ -42,9 +42,6 @@ em `vitest.config.mts`:
 Estes continuam contando contra o piso de cobertura, de propósito, pra
 consertá-los aumentar o número em vez de serem esquecidos silenciosamente:
 
-- **`community-marquee.tsx`**: lógica real de array duplicado, mas
-  `testimonials.ts` está vazio no momento, então nada renderiza.
-  Adicionar testes quando um depoimento de verdade entrar.
 - **`hero-section.tsx`**: ainda sem teste unitário dedicado; sua animação
   de entrada e os fundos de blob são cobertos indiretamente por
   `e2e/no-js.spec.ts` e `e2e/reduced-motion.spec.ts`.

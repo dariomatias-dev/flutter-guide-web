@@ -1,5 +1,4 @@
 import { AboutMeSection } from "@/features/about";
-import { CommunitySection, testimonials } from "@/features/community";
 import { ContributionSection } from "@/features/contribution";
 import { FaqSection } from "@/features/faq";
 import { FeaturesSection } from "@/features/features-showcase";
@@ -53,8 +52,6 @@ export default function Home() {
         <ContributionSection />
 
         <OfficialResourcesSection />
-
-        {testimonials.length != 0 && <CommunitySection />}
 
         <FaqSection />
 
