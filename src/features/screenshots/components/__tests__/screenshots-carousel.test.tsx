@@ -31,9 +31,7 @@ describe("ScreenshotsCarousel", () => {
 
     await user.click(screen.getByRole("button", { name: "View screenshot 3" }));
 
-    expect(
-      screen.getByRole("dialog", { name: "FlutterGuide App Screenshot 3" }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("dialog", { name: "UIs catalog list" })).toBeInTheDocument();
   });
 
   it("closes the image viewer with Escape", async () => {

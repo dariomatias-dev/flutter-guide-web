@@ -155,18 +155,15 @@ Os documentos abaixo estão em inglês:
 ## Screenshots
 
 <div align="center">
-  <img src="public/screenshots/flutter_guide_screen_1.jpg" width="200" alt="Screenshot 1"/>
-  <img src="public/screenshots/flutter_guide_screen_2.jpg" width="200" alt="Screenshot 2"/>
-  <img src="public/screenshots/flutter_guide_screen_3.jpg" width="200" alt="Screenshot 3"/>
-  <img src="public/screenshots/flutter_guide_screen_4.jpg" width="200" alt="Screenshot 4"/>
-  <img src="public/screenshots/flutter_guide_screen_5.jpg" width="200" alt="Screenshot 5"/>
-  <img src="public/screenshots/flutter_guide_screen_6.jpg" width="200" alt="Screenshot 6"/>
-  <img src="public/screenshots/flutter_guide_screen_7.jpg" width="200" alt="Screenshot 7"/>
-  <img src="public/screenshots/flutter_guide_screen_8.jpg" width="200" alt="Screenshot 8"/>
-  <img src="public/screenshots/flutter_guide_screen_9.jpg" width="200" alt="Screenshot 9"/>
-  <img src="public/screenshots/flutter_guide_screen_10.jpg" width="200" alt="Screenshot 10"/>
-  <img src="public/screenshots/flutter_guide_screen_11.jpg" width="200" alt="Screenshot 11"/>
-  <img src="public/screenshots/flutter_guide_screen_12.jpg" width="200" alt="Screenshot 12"/>
+  <img src="public/screenshots/01_home.png" width="200" alt="Tela inicial"/>
+  <img src="public/screenshots/02_catalog_elements.png" width="200" alt="Catálogo de elementos"/>
+  <img src="public/screenshots/03_catalog_uis.png" width="200" alt="Catálogo de UIs"/>
+  <img src="public/screenshots/04_elements_tab.png" width="200" alt="Preview ao vivo de um elemento"/>
+  <img src="public/screenshots/05_component_detail.png" width="200" alt="Detalhe do componente: preview"/>
+  <img src="public/screenshots/06_component_code.png" width="200" alt="Detalhe do componente: código"/>
+  <img src="public/screenshots/07_packages_tab.png" width="200" alt="Catálogo de pacotes"/>
+  <img src="public/screenshots/08_settings.png" width="200" alt="Tela de configurações"/>
+  <img src="public/screenshots/09_code_theme_selector.png" width="200" alt="Seletor de tema de código"/>
 </div>
 
 ## Baixar o App
