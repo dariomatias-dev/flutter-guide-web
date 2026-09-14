@@ -37,4 +37,22 @@ describe("resolveAppDeepLink", () => {
   it("does not match a category name used as a prefix of another word", () => {
     expect(resolveAppDeepLink("/widgets-catalog/x")).toBeNull();
   });
+
+  it("preserves the query string", () => {
+    expect(resolveAppDeepLink("/widgets/gradient-card", "?ref=share")).toBe(
+      "flutterguide://open.app/widgets/gradient-card?ref=share",
+    );
+  });
+
+  it("preserves the hash", () => {
+    expect(resolveAppDeepLink("/widgets/gradient-card", "", "#code")).toBe(
+      "flutterguide://open.app/widgets/gradient-card#code",
+    );
+  });
+
+  it("preserves both the query string and the hash", () => {
+    expect(resolveAppDeepLink("/widgets/gradient-card", "?ref=share", "#code")).toBe(
+      "flutterguide://open.app/widgets/gradient-card?ref=share#code",
+    );
+  });
 });
