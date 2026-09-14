@@ -2,16 +2,39 @@
 
 import { Lightbulb, Share2, Users } from "lucide-react";
 import { motion } from "motion/react";
+import Link from "next/link";
 
+import { contributingUrl, githubUrl, issuesUrl } from "@/shared/lib/site";
 import { cardItemVariants } from "@/shared/motion/card-item-variants";
 import { cardsContainerVariants } from "@/shared/motion/cards-container-variants";
 import { headerVariants } from "@/shared/motion/header-variants";
 import { textItemVariants } from "@/shared/motion/text-item-variants";
 
+const links = [
+  {
+    href: githubUrl,
+    icon: Share2,
+    iconClassName: "bg-blue-600/20 text-blue-400",
+    label: "Widgets & Packages",
+  },
+  {
+    href: issuesUrl,
+    icon: Lightbulb,
+    iconClassName: "bg-cyan-600/20 text-cyan-400",
+    label: "UI Ideas",
+  },
+  {
+    href: contributingUrl,
+    icon: Users,
+    iconClassName: "bg-purple-600/20 text-purple-400",
+    label: "Knowledge Sharing",
+  },
+];
+
 export const ContributionSection = () => {
   return (
     <section id="contribution" className="w-full bg-[#101011] px-4 py-20 md:py-28">
-      <div className="mx-auto max-w-screen-xl text-center">
+      <div className="mx-auto max-w-7xl text-center">
         <motion.div
           variants={headerVariants}
           initial="hidden"
@@ -41,26 +64,23 @@ export const ContributionSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div variants={cardItemVariants} className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
-              <Share2 className="h-8 w-8" />
-            </div>
-            <p className="mt-3 text-lg font-medium text-white">Widgets & Packages</p>
-          </motion.div>
-
-          <motion.div variants={cardItemVariants} className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
-              <Lightbulb className="h-8 w-8" />
-            </div>
-            <p className="mt-3 text-lg font-medium text-white">UI Ideas</p>
-          </motion.div>
-
-          <motion.div variants={cardItemVariants} className="flex flex-col items-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 text-purple-400">
-              <Users className="h-8 w-8" />
-            </div>
-            <p className="mt-3 text-lg font-medium text-white">Knowledge Sharing</p>
-          </motion.div>
+          {links.map(({ href, icon: Icon, iconClassName, label }) => (
+            <motion.div key={label} variants={cardItemVariants}>
+              <Link
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center"
+              >
+                <div
+                  className={`flex h-16 w-16 items-center justify-center rounded-full transition-transform group-hover:scale-105 ${iconClassName}`}
+                >
+                  <Icon className="h-8 w-8" />
+                </div>
+                <p className="mt-3 text-lg font-medium text-white group-hover:underline">{label}</p>
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
