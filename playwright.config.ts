@@ -15,11 +15,13 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium-desktop", use: { ...devices["Desktop Chrome"] } },
-    // Runs only smoke.spec.ts, app-integration.spec.ts and a11y.spec.ts.
+    // Runs only smoke.spec.ts, app-integration.spec.ts, a11y.spec.ts and
+    // navigation.spec.ts (real mobile UA/touch/viewport, for the mobile
+    // menu, carousel, and FAQ interactions).
     {
       name: "mobile-chrome",
       use: { ...devices["Pixel 7"] },
-      testMatch: /(smoke|app-integration|a11y)\.spec\.ts/,
+      testMatch: /(smoke|app-integration|a11y|navigation)\.spec\.ts/,
     },
   ],
   webServer: {

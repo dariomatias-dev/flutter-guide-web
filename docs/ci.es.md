@@ -75,7 +75,7 @@ servidor de artefactos local de `act` (`nektos/act#6022`).
 2. Un fallo en CI sube `playwright-report/` y `test-results/` como
    artefacto; descárgalo y abre `playwright-report/index.html` para ver
    traces, capturas de pantalla y videos de cada prueba fallida.
-3. `mobile-chrome` solo corre las specs `smoke` y `app-integration` (ver
-   `testMatch` en `playwright.config.ts`) — un fallo específico de ese
-   proyecto casi siempre es un problema de viewport móvil o de
-   interacción táctil, no un problema compartido.
+3. `mobile-chrome` solo corre las specs `smoke`, `app-integration`,
+   `a11y` y `navigation` (ver `testMatch` en `playwright.config.ts`) —
+   un fallo específico de ese proyecto casi siempre es un problema de
+   viewport móvil o de interacción táctil, no un problema compartido.
