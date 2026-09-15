@@ -14,6 +14,14 @@ describe("Header", () => {
     );
   });
 
+  it("links to the page's own sections", () => {
+    render(<Header />);
+
+    expect(screen.getByRole("link", { name: "Screenshots" })).toHaveAttribute("href", "/#showcase");
+    expect(screen.getByRole("link", { name: "Features" })).toHaveAttribute("href", "/#features");
+    expect(screen.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "/#faq");
+  });
+
   it("links to GitHub and the Play Store", () => {
     render(<Header />);
 

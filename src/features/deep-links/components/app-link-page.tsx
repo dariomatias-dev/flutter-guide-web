@@ -18,7 +18,11 @@ export const AppLinkPage = () => {
   }, []);
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-4 py-28 text-center">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      className="flex flex-1 flex-col items-center justify-center px-4 py-28 text-center"
+    >
       <h1 className="text-3xl font-bold text-white md:text-4xl">Opening in FlutterGuide…</h1>
 
       <p className="mx-auto mt-4 max-w-md text-lg text-zinc-400">

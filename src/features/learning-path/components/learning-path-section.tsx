@@ -21,7 +21,7 @@ const cardsContainerVariants = {
 export const LearningPathSection = () => {
   return (
     <section id="learning-path" className="w-full px-4 py-20 sm:px-8 md:py-28">
-      <div className="mx-auto max-w-screen-xl">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           className="text-center"
           variants={headerVariants}
