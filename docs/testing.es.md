@@ -25,8 +25,8 @@ cobertura en `vitest.config.mts`:
 - **Secciones estáticas sin ramas**: `learning-path-section.tsx`,
   `theme-customization-section.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
-  `about-me-section.tsx`, `community-section.tsx` (el wrapper),
-  `screenshots-section.tsx` (el wrapper) y `privacy-policy-content.tsx`.
+  `about-me-section.tsx`, `screenshots-section.tsx` (el wrapper) y
+  `privacy-policy-content.tsx`.
   Markup fijo sin props ni renderizado condicional — no hay lógica que
   pueda fallar.
 - **Datos puros y objetos de variantes**: `shared/motion/**` y los
@@ -44,9 +44,6 @@ cobertura en `vitest.config.mts`:
 Estas siguen contando contra el piso de cobertura, a propósito, para que
 arreglarlas suba el número en vez de olvidarse en silencio:
 
-- **`community-marquee.tsx`**: lógica real de arreglo duplicado, pero
-  `testimonials.ts` está vacío por ahora, así que no se renderiza nada.
-  Agregar pruebas cuando entre un testimonio real.
 - **`hero-section.tsx`**: todavía sin prueba unitaria dedicada; su
   animación de entrada y los fondos de blob están cubiertos
   indirectamente por `e2e/no-js.spec.ts` y `e2e/reduced-motion.spec.ts`.

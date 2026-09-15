@@ -14,7 +14,6 @@ src/
 │
 ├── features/               um diretório por feature
 │   ├── about/
-│   ├── community/
 │   ├── contribution/
 │   ├── faq/
 │   ├── features-showcase/
