@@ -35,7 +35,7 @@ export const FeaturesSection = () => {
         </motion.div>
 
         <motion.div
-          className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3"
+          className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2"
           variants={cardsContainerVariants}
           initial="hidden"
           whileInView="visible"

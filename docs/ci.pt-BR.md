@@ -74,7 +74,7 @@ artefato local do `act` (`nektos/act#6022`).
 2. Uma falha no CI envia `playwright-report/` e `test-results/` como
    artefato; baixe e abra `playwright-report/index.html` pra ver traces,
    screenshots e vídeos de cada teste que falhou.
-3. O `mobile-chrome` só roda as specs `smoke` e `app-integration` (veja
-   `testMatch` em `playwright.config.ts`) — uma falha específica desse
-   projeto quase sempre é um problema de viewport mobile ou de interação
-   por toque, não um problema compartilhado.
+3. O `mobile-chrome` só roda as specs `smoke`, `app-integration`, `a11y`
+   e `navigation` (veja `testMatch` em `playwright.config.ts`) — uma
+   falha específica desse projeto quase sempre é um problema de viewport
+   mobile ou de interação por toque, não um problema compartilhado.
