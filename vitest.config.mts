@@ -26,6 +26,7 @@ export default defineConfig({
         "src/shared/motion/**",
         "src/features/features-showcase/data/features.ts",
         "src/features/about/data/links.ts",
+        "src/shared/lib/catalog-stats.ts",
         // shadcn/Radix primitives: styling only, no logic of our own.
         "src/shared/components/ui/**",
         // Static sections: hardcoded markup, no props, no branches.
@@ -46,18 +47,19 @@ export default defineConfig({
         // Trivial passthrough wrapper, no logic of our own.
         "src/shared/components/motion-provider.tsx",
       ],
-      // Floor, not a target: measured minus a small margin. Known gaps —
-      // hero-section.tsx (no dedicated test, covered indirectly by
-      // e2e/no-js.spec.ts and e2e/reduced-motion.spec.ts), and a few
-      // branches in image-viewer.tsx/screenshots-carousel.tsx — are a
-      // backlog, not a reason to lower this further. Raise it whenever a
-      // change measurably improves the aggregate; lowering it needs a
-      // reason in the commit message.
+      // Floor, not a target: measured minus a small margin (actual was
+      // 83.05/75/72.22/85.58 on 2026-09-14). Known gaps — hero-section.tsx
+      // (no dedicated test, covered indirectly by e2e/no-js.spec.ts and
+      // e2e/reduced-motion.spec.ts), and a few branches in
+      // image-viewer.tsx/screenshots-carousel.tsx — are a backlog, not a
+      // reason to lower this further. Raise it whenever a change
+      // measurably improves the aggregate; lowering it needs a reason in
+      // the commit message.
       thresholds: {
-        statements: 75,
-        branches: 69,
-        functions: 64,
-        lines: 78,
+        statements: 81,
+        branches: 73,
+        functions: 70,
+        lines: 84,
       },
     },
   },
