@@ -20,14 +20,19 @@ What's deliberately **not** chased, and excluded from coverage in
 `vitest.config.mts`:
 
 - **Static sections with no branches**: `learning-path-section.tsx`,
-  `theme-customization-section.tsx`, `contribution-section.tsx`,
+  `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
   `about-me-section.tsx`, `screenshots-section.tsx` (the wrapper) and
   `privacy-policy-content.tsx`. Hardcoded markup with no props and no
   conditional rendering — there's no logic to get wrong.
-- **Plain data and variant objects**: `shared/motion/**` and the static
-  arrays in `features/*/data/*.ts` (except `faqs.ts`, which is exercised
-  indirectly through `faq-section.test.tsx`). Nothing to branch on.
+- **`theme-customization-section.tsx`**: an async Server Component that
+  calls Shiki at build time. No jsdom equivalent to render it against; the
+  Shiki call itself is covered by `highlight-code.test.ts` and the output is
+  covered by `theme-code-card.test.tsx`.
+- **Plain data and variant objects**: `shared/motion/**`, the static arrays
+  in `features/*/data/*.ts` (except `faqs.ts`, which is exercised
+  indirectly through `faq-section.test.tsx`), and
+  `theme-customization/lib/code-snippet.ts`. Nothing to branch on.
 - **shadcn/Radix primitives** (`shared/components/ui/**`): styling only, no
   logic of our own.
 - **`app/page.tsx` and `app/privacy-policy/page.tsx`**: pure composition of
