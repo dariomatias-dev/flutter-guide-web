@@ -20,13 +20,7 @@ export const ScreenshotsSection = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8"
-        >
+        <motion.div {...elementAnimation} className="mt-8">
           <ScreenshotsCarousel />
         </motion.div>
       </div>

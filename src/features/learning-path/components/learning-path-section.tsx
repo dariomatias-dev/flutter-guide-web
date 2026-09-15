@@ -4,19 +4,9 @@ import { Code, Eye, Rocket } from "lucide-react";
 import { motion } from "motion/react";
 
 import { cardItemVariants } from "@/shared/motion/card-item-variants";
+import { cardsContainerVariants } from "@/shared/motion/cards-container-variants";
 import { headerVariants } from "@/shared/motion/header-variants";
 import { textItemVariants } from "@/shared/motion/text-item-variants";
-
-const cardsContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.15,
-    },
-  },
-};
 
 export const LearningPathSection = () => {
   return (
