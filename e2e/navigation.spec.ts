@@ -9,7 +9,9 @@ test.describe("header and footer links", () => {
     await page.goto("/");
   });
 
-  test("header links to privacy policy, GitHub and the Play Store", async ({ page }) => {
+  test("header links to privacy policy, GitHub and the Play Store", async ({ page, isMobile }) => {
+    test.skip(isMobile, "desktop nav only; mobile uses the hamburger menu");
+
     await expect(page.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
       "href",
       "/privacy-policy",
@@ -33,7 +35,9 @@ test.describe("header and footer links", () => {
     );
   });
 
-  test("header links to the page's own sections", async ({ page }) => {
+  test("header links to the page's own sections", async ({ page, isMobile }) => {
+    test.skip(isMobile, "desktop nav only; mobile uses the hamburger menu");
+
     await expect(page.getByRole("link", { name: "Screenshots" })).toHaveAttribute(
       "href",
       "/#showcase",
@@ -71,6 +75,28 @@ test.describe("mobile menu", () => {
 
     await page.getByRole("button", { name: "Close menu" }).click();
     await expect(page.getByRole("button", { name: "Close menu" })).not.toBeVisible();
+  });
+
+  test("links to the page's own sections and privacy policy", async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 800 });
+    await page.goto("/");
+
+    await page.getByRole("button", { name: "Open menu" }).click();
+
+    const dialog = page.getByRole("dialog");
+    await expect(dialog.getByRole("link", { name: "Screenshots" })).toHaveAttribute(
+      "href",
+      "/#showcase",
+    );
+    await expect(dialog.getByRole("link", { name: "Features" })).toHaveAttribute(
+      "href",
+      "/#features",
+    );
+    await expect(dialog.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "/#faq");
+    await expect(dialog.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
+      "href",
+      "/privacy-policy",
+    );
   });
 
   test("opens as an accessible dialog, traps focus, and returns it on Escape", async ({ page }) => {
