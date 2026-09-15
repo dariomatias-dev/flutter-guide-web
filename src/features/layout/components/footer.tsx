@@ -3,13 +3,15 @@
 import { motion } from "motion/react";
 import Link from "next/link";
 
+import { DURATION_BASE } from "@/shared/motion/durations";
+
 export const Footer = () => {
   return (
     <motion.footer
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.5 }}
-      transition={{ delay: 0.5, duration: 0.6 }}
+      transition={{ duration: DURATION_BASE }}
       className="border-brand-surface-raised/50 bg-brand-surface w-full border-t px-4"
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 py-8 text-center text-sm text-zinc-400 md:flex-row md:text-left">
