@@ -38,7 +38,7 @@ export default function Home() {
         <div className="absolute -right-80 bottom-0 h-160 w-160 rounded-full bg-[radial-gradient(circle_at_center,rgba(179,185,196,0.15),transparent_40%)]" />
       </div>
 
-      <main className="min-h-screen flex-1">
+      <main id="main-content" tabIndex={-1} className="min-h-screen flex-1">
         <HeroSection />
 
         <ScreenshotsSection />

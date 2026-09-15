@@ -12,7 +12,7 @@ export const Footer = () => {
       transition={{ delay: 0.5, duration: 0.6 }}
       className="border-brand-surface-raised/50 bg-brand-surface w-full border-t px-4"
     >
-      <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-4 py-8 text-center text-sm text-zinc-400 md:flex-row md:text-left">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 py-8 text-center text-sm text-zinc-400 md:flex-row md:text-left">
         <span>© {new Date().getFullYear()} FlutterGuide. All rights reserved.</span>
 
         <div>

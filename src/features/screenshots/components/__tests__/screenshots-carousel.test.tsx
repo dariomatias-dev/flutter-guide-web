@@ -11,7 +11,9 @@ describe("ScreenshotsCarousel", () => {
     render(<ScreenshotsCarousel />);
 
     expect(screen.getByRole("button", { name: "Previous screenshot" })).toBeDisabled();
-    expect(screen.getByRole("button", { name: "Go to slide 1" })).toHaveClass("bg-brand-accent");
+    expect(screen.getByRole("button", { name: "Go to slide 1" }).firstChild).toHaveClass(
+      "bg-brand-accent",
+    );
   });
 
   it("opens and closes the image viewer", async () => {
