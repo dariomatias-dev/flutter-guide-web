@@ -175,7 +175,11 @@ const NotFoundPage = () => {
         />
       </div>
 
-      <main className="z-10 flex flex-1 flex-col items-center justify-center px-4 text-center">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="z-10 flex flex-1 flex-col items-center justify-center px-4 text-center"
+      >
         <motion.div
           variants={containerVariants}
           initial="hidden"

@@ -32,6 +32,31 @@ test.describe("header and footer links", () => {
       portfolioUrl,
     );
   });
+
+  test("header links to the page's own sections", async ({ page }) => {
+    await expect(page.getByRole("link", { name: "Screenshots" })).toHaveAttribute(
+      "href",
+      "/#showcase",
+    );
+    await expect(page.getByRole("link", { name: "Features" })).toHaveAttribute(
+      "href",
+      "/#features",
+    );
+    await expect(page.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "/#faq");
+  });
+});
+
+test.describe("skip link", () => {
+  test("is the first focusable element and moves focus to the main content", async ({ page }) => {
+    await page.goto("/");
+
+    await page.keyboard.press("Tab");
+    const skipLink = page.getByRole("link", { name: "Skip to content" });
+    await expect(skipLink).toBeFocused();
+
+    await skipLink.click();
+    await expect(page.locator("#main-content")).toBeFocused();
+  });
 });
 
 test.describe("mobile menu", () => {
@@ -83,10 +108,19 @@ test.describe("screenshots carousel", () => {
     await expect(prevButton).toBeDisabled();
 
     await nextButton.click();
-    await expect(secondSlideDot).toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
+    await expect(secondSlideDot.locator("span")).toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
 
     await prevButton.click();
-    await expect(secondSlideDot).not.toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
+    await expect(secondSlideDot.locator("span")).not.toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
+  });
+
+  test("dot buttons meet the 24px minimum touch target size", async ({ page }) => {
+    await page.goto("/");
+
+    const box = await page.getByRole("button", { name: "Go to slide 1" }).boundingBox();
+
+    expect(box?.width).toBeGreaterThanOrEqual(24);
+    expect(box?.height).toBeGreaterThanOrEqual(24);
   });
 
   test("opens and closes the image viewer, with click and with Escape", async ({ page }) => {
