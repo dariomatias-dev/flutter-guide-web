@@ -9,9 +9,9 @@ export const ThemeCustomizationSection = async () => {
   ]);
 
   return (
-    <section id="themes" className="relative w-full py-20 sm:py-28">
+    <section id="themes" className="relative w-full py-20 md:py-28">
       <div className="absolute inset-0 -z-10 flex items-center justify-center">
-        <div className="h-160 w-full max-w-5xl rounded-full bg-[radial-gradient(ellipse_at_center,rgba(29,78,216,0.15)_0%,transparent_50%)]" />
+        <div className="h-160 w-full max-w-5xl rounded-full bg-[radial-gradient(ellipse_at_center,rgba(179,185,196,0.15)_0%,transparent_50%)]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-4">

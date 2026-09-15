@@ -13,9 +13,9 @@ export default function Image() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#09090b",
+        backgroundColor: "#101214",
         backgroundImage:
-          "radial-gradient(circle at 50% 30%, rgba(37, 99, 235, 0.25), transparent 60%)",
+          "radial-gradient(circle at 50% 30%, rgba(179, 185, 196, 0.25), transparent 60%)",
       }}
     >
       <div
