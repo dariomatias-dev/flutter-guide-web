@@ -20,7 +20,7 @@ export function LinkButton({
   return (
     <Button
       asChild
-      className={`w-full rounded-full bg-linear-to-br from-blue-600 to-cyan-500 bg-size-[200%_auto] px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:bg-right hover:brightness-110 sm:w-auto ${className}`}
+      className={`from-brand-accent to-brand-accent-soft text-brand-surface shadow-brand-accent/20 duration-base w-full rounded-full bg-linear-to-br bg-size-[200%_auto] px-8 py-3 text-base font-semibold shadow-lg transition-all hover:bg-right hover:brightness-110 sm:w-auto ${className}`}
     >
       <Link href={href} target={target} rel={rel}>
         {children}

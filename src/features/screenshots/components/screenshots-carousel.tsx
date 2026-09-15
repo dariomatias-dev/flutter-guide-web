@@ -131,7 +131,7 @@ export const ScreenshotsCarousel = () => {
         <button
           onClick={scrollPrev}
           disabled={!canScrollPrev}
-          className="flex rounded-full border border-zinc-700 bg-zinc-800 p-2 text-zinc-300 shadow-lg transition-colors duration-200 hover:bg-zinc-700 hover:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+          className="border-brand-surface-raised bg-brand-surface-raised duration-fast hover:bg-brand-accent/10 focus-visible:ring-brand-accent flex rounded-full border p-2 text-zinc-300 shadow-lg transition-colors hover:text-white focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Previous screenshot"
         >
           <ChevronLeft className="h-6 w-6" />
@@ -142,8 +142,10 @@ export const ScreenshotsCarousel = () => {
             <div key={index} className="flex h-2 w-4 items-center justify-center">
               <button
                 onClick={() => onDotButtonClick(index)}
-                className={`h-2 cursor-pointer rounded-full transition-all duration-200 ${
-                  index === selectedIndex ? "w-4 bg-blue-500" : "w-2 bg-zinc-600 hover:bg-zinc-500"
+                className={`duration-fast h-2 cursor-pointer rounded-full transition-all ${
+                  index === selectedIndex
+                    ? "bg-brand-accent w-4"
+                    : "bg-brand-surface-raised hover:bg-brand-accent/40 w-2"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -154,7 +156,7 @@ export const ScreenshotsCarousel = () => {
         <button
           onClick={scrollNext}
           disabled={!canScrollNext}
-          className="flex cursor-pointer rounded-full border border-zinc-700 bg-zinc-800 p-2 text-zinc-300 shadow-lg transition-colors duration-200 hover:bg-zinc-700 hover:text-white focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
+          className="border-brand-surface-raised bg-brand-surface-raised duration-fast hover:bg-brand-accent/10 focus-visible:ring-brand-accent flex cursor-pointer rounded-full border p-2 text-zinc-300 shadow-lg transition-colors hover:text-white focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
           aria-label="Next screenshot"
         >
           <ChevronRight className="h-6 w-6" />

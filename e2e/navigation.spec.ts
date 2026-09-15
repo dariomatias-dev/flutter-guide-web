@@ -83,10 +83,10 @@ test.describe("screenshots carousel", () => {
     await expect(prevButton).toBeDisabled();
 
     await nextButton.click();
-    await expect(secondSlideDot).toHaveClass(/bg-blue-500/);
+    await expect(secondSlideDot).toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
 
     await prevButton.click();
-    await expect(secondSlideDot).not.toHaveClass(/bg-blue-500/);
+    await expect(secondSlideDot).not.toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
   });
 
   test("opens and closes the image viewer, with click and with Escape", async ({ page }) => {

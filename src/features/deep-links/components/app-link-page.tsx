@@ -30,7 +30,7 @@ export const AppLinkPage = () => {
         {deepLink && (
           <a
             href={deepLink}
-            className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-blue-500/20 transition-colors hover:bg-blue-500"
+            className="bg-brand-accent text-brand-surface shadow-brand-accent/20 hover:bg-brand-accent-soft inline-flex items-center gap-2 rounded-full px-8 py-3 text-base font-semibold shadow-lg transition-colors"
           >
             Open in App
             <ExternalLink className="h-4 w-4" />

@@ -14,26 +14,23 @@ const links = [
   {
     href: githubUrl,
     icon: Share2,
-    iconClassName: "bg-blue-600/20 text-blue-400",
     label: "Widgets & Packages",
   },
   {
     href: issuesUrl,
     icon: Lightbulb,
-    iconClassName: "bg-cyan-600/20 text-cyan-400",
     label: "UI Ideas",
   },
   {
     href: contributingUrl,
     icon: Users,
-    iconClassName: "bg-purple-600/20 text-purple-400",
     label: "Knowledge Sharing",
   },
 ];
 
 export const ContributionSection = () => {
   return (
-    <section id="contribution" className="w-full bg-[#101011] px-4 py-20 md:py-28">
+    <section id="contribution" className="bg-brand-surface w-full px-4 py-20 md:py-28">
       <div className="mx-auto max-w-7xl text-center">
         <motion.div
           variants={headerVariants}
@@ -64,7 +61,7 @@ export const ContributionSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {links.map(({ href, icon: Icon, iconClassName, label }) => (
+          {links.map(({ href, icon: Icon, label }) => (
             <motion.div key={label} variants={cardItemVariants}>
               <Link
                 href={href}
@@ -72,9 +69,7 @@ export const ContributionSection = () => {
                 rel="noopener noreferrer"
                 className="group flex flex-col items-center"
               >
-                <div
-                  className={`flex h-16 w-16 items-center justify-center rounded-full transition-transform group-hover:scale-105 ${iconClassName}`}
-                >
+                <div className="bg-brand-accent/20 text-brand-accent flex h-16 w-16 items-center justify-center rounded-full transition-transform group-hover:scale-105">
                   <Icon className="h-8 w-8" />
                 </div>
                 <p className="mt-3 text-lg font-medium text-white group-hover:underline">{label}</p>

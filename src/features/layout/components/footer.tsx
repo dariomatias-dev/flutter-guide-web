@@ -10,7 +10,7 @@ export const Footer = () => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ delay: 0.5, duration: 0.6 }}
-      className="w-full border-t border-zinc-800/50 bg-zinc-950 px-4"
+      className="border-brand-surface-raised/50 bg-brand-surface w-full border-t px-4"
     >
       <div className="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-4 py-8 text-center text-sm text-zinc-400 md:flex-row md:text-left">
         <span>© {new Date().getFullYear()} FlutterGuide. All rights reserved.</span>
@@ -21,7 +21,7 @@ export const Footer = () => {
             href="https://dariomatias-dev.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-white transition hover:text-blue-400"
+            className="hover:text-brand-accent font-medium text-white transition"
           >
             Dário Matias
           </Link>
