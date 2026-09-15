@@ -71,7 +71,7 @@ server (`nektos/act#6022`).
 2. A failure in CI uploads `playwright-report/` and `test-results/` as an
    artifact; download it and open `playwright-report/index.html` for
    traces, screenshots, and videos per failing test.
-3. `mobile-chrome` only runs `smoke` and `app-integration` specs (see
-   `testMatch` in `playwright.config.ts`) — a failure specific to that
-   project is almost always a mobile-viewport or touch-interaction issue,
-   not a shared one.
+3. `mobile-chrome` only runs `smoke`, `app-integration`, `a11y`, and
+   `navigation` specs (see `testMatch` in `playwright.config.ts`) — a
+   failure specific to that project is almost always a mobile-viewport or
+   touch-interaction issue, not a shared one.
