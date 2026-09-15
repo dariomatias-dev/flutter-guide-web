@@ -16,15 +16,10 @@ const accordionContainerVariants = {
   hidden: {},
   visible: {
     transition: {
-      delayChildren: 0.3,
+      delayChildren: 0.1,
       staggerChildren: 0.1,
     },
   },
-};
-
-const accordionItemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const MotionAccordionItem = motion.create(AccordionItem);
@@ -63,11 +58,7 @@ export const FaqSection = () => {
         >
           <Accordion type="single" collapsible className="mt-12 w-full">
             {faqs.map((faq, index) => (
-              <MotionAccordionItem
-                key={index}
-                value={`item-${index}`}
-                variants={accordionItemVariants}
-              >
+              <MotionAccordionItem key={index} value={`item-${index}`} variants={textItemVariants}>
                 <AccordionTrigger className="cursor-pointer text-left text-lg hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
