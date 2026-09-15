@@ -22,15 +22,20 @@ O que deliberadamente **não** é perseguido, e fica excluído da cobertura
 em `vitest.config.mts`:
 
 - **Seções estáticas sem branch**: `learning-path-section.tsx`,
-  `theme-customization-section.tsx`, `contribution-section.tsx`,
+  `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
   `about-me-section.tsx`, `screenshots-section.tsx` (o wrapper) e
   `privacy-policy-content.tsx`.
   Markup fixo sem props e sem renderização condicional — não há lógica
   pra dar errado.
-- **Dado puro e objetos de variante**: `shared/motion/**` e os arrays
+- **`theme-customization-section.tsx`**: um Server Component assíncrono
+  que chama o Shiki em tempo de build. Sem equivalente em jsdom pra
+  renderizá-lo; a chamada ao Shiki é coberta por `highlight-code.test.ts`
+  e a saída é coberta por `theme-code-card.test.tsx`.
+- **Dado puro e objetos de variante**: `shared/motion/**`, os arrays
   estáticos em `features/*/data/*.ts` (exceto `faqs.ts`, exercitado
-  indiretamente via `faq-section.test.tsx`). Nada pra ramificar.
+  indiretamente via `faq-section.test.tsx`), e
+  `theme-customization/lib/code-snippet.ts`. Nada pra ramificar.
 - **Primitivas shadcn/Radix** (`shared/components/ui/**`): só
   estilização, sem lógica nossa.
 - **`app/page.tsx` e `app/privacy-policy/page.tsx`**: composição pura de
