@@ -34,8 +34,8 @@ export default function Home() {
       />
 
       <div className="absolute top-0 left-0 -z-10 h-full w-full">
-        <div className="absolute top-0 -left-80 h-160 w-160 rounded-full bg-[radial-gradient(circle_at_center,rgba(29,78,216,0.15),transparent_40%)]" />
-        <div className="absolute -right-80 bottom-0 h-160 w-160 rounded-full bg-[radial-gradient(circle_at_center,rgba(29,78,216,0.15),transparent_40%)]" />
+        <div className="absolute top-0 -left-80 h-160 w-160 rounded-full bg-[radial-gradient(circle_at_center,rgba(179,185,196,0.15),transparent_40%)]" />
+        <div className="absolute -right-80 bottom-0 h-160 w-160 rounded-full bg-[radial-gradient(circle_at_center,rgba(179,185,196,0.15),transparent_40%)]" />
       </div>
 
       <main className="min-h-screen flex-1">
