@@ -41,6 +41,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <a
+          href="#main-content"
+          className="bg-brand-accent text-brand-surface focus-visible:ring-brand-accent sr-only rounded-full px-4 py-2 font-medium focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus-visible:ring-2 focus-visible:outline-none"
+        >
+          Skip to content
+        </a>
+
         <MotionProvider>
           <div className="bg-brand-surface relative flex min-h-screen w-full flex-col overflow-x-hidden text-white">
             <Header />

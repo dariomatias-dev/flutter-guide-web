@@ -137,19 +137,23 @@ export const ScreenshotsCarousel = () => {
           <ChevronLeft className="h-6 w-6" />
         </button>
 
-        <div className="flex w-59 gap-1">
+        <div className="flex items-center">
           {screenshots.map((_, index) => (
-            <div key={index} className="flex h-2 w-4 items-center justify-center">
-              <button
-                onClick={() => onDotButtonClick(index)}
-                className={`duration-fast h-2 cursor-pointer rounded-full transition-all ${
+            <button
+              key={index}
+              onClick={() => onDotButtonClick(index)}
+              className="group flex h-6 w-6 cursor-pointer items-center justify-center"
+              aria-label={`Go to slide ${index + 1}`}
+            >
+              <span
+                aria-hidden="true"
+                className={`duration-fast h-2 rounded-full transition-all ${
                   index === selectedIndex
                     ? "bg-brand-accent w-4"
-                    : "bg-brand-surface-raised hover:bg-brand-accent/40 w-2"
+                    : "bg-brand-surface-raised group-hover:bg-brand-accent/40 w-2"
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
               />
-            </div>
+            </button>
           ))}
         </div>
 
