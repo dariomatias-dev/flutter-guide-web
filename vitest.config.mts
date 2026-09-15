@@ -31,6 +31,7 @@ export default defineConfig({
         // shadcn/Radix primitives: styling only, no logic of our own.
         "src/shared/components/ui/**",
         // Static sections: hardcoded markup, no props, no branches.
+        "src/features/catalog/components/catalog-section.tsx",
         "src/features/learning-path/components/learning-path-section.tsx",
         "src/features/theme-customization/components/theme-customization-section.tsx",
         "src/features/theme-customization/components/theme-customization-content.tsx",

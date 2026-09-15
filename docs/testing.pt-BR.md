@@ -21,7 +21,8 @@ Cobertura é um piso, não uma meta. Veja os pisos e o porquê deles em
 O que deliberadamente **não** é perseguido, e fica excluído da cobertura
 em `vitest.config.mts`:
 
-- **Seções estáticas sem branch**: `learning-path-section.tsx`,
+- **Seções estáticas sem branch**: `catalog-section.tsx`,
+  `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
   `about-me-section.tsx`, `screenshots-section.tsx` (o wrapper) e
