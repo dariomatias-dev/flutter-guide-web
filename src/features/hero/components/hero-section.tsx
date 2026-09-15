@@ -6,15 +6,13 @@ import { motion } from "motion/react";
 import { GithubButton } from "@/shared/components/github-button";
 import { PlayStoreButton } from "@/shared/components/play-store-button";
 import { catalogStats, catalogTotal } from "@/shared/lib/catalog-stats";
+import { DURATION_BASE } from "@/shared/motion/durations";
 
 import type { Variants } from "motion/react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: (i = 1) => ({
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: i * 0.1 },
-  }),
+  visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 const itemVariants: Variants = {
@@ -25,7 +23,7 @@ const itemVariants: Variants = {
     transition: {
       type: "tween",
       ease: "easeOut",
-      duration: 0.5,
+      duration: DURATION_BASE,
     },
   },
 };
@@ -105,23 +103,9 @@ export const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ChevronDown className="h-6 w-6 text-zinc-600" />
-        </motion.div>
-      </motion.div>
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2">
+        <ChevronDown className="h-6 w-6 text-zinc-600" />
+      </div>
     </section>
   );
 };
