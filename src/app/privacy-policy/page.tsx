@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-240 w-240 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(29,78,216,0.1),transparent_40%)]" />
+      <div className="pointer-events-none absolute top-0 left-1/2 -z-10 h-240 w-240 -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(179,185,196,0.1),transparent_40%)]" />
 
       <main className="container mx-auto max-w-4xl grow px-4 pt-28 pb-16">
         <Breadcrumb>
