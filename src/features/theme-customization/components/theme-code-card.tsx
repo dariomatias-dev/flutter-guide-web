@@ -18,17 +18,17 @@ export const ThemeCodeCard = ({ html, label, variant }: ThemeCodeCardProps) => {
       variants={cardItemVariants}
       className={`relative h-120 w-92 rounded-xl p-px shadow-2xl ${
         isLight
-          ? "bg-linear-to-br from-zinc-200 to-zinc-50 shadow-blue-500/10"
-          : "bg-linear-to-br from-zinc-800 to-zinc-950 shadow-purple-500/20"
+          ? "shadow-brand-accent/10 bg-linear-to-br from-zinc-200 to-zinc-50"
+          : "shadow-brand-accent/20 bg-linear-to-br from-zinc-800 to-zinc-950"
       }`}
     >
       <div
-        className={`flex h-full w-full flex-col overflow-hidden rounded-[0.7rem] ${
+        className={`flex h-full w-full flex-col overflow-hidden rounded-xl ${
           isLight ? "bg-white text-[#24292e]" : "bg-[#282a36] text-[#f8f8f2]"
         }`}
       >
         <div
-          className={`flex w-full items-center gap-2 rounded-t-[0.7rem] border-b px-3 py-2 ${
+          className={`flex w-full items-center gap-2 rounded-t-xl border-b px-3 py-2 ${
             isLight ? "border-[#e1e4e8] bg-[#f6f8fa]" : "border-[#3b3e4f] bg-[#21222c]"
           }`}
         >

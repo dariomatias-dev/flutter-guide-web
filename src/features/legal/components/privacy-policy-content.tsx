@@ -22,7 +22,7 @@ export const PrivacyPolicyContent = () => (
         href="https://support.google.com/admob/answer/6128543"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-cyan-400 underline transition-colors hover:text-cyan-300"
+        className="text-brand-accent hover:text-brand-accent-soft underline transition-colors"
       >
         Google AdMob
       </Link>
@@ -32,7 +32,7 @@ export const PrivacyPolicyContent = () => (
         href="https://policies.google.com/privacy"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-cyan-400 underline transition-colors hover:text-cyan-300"
+        className="text-brand-accent hover:text-brand-accent-soft underline transition-colors"
       >
         Google&apos;s Privacy Policy
       </Link>{" "}
@@ -41,7 +41,7 @@ export const PrivacyPolicyContent = () => (
         href="https://support.google.com/admob/answer/6128543"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-cyan-400 underline transition-colors hover:text-cyan-300"
+        className="text-brand-accent hover:text-brand-accent-soft underline transition-colors"
       >
         how Google uses data from AdMob
       </Link>{" "}
@@ -75,7 +75,7 @@ export const PrivacyPolicyContent = () => (
       For any question about this policy, contact the Service Provider at{" "}
       <a
         href="mailto:matiasdario75@gmail.com"
-        className="text-cyan-400 underline transition-colors hover:text-cyan-300"
+        className="text-brand-accent hover:text-brand-accent-soft underline transition-colors"
       >
         matiasdario75@gmail.com
       </a>

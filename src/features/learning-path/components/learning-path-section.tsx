@@ -54,9 +54,9 @@ export const LearningPathSection = () => {
         >
           <motion.div
             variants={cardItemVariants}
-            className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+            className="border-brand-surface-raised bg-brand-surface-elevated/50 flex flex-col items-center rounded-xl border p-6 text-center shadow-lg"
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
+            <div className="bg-brand-accent/20 text-brand-accent flex h-16 w-16 items-center justify-center rounded-full">
               <Eye className="h-8 w-8" />
             </div>
             <h3 className="mt-6 text-2xl font-semibold tracking-tight">Visual Preview</h3>
@@ -67,9 +67,9 @@ export const LearningPathSection = () => {
 
           <motion.div
             variants={cardItemVariants}
-            className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+            className="border-brand-surface-raised bg-brand-surface-elevated/50 flex flex-col items-center rounded-xl border p-6 text-center shadow-lg"
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
+            <div className="bg-brand-accent/20 text-brand-accent flex h-16 w-16 items-center justify-center rounded-full">
               <Code className="h-8 w-8" />
             </div>
             <h3 className="mt-6 text-2xl font-semibold tracking-tight">Instant Source Code</h3>
@@ -81,9 +81,9 @@ export const LearningPathSection = () => {
 
           <motion.div
             variants={cardItemVariants}
-            className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+            className="border-brand-surface-raised bg-brand-surface-elevated/50 flex flex-col items-center rounded-xl border p-6 text-center shadow-lg"
           >
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-purple-600/20 text-purple-400">
+            <div className="bg-brand-accent/20 text-brand-accent flex h-16 w-16 items-center justify-center rounded-full">
               <Rocket className="h-8 w-8" />
             </div>
             <h3 className="mt-6 text-2xl font-semibold tracking-tight">Practical Implementation</h3>

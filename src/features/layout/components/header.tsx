@@ -38,7 +38,7 @@ export const Header = () => {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 z-50 w-full border-b border-zinc-800/50 bg-zinc-950/50 backdrop-blur-lg"
+        className="border-brand-surface-raised/50 bg-brand-surface/50 fixed top-0 z-50 w-full border-b backdrop-blur-lg"
       >
         <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
           <motion.div
@@ -102,7 +102,7 @@ export const Header = () => {
             className="lg:hidden"
           >
             <DialogTrigger
-              className="rounded-md p-2 text-zinc-300 transition-colors hover:bg-zinc-800 hover:text-white"
+              className="hover:bg-brand-surface-raised rounded-md p-2 text-zinc-300 transition-colors hover:text-white"
               aria-label="Open menu"
             >
               <Menu size={24} />

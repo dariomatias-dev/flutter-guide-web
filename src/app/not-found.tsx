@@ -33,10 +33,10 @@ const NotFoundPage = () => {
   return (
     <>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 h-full w-full bg-linear-to-br from-zinc-950 via-zinc-950 to-blue-900/20" />
+        <div className="from-brand-surface via-brand-surface to-brand-accent/20 absolute top-0 left-0 h-full w-full bg-linear-to-br" />
 
         <motion.div
-          className="pointer-events-none absolute top-1/4 left-[10%] h-32 w-32 rounded-2xl border border-blue-500/20 bg-zinc-900/50"
+          className="border-brand-accent/20 bg-brand-surface-elevated/50 pointer-events-none absolute top-1/4 left-[10%] h-32 w-32 rounded-2xl border"
           initial={{ opacity: 0, y: 50, rotate: -10 }}
           animate={{
             opacity: 1,
@@ -61,7 +61,7 @@ const NotFoundPage = () => {
         />
 
         <motion.div
-          className="pointer-events-none absolute right-[10%] bottom-1/4 h-20 w-40 rounded-full border border-cyan-500/20 bg-zinc-900/50"
+          className="border-brand-accent/20 bg-brand-surface-elevated/50 pointer-events-none absolute right-[10%] bottom-1/4 h-20 w-40 rounded-full border"
           initial={{ opacity: 0, y: -50, rotate: 10 }}
           animate={{
             opacity: 1,
@@ -86,7 +86,7 @@ const NotFoundPage = () => {
         />
 
         <motion.div
-          className="pointer-events-none absolute top-[5%] right-[20%] h-16 w-16 rounded-full border border-purple-500/20 bg-zinc-900/30"
+          className="border-brand-accent/20 bg-brand-surface-elevated/30 pointer-events-none absolute top-[5%] right-[20%] h-16 w-16 rounded-full border"
           initial={{ opacity: 0, x: -30, rotate: 0 }}
           animate={{
             opacity: 1,
@@ -118,7 +118,7 @@ const NotFoundPage = () => {
         />
 
         <motion.div
-          className="pointer-events-none absolute bottom-[15%] left-[25%] h-12 w-24 rounded-lg border border-blue-400/20 bg-zinc-900/40"
+          className="border-brand-accent/20 bg-brand-surface-elevated/40 pointer-events-none absolute bottom-[15%] left-[25%] h-12 w-24 rounded-lg border"
           initial={{ opacity: 0, y: 40, rotate: 5 }}
           animate={{
             opacity: 1,
@@ -150,7 +150,7 @@ const NotFoundPage = () => {
         />
 
         <motion.div
-          className="pointer-events-none absolute top-[60%] left-[5%] h-10 w-10 border border-cyan-500/10 bg-zinc-900/20 [clip-path:polygon(50%_0%,0%_100%,100%_100%)]"
+          className="border-brand-accent/10 bg-brand-surface-elevated/20 pointer-events-none absolute top-[60%] left-[5%] h-10 w-10 border [clip-path:polygon(50%_0%,0%_100%,100%_100%)]"
           initial={{ opacity: 0, y: -20, rotate: 45 }}
           animate={{
             opacity: 1,
@@ -184,7 +184,7 @@ const NotFoundPage = () => {
         >
           <motion.span
             variants={itemVariants}
-            className="bg-linear-to-br from-cyan-400 to-blue-500 bg-clip-text font-mono text-9xl font-bold tracking-tighter text-transparent sm:text-[12rem] md:text-[14rem]"
+            className="from-brand-accent-soft to-brand-accent bg-linear-to-br bg-clip-text font-mono text-9xl font-bold tracking-tighter text-transparent sm:text-[12rem] md:text-[14rem]"
           >
             404
           </motion.span>

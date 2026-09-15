@@ -42,7 +42,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <MotionProvider>
-          <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-zinc-950 text-white">
+          <div className="bg-brand-surface relative flex min-h-screen w-full flex-col overflow-x-hidden text-white">
             <Header />
             {children}
             <Footer />

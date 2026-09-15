@@ -45,9 +45,9 @@ export const FeaturesSection = () => {
             <motion.div
               key={index}
               variants={cardItemVariants}
-              className="flex flex-col items-center rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 text-center shadow-lg"
+              className="border-brand-surface-raised bg-brand-surface-elevated/50 flex flex-col items-center rounded-xl border p-6 text-center shadow-lg"
             >
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
+              <div className="bg-brand-accent/20 text-brand-accent flex h-16 w-16 items-center justify-center rounded-full">
                 <feature.icon className="h-8 w-8" />
               </div>
 

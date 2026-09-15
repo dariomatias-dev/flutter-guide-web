@@ -11,7 +11,7 @@ describe("ScreenshotsCarousel", () => {
     render(<ScreenshotsCarousel />);
 
     expect(screen.getByRole("button", { name: "Previous screenshot" })).toBeDisabled();
-    expect(screen.getByRole("button", { name: "Go to slide 1" })).toHaveClass("bg-blue-500");
+    expect(screen.getByRole("button", { name: "Go to slide 1" })).toHaveClass("bg-brand-accent");
   });
 
   it("opens and closes the image viewer", async () => {

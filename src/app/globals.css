@@ -39,6 +39,26 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Brand color tokens, from flutter_guide_app's
+   * packages/app_ui/lib/src/tokens/app_colors.dart. The surface and accent
+   * tokens map to FlutterGuideColors' dark-mode background scale
+   * (darkNeutral, darkNeutral50, darkNeutral200) and primary/secondary
+   * (lightBlue200, blue100).
+   */
+  --color-brand-surface: #101214;
+  --color-brand-surface-elevated: #161a1d;
+  --color-brand-surface-raised: #22272b;
+  --color-brand-accent: #b3b9c4;
+  --color-brand-accent-soft: #e9f2ff;
+}
+
+/* From app_durations.dart's AppDurations. */
+@utility duration-fast {
+  transition-duration: 250ms;
+}
+@utility duration-base {
+  transition-duration: 300ms;
 }
 
 :root {
