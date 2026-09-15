@@ -40,9 +40,9 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
 
   return (
     <>
-      <DialogOverlay className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in fixed inset-0 z-50 bg-black/80 backdrop-blur-sm duration-200" />
+      <DialogOverlay className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in duration-fast fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" />
 
-      <DialogContent className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:zoom-in-95 fixed inset-0 z-50 flex items-center justify-center p-4 duration-200">
+      <DialogContent className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:zoom-out-95 data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:zoom-in-95 duration-fast fixed inset-0 z-50 flex items-center justify-center p-4">
         <DialogTitle className="sr-only">{alt}</DialogTitle>
 
         <div className="relative flex h-auto max-h-[90vh] w-full max-w-5xl items-center justify-center p-5">
@@ -53,7 +53,7 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
             width={1920}
             height={1080}
             sizes="(max-width: 1280px) 100vw, 1280px"
-            className={`h-auto max-h-[90vh] w-auto max-w-full rounded-lg border border-zinc-900 bg-zinc-900 object-contain shadow-xl transition-opacity duration-300 ${
+            className={`border-brand-surface-elevated bg-brand-surface-elevated duration-base h-auto max-h-[90vh] w-auto max-w-full rounded-lg border object-contain shadow-xl transition-opacity ${
               isLoading || hasError ? "opacity-0" : "opacity-100"
             }`}
             onLoad={handleLoad}

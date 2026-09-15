@@ -34,16 +34,16 @@ export const HeroSection = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-zinc-950 px-4 text-center"
+      className="bg-brand-surface relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 text-center"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 h-full w-full bg-linear-to-br from-zinc-950 via-zinc-950 to-blue-950/20" />
+        <div className="from-brand-surface via-brand-surface to-brand-accent/20 absolute top-0 left-0 h-full w-full bg-linear-to-br" />
         <div
-          className="absolute -top-60 -left-80 h-160 w-160 rounded-full bg-cyan-500/10 blur-3xl"
+          className="bg-brand-accent/10 absolute -top-60 -left-80 h-160 w-160 rounded-full blur-3xl"
           style={{ animation: "aurora 15s infinite alternate" }}
         />
         <div
-          className="absolute -right-40 -bottom-40 h-160 w-160 rounded-full bg-blue-500/10 blur-3xl"
+          className="bg-brand-accent-soft/10 absolute -right-40 -bottom-40 h-160 w-160 rounded-full blur-3xl"
           style={{ animation: "aurora 18s infinite alternate-reverse" }}
         />
       </div>
@@ -56,9 +56,9 @@ export const HeroSection = () => {
       >
         <motion.div
           variants={itemVariants}
-          className="mb-6 inline-flex items-center rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-300 backdrop-blur-sm"
+          className="border-brand-accent/30 bg-brand-accent/10 text-brand-accent-soft mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium backdrop-blur-sm"
         >
-          <Sparkles className="mr-2 h-4 w-4 text-blue-400" />
+          <Sparkles className="text-brand-accent mr-2 h-4 w-4" />
           The Essential Companion for Flutter Devs
         </motion.div>
 
@@ -69,7 +69,7 @@ export const HeroSection = () => {
           <span>Master Flutter,</span>
 
           <span className="relative inline-block">
-            <span className="bg-linear-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+            <span className="from-brand-accent to-brand-accent-soft bg-linear-to-r bg-clip-text text-transparent">
               Faster.
             </span>
           </span>
