@@ -8,14 +8,14 @@ export const PrivacyPolicyContent = () => (
       free, with no account or sign-up required.
     </p>
 
-    <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">Local Preferences</h2>
+    <h2 className="mt-8! mb-3! text-xl font-semibold text-white md:text-2xl">Local Preferences</h2>
     <p>
       The Application saves your favorites, theme (light/dark), code theme, and language preference
       directly on your device. This data is never transmitted to the Service Provider or anyone
       else, and is removed if you uninstall the Application.
     </p>
 
-    <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">Advertising</h2>
+    <h2 className="mt-8! mb-3! text-xl font-semibold text-white md:text-2xl">Advertising</h2>
     <p>
       The Application shows ads through{" "}
       <Link
@@ -48,20 +48,20 @@ export const PrivacyPolicyContent = () => (
       for details. You can manage ad personalization in your device&apos;s ad settings.
     </p>
 
-    <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">External Links</h2>
+    <h2 className="mt-8! mb-3! text-xl font-semibold text-white md:text-2xl">External Links</h2>
     <p>
       The Application links to external sites — the project&apos;s GitHub repository, its Play Store
       listing, and the developer&apos;s portfolio. Each of those sites has its own privacy
       practices, which this policy doesn&apos;t cover.
     </p>
 
-    <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">Children</h2>
+    <h2 className="mt-8! mb-3! text-xl font-semibold text-white md:text-2xl">Children</h2>
     <p>
       The Application is not directed at children under 13 and does not knowingly collect personal
       data from them.
     </p>
 
-    <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">
+    <h2 className="mt-8! mb-3! text-xl font-semibold text-white md:text-2xl">
       Changes to This Policy
     </h2>
     <p>
@@ -70,7 +70,7 @@ export const PrivacyPolicyContent = () => (
     </p>
     <p className="mt-2 text-zinc-400 italic">Effective date: September 14, 2026</p>
 
-    <h2 className="!mt-8 !mb-3 text-xl font-semibold text-white md:text-2xl">Contact</h2>
+    <h2 className="mt-8! mb-3! text-xl font-semibold text-white md:text-2xl">Contact</h2>
     <p>
       For any question about this policy, contact the Service Provider at{" "}
       <a
