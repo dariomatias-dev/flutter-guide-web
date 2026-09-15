@@ -37,7 +37,7 @@ export const ScreenshotThumbnail = ({ src, alt, priority }: ScreenshotThumbnailP
         priority={priority}
       />
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-zinc-900/80">
+        <div className="bg-brand-surface-elevated/80 absolute inset-0 flex items-center justify-center rounded-2xl">
           <div
             className="h-8 w-8 animate-spin rounded-full border-2 border-solid border-white/20 border-t-white"
             role="status"

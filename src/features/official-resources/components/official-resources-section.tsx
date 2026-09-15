@@ -12,7 +12,7 @@ import { textItemVariants } from "@/shared/motion/text-item-variants";
 export const OfficialResourcesSection = () => {
   return (
     <section id="official-resources" className="w-full px-4 py-20 sm:px-8 md:py-28">
-      <div className="mx-auto max-w-screen-xl">
+      <div className="mx-auto max-w-7xl">
         <motion.div
           className="text-center"
           variants={headerVariants}
