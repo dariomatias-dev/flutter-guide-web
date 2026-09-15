@@ -72,7 +72,7 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
           )}
 
           {hasError && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-zinc-500">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-zinc-400">
               <ImageOff className="h-16 w-16" aria-hidden="true" />
               <span className="text-sm">Failed to load image</span>
             </div>

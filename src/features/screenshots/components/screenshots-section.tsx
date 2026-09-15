@@ -8,7 +8,7 @@ import { ScreenshotsCarousel } from "./screenshots-carousel";
 
 export const ScreenshotsSection = () => {
   return (
-    <section id="showcase" className="relative w-full py-20 sm:py-24">
+    <section id="showcase" className="relative w-full py-20 md:py-28">
       <div className="mx-auto flex max-w-6xl flex-col items-center px-4 text-center">
         <motion.div {...elementAnimation}>
           <h2 className="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">

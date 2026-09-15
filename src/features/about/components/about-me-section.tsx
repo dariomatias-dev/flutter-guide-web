@@ -8,7 +8,7 @@ import { cardsContainerVariants } from "@/shared/motion/cards-container-variants
 import { textItemVariants } from "@/shared/motion/text-item-variants";
 
 export const AboutMeSection = () => (
-  <section id="about" className="bg-[#101011] py-20 md:py-28">
+  <section id="about" className="bg-brand-surface py-20 md:py-28">
     <motion.div
       className="mx-auto max-w-4xl bg-transparent px-4 text-center sm:px-8"
       variants={cardsContainerVariants}
@@ -48,7 +48,11 @@ export const AboutMeSection = () => (
       <motion.div className="mt-8 flex flex-wrap justify-center gap-y-2 text-sm text-zinc-400 sm:text-base">
         {links.map(({ href, label, aria }, i) => (
           <motion.div key={href} className="flex items-center" variants={textItemVariants}>
-            {i > 0 && <span className="mx-2 text-zinc-600">|</span>}
+            {i > 0 && (
+              <span aria-hidden="true" className="mx-2 text-zinc-600">
+                |
+              </span>
+            )}
             <a
               href={href}
               target="_blank"
