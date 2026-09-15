@@ -25,7 +25,6 @@ export default defineConfig({
         // Plain variant/data objects: nothing to branch on.
         "src/shared/motion/**",
         "src/features/features-showcase/data/features.ts",
-        "src/features/community/data/testimonials.ts",
         "src/features/about/data/links.ts",
         // shadcn/Radix primitives: styling only, no logic of our own.
         "src/shared/components/ui/**",
@@ -35,7 +34,6 @@ export default defineConfig({
         "src/features/contribution/components/contribution-section.tsx",
         "src/features/official-resources/components/official-resources-section.tsx",
         "src/features/features-showcase/components/features-section.tsx",
-        "src/features/community/components/community-section.tsx",
         "src/features/screenshots/components/screenshots-section.tsx",
         "src/features/about/components/about-me-section.tsx",
         "src/features/legal/components/privacy-policy-content.tsx",
@@ -48,16 +46,13 @@ export default defineConfig({
         // Trivial passthrough wrapper, no logic of our own.
         "src/shared/components/motion-provider.tsx",
       ],
-      // Floor, not a target: measured minus a small margin (actual was
-      // 76.99/70.58/65.78/79.43 on 2026-09-13, after excluding the metadata
-      // route files above). Known gaps — community-marquee.tsx (untestable
-      // while testimonials.ts is empty), hero-section.tsx (no dedicated
-      // test, covered indirectly by e2e/no-js.spec.ts and
-      // e2e/reduced-motion.spec.ts), and a few branches in
-      // image-viewer.tsx/screenshots-carousel.tsx — are a backlog, not a
-      // reason to lower this further. Raise it whenever a change
-      // measurably improves the aggregate; lowering it needs a reason in
-      // the commit message.
+      // Floor, not a target: measured minus a small margin. Known gaps —
+      // hero-section.tsx (no dedicated test, covered indirectly by
+      // e2e/no-js.spec.ts and e2e/reduced-motion.spec.ts), and a few
+      // branches in image-viewer.tsx/screenshots-carousel.tsx — are a
+      // backlog, not a reason to lower this further. Raise it whenever a
+      // change measurably improves the aggregate; lowering it needs a
+      // reason in the commit message.
       thresholds: {
         statements: 75,
         branches: 69,
