@@ -22,7 +22,7 @@ O que deliberadamente **não** é perseguido, e fica excluído da cobertura
 em `vitest.config.mts`:
 
 - **Seções estáticas sem branch**: `catalog-section.tsx`,
-  `languages-section.tsx`,
+  `languages-section.tsx`, `share-section.tsx`,
   `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,

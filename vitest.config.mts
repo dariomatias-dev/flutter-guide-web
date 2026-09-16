@@ -33,6 +33,7 @@ export default defineConfig({
         // Static sections: hardcoded markup, no props, no branches.
         "src/features/catalog/components/catalog-section.tsx",
         "src/features/languages/components/languages-section.tsx",
+        "src/features/share/components/share-section.tsx",
         "src/features/learning-path/components/learning-path-section.tsx",
         "src/features/theme-customization/components/theme-customization-section.tsx",
         "src/features/theme-customization/components/theme-customization-content.tsx",
