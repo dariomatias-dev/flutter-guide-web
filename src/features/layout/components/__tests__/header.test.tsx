@@ -1,12 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
 import { Header } from "@/features/layout/components/header";
+import { renderWithIntl } from "@/shared/lib/test-utils";
 
 describe("Header", () => {
   it("links to the privacy policy page", () => {
-    render(<Header />);
+    renderWithIntl(<Header />);
 
     expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
       "href",
@@ -15,7 +16,7 @@ describe("Header", () => {
   });
 
   it("links to the page's own sections", () => {
-    render(<Header />);
+    renderWithIntl(<Header />);
 
     expect(screen.getByRole("link", { name: "Screenshots" })).toHaveAttribute("href", "/#showcase");
     expect(screen.getByRole("link", { name: "Features" })).toHaveAttribute("href", "/#features");
@@ -23,7 +24,7 @@ describe("Header", () => {
   });
 
   it("links to GitHub and the Play Store", () => {
-    render(<Header />);
+    renderWithIntl(<Header />);
 
     expect(screen.getByRole("link", { name: "GitHub" })).toHaveAttribute(
       "href",
@@ -37,7 +38,7 @@ describe("Header", () => {
 
   it("opens and closes the mobile menu", async () => {
     const user = userEvent.setup();
-    render(<Header />);
+    renderWithIntl(<Header />);
 
     expect(screen.queryByRole("button", { name: "Close menu" })).not.toBeInTheDocument();
 
@@ -50,7 +51,7 @@ describe("Header", () => {
 
   it("opens the mobile menu as an accessible dialog and closes it with Escape", async () => {
     const user = userEvent.setup();
-    render(<Header />);
+    renderWithIntl(<Header />);
 
     await user.click(screen.getByRole("button", { name: "Open menu" }));
     expect(screen.getByRole("dialog")).toBeInTheDocument();

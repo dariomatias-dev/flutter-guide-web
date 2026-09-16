@@ -1,5 +1,6 @@
 import { ImageOff, X } from "lucide-react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import {
@@ -15,6 +16,7 @@ interface ImageViewerProps {
 }
 
 export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
+  const t = useTranslations("Screenshots");
   const imgRef = useRef<HTMLImageElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [hasError, setHasError] = useState<boolean>(false);
@@ -66,7 +68,7 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
                 className="h-10 w-10 animate-spin rounded-full border-4 border-solid border-white/20 border-t-white"
                 role="status"
               >
-                <span className="sr-only">Loading...</span>
+                <span className="sr-only">{t("loading")}</span>
               </div>
             </div>
           )}
@@ -74,14 +76,14 @@ export const ImageViewer = ({ src, alt }: ImageViewerProps) => {
           {hasError && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-zinc-400">
               <ImageOff className="h-16 w-16" aria-hidden="true" />
-              <span className="text-sm">Failed to load image</span>
+              <span className="text-sm">{t("failedToLoad")}</span>
             </div>
           )}
         </div>
 
         <DialogClose
           className="absolute top-3 right-4 flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-black/50 text-white transition-colors hover:bg-black/75"
-          aria-label="Close Image Viewer"
+          aria-label={t("closeViewer")}
         >
           <X size={20} />
         </DialogClose>

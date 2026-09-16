@@ -2,6 +2,7 @@
 
 import { Languages as LanguagesIcon } from "lucide-react";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { cardItemVariants } from "@/shared/motion/card-item-variants";
 import { cardsContainerVariants } from "@/shared/motion/cards-container-variants";
@@ -9,10 +10,13 @@ import { headerVariants } from "@/shared/motion/header-variants";
 import { textItemVariants } from "@/shared/motion/text-item-variants";
 
 // Native display names, in the order the app's own language picker uses
-// (flutter_guide_app's Language.all).
+// (flutter_guide_app's Language.all). Not translated: a language's own
+// name stays in its own script regardless of the site's locale.
 const languages = ["English", "Português", "Español"];
 
 export const LanguagesSection = () => {
+  const t = useTranslations("Languages");
+
   return (
     <section id="languages" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
@@ -27,14 +31,14 @@ export const LanguagesSection = () => {
             variants={textItemVariants}
             className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
           >
-            Available in 3 Languages
+            {t("title")}
           </motion.h2>
 
           <motion.p
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            Pick your language in Settings, no restart required.
+            {t("subtitle")}
           </motion.p>
         </motion.div>
 

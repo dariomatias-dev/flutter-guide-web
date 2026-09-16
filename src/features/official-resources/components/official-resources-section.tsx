@@ -3,13 +3,42 @@
 import { BookOpen, Package, SquarePlay } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { cardItemVariants } from "@/shared/motion/card-item-variants";
 import { cardsContainerVariants } from "@/shared/motion/cards-container-variants";
 import { headerVariants } from "@/shared/motion/header-variants";
 import { textItemVariants } from "@/shared/motion/text-item-variants";
 
+// Each card's colors mirror that platform's own brand (Flutter blue,
+// pub.dev cyan, YouTube red), not our own design tokens.
+const resources = [
+  {
+    href: "https://docs.flutter.dev/",
+    icon: BookOpen,
+    key: "documentation",
+    hover: "hover:border-blue-700 hover:bg-blue-900/20",
+    iconClassName: "bg-blue-600/20 text-blue-400",
+  },
+  {
+    href: "https://pub.dev/",
+    icon: Package,
+    key: "pubDev",
+    hover: "hover:border-cyan-700 hover:bg-cyan-900/20",
+    iconClassName: "bg-cyan-600/20 text-cyan-400",
+  },
+  {
+    href: "https://www.youtube.com/@flutterdev",
+    icon: SquarePlay,
+    key: "youtube",
+    hover: "hover:border-red-700 hover:bg-red-900/20",
+    iconClassName: "bg-red-600/20 text-red-400",
+  },
+] as const;
+
 export const OfficialResourcesSection = () => {
+  const t = useTranslations("OfficialResources");
+
   return (
     <section id="official-resources" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-7xl">
@@ -24,15 +53,14 @@ export const OfficialResourcesSection = () => {
             variants={textItemVariants}
             className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
           >
-            Your Hub for Official Flutter Resources
+            {t("title")}
           </motion.h2>
 
           <motion.p
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            Connect directly with the source of knowledge. Access official documentation, explore
-            packages on pub.dev, and watch tutorials on the official Flutter YouTube channel.
+            {t("subtitle")}
           </motion.p>
         </motion.div>
 
@@ -43,64 +71,25 @@ export const OfficialResourcesSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div variants={cardItemVariants}>
-            <Link
-              href="https://docs.flutter.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-blue-700 hover:bg-blue-900/20">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-600/20 text-blue-400">
-                  <BookOpen className="h-8 w-8" />
+          {resources.map(({ href, icon: Icon, key, hover, iconClassName }) => (
+            <motion.div key={key} variants={cardItemVariants}>
+              <Link href={href} target="_blank" rel="noopener noreferrer" className="block">
+                <div
+                  className={`flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all ${hover}`}
+                >
+                  <div
+                    className={`flex h-16 w-16 items-center justify-center rounded-full ${iconClassName}`}
+                  >
+                    <Icon className="h-8 w-8" />
+                  </div>
+                  <h3 className="mt-6 text-2xl font-semibold tracking-tight">
+                    {t(`${key}.title`)}
+                  </h3>
+                  <p className="mt-2 text-zinc-400">{t(`${key}.description`)}</p>
                 </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight">
-                  Official Documentation
-                </h3>
-                <p className="mt-2 text-zinc-400">
-                  Explore guides, APIs, and examples to master Flutter.
-                </p>
-              </div>
-            </Link>
-          </motion.div>
-
-          <motion.div variants={cardItemVariants}>
-            <Link
-              href="https://pub.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-cyan-700 hover:bg-cyan-900/20">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600/20 text-cyan-400">
-                  <Package className="h-8 w-8" />
-                </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight">pub.dev Packages</h3>
-                <p className="mt-2 text-zinc-400">
-                  Find and utilize thousands of community packages.
-                </p>
-              </div>
-            </Link>
-          </motion.div>
-
-          <motion.div variants={cardItemVariants}>
-            <Link
-              href="https://www.youtube.com/@flutterdev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block"
-            >
-              <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/50 p-8 text-center shadow-lg transition-all hover:border-red-700 hover:bg-red-900/20">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-red-600/20 text-red-400">
-                  <SquarePlay className="h-8 w-8" />
-                </div>
-                <h3 className="mt-6 text-2xl font-semibold tracking-tight">YouTube Channel</h3>
-                <p className="mt-2 text-zinc-400">
-                  Watch tutorials, news, and official Flutter events.
-                </p>
-              </div>
-            </Link>
-          </motion.div>
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
