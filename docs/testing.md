@@ -21,6 +21,7 @@ What's deliberately **not** chased, and excluded from coverage in
 
 - **Static sections with no branches**: `catalog-section.tsx`,
   `languages-section.tsx`, `share-section.tsx`, `whats-new-section.tsx`,
+  `quality-section.tsx`,
   `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
