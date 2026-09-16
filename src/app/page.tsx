@@ -1,4 +1,5 @@
 import { AboutMeSection } from "@/features/about";
+import { CatalogSection } from "@/features/catalog";
 import { ContributionSection } from "@/features/contribution";
 import { FaqSection } from "@/features/faq";
 import { FeaturesSection } from "@/features/features-showcase";
@@ -40,6 +41,8 @@ export default function Home() {
 
       <main id="main-content" tabIndex={-1} className="min-h-screen flex-1">
         <HeroSection />
+
+        <CatalogSection />
 
         <ScreenshotsSection />
 
