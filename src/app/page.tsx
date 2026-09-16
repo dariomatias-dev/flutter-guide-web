@@ -7,6 +7,7 @@ import { HeroSection } from "@/features/hero";
 import { LanguagesSection } from "@/features/languages";
 import { LearningPathSection } from "@/features/learning-path";
 import { OfficialResourcesSection } from "@/features/official-resources";
+import { QualitySection } from "@/features/quality";
 import { ScreenshotsSection } from "@/features/screenshots";
 import { ShareSection } from "@/features/share";
 import { ThemeCustomizationSection } from "@/features/theme-customization";
@@ -58,6 +59,8 @@ export default function Home() {
         <ThemeCustomizationSection />
 
         <LanguagesSection />
+
+        <QualitySection />
 
         <ContributionSection />
 

@@ -36,6 +36,7 @@ export default defineConfig({
         "src/features/languages/components/languages-section.tsx",
         "src/features/share/components/share-section.tsx",
         "src/features/whats-new/components/whats-new-section.tsx",
+        "src/features/quality/components/quality-section.tsx",
         "src/features/learning-path/components/learning-path-section.tsx",
         "src/features/theme-customization/components/theme-customization-section.tsx",
         "src/features/theme-customization/components/theme-customization-content.tsx",
