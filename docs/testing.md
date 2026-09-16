@@ -19,7 +19,8 @@ Coverage is a floor, not a goal. See the thresholds and their rationale in
 What's deliberately **not** chased, and excluded from coverage in
 `vitest.config.mts`:
 
-- **Static sections with no branches**: `learning-path-section.tsx`,
+- **Static sections with no branches**: `catalog-section.tsx`,
+  `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
   `about-me-section.tsx`, `screenshots-section.tsx` (the wrapper) and
