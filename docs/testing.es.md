@@ -23,7 +23,7 @@ Lo que deliberadamente **no** se persigue, y queda excluido de la
 cobertura en `vitest.config.mts`:
 
 - **Secciones estáticas sin ramas**: `catalog-section.tsx`,
-  `languages-section.tsx`, `share-section.tsx`,
+  `languages-section.tsx`, `share-section.tsx`, `whats-new-section.tsx`,
   `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
@@ -39,7 +39,8 @@ cobertura en `vitest.config.mts`:
 - **Datos puros y objetos de variantes**: `shared/motion/**`, los
   arreglos estáticos en `features/*/data/*.ts` (excepto `faqs.ts`,
   ejercitado indirectamente vía `faq-section.test.tsx`), y
-  `theme-customization/lib/code-snippet.ts`. Nada que ramificar.
+  `theme-customization/lib/code-snippet.ts`, y
+  `whats-new/data/releases.ts`. Nada que ramificar.
 - **Primitivas shadcn/Radix** (`shared/components/ui/**`): solo estilos,
   sin lógica propia.
 - **`app/page.tsx` y `app/privacy-policy/page.tsx`**: composición pura de
