@@ -23,6 +23,7 @@ em `vitest.config.mts`:
 
 - **Seções estáticas sem branch**: `catalog-section.tsx`,
   `languages-section.tsx`, `share-section.tsx`, `whats-new-section.tsx`,
+  `quality-section.tsx`,
   `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,

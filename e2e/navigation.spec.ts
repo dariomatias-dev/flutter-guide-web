@@ -17,10 +17,11 @@ test.describe("header and footer links", () => {
       "/privacy-policy",
     );
 
-    await expect(page.getByRole("link", { name: "View on GitHub" })).toHaveAttribute(
-      "href",
-      githubUrl,
-    );
+    // "View on GitHub" also appears in the quality section further down
+    // the page; scope to the hero's own GitHub button.
+    await expect(
+      page.locator("#hero").getByRole("link", { name: "View on GitHub" }),
+    ).toHaveAttribute("href", githubUrl);
 
     await expect(page.getByRole("link", { name: "Download App" })).toHaveAttribute(
       "href",
