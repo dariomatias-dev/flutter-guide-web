@@ -1,4 +1,4 @@
 export interface NavLink {
   href: string;
-  label: string;
+  labelKey: "screenshots" | "features" | "faq" | "privacyPolicy";
 }

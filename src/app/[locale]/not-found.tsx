@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { LinkButton } from "@/shared/components/link-button";
 import { DURATION_BASE } from "@/shared/motion/durations";
@@ -31,6 +32,8 @@ const itemVariants: Variants = {
 };
 
 const NotFoundPage = () => {
+  const t = useTranslations("NotFound");
+
   return (
     <>
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
@@ -77,20 +80,19 @@ const NotFoundPage = () => {
             variants={itemVariants}
             className="mt-4 text-4xl font-extrabold tracking-tighter text-zinc-100 sm:text-5xl"
           >
-            Widget Not Found in the Tree.
+            {t("title")}
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="mx-auto mt-4 max-w-md text-base text-zinc-400 md:text-lg"
           >
-            We couldn&apos;t render this screen. It seems the route you followed doesn&apos;t exist
-            in our widget tree.
+            {t("body")}
           </motion.p>
 
           <motion.div variants={itemVariants} className="mt-10">
             <LinkButton href="/" target="_self" className="py-5">
-              Back to Home
+              {t("backToHome")}
             </LinkButton>
           </motion.div>
         </motion.div>

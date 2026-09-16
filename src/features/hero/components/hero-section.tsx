@@ -2,6 +2,7 @@
 
 import { ChevronDown, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { GithubButton } from "@/shared/components/github-button";
 import { PlayStoreButton } from "@/shared/components/play-store-button";
@@ -29,6 +30,8 @@ const itemVariants: Variants = {
 };
 
 export const HeroSection = () => {
+  const t = useTranslations("Hero");
+
   return (
     <section
       id="hero"
@@ -57,18 +60,18 @@ export const HeroSection = () => {
           className="border-brand-accent/30 bg-brand-accent/10 text-brand-accent-soft mb-6 inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium backdrop-blur-sm"
         >
           <Sparkles className="text-brand-accent mr-2 h-4 w-4" />
-          The Essential Companion for Flutter Devs
+          {t("badge")}
         </motion.div>
 
         <motion.h1
           variants={itemVariants}
           className="flex flex-col text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          <span>Master Flutter,</span>
+          <span>{t("titleLine1")}</span>
 
           <span className="relative inline-block">
             <span className="from-brand-accent to-brand-accent-soft bg-linear-to-r bg-clip-text text-transparent">
-              Faster.
+              {t("titleLine2")}
             </span>
           </span>
         </motion.h1>
@@ -77,8 +80,7 @@ export const HeroSection = () => {
           variants={itemVariants}
           className="mx-auto mt-8 max-w-xl text-lg text-zinc-400 md:text-xl"
         >
-          Learn, practice, and build amazing, high-performance apps with curated content in your
-          pocket.
+          {t("subtitle")}
         </motion.p>
 
         <motion.div
@@ -91,14 +93,14 @@ export const HeroSection = () => {
         </motion.div>
 
         <motion.div variants={itemVariants} className="mt-16 text-center">
-          <p className="text-sm text-zinc-400">{catalogTotal}+ components in the catalog:</p>
+          <p className="text-sm text-zinc-400">{t("catalogIntro", { count: catalogTotal })}</p>
 
           <div className="mt-4 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-zinc-400">
-            <span>{catalogStats.widgets} Widgets</span>
-            <span>{catalogStats.packages} Packages</span>
-            <span>{catalogStats.functions} Functions</span>
-            <span>{catalogStats.elements} Elements</span>
-            <span>{catalogStats.uis} UIs</span>
+            <span>{t("widgets", { count: catalogStats.widgets })}</span>
+            <span>{t("packages", { count: catalogStats.packages })}</span>
+            <span>{t("functions", { count: catalogStats.functions })}</span>
+            <span>{t("elements", { count: catalogStats.elements })}</span>
+            <span>{t("uis", { count: catalogStats.uis })}</span>
           </div>
         </motion.div>
       </motion.div>

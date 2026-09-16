@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { AppLinkPage } from "@/features/deep-links/components/app-link-page";
+import { renderWithIntl } from "@/shared/lib/test-utils";
 
 describe("AppLinkPage", () => {
   afterEach(() => {
@@ -10,7 +11,7 @@ describe("AppLinkPage", () => {
 
   it("shows an Open in App link built from the current URL", async () => {
     window.history.pushState({}, "", "/widgets/x?ref=share#section");
-    render(<AppLinkPage />);
+    renderWithIntl(<AppLinkPage />);
 
     expect(await screen.findByRole("link", { name: /Open in App/ })).toHaveAttribute(
       "href",
@@ -20,7 +21,7 @@ describe("AppLinkPage", () => {
 
   it("offers the Play Store download as a fallback", () => {
     window.history.pushState({}, "", "/widgets/x");
-    render(<AppLinkPage />);
+    renderWithIntl(<AppLinkPage />);
 
     expect(screen.getByRole("link", { name: "Download on Google Play" })).toHaveAttribute(
       "href",
@@ -30,7 +31,7 @@ describe("AppLinkPage", () => {
 
   it("shows no Open in App link for a path with no resolvable deep link", () => {
     window.history.pushState({}, "", "/this-does-not-exist");
-    render(<AppLinkPage />);
+    renderWithIntl(<AppLinkPage />);
 
     expect(screen.queryByRole("link", { name: /Open in App/ })).not.toBeInTheDocument();
   });

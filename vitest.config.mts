@@ -13,6 +13,11 @@ export default defineConfig({
     globals: true,
     setupFiles: ["./vitest.setup.ts"],
     include: ["src/**/*.{test,spec}.{ts,tsx}", "scripts/**/*.{test,spec}.mjs"],
+    // Without this, Vitest treats next-intl as an external Node dependency
+    // and resolves its imports natively instead of through Vite (and our
+    // `next/navigation` alias above), which fails under pnpm's nested
+    // dependency layout.
+    server: { deps: { inline: ["next-intl"] } },
     coverage: {
       provider: "v8",
       reporter: ["text", "text-summary", "lcov"],
@@ -29,6 +34,10 @@ export default defineConfig({
         "src/shared/lib/catalog-stats.ts",
         "src/features/theme-customization/lib/code-snippet.ts",
         "src/features/whats-new/data/releases.ts",
+        // next-intl wiring: declarative config, no logic of our own.
+        "src/i18n/routing.ts",
+        "src/i18n/navigation.ts",
+        "src/i18n/request.ts",
         // shadcn/Radix primitives: styling only, no logic of our own.
         "src/shared/components/ui/**",
         // Static sections: hardcoded markup, no props, no branches.
