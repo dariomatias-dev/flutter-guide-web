@@ -77,6 +77,20 @@ consertá-los aumentar o número em vez de serem esquecidos silenciosamente:
   verifica o estado inicial e as partes que não dependem de layout medido
   (o visualizador de imagem abrindo e fechando).
 
+## Instabilidades conhecidas no e2e
+
+- **`e2e/a11y.spec.ts` relatava intermitentemente uma violação de
+  `color-contrast` no header/hero**, mais comum sob execução
+  `fullyParallel`, mas não só nela — também reproduzia isolado, só que com
+  menos frequência. Causa raiz: a animação de entrada do header anima a
+  opacidade via WAAPI do Framer Motion, e `MotionConfig
+reducedMotion="user"` (`motion-provider.tsx`) neutraliza só animações de
+  transform/layout por design da própria lib, não de opacidade — então o
+  axe podia capturar uma cor interpolada no meio do fade como falha de
+  contraste, mesmo com `reducedMotion: "reduce"` no teste. Corrigido
+  esperando o header chegar a `opacity: 1` antes de rodar
+  `axe.analyze()`, em vez de mexer na animação em si.
+
 ## Rodando as suítes
 
 ```bash
