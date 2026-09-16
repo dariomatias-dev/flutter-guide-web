@@ -4,6 +4,7 @@ import { ContributionSection } from "@/features/contribution";
 import { FaqSection } from "@/features/faq";
 import { FeaturesSection } from "@/features/features-showcase";
 import { HeroSection } from "@/features/hero";
+import { LanguagesSection } from "@/features/languages";
 import { LearningPathSection } from "@/features/learning-path";
 import { OfficialResourcesSection } from "@/features/official-resources";
 import { ScreenshotsSection } from "@/features/screenshots";
@@ -51,6 +52,8 @@ export default function Home() {
         <LearningPathSection />
 
         <ThemeCustomizationSection />
+
+        <LanguagesSection />
 
         <ContributionSection />
 

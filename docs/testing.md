@@ -20,6 +20,7 @@ What's deliberately **not** chased, and excluded from coverage in
 `vitest.config.mts`:
 
 - **Static sections with no branches**: `catalog-section.tsx`,
+  `languages-section.tsx`,
   `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
