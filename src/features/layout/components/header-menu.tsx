@@ -1,8 +1,9 @@
 import { X } from "lucide-react";
 import { motion } from "motion/react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { navLinks } from "@/features/layout/data/nav-links";
+import { Link } from "@/i18n/navigation";
 import { GithubButton } from "@/shared/components/github-button";
 import { PlayStoreButton } from "@/shared/components/play-store-button";
 import {
@@ -19,12 +20,14 @@ interface HeaderMenuProps {
 }
 
 export const HeaderMenu = ({ onNavigate }: HeaderMenuProps) => {
+  const t = useTranslations("Header");
+
   return (
     <DialogPortal>
       <DialogOverlay className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in bg-brand-surface duration-base fixed inset-0 z-50 lg:hidden" />
 
       <DialogContent className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in duration-base fixed inset-0 z-50 flex flex-col p-4 lg:hidden">
-        <DialogTitle className="sr-only">Navigation menu</DialogTitle>
+        <DialogTitle className="sr-only">{t("navigationMenu")}</DialogTitle>
 
         <div className="flex h-8 items-center justify-between">
           <Link href="/" scroll={false} className="flex cursor-pointer items-center space-x-2">
@@ -33,7 +36,7 @@ export const HeaderMenu = ({ onNavigate }: HeaderMenuProps) => {
 
           <DialogClose
             className="hover:bg-brand-surface-raised rounded-md p-2 text-zinc-300 transition-colors hover:text-white"
-            aria-label="Close menu"
+            aria-label={t("closeMenu")}
           >
             <X size={24} />
           </DialogClose>
@@ -52,7 +55,7 @@ export const HeaderMenu = ({ onNavigate }: HeaderMenuProps) => {
                 onClick={onNavigate}
                 className="group relative text-zinc-300 transition-colors hover:text-white"
               >
-                {link.label}
+                {t(link.labelKey)}
                 <span className="from-brand-accent to-brand-accent-soft absolute bottom-0 left-1/2 h-0.5 w-0 bg-linear-to-r transition-all group-hover:left-0 group-hover:w-full"></span>
               </Link>
             </motion.div>

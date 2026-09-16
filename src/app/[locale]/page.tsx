@@ -1,3 +1,7 @@
+import { notFound } from "next/navigation";
+import { hasLocale } from "next-intl";
+import { setRequestLocale } from "next-intl/server";
+
 import { AboutMeSection } from "@/features/about";
 import { CatalogSection } from "@/features/catalog";
 import { ContributionSection } from "@/features/contribution";
@@ -12,7 +16,11 @@ import { ScreenshotsSection } from "@/features/screenshots";
 import { ShareSection } from "@/features/share";
 import { ThemeCustomizationSection } from "@/features/theme-customization";
 import { WhatsNewSection } from "@/features/whats-new";
+import { routing } from "@/i18n/routing";
+import { localeAlternates } from "@/shared/lib/locale-alternates";
 import { playStoreUrl, siteDescription, siteName, siteUrl } from "@/shared/lib/site";
+
+import type { Metadata } from "next";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -30,7 +38,19 @@ const jsonLd = {
   },
 };
 
-export default function Home() {
+export const metadata: Metadata = {
+  alternates: { canonical: "/", languages: localeAlternates("/") },
+};
+
+interface HomeProps {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function Home({ params }: HomeProps) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) notFound();
+  setRequestLocale(locale);
+
   return (
     <>
       <script

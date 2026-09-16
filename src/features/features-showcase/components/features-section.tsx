@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { features } from "@/features/features-showcase/data/features";
 import { cardItemVariants } from "@/shared/motion/card-item-variants";
@@ -9,6 +10,8 @@ import { headerVariants } from "@/shared/motion/header-variants";
 import { textItemVariants } from "@/shared/motion/text-item-variants";
 
 export const FeaturesSection = () => {
+  const t = useTranslations("Features");
+
   return (
     <section id="features" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-7xl">
@@ -23,14 +26,13 @@ export const FeaturesSection = () => {
             variants={textItemVariants}
             className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
           >
-            A Powerful Toolkit in Your Pocket
+            {t("title")}
           </motion.h2>
           <motion.p
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            FlutterGuide is packed with features designed to accelerate your learning and
-            productivity.
+            {t("subtitle")}
           </motion.p>
         </motion.div>
 
@@ -41,9 +43,9 @@ export const FeaturesSection = () => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <motion.div
-              key={index}
+              key={feature.key}
               variants={cardItemVariants}
               className="border-brand-surface-raised bg-brand-surface-elevated/50 flex flex-col items-center rounded-xl border p-6 text-center shadow-lg"
             >
@@ -51,9 +53,11 @@ export const FeaturesSection = () => {
                 <feature.icon className="h-8 w-8" />
               </div>
 
-              <h3 className="mt-6 text-2xl font-semibold tracking-tight">{feature.title}</h3>
+              <h3 className="mt-6 text-2xl font-semibold tracking-tight">
+                {t(`${feature.key}.title`)}
+              </h3>
 
-              <p className="mt-2 text-zinc-400">{feature.description}</p>
+              <p className="mt-2 text-zinc-400">{t(`${feature.key}.description`)}</p>
             </motion.div>
           ))}
         </motion.div>

@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: siteDescription,
     start_url: "/",
     display: "standalone",
-    background_color: "#09090b",
-    theme_color: "#09090b",
+    background_color: "#101214",
+    theme_color: "#101214",
     icons: [
       {
         src: "/flutter_guide_icon.png",

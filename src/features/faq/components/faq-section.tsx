@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { faqs } from "@/features/faq/data/faqs";
 import {
@@ -25,6 +26,8 @@ const accordionContainerVariants = {
 const MotionAccordionItem = motion.create(AccordionItem);
 
 export const FaqSection = () => {
+  const t = useTranslations("Faq");
+
   return (
     <section id="faq" className="w-full px-4 py-20 sm:px-8 md:py-28">
       <div className="mx-auto max-w-3xl">
@@ -39,14 +42,14 @@ export const FaqSection = () => {
             variants={textItemVariants}
             className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
           >
-            Frequently Asked Questions
+            {t("title")}
           </motion.h2>
 
           <motion.p
             variants={textItemVariants}
             className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
           >
-            Have a question? Find the answer here.
+            {t("subtitle")}
           </motion.p>
         </motion.div>
 
@@ -60,11 +63,11 @@ export const FaqSection = () => {
             {faqs.map((faq, index) => (
               <MotionAccordionItem key={index} value={`item-${index}`} variants={textItemVariants}>
                 <AccordionTrigger className="cursor-pointer text-left text-lg hover:no-underline">
-                  {faq.question}
+                  {t(`items.${faq.key}.question`)}
                 </AccordionTrigger>
 
                 <AccordionContent className="text-base text-zinc-400">
-                  {faq.answer}
+                  {t(`items.${faq.key}.answer`)}
                 </AccordionContent>
               </MotionAccordionItem>
             ))}
