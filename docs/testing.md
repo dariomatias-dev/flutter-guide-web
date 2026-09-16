@@ -73,6 +73,19 @@ raises the number instead of quietly being forgotten:
   state and the parts that don't depend on measured layout (the image
   viewer opening and closing).
 
+## Known e2e flakes
+
+- **`e2e/a11y.spec.ts` intermittently reported a `color-contrast`
+  violation on the header/hero**, more often under `fullyParallel`
+  execution but not exclusively — it could reproduce isolated too, just
+  less often. Root cause: the header's entrance fade animates opacity via
+  Framer Motion's WAAPI, and `MotionConfig reducedMotion="user"`
+  (`motion-provider.tsx`) only neutralizes transform/layout animations by
+  design, not opacity — so axe could sample a mid-fade, interpolated
+  color as a contrast failure even with `reducedMotion: "reduce"` set in
+  the test. Fixed by waiting for the header to reach `opacity: 1` before
+  running `axe.analyze()`, instead of touching the animation itself.
+
 ## Running the suites
 
 ```bash
