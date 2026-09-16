@@ -20,7 +20,7 @@ What's deliberately **not** chased, and excluded from coverage in
 `vitest.config.mts`:
 
 - **Static sections with no branches**: `catalog-section.tsx`,
-  `languages-section.tsx`, `share-section.tsx`,
+  `languages-section.tsx`, `share-section.tsx`, `whats-new-section.tsx`,
   `learning-path-section.tsx`,
   `theme-customization-content.tsx`, `contribution-section.tsx`,
   `official-resources-section.tsx`, `features-section.tsx`,
@@ -34,7 +34,8 @@ What's deliberately **not** chased, and excluded from coverage in
 - **Plain data and variant objects**: `shared/motion/**`, the static arrays
   in `features/*/data/*.ts` (except `faqs.ts`, which is exercised
   indirectly through `faq-section.test.tsx`), and
-  `theme-customization/lib/code-snippet.ts`. Nothing to branch on.
+  `theme-customization/lib/code-snippet.ts`, and
+  `whats-new/data/releases.ts`. Nothing to branch on.
 - **shadcn/Radix primitives** (`shared/components/ui/**`): styling only, no
   logic of our own.
 - **`app/page.tsx` and `app/privacy-policy/page.tsx`**: pure composition of

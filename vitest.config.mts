@@ -28,12 +28,14 @@ export default defineConfig({
         "src/features/about/data/links.ts",
         "src/shared/lib/catalog-stats.ts",
         "src/features/theme-customization/lib/code-snippet.ts",
+        "src/features/whats-new/data/releases.ts",
         // shadcn/Radix primitives: styling only, no logic of our own.
         "src/shared/components/ui/**",
         // Static sections: hardcoded markup, no props, no branches.
         "src/features/catalog/components/catalog-section.tsx",
         "src/features/languages/components/languages-section.tsx",
         "src/features/share/components/share-section.tsx",
+        "src/features/whats-new/components/whats-new-section.tsx",
         "src/features/learning-path/components/learning-path-section.tsx",
         "src/features/theme-customization/components/theme-customization-section.tsx",
         "src/features/theme-customization/components/theme-customization-content.tsx",
