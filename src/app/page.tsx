@@ -10,6 +10,7 @@ import { OfficialResourcesSection } from "@/features/official-resources";
 import { ScreenshotsSection } from "@/features/screenshots";
 import { ShareSection } from "@/features/share";
 import { ThemeCustomizationSection } from "@/features/theme-customization";
+import { WhatsNewSection } from "@/features/whats-new";
 import { playStoreUrl, siteDescription, siteName, siteUrl } from "@/shared/lib/site";
 
 const jsonLd = {
@@ -61,6 +62,8 @@ export default function Home() {
         <ContributionSection />
 
         <OfficialResourcesSection />
+
+        <WhatsNewSection />
 
         <FaqSection />
 
