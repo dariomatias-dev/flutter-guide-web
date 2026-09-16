@@ -2,6 +2,7 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useState } from "react";
 
 import { Dialog, DialogPortal, DialogTrigger } from "@/shared/components/ui/dialog";
@@ -58,6 +59,7 @@ const screenshots: Screenshot[] = [
 ];
 
 export const ScreenshotsCarousel = () => {
+  const t = useTranslations("Screenshots");
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
 
   const [canScrollPrev, setCanScrollPrev] = useState<boolean>(false);
@@ -113,7 +115,7 @@ export const ScreenshotsCarousel = () => {
               >
                 <DialogTrigger
                   className="relative flex h-full max-h-[70vh] w-full cursor-pointer items-center justify-center border-0 bg-transparent p-0"
-                  aria-label={`View screenshot ${index + 1}`}
+                  aria-label={t("viewScreenshot", { number: index + 1 })}
                 >
                   <ScreenshotThumbnail src={src} alt={alt} priority={index === 0} />
                 </DialogTrigger>
@@ -132,7 +134,7 @@ export const ScreenshotsCarousel = () => {
           onClick={scrollPrev}
           disabled={!canScrollPrev}
           className="border-brand-surface-raised bg-brand-surface-raised duration-fast hover:bg-brand-accent/10 focus-visible:ring-brand-accent flex rounded-full border p-2 text-zinc-300 shadow-lg transition-colors hover:text-white focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-          aria-label="Previous screenshot"
+          aria-label={t("previous")}
         >
           <ChevronLeft className="h-6 w-6" />
         </button>
@@ -143,7 +145,7 @@ export const ScreenshotsCarousel = () => {
               key={index}
               onClick={() => onDotButtonClick(index)}
               className="group flex h-6 w-6 cursor-pointer items-center justify-center"
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={t("goToSlide", { number: index + 1 })}
             >
               <span
                 aria-hidden="true"
@@ -161,7 +163,7 @@ export const ScreenshotsCarousel = () => {
           onClick={scrollNext}
           disabled={!canScrollNext}
           className="border-brand-surface-raised bg-brand-surface-raised duration-fast hover:bg-brand-accent/10 focus-visible:ring-brand-accent flex cursor-pointer rounded-full border p-2 text-zinc-300 shadow-lg transition-colors hover:text-white focus-visible:ring-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50"
-          aria-label="Next screenshot"
+          aria-label={t("next")}
         >
           <ChevronRight className="h-6 w-6" />
         </button>

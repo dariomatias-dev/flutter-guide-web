@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { cardsContainerVariants } from "@/shared/motion/cards-container-variants";
 import { headerVariants } from "@/shared/motion/header-variants";
@@ -17,6 +18,8 @@ export const ThemeCustomizationContent = ({
   lightHtml,
   darkHtml,
 }: ThemeCustomizationContentProps) => {
+  const t = useTranslations("ThemeCustomization");
+
   return (
     <>
       <motion.div
@@ -30,15 +33,14 @@ export const ThemeCustomizationContent = ({
           variants={textItemVariants}
           className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
         >
-          Elevate Your Coding: Choose Your Code Theme
+          {t("title")}
         </motion.h2>
 
         <motion.p
           variants={textItemVariants}
           className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
         >
-          Personalize your development environment with a selection of popular and vibrant code
-          themes, enhancing readability and visual comfort.
+          {t("subtitle")}
         </motion.p>
       </motion.div>
 

@@ -1,0 +1,251 @@
+{
+  "RootLayout": {
+    "skipToContent": "Skip to content"
+  },
+  "Common": {
+    "viewOnGitHub": "View on GitHub",
+    "downloadOnGooglePlay": "Download on Google Play"
+  },
+  "Header": {
+    "screenshots": "Screenshots",
+    "features": "Features",
+    "faq": "FAQ",
+    "privacyPolicy": "Privacy Policy",
+    "github": "GitHub",
+    "downloadApp": "Download App",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "navigationMenu": "Navigation menu"
+  },
+  "Footer": {
+    "rights": "© {year} FlutterGuide. All rights reserved.",
+    "developedBy": "Developed by"
+  },
+  "PrivacyPolicy": {
+    "breadcrumbHome": "Home",
+    "title": "Privacy Policy",
+    "description": "How the FlutterGuide app collects, uses, and protects your data.",
+    "intro": "This Privacy Policy explains how the FlutterGuide app (the \"Application\"), developed by Dário Matias (\"Service Provider\"), handles your information. The Application is free, with no account or sign-up required.",
+    "localPreferencesTitle": "Local Preferences",
+    "localPreferencesBody": "The Application saves your favorites, theme (light/dark), code theme, and language preference directly on your device. This data is never transmitted to the Service Provider or anyone else, and is removed if you uninstall the Application.",
+    "advertisingTitle": "Advertising",
+    "advertisingBody": "The Application shows ads through <admob>Google AdMob</admob>, which may collect device and advertising identifiers to deliver and measure ads. This data is handled by Google under its own policies, not by the Service Provider. See <privacy>Google's Privacy Policy</privacy> and <usage>how Google uses data from AdMob</usage> for details. You can manage ad personalization in your device's ad settings.",
+    "externalLinksTitle": "External Links",
+    "externalLinksBody": "The Application links to external sites — the project's GitHub repository, its Play Store listing, and the developer's portfolio. Each of those sites has its own privacy practices, which this policy doesn't cover.",
+    "childrenTitle": "Children",
+    "childrenBody": "The Application is not directed at children under 13 and does not knowingly collect personal data from them.",
+    "changesTitle": "Changes to This Policy",
+    "changesBody": "This Privacy Policy may be updated occasionally to reflect changes in the Application. Continued use of the Application after a change constitutes acceptance of the update.",
+    "effectiveDate": "Effective date: September 14, 2026",
+    "contactTitle": "Contact",
+    "contactBody": "For any question about this policy, contact the Service Provider at <email>matiasdario75@gmail.com</email>."
+  },
+  "NotFound": {
+    "title": "Widget Not Found in the Tree.",
+    "body": "We couldn't render this screen. It seems the route you followed doesn't exist in our widget tree.",
+    "backToHome": "Back to Home"
+  },
+  "Hero": {
+    "badge": "The Essential Companion for Flutter Devs",
+    "titleLine1": "Master Flutter,",
+    "titleLine2": "Faster.",
+    "subtitle": "Learn, practice, and build amazing, high-performance apps with curated content in your pocket.",
+    "catalogIntro": "{count}+ components in the catalog:",
+    "widgets": "{count} Widgets",
+    "packages": "{count} Packages",
+    "functions": "{count} Functions",
+    "elements": "{count} Elements",
+    "uis": "{count} UIs"
+  },
+  "Catalog": {
+    "title": "A Catalog That Keeps Growing",
+    "subtitle": "{count}+ ready-to-use components, organized by category.",
+    "widgets": "Widgets",
+    "packages": "Packages",
+    "functions": "Functions",
+    "elements": "Elements",
+    "uis": "UIs"
+  },
+  "Screenshots": {
+    "title": "The App in Action",
+    "subtitle": "See how FlutterGuide brings concepts to life with a clean, intuitive, and powerful interface.",
+    "previous": "Previous screenshot",
+    "next": "Next screenshot",
+    "goToSlide": "Go to slide {number}",
+    "viewScreenshot": "View screenshot {number}",
+    "loading": "Loading...",
+    "failedToLoad": "Failed to load image",
+    "closeViewer": "Close Image Viewer"
+  },
+  "Features": {
+    "title": "A Powerful Toolkit in Your Pocket",
+    "subtitle": "FlutterGuide is packed with features designed to accelerate your learning and productivity.",
+    "livePreviews": {
+      "title": "Live Previews",
+      "description": "See every widget, element, and UI rendered live, not just described, with the source code right next to it."
+    },
+    "favorites": {
+      "title": "Favorites",
+      "description": "Save the components you use most for quick access later."
+    },
+    "search": {
+      "title": "Search",
+      "description": "Find the widget, function, or package you need in seconds."
+    },
+    "deepLinks": {
+      "title": "Deep Links",
+      "description": "Jump straight to a specific component from a shared link, no browsing required."
+    },
+    "languages": {
+      "title": "3 Languages",
+      "description": "Use the app in English, Spanish, or Portuguese."
+    },
+    "codeThemes": {
+      "title": "Code Themes",
+      "description": "Pick the syntax highlighting theme that's easiest on your eyes."
+    },
+    "lightDarkMode": {
+      "title": "Light & Dark Mode",
+      "description": "Switch between light and dark, matching your system or your preference."
+    }
+  },
+  "Share": {
+    "title": "Every Component Has a Link",
+    "subtitle": "Share a component from the app — anyone who opens the link lands right on it.",
+    "findAndShare": {
+      "title": "Find & Share",
+      "description": "Open any widget, function, or package in the app and tap Share."
+    },
+    "getALink": {
+      "title": "Get a Link",
+      "description": "A direct link to that exact component is ready to send."
+    },
+    "opensRightThere": {
+      "title": "Opens Right There",
+      "description": "Whoever opens it lands straight on that component, no browsing required."
+    }
+  },
+  "LearningPath": {
+    "title": "Demystifying Flutter: Learn Directly and Visually",
+    "subtitle": "FlutterGuide transforms learning into an intuitive experience. See components in action, copy the source code, and understand the concepts behind each feature.",
+    "visualPreview": {
+      "title": "Visual Preview",
+      "description": "See how components behave and look before even writing a single line of code."
+    },
+    "instantSourceCode": {
+      "title": "Instant Source Code",
+      "description": "Access and copy the complete Flutter code for each example, accelerating your development."
+    },
+    "practicalImplementation": {
+      "title": "Practical Implementation",
+      "description": "Understand concepts and implement them in your own projects with ease."
+    }
+  },
+  "ThemeCustomization": {
+    "title": "Elevate Your Coding: Choose Your Code Theme",
+    "subtitle": "Personalize your development environment with a selection of popular and vibrant code themes, enhancing readability and visual comfort."
+  },
+  "Languages": {
+    "title": "Available in 3 Languages",
+    "subtitle": "Pick your language in Settings, no restart required."
+  },
+  "Quality": {
+    "title": "Built in the Open",
+    "subtitle": "Real engineering, not just marketing claims — see for yourself on GitHub.",
+    "lineCoverage": "Line Coverage",
+    "testCases": "Test Cases",
+    "license": "Open Source License"
+  },
+  "Contribution": {
+    "title": "Share and Grow: A Vibrant Community",
+    "subtitle": "Contribute to the FlutterGuide community! Share your widgets, favorite packages, UI ideas, and more. Together, we build a knowledge repository for everyone.",
+    "widgetsAndPackages": "Widgets & Packages",
+    "uiIdeas": "UI Ideas",
+    "knowledgeSharing": "Knowledge Sharing"
+  },
+  "OfficialResources": {
+    "title": "Your Hub for Official Flutter Resources",
+    "subtitle": "Connect directly with the source of knowledge. Access official documentation, explore packages on pub.dev, and watch tutorials on the official Flutter YouTube channel.",
+    "documentation": {
+      "title": "Official Documentation",
+      "description": "Explore guides, APIs, and examples to master Flutter."
+    },
+    "pubDev": {
+      "title": "pub.dev Packages",
+      "description": "Find and utilize thousands of community packages."
+    },
+    "youtube": {
+      "title": "YouTube Channel",
+      "description": "Watch tutorials, news, and official Flutter events."
+    }
+  },
+  "WhatsNew": {
+    "title": "What's New",
+    "subtitle": "Highlights from recent releases.",
+    "releases": {
+      "v1_3_0": {
+        "highlights": [
+          "Now available in Spanish, alongside Portuguese and English",
+          "Dozens of new catalog samples, including DataTable, Stepper, and SearchBar",
+          "Accessibility labels added across interactive components"
+        ]
+      },
+      "v1_2_3": {
+        "highlights": [
+          "Fixed the theme not applying correctly when opening a shared link",
+          "Standardized app links across the app"
+        ]
+      },
+      "v1_2_2": {
+        "highlights": [
+          "Redesigned dialogs across the app",
+          "Accepts more Android deep link formats",
+          "Localized error messages for invalid links"
+        ]
+      }
+    }
+  },
+  "Faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Have a question? Find the answer here.",
+    "items": {
+      "free": {
+        "question": "Is the app completely free?",
+        "answer": "Yes, FlutterGuide is free and open-source, with no premium tier or paywall. It's supported by ads."
+      },
+      "updateFrequency": {
+        "question": "How often is the content updated?",
+        "answer": "New widgets, functions, packages, elements, and UIs are added regularly to keep content up to date."
+      },
+      "commercialUse": {
+        "question": "Can I use the code from the examples in my projects?",
+        "answer": "Absolutely! All code provided in the app is free to use in your personal and commercial projects. The whole point is to speed up your work."
+      },
+      "ios": {
+        "question": "Is the app available for iOS?",
+        "answer": "Currently, the app is only available on the Google Play Store for Android."
+      },
+      "languages": {
+        "question": "What languages does the app support?",
+        "answer": "FlutterGuide is available in English, Spanish, and Portuguese."
+      },
+      "shareLink": {
+        "question": "Can I share a link to a specific widget or example?",
+        "answer": "Yes, every widget, function, package, element, and UI has its own link that opens directly to it in the app."
+      },
+      "contribute": {
+        "question": "How can I contribute?",
+        "answer": "FlutterGuide is open-source. Check out the project's GitHub repository — issues, pull requests, and ideas are all welcome."
+      }
+    }
+  },
+  "About": {
+    "role": "Software Developer | Full Stack & Mobile",
+    "bio": "I work on developing complete, scalable solutions that are easy to maintain, with a focus on quality, performance, and usability."
+  },
+  "AppLink": {
+    "title": "Opening in FlutterGuide…",
+    "body": "If the app didn't open automatically, use the button below, or get FlutterGuide from the Play Store.",
+    "openInApp": "Open in App"
+  }
+}

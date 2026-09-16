@@ -2,10 +2,13 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { DURATION_BASE } from "@/shared/motion/durations";
 
 export const Footer = () => {
+  const t = useTranslations("Footer");
+
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -15,10 +18,10 @@ export const Footer = () => {
       className="border-brand-surface-raised/50 bg-brand-surface w-full border-t px-4"
     >
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 py-8 text-center text-sm text-zinc-400 md:flex-row md:text-left">
-        <span>© {new Date().getFullYear()} FlutterGuide. All rights reserved.</span>
+        <span>{t("rights", { year: new Date().getFullYear() })}</span>
 
         <div>
-          <span>Developed by </span>
+          <span>{t("developedBy")} </span>
           <Link
             href="https://dariomatias-dev.com/"
             target="_blank"

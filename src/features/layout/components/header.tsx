@@ -2,10 +2,11 @@
 
 import { Menu } from "lucide-react";
 import { motion } from "motion/react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { navLinks } from "@/features/layout/data/nav-links";
+import { Link } from "@/i18n/navigation";
 import { LinkButton } from "@/shared/components/link-button";
 import { Button } from "@/shared/components/ui/button";
 import { Dialog, DialogTrigger } from "@/shared/components/ui/dialog";
@@ -16,6 +17,7 @@ import { HeaderMenu } from "./header-menu";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const t = useTranslations("Header");
 
   return (
     <Dialog open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -33,7 +35,7 @@ export const Header = () => {
           <nav className="ml-auto hidden items-center space-x-8 pr-12 text-sm font-medium text-zinc-300 lg:flex">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className="transition-colors hover:text-white">
-                {link.label}
+                {t(link.labelKey)}
               </Link>
             ))}
           </nav>
@@ -46,18 +48,18 @@ export const Header = () => {
               className="text-sm font-medium text-zinc-300 transition-colors hover:bg-transparent hover:text-white"
             >
               <Link href={githubUrl} target="_blank" rel="noopener noreferrer">
-                GitHub
+                {t("github")}
               </Link>
             </Button>
 
             <LinkButton href={playStoreUrl} className="h-9 text-sm">
-              Download App
+              {t("downloadApp")}
             </LinkButton>
           </div>
 
           <DialogTrigger
             className="hover:bg-brand-surface-raised rounded-md p-2 text-zinc-300 transition-colors hover:text-white lg:hidden"
-            aria-label="Open menu"
+            aria-label={t("openMenu")}
           >
             <Menu size={24} />
           </DialogTrigger>
