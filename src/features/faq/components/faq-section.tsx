@@ -34,7 +34,7 @@ export const FaqSection = () => {
         <motion.div
           className="text-center"
           variants={headerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
@@ -55,7 +55,7 @@ export const FaqSection = () => {
 
         <motion.div
           variants={accordionContainerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

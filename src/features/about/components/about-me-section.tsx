@@ -16,7 +16,7 @@ export const AboutMeSection = () => {
       <motion.div
         className="mx-auto max-w-4xl bg-transparent px-4 text-center sm:px-8"
         variants={cardsContainerVariants}
-        initial="hidden"
+        initial={false}
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
       >

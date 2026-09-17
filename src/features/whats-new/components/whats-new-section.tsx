@@ -20,7 +20,7 @@ export const WhatsNewSection = () => {
         <motion.div
           className="text-center"
           variants={headerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
@@ -42,7 +42,7 @@ export const WhatsNewSection = () => {
         <motion.div
           className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3"
           variants={cardsContainerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

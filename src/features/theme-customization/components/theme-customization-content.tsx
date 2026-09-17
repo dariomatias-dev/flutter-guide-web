@@ -25,7 +25,7 @@ export const ThemeCustomizationContent = ({
       <motion.div
         className="text-center"
         variants={headerVariants}
-        initial="hidden"
+        initial={false}
         whileInView="visible"
         viewport={{ once: true, amount: 0.5 }}
       >
@@ -47,7 +47,7 @@ export const ThemeCustomizationContent = ({
       <motion.div
         className="mt-16 flex flex-col items-center gap-12 md:flex-row md:justify-center"
         variants={cardsContainerVariants}
-        initial="hidden"
+        initial={false}
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
