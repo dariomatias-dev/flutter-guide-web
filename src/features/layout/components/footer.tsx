@@ -11,7 +11,7 @@ export const Footer = () => {
 
   return (
     <motion.footer
-      initial={{ opacity: 0 }}
+      initial={false}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: DURATION_BASE }}
