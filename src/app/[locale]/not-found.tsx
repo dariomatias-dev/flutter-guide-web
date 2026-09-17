@@ -52,7 +52,7 @@ const NotFoundPage = () => {
         />
 
         <motion.div
-          className="border-brand-accent/20 bg-brand-surface-elevated/30 pointer-events-none absolute top-[5%] right-[20%] h-16 w-16 rotate-12 rounded-full border"
+          className="border-brand-accent/20 bg-brand-surface-elevated/30 pointer-events-none absolute top-[5%] right-1/5 h-16 w-16 rotate-12 rounded-full border"
           animate={{ y: [0, 15] }}
           transition={{ duration: 3, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
         />
