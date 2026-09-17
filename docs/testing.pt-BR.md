@@ -18,23 +18,22 @@ Cobertura é um piso, não uma meta. Veja os pisos e o porquê deles em
   — é exatamente o tipo de coisa que um erro de copiar e colar quebra
   silenciosamente.
 
+Toda seção "estática" (`catalog-section.tsx`, `languages-section.tsx`,
+`share-section.tsx`, `whats-new-section.tsx`, `quality-section.tsx`,
+`learning-path-section.tsx`, `theme-customization-content.tsx`,
+`theme-customization-section.tsx`, `contribution-section.tsx`,
+`official-resources-section.tsx`, `features-section.tsx`,
+`about-me-section.tsx`, `screenshots-section.tsx`, `hero-section.tsx` e
+`privacy-policy-content.tsx`) tem seu próprio teste agora: o título
+traduzido renderiza, cada card/link vindo de dado está presente, e os
+links externos apontam pro lugar certo. Até "markup fixo sem branch"
+merece uma verificação de renderização — é exatamente o tipo de arquivo
+que um copiar-colar errado ou uma chave de tradução faltando quebra
+silenciosamente, sem nada no `pnpm lint` ou `tsc` pra pegar.
+
 O que deliberadamente **não** é perseguido, e fica excluído da cobertura
 em `vitest.config.mts`:
 
-- **Seções estáticas sem branch**: `catalog-section.tsx`,
-  `languages-section.tsx`, `share-section.tsx`, `whats-new-section.tsx`,
-  `quality-section.tsx`,
-  `learning-path-section.tsx`,
-  `theme-customization-content.tsx`, `contribution-section.tsx`,
-  `official-resources-section.tsx`, `features-section.tsx`,
-  `about-me-section.tsx`, `screenshots-section.tsx` (o wrapper) e
-  `privacy-policy-content.tsx`.
-  Markup fixo sem props e sem renderização condicional — não há lógica
-  pra dar errado.
-- **`theme-customization-section.tsx`**: um Server Component assíncrono
-  que chama o Shiki em tempo de build. Sem equivalente em jsdom pra
-  renderizá-lo; a chamada ao Shiki é coberta por `highlight-code.test.ts`
-  e a saída é coberta por `theme-code-card.test.tsx`.
 - **Dado puro e objetos de variante**: `shared/motion/**`, os arrays
   estáticos em `features/*/data/*.ts` (exceto `faqs.ts`, exercitado
   indiretamente via `faq-section.test.tsx`), e
@@ -42,20 +41,21 @@ em `vitest.config.mts`:
   `whats-new/data/releases.ts`. Nada pra ramificar.
 - **Primitivas shadcn/Radix** (`shared/components/ui/**`): só
   estilização, sem lógica nossa.
-- **`app/page.tsx` e `app/privacy-policy/page.tsx`**: composição pura de
-  componentes de feature já testados, sem lógica própria. Cobertos de
-  verdade pelo `e2e/smoke.spec.ts` em vez disso.
+- **`app/[locale]/page.tsx` e `app/[locale]/privacy-policy/page.tsx`**:
+  composição pura de componentes de feature já testados, sem lógica
+  própria. Cobertos de verdade pelo `e2e/smoke.spec.ts` em vez disso.
 
-## Gaps conhecidos, não exclusões
+## Gap conhecido, não exclusão
 
-Estes continuam contando contra o piso de cobertura, de propósito, pra
-consertá-los aumentar o número em vez de serem esquecidos silenciosamente:
+Este continua contando contra o piso de cobertura, de propósito, pra
+consertá-lo aumentar o número em vez de ser esquecido silenciosamente:
 
-- **`hero-section.tsx`**: ainda sem teste unitário dedicado; sua animação
-  de entrada e os fundos de blob são cobertos indiretamente por
-  `e2e/no-js.spec.ts` e `e2e/reduced-motion.spec.ts`.
-- **Alguns branches em `image-viewer.tsx` e `screenshots-carousel.tsx`**:
-  estados de erro e casos extremos ainda não cobertos.
+- **`onDotButtonClick` em `screenshots-carousel.tsx`**: nunca vê um
+  `emblaApi` verdadeiro sob jsdom, já que o embla nunca inicializa de
+  verdade sem larguras de slide reais (veja "Dublês de teste" abaixo) —
+  clicar num botão de dot no teste de componente sempre cai no branch de
+  retorno antecipado. O comportamento real de navegar ao clicar é coberto
+  por `e2e/navigation.spec.ts`.
 
 ## Dublês de teste
 
@@ -76,6 +76,22 @@ consertá-los aumentar o número em vez de serem esquecidos silenciosamente:
   verdade é só e2e (`e2e/navigation.spec.ts`); o teste de componente só
   verifica o estado inicial e as partes que não dependem de layout medido
   (o visualizador de imagem abrindo e fechando).
+- **`onLoad`/`onError` do `next/image` não chegam no componente via
+  `fireEvent.load`/`fireEvent.error`**: internamente ele chama
+  `img.decode()`, que o jsdom não implementa, então o wrapper que
+  chamaria o handler de verdade nunca roda. `image-viewer.test.tsx` e
+  `screenshot-thumbnail.test.tsx` mockam o `next/image` pra uma `<img>`
+  simples, pra que as props passem pelo sistema de eventos normal do
+  React.
+- **`getTranslations` de `next-intl/server` lança erro sob jsdom**
+  ("not supported in Client Components"), já que lê um contexto restrito
+  à requisição que só existe durante uma renderização de servidor de
+  verdade do Next.js. Pra testar um Server Component assíncrono que o
+  chama diretamente (não com um argumento explícito `{ locale,
+namespace }`, que funciona isolado), mocke `next-intl/server` com
+  `createTranslator` do `next-intl` — a primitiva client-safe que o
+  `getTranslations` usa por baixo dos panos. Veja
+  `privacy-policy-content.test.tsx`.
 
 ## Instabilidades conhecidas no e2e
 

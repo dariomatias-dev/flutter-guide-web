@@ -47,4 +47,13 @@ describe("ScreenshotsCarousel", () => {
     await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
+
+  it("doesn't crash when a dot button is clicked", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<ScreenshotsCarousel />);
+
+    await user.click(screen.getByRole("button", { name: "Go to slide 2" }));
+
+    expect(screen.getByRole("button", { name: "Go to slide 2" })).toBeInTheDocument();
+  });
 });

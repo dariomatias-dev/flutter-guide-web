@@ -16,22 +16,22 @@ Coverage is a floor, not a goal. See the thresholds and their rationale in
   (GitHub, the Play Store, the author's portfolio) is worth asserting on —
   it's exactly the kind of thing a copy-paste error breaks silently.
 
+Every "static" section (`catalog-section.tsx`, `languages-section.tsx`,
+`share-section.tsx`, `whats-new-section.tsx`, `quality-section.tsx`,
+`learning-path-section.tsx`, `theme-customization-content.tsx`,
+`theme-customization-section.tsx`, `contribution-section.tsx`,
+`official-resources-section.tsx`, `features-section.tsx`,
+`about-me-section.tsx`, `screenshots-section.tsx`, `hero-section.tsx`, and
+`privacy-policy-content.tsx`) has its own test now: the translated
+heading renders, every data-driven card/link is present, and external
+links point where they should. Even "hardcoded markup with no branches"
+is worth a render assertion — it's exactly the kind of file a copy-paste
+edit or a missing translation key breaks silently, with nothing in
+`pnpm lint` or `tsc` to catch it.
+
 What's deliberately **not** chased, and excluded from coverage in
 `vitest.config.mts`:
 
-- **Static sections with no branches**: `catalog-section.tsx`,
-  `languages-section.tsx`, `share-section.tsx`, `whats-new-section.tsx`,
-  `quality-section.tsx`,
-  `learning-path-section.tsx`,
-  `theme-customization-content.tsx`, `contribution-section.tsx`,
-  `official-resources-section.tsx`, `features-section.tsx`,
-  `about-me-section.tsx`, `screenshots-section.tsx` (the wrapper) and
-  `privacy-policy-content.tsx`. Hardcoded markup with no props and no
-  conditional rendering — there's no logic to get wrong.
-- **`theme-customization-section.tsx`**: an async Server Component that
-  calls Shiki at build time. No jsdom equivalent to render it against; the
-  Shiki call itself is covered by `highlight-code.test.ts` and the output is
-  covered by `theme-code-card.test.tsx`.
 - **Plain data and variant objects**: `shared/motion/**`, the static arrays
   in `features/*/data/*.ts` (except `faqs.ts`, which is exercised
   indirectly through `faq-section.test.tsx`), and
@@ -39,20 +39,20 @@ What's deliberately **not** chased, and excluded from coverage in
   `whats-new/data/releases.ts`. Nothing to branch on.
 - **shadcn/Radix primitives** (`shared/components/ui/**`): styling only, no
   logic of our own.
-- **`app/page.tsx` and `app/privacy-policy/page.tsx`**: pure composition of
-  already-tested feature components, no logic of their own. Covered for
-  real by `e2e/smoke.spec.ts` instead.
+- **`app/[locale]/page.tsx` and `app/[locale]/privacy-policy/page.tsx`**:
+  pure composition of already-tested feature components, no logic of their
+  own. Covered for real by `e2e/smoke.spec.ts` instead.
 
 ## Known gaps, not exclusions
 
-These stay counted against the coverage floor, on purpose, so fixing them
+This stays counted against the coverage floor, on purpose, so fixing it
 raises the number instead of quietly being forgotten:
 
-- **`hero-section.tsx`**: no dedicated unit test yet; its entrance
-  animation and blob backgrounds are covered indirectly by
-  `e2e/no-js.spec.ts` and `e2e/reduced-motion.spec.ts`.
-- **A few branches in `image-viewer.tsx` and `screenshots-carousel.tsx`**:
-  error states and edge cases not yet covered.
+- **`onDotButtonClick` in `screenshots-carousel.tsx`**: never sees a
+  truthy `emblaApi` under jsdom, since embla never fully initializes
+  without real slide widths (see "Test doubles" below) — clicking a dot
+  button in the component test always takes the early-return branch. The
+  real click-to-navigate behavior is covered by `e2e/navigation.spec.ts`.
 
 ## Test doubles
 
@@ -72,6 +72,20 @@ raises the number instead of quietly being forgotten:
   (`e2e/navigation.spec.ts`); the component test only checks the initial
   state and the parts that don't depend on measured layout (the image
   viewer opening and closing).
+- **`next/image`'s `onLoad`/`onError` don't reach a component under
+  `fireEvent.load`/`fireEvent.error`**: internally it calls
+  `img.decode()`, which jsdom doesn't implement, so the wrapper that would
+  call the real handler never runs. `image-viewer.test.tsx` and
+  `screenshot-thumbnail.test.tsx` mock `next/image` to a plain `<img>` so
+  the props pass through React's normal event system instead.
+- **`getTranslations` from `next-intl/server` throws under jsdom**
+  ("not supported in Client Components") since it reads request-scoped
+  context that only exists during a real Next.js server render. To test
+  an async Server Component that calls it directly (not via an explicit
+  `{ locale, namespace }` argument, which works standalone), mock
+  `next-intl/server` with `createTranslator` from `next-intl` — the
+  client-safe primitive `getTranslations` builds on internally. See
+  `privacy-policy-content.test.tsx`.
 
 ## Known e2e flakes
 

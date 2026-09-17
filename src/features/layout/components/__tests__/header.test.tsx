@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 
@@ -57,6 +57,19 @@ describe("Header", () => {
     expect(screen.getByRole("dialog")).toBeInTheDocument();
 
     await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("closes the mobile menu after navigating to one of its links", async () => {
+    const user = userEvent.setup();
+    renderWithIntl(<Header />);
+
+    await user.click(screen.getByRole("button", { name: "Open menu" }));
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+
+    const dialog = screen.getByRole("dialog");
+    await user.click(within(dialog).getByRole("link", { name: "Screenshots" }));
+
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 });
