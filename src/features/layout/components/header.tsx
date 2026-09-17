@@ -22,7 +22,7 @@ export const Header = () => {
   return (
     <Dialog open={isMenuOpen} onOpenChange={setIsMenuOpen}>
       <motion.header
-        initial={{ y: -20, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: DURATION_BASE }}
         className="border-brand-surface-raised/50 bg-brand-surface/50 fixed top-0 z-50 w-full border-b backdrop-blur-lg"

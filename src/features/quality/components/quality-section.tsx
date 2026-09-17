@@ -26,7 +26,7 @@ export const QualitySection = () => {
       <div className="mx-auto max-w-5xl text-center">
         <motion.div
           variants={headerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
@@ -48,7 +48,7 @@ export const QualitySection = () => {
         <motion.div
           className="mt-16 flex flex-wrap justify-center gap-6"
           variants={cardsContainerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
@@ -67,7 +67,7 @@ export const QualitySection = () => {
 
         <motion.div
           variants={textItemVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
           className="mt-12 flex justify-center"
