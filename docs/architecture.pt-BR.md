@@ -6,30 +6,52 @@ Como o código é organizado e por quê.
 
 ```text
 src/
-├── app/                    rotas finas, só compõem features
-│   ├── layout.tsx          layout raiz: casco HTML, Header, Footer
-│   ├── page.tsx            página inicial
-│   ├── not-found.tsx       página 404, também resolve deep links do app
-│   └── privacy-policy/
+├── app/
+│   ├── [locale]/            o site de verdade, roteado por idioma
+│   │   ├── layout.tsx       casco HTML, Header, Footer, NextIntlClientProvider
+│   │   ├── page.tsx         página inicial
+│   │   ├── not-found.tsx    página 404
+│   │   ├── opengraph-image.tsx
+│   │   └── privacy-policy/
+│   ├── (deep-links)/        layout raiz só em inglês, independente de idioma
+│   │   ├── layout.tsx       seu próprio casco HTML (nunca com prefixo de idioma)
+│   │   ├── widgets/[...slug]/
+│   │   ├── packages/[...slug]/
+│   │   ├── functions/[...slug]/
+│   │   ├── elements/[...slug]/
+│   │   └── uis/[...slug]/
+│   ├── manifest.ts, robots.ts, sitemap.ts
+│   └── globals.css
 │
-├── features/               um diretório por feature
+├── features/                 um diretório por feature
 │   ├── about/
+│   ├── catalog/
 │   ├── contribution/
+│   ├── deep-links/            a página "abrindo no app"
 │   ├── faq/
 │   ├── features-showcase/
 │   ├── hero/
-│   ├── layout/             header, menu do header, footer
+│   ├── languages/
+│   ├── layout/                header, menu do header, footer
 │   ├── learning-path/
-│   ├── legal/              conteúdo da política de privacidade
+│   ├── legal/                  conteúdo da política de privacidade
 │   ├── official-resources/
-│   ├── screenshots/        carrossel e visualizador de imagens
-│   └── theme-customization/
+│   ├── quality/
+│   ├── screenshots/             carrossel e visualizador de imagens
+│   ├── share/
+│   ├── theme-customization/
+│   └── whats-new/
 │
-└── shared/                 código sem feature própria
-    ├── components/         link-button, github-button, play-store-button
-    │   └── ui/             primitivas shadcn (button, accordion, breadcrumb)
-    ├── lib/                cn (mesclagem de classes), site (URLs externas)
-    └── motion/              variantes do framer-motion usadas entre features
+├── i18n/                      fiação do next-intl: roteamento, navegação, config de requisição
+│
+└── shared/                    código sem feature própria
+    ├── components/             link-button, github-button, play-store-button
+    │   └── ui/                 primitivas shadcn (button, accordion, breadcrumb)
+    ├── lib/                    cn (mesclagem de classes), site (URLs externas), locale-alternates
+    └── motion/                 variantes do motion (antes framer-motion) usadas entre features
+
+messages/                    um arquivo JSON por idioma (en, pt-BR, es)
+middleware.ts                middleware de detecção/redirecionamento de idioma do next-intl
 ```
 
 Cada feature mantém só as camadas que realmente precisa:
@@ -60,28 +82,62 @@ permitido, como aconteceria com uma convenção só de comentário.
 
 Nenhuma no momento. Todo import entre features passa por um barril.
 
+## Roteamento por idioma
+
+O site é servido em três idiomas via `next-intl`: inglês (`en`, sem
+prefixo, o padrão), `pt-BR` e `es` (ambos prefixados, ex.:
+`/pt-BR/privacy-policy`). `middleware.ts` e `src/i18n/routing.ts` definem
+isso; `src/app/[locale]/` guarda toda rota localizada, com seu próprio
+layout raiz que lê `params.locale` e renderiza `<html lang={locale}>`.
+
+**As rotas invariantes ficam de propósito fora de `[locale]`.** Os deep
+links do app (`/widgets/[...slug]`, `/packages/[...slug]`,
+`/functions/[...slug]`, `/elements/[...slug]`, `/uis/[...slug]`) e os dois
+arquivos estáticos em `public/` (`.well-known/assetlinks.json`,
+`app-ads.txt`) precisam resolver exatamente nessas URLs, sem prefixo de
+idioma, porque são referenciados pelo app Android e pela verificação de
+asset-links do Google Play — uma URL que mudasse pra `/en/...` quebraria
+os dois. As rotas de deep link vivem no próprio grupo de rotas
+`(deep-links)`, com um layout raiz só em inglês
+(`src/app/(deep-links)/layout.tsx`); um grupo de rotas não afeta o
+caminho da URL, mas permite que essa subárvore tenha um casco
+`<html>`/`<body>` e um contexto de tradução completamente independentes
+do `[locale]`. Os dois arquivos estáticos em `public/` não são afetados
+por nada disso, já que o matcher do `middleware.ts` os exclui
+diretamente.
+
 ## Renderização
 
-- `app/page.tsx` e `app/layout.tsx` são Server Components: só compõem
-  componentes de feature, sem hook ou estado próprio.
+- `app/[locale]/page.tsx` e `app/[locale]/layout.tsx` são Server
+  Components: só compõem componentes de feature, sem hook ou estado
+  próprio.
 - A maioria dos componentes de feature são Client Components
-  (`"use client"`), já que quase toda seção anima com
-  `framer-motion`/`motion`. Converter uma seção pra Server Component
-  significaria abandonar sua animação, o que está fora do escopo das
-  etapas de reestruturação (rastreado separadamente, junto com o resto do
-  trabalho de animação).
-- O site inteiro é estático: toda rota é pré-renderizada em tempo de
-  build (`next build`), sem renderização de servidor por requisição e sem
-  dado dinâmico.
+  (`"use client"`), já que quase toda seção anima com `motion`. Converter
+  uma seção pra Server Component significaria abandonar sua animação, o
+  que está fora do escopo das etapas de reestruturação (rastreado
+  separadamente, junto com o resto do trabalho de animação).
+- A página inicial e a política de privacidade são estáticas:
+  pré-renderizadas em tempo de build pra cada idioma
+  (`generateStaticParams`), sem renderização de servidor por requisição.
+  As cinco rotas de deep link são a exceção — são renderizadas no
+  servidor sob demanda (`ƒ` no resumo de rotas do `next build`), já que o
+  slug do catálogo na URL é conteúdo arbitrário compartilhado por
+  usuários e não dá pra enumerar de antemão.
 
 ## Decisões
 
-- **Por que SSG.** O site não tem conta de usuário, conteúdo por
-  visitante nem dado que muda entre requisições: um catálogo de
-  conteúdo, screenshots, uma FAQ, uma política de privacidade. Não há
-  nada pra renderizar por requisição, então pré-renderizar toda rota em
-  tempo de build torna cada uma um arquivo estático, cacheável na borda,
-  sem o custo de uma renderização de servidor que ninguém precisa.
+- **Por que SSG pra página inicial e política de privacidade.** Nenhuma
+  das duas tem conta de usuário, conteúdo por visitante ou dado que muda
+  entre requisições: um catálogo de conteúdo, screenshots, uma FAQ, uma
+  política de privacidade. Não há nada pra renderizar por requisição,
+  então pré-renderizar torna cada uma um arquivo estático, cacheável na
+  borda, sem o custo de uma renderização de servidor que ninguém precisa.
+- **Por que as rotas de deep link são a única exceção dinâmica.** Cada
+  rota resolve um slug arbitrário do catálogo compartilhado pelo app
+  (ex.: `/widgets/algum-widget`) numa página redirecionadora "abrir no
+  app". O conjunto de slugs possíveis não é conhecido em tempo de build e
+  cresce conforme o catálogo do app cresce, então não dá pra enumerar
+  estaticamente como o resto do site.
 - **Por que feature-first.** O site é uma única página longa feita de
   seções claramente separadas (hero, screenshots, FAQ, ...), cada uma com
   sua própria copy, variantes de animação e, em alguns casos, seu próprio
