@@ -107,7 +107,7 @@ export const ScreenshotsCarousel = () => {
           {screenshots.map(({ src, alt }, index) => (
             <div
               key={index}
-              className="min-w-0 flex-[0_0_100%] px-2 sm:flex-[0_0_50%] md:flex-[0_0_33.3333%] lg:flex-[0_0_25%]"
+              className="min-w-0 shrink-0 grow-0 basis-full px-2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
             >
               <Dialog
                 open={openIndex === index}
