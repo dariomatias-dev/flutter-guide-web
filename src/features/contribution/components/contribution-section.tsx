@@ -25,7 +25,7 @@ export const ContributionSection = () => {
       <div className="mx-auto max-w-7xl text-center">
         <motion.div
           variants={headerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
@@ -47,7 +47,7 @@ export const ContributionSection = () => {
         <motion.div
           className="mt-16 flex flex-col justify-center gap-8 md:flex-row"
           variants={cardsContainerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >

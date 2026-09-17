@@ -65,7 +65,7 @@ const NotFoundPage = () => {
       >
         <motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="flex flex-col items-center text-center"
         >

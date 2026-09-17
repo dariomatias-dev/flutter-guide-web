@@ -23,7 +23,7 @@ export const LanguagesSection = () => {
         <motion.div
           className="text-center"
           variants={headerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
@@ -45,7 +45,7 @@ export const LanguagesSection = () => {
         <motion.div
           className="mt-16 flex flex-wrap justify-center gap-6"
           variants={cardsContainerVariants}
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
