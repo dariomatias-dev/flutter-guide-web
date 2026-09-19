@@ -4,9 +4,18 @@ import type { NextConfig } from "next";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
+// `unsafe-eval` is only needed in development: React's dev-mode debugging
+// features (e.g. reconstructing component stacks) use eval(), but React
+// itself guarantees it never uses eval() in production, so the stricter
+// policy applies there.
+const scriptSrc =
+  process.env.NODE_ENV === "development"
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    : "script-src 'self' 'unsafe-inline'";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  scriptSrc,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self'",
   "font-src 'self'",
