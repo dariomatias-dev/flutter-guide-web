@@ -7,13 +7,13 @@ How the code is organized and why.
 ```text
 src/
 ├── app/
-│   ├── [locale]/            the real site, routed by locale
+│   ├── [locale]/             the real site, routed by locale
 │   │   ├── layout.tsx       html shell, Header, Footer, NextIntlClientProvider
 │   │   ├── page.tsx         home page
 │   │   ├── not-found.tsx    404 page
 │   │   ├── opengraph-image.tsx
 │   │   └── privacy-policy/
-│   ├── (deep-links)/        English-only, locale-independent root layout
+│   ├── (deep-links)/         English-only, locale-independent root layout
 │   │   ├── layout.tsx       its own html shell (no locale prefix, ever)
 │   │   ├── widgets/[...slug]/
 │   │   ├── packages/[...slug]/
@@ -24,34 +24,29 @@ src/
 │   └── globals.css
 │
 ├── features/                one directory per feature
-│   ├── about/
-│   ├── catalog/
-│   ├── contribution/
+│   ├── catalog/              the catalog bento and the pub.dev packages marquee
+│   ├── changelog/            release notes fetched from the app's CHANGELOG.md, the /changelog page and the home "What's new" preview
 │   ├── deep-links/           the "opening in the app" redirector page
+│   ├── download-cta/         the closing "get the app" band
+│   ├── examples/             code window + live preview, highlighted with shiki at build time
 │   ├── faq/
-│   ├── features-showcase/
+│   ├── features-showcase/    feature grid and author card
 │   ├── hero/
-│   ├── languages/
-│   ├── layout/               header, header menu, footer
-│   ├── learning-path/
-│   ├── legal/                 privacy policy content
-│   ├── official-resources/
-│   ├── quality/
-│   ├── screenshots/           carousel and image viewer
-│   ├── share/
-│   ├── theme-customization/
-│   └── whats-new/
+│   ├── layout/               header, header menu, footer, language switcher
+│   ├── legal/                privacy policy content
+│   ├── open-source/          quality stats and contributing call
+│   ├── screenshots/          carousel and image viewer
+│   └── share/
 │
 ├── i18n/                     next-intl wiring: routing, navigation, request config
 │
 └── shared/                   code with no feature of its own
-    ├── components/            link-button, github-button, play-store-button
-    │   └── ui/                shadcn primitives (button, accordion, breadcrumb)
-    ├── lib/                   cn (class merging), site (external URLs), locale-alternates
-    └── motion/                motion (formerly framer-motion) variants used across features
+    ├── components/            logo, section-heading, phone-frame, buttons, brand icons
+    │   └── ui/                shadcn primitives (accordion, breadcrumb, dialog)
+    └── lib/                   cn (class merging), site (external URLs), locale-alternates
 
 messages/                    one JSON file per locale (en, pt-BR, es)
-middleware.ts                next-intl's locale-detection/redirect middleware
+src/proxy.ts                 next-intl's locale-detection/redirect proxy (Next 16's middleware)
 ```
 
 Each feature holds only the layers it actually needs:
@@ -85,8 +80,10 @@ None right now. Every feature-to-feature import goes through a barrel.
 ## Locale routing
 
 The site is served in three locales via `next-intl`: English (`en`,
-unprefixed, the default), `pt-BR`, and `es` (both prefixed, e.g.
-`/pt-BR/privacy-policy`). `middleware.ts` and `src/i18n/routing.ts` define
+unprefixed, the default), `pt-BR` and `es` (both prefixed, e.g.
+`/pt-BR/privacy-policy`). Locale detection is off (`localeDetection:
+false`), so `/` always serves English and the language only changes when
+a visitor picks one. `src/proxy.ts` and `src/i18n/routing.ts` define
 this; `src/app/[locale]/` holds every localized route, with its own root
 layout that reads `params.locale` and renders `<html lang={locale}>`.
 
@@ -102,24 +99,28 @@ their own `(deep-links)` route group with an English-only root layout
 path, but it does let that subtree have a completely independent
 `<html>`/`<body>` shell and translation context from `[locale]`'s. The two
 static files under `public/` are untouched by any of this, since
-`middleware.ts`'s matcher excludes them outright.
+`src/proxy.ts`'s matcher excludes them outright.
 
 ## Rendering
 
 - `app/[locale]/page.tsx` and `app/[locale]/layout.tsx` are Server
   Components: they only compose feature components, with no hooks or
   state of their own.
-- Most feature components are Client Components (`"use client"`), since
-  almost every section animates with `motion`. Converting a section to a
-  Server Component would mean dropping its animation, which is out of
-  scope for the restructuring steps (tracked separately, alongside the
-  other animation work).
-- The home page and privacy policy are static: prerendered at build time
-  for each locale (`generateStaticParams`), with no per-request server
-  rendering. The five deep-link routes are the exception — they're
-  server-rendered on demand (`ƒ` in `next build`'s route summary), since
-  the catalog slug in the URL is arbitrary user-shared content and can't
-  be enumerated ahead of time.
+- Section components are Server Components wherever they have no state
+  of their own; only the header, the language switcher, the screenshots
+  carousel, the FAQ accordion, the animated counters and the deep-link
+  page ship to the client. Reveal-on-scroll is one small client component
+  (`RevealObserver`) that adds `.is-visible` to `.reveal` elements; the
+  hidden starting state sits behind `@media (scripting: enabled)`, so
+  content stays visible with JavaScript off or with reduced motion.
+- The privacy policy is static: prerendered at build time for each
+  locale (`generateStaticParams`). The home page and `/changelog` are
+  prerendered too, then regenerated in the background at most once an
+  hour (incremental static regeneration), because they show release data
+  fetched from the app's `CHANGELOG.md` on GitHub. The five deep-link
+  routes are the exception — they're server-rendered on demand (`ƒ` in
+  `next build`'s route summary), since the catalog slug in the URL is
+  arbitrary user-shared content and can't be enumerated ahead of time.
 
 ## Decisions
 
@@ -129,6 +130,13 @@ static files under `public/` are untouched by any of this, since
   render per request, so prerendering makes each one a static file,
   cacheable at the edge, with none of the cost of a server render nobody
   needs.
+- **Why the changelog is fetched, not copied.** The app's `CHANGELOG.md`
+  (Keep a Changelog format) is the single source of truth for releases.
+  Fetching and parsing it (`features/changelog`) means a new app release
+  shows up on the site within the hour, with no deploy and no copy to keep
+  in sync. It's kept in English, as written; the page chrome is localized.
+  If GitHub can't be reached, the page renders a link to the file instead
+  of failing.
 - **Why the deep-link routes are the one dynamic exception.** Each route
   resolves an arbitrary catalog slug shared from the app (e.g.
   `/widgets/some-widget`) into an "open in app" redirector page. The set

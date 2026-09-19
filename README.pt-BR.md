@@ -68,13 +68,12 @@ próprio deep link a partir do site (`flutterguide://open.app/<categoria>/<slug>
 
 ## Stack
 
-- **[Next.js](https://nextjs.org/)** (App Router) - framework React,
-  totalmente estático.
+- **[Next.js](https://nextjs.org/)** (App Router) - framework React: páginas estáticas, com
+  regeneração de hora em hora nas que mostram dados de versões.
 - **[React](https://react.dev/)** e **[TypeScript](https://www.typescriptlang.org/)**.
 - **[Tailwind CSS](https://tailwindcss.com/)** - estilização utility-first.
 - **[Radix UI](https://www.radix-ui.com/)** - primitivas acessíveis
   (diálogo, accordion), encapsuladas no estilo shadcn.
-- **[Motion](https://motion.dev/)** - animação.
 - **[Embla Carousel](https://www.embla-carousel.com/)** - o carrossel de
   screenshots.
 - **[Vitest](https://vitest.dev/)** e **[Testing Library](https://testing-library.com/)** - testes unitários e de componente.

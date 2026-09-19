@@ -33,7 +33,7 @@ qualquer um deles é uma mudança dedicada própria, não um PR do Renovate.
 2. Rode `pnpm run verify` localmente no branch do PR.
 3. Se for um único pacote de baixo risco (um bump patch ou minor com
    `verify` limpo), faça merge como está.
-4. Se afeta algo com UI visível (`motion`, `embla-carousel-react`,
+4. Se afeta algo com UI visível (`embla-carousel-react`,
    `tailwindcss`, `@radix-ui/*`), confira o app num navegador antes de
    fazer merge, não só a suíte de testes — regressões visuais não
    derrubam testes.

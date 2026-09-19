@@ -7,13 +7,13 @@ Cómo está organizado el código y por qué.
 ```text
 src/
 ├── app/
-│   ├── [locale]/            el sitio real, enrutado por idioma
+│   ├── [locale]/             el sitio real, enrutado por idioma
 │   │   ├── layout.tsx       cascarón HTML, Header, Footer, NextIntlClientProvider
 │   │   ├── page.tsx         página de inicio
 │   │   ├── not-found.tsx    página 404
 │   │   ├── opengraph-image.tsx
 │   │   └── privacy-policy/
-│   ├── (deep-links)/        layout raíz solo en inglés, independiente del idioma
+│   ├── (deep-links)/         layout raíz solo en inglés, independiente del idioma
 │   │   ├── layout.tsx       su propio cascarón HTML (nunca con prefijo de idioma)
 │   │   ├── widgets/[...slug]/
 │   │   ├── packages/[...slug]/
@@ -24,34 +24,29 @@ src/
 │   └── globals.css
 │
 ├── features/                 un directorio por feature
-│   ├── about/
-│   ├── catalog/
-│   ├── contribution/
-│   ├── deep-links/            la página "abriendo en la app"
+│   ├── catalog/              el bento del catálogo y la franja de paquetes de pub.dev
+│   ├── changelog/            notas de versión obtenidas del CHANGELOG.md de la app, la página /changelog y el adelanto "Novedades" de la home
+│   ├── deep-links/           la página "abriendo en la app"
+│   ├── download-cta/         la franja final "obtén la app"
+│   ├── examples/             ventana de código + vista previa, resaltado con shiki en build
 │   ├── faq/
-│   ├── features-showcase/
+│   ├── features-showcase/    grilla de funciones y tarjeta del autor
 │   ├── hero/
-│   ├── languages/
-│   ├── layout/                header, menú del header, footer
-│   ├── learning-path/
-│   ├── legal/                  contenido de la política de privacidad
-│   ├── official-resources/
-│   ├── quality/
-│   ├── screenshots/             carrusel y visor de imágenes
-│   ├── share/
-│   ├── theme-customization/
-│   └── whats-new/
+│   ├── layout/               header, menú del header, footer, selector de idioma
+│   ├── legal/                contenido de la política de privacidad
+│   ├── open-source/          métricas de calidad e invitación a contribuir
+│   ├── screenshots/          carrusel y visor de imágenes
+│   └── share/
 │
 ├── i18n/                      cableado de next-intl: enrutamiento, navegación, config de solicitud
 │
 └── shared/                    código sin feature propia
-    ├── components/             link-button, github-button, play-store-button
-    │   └── ui/                 primitivas shadcn (button, accordion, breadcrumb)
-    ├── lib/                    cn (fusión de clases), site (URLs externas), locale-alternates
-    └── motion/                 variantes de motion (antes framer-motion) usadas entre features
+    ├── components/             logo, section-heading, phone-frame, botones, íconos de marca
+    │   └── ui/                 primitivas shadcn (accordion, breadcrumb, dialog)
+    └── lib/                    cn (fusión de clases), site (URLs externas), locale-alternates
 
 messages/                    un archivo JSON por idioma (en, pt-BR, es)
-middleware.ts                middleware de detección/redirección de idioma de next-intl
+src/proxy.ts                 proxy de detección/redirección de idioma de next-intl (el middleware de Next 16)
 ```
 
 Cada feature mantiene solo las capas que realmente necesita:
@@ -85,9 +80,11 @@ Ninguna por ahora. Todo import entre features pasa por un barril.
 
 ## Enrutamiento por idioma
 
-El sitio se sirve en tres idiomas mediante `next-intl`: inglés (`en`, sin
-prefijo, el predeterminado), `pt-BR` y `es` (ambos con prefijo, p. ej.
-`/pt-BR/privacy-policy`). `middleware.ts` y `src/i18n/routing.ts` definen
+El sitio se sirve en tres idiomas mediante `next-intl`: inglés (`en`,
+sin prefijo, el predeterminado), `pt-BR` y `es` (ambos con prefijo,
+p. ej. `/pt-BR/privacy-policy`). La detección de idioma está
+desactivada (`localeDetection: false`), así que `/` siempre sirve inglés
+y el idioma solo cambia cuando la persona elige uno. `src/proxy.ts` y `src/i18n/routing.ts` definen
 esto; `src/app/[locale]/` contiene toda ruta localizada, con su propio
 layout raíz que lee `params.locale` y renderiza `<html lang={locale}>`.
 
@@ -105,26 +102,30 @@ de la URL, pero permite que ese subárbol tenga un cascarón
 `<html>`/`<body>` y un contexto de traducción completamente
 independientes de `[locale]`. Los dos archivos estáticos bajo `public/`
 no se ven afectados por nada de esto, ya que el matcher de
-`middleware.ts` los excluye directamente.
+`src/proxy.ts` los excluye directamente.
 
 ## Renderizado
 
 - `app/[locale]/page.tsx` y `app/[locale]/layout.tsx` son Server
   Components: solo componen componentes de feature, sin hooks ni estado
   propio.
-- La mayoría de los componentes de feature son Client Components
-  (`"use client"`), ya que casi toda sección anima con `motion`.
-  Convertir una sección a Server Component significaría abandonar su
-  animación, lo cual está fuera del alcance de los pasos de
-  reestructuración (rastreado por separado, junto con el resto del
-  trabajo de animación).
-- La página de inicio y la política de privacidad son estáticas:
-  pre-renderizadas en tiempo de build para cada idioma
-  (`generateStaticParams`), sin renderizado de servidor por solicitud.
-  Las cinco rutas de deep link son la excepción — se renderizan en el
-  servidor bajo demanda (`ƒ` en el resumen de rutas de `next build`), ya
-  que el slug del catálogo en la URL es contenido arbitrario compartido
-  por usuarios y no se puede enumerar de antemano.
+- Los componentes de sección son Server Components siempre que no
+  tengan estado propio; solo el header, el selector de idioma, el
+  carrusel de capturas, el acordeón del FAQ, los contadores animados y
+  la página de deep link llegan al cliente. La aparición al hacer scroll
+  es un pequeño componente de cliente (`RevealObserver`) que agrega
+  `.is-visible` a los elementos `.reveal`; el estado oculto inicial solo
+  depende de `@media (scripting: enabled)`, así que el contenido sigue
+  visible sin JavaScript o con movimiento reducido.
+- La política de privacidad es estática: pre-renderizada en tiempo de
+  build para cada idioma (`generateStaticParams`). La página de inicio y
+  `/changelog` también se pre-renderizan, y luego se regeneran en segundo
+  plano como máximo una vez por hora (regeneración estática incremental),
+  porque muestran datos de versiones obtenidos del `CHANGELOG.md` de la
+  app en GitHub. Las cinco rutas de deep link son la excepción — se
+  renderizan en el servidor bajo demanda (`ƒ` en el resumen de rutas de
+  `next build`), ya que el slug del catálogo en la URL es contenido
+  arbitrario compartido por usuarios y no se puede enumerar de antemano.
 
 ## Decisiones
 
@@ -135,6 +136,13 @@ no se ven afectados por nada de esto, ya que el matcher de
   renderizar por solicitud, así que pre-renderizar convierte a cada una
   en un archivo estático, cacheable en el borde, sin el costo de un
   renderizado de servidor que nadie necesita.
+- **Por qué el changelog se obtiene y no se copia.** El `CHANGELOG.md`
+  de la app (formato Keep a Changelog) es la única fuente de verdad de las
+  versiones. Obtenerlo y parsearlo (`features/changelog`) hace que una
+  versión nueva aparezca en el sitio en menos de una hora, sin deploy y
+  sin copia que mantener sincronizada. Se mantiene en inglés, como está
+  escrito; la interfaz de la página está traducida. Si GitHub no responde,
+  la página muestra un enlace al archivo en vez de fallar.
 - **Por qué las rutas de deep link son la única excepción dinámica.**
   Cada ruta resuelve un slug arbitrario del catálogo compartido desde la
   app (p. ej. `/widgets/algun-widget`) en una página redirectora "abrir
