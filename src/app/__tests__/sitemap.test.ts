@@ -8,8 +8,7 @@ describe("sitemap", () => {
   it("lists one entry per page per locale", () => {
     const entries = sitemap();
 
-    // 2 pages (home, privacy-policy) x 3 locales (en, pt-BR, es).
-    expect(entries).toHaveLength(6);
+    expect(entries).toHaveLength(9);
   });
 
   it("gives the home page a bare, unprefixed URL for the default locale", () => {
@@ -17,7 +16,6 @@ describe("sitemap", () => {
     const home = entries.find((entry) => entry.url === SITE_URL);
 
     expect(home).toBeDefined();
-    // No trailing slash: a real regression this sitemap once had.
     expect(home?.url).not.toMatch(/\/$/);
   });
 
@@ -30,6 +28,8 @@ describe("sitemap", () => {
         `${SITE_URL}/es`,
         `${SITE_URL}/pt-BR/privacy-policy`,
         `${SITE_URL}/es/privacy-policy`,
+        `${SITE_URL}/changelog`,
+        `${SITE_URL}/pt-BR/changelog`,
       ]),
     );
   });

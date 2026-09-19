@@ -11,19 +11,19 @@ const abs = (p) => path.resolve(import.meta.dirname, p);
 
 // Add a feature here when you add one under src/features/.
 const FEATURES = [
-  "about",
-  "community",
-  "contribution",
+  "catalog",
+  "changelog",
   "deep-links",
+  "download-cta",
+  "examples",
   "faq",
   "features-showcase",
   "hero",
   "layout",
-  "learning-path",
   "legal",
-  "official-resources",
+  "open-source",
   "screenshots",
-  "theme-customization",
+  "share",
 ];
 
 const eslintConfig = [

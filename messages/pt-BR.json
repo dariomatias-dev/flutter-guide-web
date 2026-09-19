@@ -7,19 +7,315 @@
     "downloadOnGooglePlay": "Baixar no Google Play"
   },
   "Header": {
-    "screenshots": "Capturas de tela",
-    "features": "Recursos",
-    "faq": "Perguntas frequentes",
-    "privacyPolicy": "Política de Privacidade",
+    "nav": {
+      "features": "Recursos",
+      "examples": "Exemplos",
+      "catalog": "Catálogo",
+      "screenshots": "Capturas",
+      "faq": "FAQ"
+    },
     "github": "GitHub",
-    "downloadApp": "Baixar App",
+    "download": "Baixar o app",
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu",
-    "navigationMenu": "Menu de navegação"
+    "navigationMenu": "Menu de navegação",
+    "primaryNavigation": "Principal"
   },
   "Footer": {
-    "rights": "© {year} FlutterGuide. Todos os direitos reservados.",
-    "developedBy": "Desenvolvido por"
+    "description": "Um app Android gratuito e de código aberto para aprender Flutter na prática: exemplos executáveis, prévias ao vivo e o código por trás.",
+    "follow": "Acompanhe o projeto",
+    "columns": {
+      "app": "O app",
+      "resources": "Recursos do Flutter",
+      "openSource": "Código aberto",
+      "support": "Baixe o app"
+    },
+    "links": {
+      "whatsNew": "Novidades",
+      "flutterDocs": "Documentação do Flutter",
+      "dartDocs": "Documentação do Dart",
+      "pubDev": "pub.dev",
+      "youtube": "Flutter no YouTube",
+      "sourceCode": "Código-fonte",
+      "contributing": "Guia de contribuição",
+      "reportIssue": "Reportar um problema",
+      "changelog": "Changelog",
+      "googlePlay": "Google Play",
+      "privacyPolicy": "Política de Privacidade"
+    },
+    "rights": "© {year} FlutterGuide",
+    "madeBy": "Feito por",
+    "portfolio": "Portfólio"
+  },
+  "LocaleSwitcher": {
+    "label": "Idioma: {current}",
+    "listLabel": "Idioma"
+  },
+  "Hero": {
+    "eyebrow": "App para aprender Flutter",
+    "titleLine1": "Aprenda Flutter",
+    "titleLine2": "na prática.",
+    "subtitle": "O FlutterGuide é um app Android gratuito e de código aberto com mais de {count} exemplos executáveis: widgets, pacotes, funções e telas completas, cada um com prévia ao vivo e o código por trás.",
+    "exploreExamples": "Ver os exemplos",
+    "trust": {
+      "free": "Gratuito e open source",
+      "noAccount": "Sem cadastro",
+      "languages": "English, Português, Español"
+    },
+    "homeAlt": "Tela inicial do FlutterGuide, listando grupos de componentes como Texto, Botão, Formulário e Layout",
+    "codeAlt": "O código-fonte do exemplo de ActionChip, com numeração de linhas",
+    "latestBadge": "Novo na v{version}",
+    "latestBadgeCta": "Ver novidades"
+  },
+  "Features": {
+    "eyebrow": "Recursos",
+    "title": "Por que o <hl>FlutterGuide</hl>?",
+    "subtitle": "Tudo o que você precisa para sair da leitura sobre um widget e usá-lo de verdade: sem configuração, sem boilerplate, sem adivinhação.",
+    "items": {
+      "livePreview": {
+        "title": "Prévias ao vivo",
+        "description": "Cada exemplo roda dentro do app. Toque, role e digite para ver como ele se comporta de verdade."
+      },
+      "sourceCode": {
+        "title": "Código pronto para copiar",
+        "description": "O código completo e executável fica a uma aba de distância da prévia."
+      },
+      "organized": {
+        "title": "Organizado por tema",
+        "description": "Navegue por grupo (texto, formulários, layout, navegação) ou busque pelo nome."
+      },
+      "favorites": {
+        "title": "Favoritos",
+        "description": "Salve os exemplos que você sempre consulta e encontre-os com um toque."
+      },
+      "codeThemes": {
+        "title": "Seu tema de código",
+        "description": "Escolha o tema de sintaxe que você lê melhor, no modo claro ou escuro."
+      },
+      "languages": {
+        "title": "Três idiomas",
+        "description": "O app inteiro em inglês, português e espanhol."
+      }
+    },
+    "author": {
+      "title": "Feito para devs, por um dev.",
+      "body": "O FlutterGuide é criado e mantido por Dário Matias, desenvolvedor full stack e mobile, como a referência que ele queria ter tido quando aprendeu Flutter.",
+      "cta": "Conheça o autor"
+    }
+  },
+  "Examples": {
+    "eyebrow": "Aprenda fazendo",
+    "title": "Exemplos reais, <hl>código real.</hl>",
+    "subtitle": "Abra qualquer exemplo e alterne entre o que ele faz e como ele foi escrito. Entenda, copie e use no seu próprio projeto.",
+    "points": {
+      "preview": "Uma prévia funcionando, não uma captura de tela",
+      "code": "Código completo, pronto para colar no main.dart",
+      "docs": "Um link para a documentação oficial de cada widget"
+    },
+    "cta": "Explorar o catálogo",
+    "previewAlt": "A prévia ao vivo do exemplo de ActionChip, com dois chips Favorite",
+    "previewTab": "Prévia",
+    "codeTab": "Código"
+  },
+  "Catalog": {
+    "eyebrow": "O catálogo",
+    "title": "Todo o kit, <hl>num só lugar.</hl>",
+    "subtitle": "De um simples widget Text a uma tela de chat completa, tudo agrupado do jeito que você procuraria.",
+    "total": "exemplos e contando",
+    "categories": {
+      "widgets": {
+        "title": "Widgets",
+        "description": "Material e Cupertino, agrupados pelo que fazem."
+      },
+      "packages": {
+        "title": "Pacotes",
+        "description": "Pacotes populares do pub.dev, como dio, shimmer e flutter_svg, rodando ao vivo."
+      },
+      "functions": {
+        "title": "Funções",
+        "description": "Diálogos, menus, seletores e outras funções essenciais."
+      },
+      "elements": {
+        "title": "Elementos",
+        "description": "Peças de interface reutilizáveis para padrões comuns."
+      },
+      "uis": {
+        "title": "Telas de exemplo",
+        "description": "Telas completas: login, chat, cliente de e-mail e mais."
+      }
+    },
+    "groups": {
+      "text": "Texto",
+      "button": "Botão",
+      "form": "Formulário",
+      "picker": "Seletor",
+      "list": "Lista",
+      "layout": "Layout",
+      "navigation": "Navegação",
+      "dialog": "Diálogo e sobreposição",
+      "display": "Exibição",
+      "effects": "Efeitos",
+      "interaction": "Interação",
+      "builder": "Builder"
+    },
+    "packagesStrip": "{count} pacotes do pub.dev, cada um rodando ao vivo no app"
+  },
+  "Screenshots": {
+    "eyebrow": "Por dentro do app",
+    "title": "Cada tela, <hl>feita para ensinar.</hl>",
+    "subtitle": "Uma interface limpa que não atrapalha, para o código ter toda a sua atenção.",
+    "previous": "Captura anterior",
+    "next": "Próxima captura",
+    "goToSlide": "Ir para o slide {number}",
+    "viewScreenshot": "Ampliar captura: {title}",
+    "loading": "Carregando…",
+    "failedToLoad": "Falha ao carregar a imagem",
+    "closeViewer": "Fechar visualizador de imagem",
+    "screens": {
+      "home": "Início, com todos os grupos de componentes",
+      "elements": "Catálogo de elementos",
+      "uis": "Catálogo de telas de exemplo",
+      "catalog": "O catálogo de widgets, com busca e favoritos",
+      "preview": "A prévia ao vivo de um widget",
+      "code": "O código-fonte do mesmo widget",
+      "packages": "Catálogo de pacotes",
+      "settings": "Configurações",
+      "codeThemes": "Seletor de tema de código"
+    }
+  },
+  "Share": {
+    "eyebrow": "Links diretos",
+    "title": "Todo exemplo <hl>tem um link.</hl>",
+    "subtitle": "Achou algo que vale mostrar para alguém do time? Compartilhe, e o link abre exatamente aquele exemplo no app da pessoa.",
+    "steps": {
+      "open": {
+        "title": "Abra um exemplo",
+        "description": "Qualquer widget, pacote, função, elemento ou tela."
+      },
+      "share": {
+        "title": "Toque em Compartilhar",
+        "description": "Você recebe um link direto para aquele exemplo."
+      },
+      "land": {
+        "title": "Abre direto nele",
+        "description": "Sem procurar: o app abre exatamente no exemplo."
+      }
+    },
+    "linkLabel": "Link compartilhado",
+    "opensIn": "Abre no FlutterGuide",
+    "previewAlt": "O exemplo de ActionChip aberto no app, a partir de um link compartilhado"
+  },
+  "OpenSource": {
+    "eyebrow": "Código aberto",
+    "title": "Feito às claras, <hl>testado como produto.</hl>",
+    "subtitle": "O app inteiro está no GitHub sob a licença MIT. Veja como ele é feito, abra uma issue ou envie o exemplo que você gostaria que existisse.",
+    "stats": {
+      "coverage": "Cobertura de linhas",
+      "tests": "Casos de teste",
+      "license": "Licença"
+    },
+    "stack": "Feito com Flutter, Riverpod e go_router",
+    "contributeTitle": "Contribua com um exemplo",
+    "contributeBody": "Widgets, pacotes, ideias de interface e correções são bem-vindos. O guia de contribuição mostra a configuração e o controle de qualidade.",
+    "contributeCta": "Ler o guia",
+    "practicesTitle": "Como é construído",
+    "practices": {
+      "ci": {
+        "title": "CI em cada mudança",
+        "body": "Formatação, análise estática, testes e cobertura rodam em cada pull request."
+      },
+      "lints": {
+        "title": "Lints rigorosos",
+        "body": "O código segue o conjunto de regras very_good_analysis."
+      },
+      "coverage": {
+        "title": "Metas de cobertura",
+        "body": "O build falha abaixo de 95% de cobertura de linhas, 98% no design system."
+      },
+      "releases": {
+        "title": "Versões documentadas",
+        "body": "Cada versão fica registrada em um changelog público."
+      }
+    }
+  },
+  "WhatsNew": {
+    "eyebrow": "Novidades",
+    "title": "Sempre <hl>evoluindo.</hl>",
+    "subtitle": "As versões mais recentes, direto do changelog do app.",
+    "latest": "Mais recente",
+    "fullChangelog": "Changelog completo",
+    "moreChanges": "{count, plural, one {+# alteração} other {+# alterações}}"
+  },
+  "Changelog": {
+    "metaTitle": "Changelog",
+    "metaDescription": "Todas as versões do FlutterGuide, com o que foi adicionado, alterado e corrigido.",
+    "home": "Início",
+    "eyebrow": "Notas de versão",
+    "title": "Changelog",
+    "subtitle": "Todas as versões do app FlutterGuide, da mais recente para a mais antiga: o que foi adicionado, alterado e corrigido.",
+    "latestRelease": "Versão mais recente",
+    "latest": "Mais recente",
+    "versions": "Versões",
+    "releaseCount": "{count, plural, one {# versão} other {# versões}}",
+    "compare": "Comparar alterações",
+    "githubReleases": "Versões no GitHub",
+    "englishNote": "As notas de versão são publicadas em inglês, como no repositório do app.",
+    "unavailable": "Não foi possível carregar o changelog agora.",
+    "unavailableCta": "Ler no GitHub",
+    "types": {
+      "added": "Adicionado",
+      "changed": "Alterado",
+      "deprecated": "Descontinuado",
+      "removed": "Removido",
+      "fixed": "Corrigido",
+      "security": "Segurança"
+    }
+  },
+  "Faq": {
+    "eyebrow": "FAQ",
+    "title": "Perguntas <hl>respondidas.</hl>",
+    "subtitle": "Não encontrou o que procurava? Abra uma issue no GitHub.",
+    "askOnGitHub": "Perguntar no GitHub",
+    "items": {
+      "free": {
+        "question": "O FlutterGuide é mesmo gratuito?",
+        "answer": "Sim. Não há plano pago nem conta. O app é open source e mantido por anúncios."
+      },
+      "commercialUse": {
+        "question": "Posso usar o código dos exemplos nos meus projetos?",
+        "answer": "Sim, tanto em projetos pessoais quanto comerciais. Os exemplos existem para serem copiados."
+      },
+      "ios": {
+        "question": "Existe versão para iOS?",
+        "answer": "Ainda não. O FlutterGuide está disponível para Android no Google Play."
+      },
+      "docs": {
+        "question": "Ele substitui a documentação oficial?",
+        "answer": "Não, ele a complementa. Cada widget leva à sua página no api.flutter.dev, e cada pacote ao pub.dev."
+      },
+      "languages": {
+        "question": "Quais idiomas o app suporta?",
+        "answer": "Inglês, português (Brasil) e espanhol. Troque nas Configurações, sem reiniciar."
+      },
+      "updates": {
+        "question": "Com que frequência novos exemplos são adicionados?",
+        "answer": "Com regularidade. Cada versão traz novos exemplos e melhorias; o changelog no GitHub lista tudo."
+      },
+      "contribute": {
+        "question": "Como posso contribuir?",
+        "answer": "Abra uma issue ou um pull request no GitHub. O guia de contribuição cobre a configuração, o controle de qualidade local e a convenção de commits."
+      }
+    }
+  },
+  "DownloadCta": {
+    "eyebrow": "Comece agora",
+    "title": "Pronto para aprender <hl>na prática?</hl>",
+    "subtitle": "Baixe o FlutterGuide gratuitamente e leve mais de {count} exemplos executáveis no bolso.",
+    "points": {
+      "free": "Gratuito, sem plano pago",
+      "noAccount": "Sem conta nem cadastro",
+      "languages": "Em inglês, português e espanhol"
+    }
   },
   "PrivacyPolicy": {
     "breadcrumbHome": "Início",
@@ -38,212 +334,33 @@
     "changesBody": "Esta Política de Privacidade pode ser atualizada ocasionalmente para refletir mudanças no Aplicativo. O uso contínuo do Aplicativo após uma alteração constitui aceitação da atualização.",
     "effectiveDate": "Data de vigência: 14 de setembro de 2026",
     "contactTitle": "Contato",
-    "contactBody": "Para qualquer dúvida sobre esta política, entre em contato com o Provedor de Serviço em <email>matiasdario75@gmail.com</email>."
+    "contactBody": "Para qualquer dúvida sobre esta política, entre em contato com o Provedor de Serviço em <email>matiasdario75@gmail.com</email>.",
+    "summaryTitle": "Em resumo",
+    "onThisPage": "Nesta página",
+    "glance": {
+      "noAccount": {
+        "title": "Sem conta",
+        "body": "Sem cadastro e sem perfil: o app nunca pergunta quem você é."
+      },
+      "onDevice": {
+        "title": "Fica no seu dispositivo",
+        "body": "Favoritos, tema, tema de código e idioma são salvos localmente e nunca enviados a lugar nenhum."
+      },
+      "ads": {
+        "title": "Anúncios do Google AdMob",
+        "body": "O AdMob pode usar identificadores do dispositivo e de publicidade, sob as políticas do próprio Google."
+      }
+    },
+    "contactCta": "Enviar e-mail ao desenvolvedor"
   },
   "NotFound": {
-    "title": "Widget Não Encontrado na Árvore.",
-    "body": "Não conseguimos renderizar esta tela. Parece que a rota que você seguiu não existe na nossa árvore de widgets.",
-    "backToHome": "Voltar ao Início"
-  },
-  "Hero": {
-    "badge": "O Companheiro Essencial para Devs Flutter",
-    "titleLine1": "Domine Flutter,",
-    "titleLine2": "Mais Rápido.",
-    "subtitle": "Aprenda, pratique e construa apps incríveis e de alta performance com conteúdo selecionado no seu bolso.",
-    "catalogIntro": "{count}+ componentes no catálogo:",
-    "widgets": "{count} Widgets",
-    "packages": "{count} Pacotes",
-    "functions": "{count} Funções",
-    "elements": "{count} Elementos",
-    "uis": "{count} UIs"
-  },
-  "Catalog": {
-    "title": "Um Catálogo que Não Para de Crescer",
-    "subtitle": "{count}+ componentes prontos para uso, organizados por categoria.",
-    "widgets": "Widgets",
-    "packages": "Pacotes",
-    "functions": "Funções",
-    "elements": "Elementos",
-    "uis": "UIs"
-  },
-  "Screenshots": {
-    "title": "O App em Ação",
-    "subtitle": "Veja como o FlutterGuide dá vida aos conceitos com uma interface limpa, intuitiva e poderosa.",
-    "previous": "Captura anterior",
-    "next": "Próxima captura",
-    "goToSlide": "Ir para o slide {number}",
-    "viewScreenshot": "Ver captura de tela {number}",
-    "loading": "Carregando...",
-    "failedToLoad": "Falha ao carregar a imagem",
-    "closeViewer": "Fechar Visualizador de Imagem"
-  },
-  "Features": {
-    "title": "Um Kit de Ferramentas Poderoso no Seu Bolso",
-    "subtitle": "O FlutterGuide vem com recursos pensados para acelerar seu aprendizado e sua produtividade.",
-    "livePreviews": {
-      "title": "Prévias ao Vivo",
-      "description": "Veja cada widget, elemento e UI renderizado ao vivo, não apenas descrito, com o código-fonte logo ao lado."
-    },
-    "favorites": {
-      "title": "Favoritos",
-      "description": "Salve os componentes que você mais usa para acesso rápido depois."
-    },
-    "search": {
-      "title": "Busca",
-      "description": "Encontre o widget, função ou pacote que precisa em segundos."
-    },
-    "deepLinks": {
-      "title": "Links Diretos",
-      "description": "Vá direto a um componente específico a partir de um link compartilhado, sem precisar navegar."
-    },
-    "languages": {
-      "title": "3 Idiomas",
-      "description": "Use o app em inglês, espanhol ou português."
-    },
-    "codeThemes": {
-      "title": "Temas de Código",
-      "description": "Escolha o tema de destaque de sintaxe mais confortável para seus olhos."
-    },
-    "lightDarkMode": {
-      "title": "Modo Claro e Escuro",
-      "description": "Alterne entre claro e escuro, seguindo seu sistema ou sua preferência."
-    }
-  },
-  "Share": {
-    "title": "Todo Componente Tem um Link",
-    "subtitle": "Compartilhe um componente do app — quem abrir o link cai direto nele.",
-    "findAndShare": {
-      "title": "Encontre e Compartilhe",
-      "description": "Abra qualquer widget, função ou pacote no app e toque em Compartilhar."
-    },
-    "getALink": {
-      "title": "Receba um Link",
-      "description": "Um link direto para aquele componente exato fica pronto para enviar."
-    },
-    "opensRightThere": {
-      "title": "Abre Direto Ali",
-      "description": "Quem abrir cai direto naquele componente, sem precisar navegar."
-    }
-  },
-  "LearningPath": {
-    "title": "Desmistificando o Flutter: Aprenda de Forma Direta e Visual",
-    "subtitle": "O FlutterGuide transforma o aprendizado em uma experiência intuitiva. Veja componentes em ação, copie o código-fonte e entenda os conceitos por trás de cada recurso.",
-    "visualPreview": {
-      "title": "Prévia Visual",
-      "description": "Veja como os componentes se comportam e se parecem antes mesmo de escrever uma linha de código."
-    },
-    "instantSourceCode": {
-      "title": "Código-Fonte Instantâneo",
-      "description": "Acesse e copie o código Flutter completo de cada exemplo, acelerando seu desenvolvimento."
-    },
-    "practicalImplementation": {
-      "title": "Implementação Prática",
-      "description": "Entenda os conceitos e aplique-os nos seus próprios projetos com facilidade."
-    }
-  },
-  "ThemeCustomization": {
-    "title": "Eleve Sua Programação: Escolha Seu Tema de Código",
-    "subtitle": "Personalize seu ambiente de desenvolvimento com uma seleção de temas de código populares e vibrantes, melhorando a legibilidade e o conforto visual."
-  },
-  "Languages": {
-    "title": "Disponível em 3 Idiomas",
-    "subtitle": "Escolha seu idioma nas Configurações, sem precisar reiniciar."
-  },
-  "Quality": {
-    "title": "Construído de Forma Aberta",
-    "subtitle": "Engenharia de verdade, não só discurso de marketing — confira você mesmo no GitHub.",
-    "lineCoverage": "Cobertura de Linhas",
-    "testCases": "Casos de Teste",
-    "license": "Licença Open Source"
-  },
-  "Contribution": {
-    "title": "Compartilhe e Cresça: Uma Comunidade Vibrante",
-    "subtitle": "Contribua com a comunidade FlutterGuide! Compartilhe seus widgets, pacotes favoritos, ideias de UI e muito mais. Juntos, construímos um repositório de conhecimento para todos.",
-    "widgetsAndPackages": "Widgets e Pacotes",
-    "uiIdeas": "Ideias de UI",
-    "knowledgeSharing": "Compartilhamento de Conhecimento"
-  },
-  "OfficialResources": {
-    "title": "Seu Hub de Recursos Oficiais do Flutter",
-    "subtitle": "Conecte-se direto com a fonte do conhecimento. Acesse a documentação oficial, explore pacotes no pub.dev e assista a tutoriais no canal oficial do Flutter no YouTube.",
-    "documentation": {
-      "title": "Documentação Oficial",
-      "description": "Explore guias, APIs e exemplos para dominar o Flutter."
-    },
-    "pubDev": {
-      "title": "Pacotes do pub.dev",
-      "description": "Encontre e use milhares de pacotes da comunidade."
-    },
-    "youtube": {
-      "title": "Canal do YouTube",
-      "description": "Assista a tutoriais, notícias e eventos oficiais do Flutter."
-    }
-  },
-  "WhatsNew": {
-    "title": "Novidades",
-    "subtitle": "Destaques das versões mais recentes.",
-    "releases": {
-      "v1_3_0": {
-        "highlights": [
-          "Agora disponível em espanhol, além de português e inglês",
-          "Dezenas de novos exemplos no catálogo, incluindo DataTable, Stepper e SearchBar",
-          "Rótulos de acessibilidade adicionados em componentes interativos"
-        ]
-      },
-      "v1_2_3": {
-        "highlights": [
-          "Corrigido o tema não sendo aplicado corretamente ao abrir um link compartilhado",
-          "Padronização dos links do app"
-        ]
-      },
-      "v1_2_2": {
-        "highlights": [
-          "Diálogos redesenhados em todo o app",
-          "Aceita mais formatos de link direto do Android",
-          "Mensagens de erro localizadas para links inválidos"
-        ]
-      }
-    }
-  },
-  "Faq": {
-    "title": "Perguntas Frequentes",
-    "subtitle": "Tem uma dúvida? Encontre a resposta aqui.",
-    "items": {
-      "free": {
-        "question": "O app é totalmente gratuito?",
-        "answer": "Sim, o FlutterGuide é gratuito e open-source, sem plano pago ou paywall. Ele é mantido por anúncios."
-      },
-      "updateFrequency": {
-        "question": "Com que frequência o conteúdo é atualizado?",
-        "answer": "Novos widgets, funções, pacotes, elementos e UIs são adicionados regularmente para manter o conteúdo atualizado."
-      },
-      "commercialUse": {
-        "question": "Posso usar o código dos exemplos nos meus projetos?",
-        "answer": "Claro! Todo o código do app é livre para uso em seus projetos pessoais e comerciais. O objetivo é acelerar o seu trabalho."
-      },
-      "ios": {
-        "question": "O app está disponível para iOS?",
-        "answer": "No momento, o app está disponível apenas na Google Play Store, para Android."
-      },
-      "languages": {
-        "question": "Quais idiomas o app suporta?",
-        "answer": "O FlutterGuide está disponível em inglês, espanhol e português."
-      },
-      "shareLink": {
-        "question": "Posso compartilhar um link para um widget ou exemplo específico?",
-        "answer": "Sim, cada widget, função, pacote, elemento e UI tem seu próprio link, que abre direto nele dentro do app."
-      },
-      "contribute": {
-        "question": "Como posso contribuir?",
-        "answer": "O FlutterGuide é open-source. Confira o repositório do projeto no GitHub — issues, pull requests e ideias são todos bem-vindos."
-      }
-    }
-  },
-  "About": {
-    "role": "Desenvolvedor de Software | Full Stack & Mobile",
-    "bio": "Trabalho no desenvolvimento de soluções completas e escaláveis, fáceis de manter, com foco em qualidade, performance e usabilidade."
+    "eyebrow": "Erro 404",
+    "title": "Essa rota não está na árvore de widgets.",
+    "body": "A página que você seguiu não existe ou mudou de lugar. Vamos te levar de volta para algo útil.",
+    "backToHome": "Voltar ao início"
   },
   "AppLink": {
+    "eyebrow": "Link direto",
     "title": "Abrindo no FlutterGuide…",
     "body": "Se o app não abriu automaticamente, use o botão abaixo, ou baixe o FlutterGuide na Play Store.",
     "openInApp": "Abrir no App"

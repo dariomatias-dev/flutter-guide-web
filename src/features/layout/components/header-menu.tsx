@@ -1,10 +1,10 @@
-import { X } from "lucide-react";
-import { motion } from "motion/react";
+import { ArrowUpRight, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { navLinks } from "@/features/layout/data/nav-links";
 import { Link } from "@/i18n/navigation";
 import { GithubButton } from "@/shared/components/github-button";
+import { Logo } from "@/shared/components/logo";
 import { PlayStoreButton } from "@/shared/components/play-store-button";
 import {
   DialogClose,
@@ -13,58 +13,65 @@ import {
   DialogPortal,
   DialogTitle,
 } from "@/shared/components/ui/dialog";
-import { DURATION_BASE } from "@/shared/motion/durations";
+
+import { LocaleSwitcher } from "./locale-switcher";
 
 interface HeaderMenuProps {
   onNavigate: () => void;
+  showLocaleSwitcher?: boolean;
 }
 
-export const HeaderMenu = ({ onNavigate }: HeaderMenuProps) => {
+export const HeaderMenu = ({ onNavigate, showLocaleSwitcher = true }: HeaderMenuProps) => {
   const t = useTranslations("Header");
 
   return (
     <DialogPortal>
-      <DialogOverlay className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in bg-brand-surface duration-base fixed inset-0 z-50 lg:hidden" />
+      <DialogOverlay className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in duration-base bg-ink-950 fixed inset-0 z-50 lg:hidden" />
 
-      <DialogContent className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in duration-base fixed inset-0 z-50 flex flex-col p-4 lg:hidden">
+      <DialogContent className="data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-top-2 duration-base fixed inset-0 z-50 flex flex-col px-4 pb-6 text-white sm:px-6 lg:hidden">
         <DialogTitle className="sr-only">{t("navigationMenu")}</DialogTitle>
 
-        <div className="flex h-8 items-center justify-between">
-          <Link href="/" scroll={false} className="flex cursor-pointer items-center space-x-2">
-            <span className="text-lg font-bold">FlutterGuide</span>
-          </Link>
+        <div className="flex h-18 items-center justify-between">
+          <Logo />
 
           <DialogClose
-            className="hover:bg-brand-surface-raised rounded-md p-2 text-zinc-300 transition-colors hover:text-white"
+            className="flex size-10 items-center justify-center rounded-xl text-slate-200 transition-colors hover:bg-white/10"
             aria-label={t("closeMenu")}
           >
-            <X size={24} />
+            <X className="size-6" />
           </DialogClose>
         </div>
 
-        <nav className="flex grow flex-col items-center justify-center gap-8 text-center text-2xl font-medium">
-          {navLinks.map((link, index) => (
-            <motion.div
-              key={link.href}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: DURATION_BASE }}
-            >
-              <Link
-                href={link.href}
-                onClick={onNavigate}
-                className="group relative text-zinc-300 transition-colors hover:text-white"
+        <nav className="mt-6 grow">
+          <ul className="divide-y divide-white/8 border-y border-white/8">
+            {navLinks.map((link, index) => (
+              <li
+                key={link.href}
+                style={{ animationDelay: `${120 + index * 50}ms` }}
+                className="animate-in fade-in slide-in-from-top-2 fill-mode-both duration-500"
               >
-                {t(link.labelKey)}
-                <span className="from-brand-accent to-brand-accent-soft absolute bottom-0 left-1/2 h-0.5 w-0 bg-linear-to-r transition-all group-hover:left-0 group-hover:w-full"></span>
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  href={link.href}
+                  onClick={onNavigate}
+                  className="hover:text-brand-300 flex items-center justify-between py-4 text-xl font-semibold text-slate-100 transition-colors"
+                >
+                  {t(`nav.${link.labelKey}`)}
+                  <ArrowUpRight className="size-5 text-slate-500" aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
 
-        <div className="flex flex-col gap-4 pb-4">
-          <GithubButton />
-          <PlayStoreButton />
+        {showLocaleSwitcher && (
+          <div className="mb-6 flex justify-center">
+            <LocaleSwitcher />
+          </div>
+        )}
+
+        <div className="flex flex-col gap-3">
+          <PlayStoreButton className="w-full" />
+          <GithubButton className="w-full" />
         </div>
       </DialogContent>
     </DialogPortal>

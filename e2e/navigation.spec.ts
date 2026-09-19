@@ -9,45 +9,90 @@ test.describe("header and footer links", () => {
     await page.goto("/");
   });
 
-  test("header links to privacy policy, GitHub and the Play Store", async ({ page, isMobile }) => {
+  test("header links to GitHub and the Play Store", async ({ page, isMobile }) => {
     test.skip(isMobile, "desktop nav only; mobile uses the hamburger menu");
 
-    await expect(page.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
-      "href",
-      "/privacy-policy",
-    );
+    const header = page.locator("header");
 
-    // "View on GitHub" also appears in the quality section further down
-    // the page; scope to the hero's own GitHub button.
-    await expect(
-      page.locator("#hero").getByRole("link", { name: "View on GitHub" }),
-    ).toHaveAttribute("href", githubUrl);
-
-    await expect(page.getByRole("link", { name: "Download App" })).toHaveAttribute(
+    await expect(header.getByRole("link", { name: "GitHub" })).toHaveAttribute("href", githubUrl);
+    await expect(header.getByRole("link", { name: "Get the app" })).toHaveAttribute(
       "href",
       playStoreUrl,
-    );
-  });
-
-  test("footer links to the author's portfolio", async ({ page }) => {
-    await expect(page.getByRole("link", { name: "Dário Matias" })).toHaveAttribute(
-      "href",
-      portfolioUrl,
     );
   });
 
   test("header links to the page's own sections", async ({ page, isMobile }) => {
     test.skip(isMobile, "desktop nav only; mobile uses the hamburger menu");
 
-    await expect(page.getByRole("link", { name: "Screenshots" })).toHaveAttribute(
+    const nav = page.getByRole("navigation", { name: "Primary" });
+
+    for (const [name, href] of [
+      ["Features", "/#features"],
+      ["Examples", "/#examples"],
+      ["Catalog", "/#catalog"],
+      ["Screenshots", "/#showcase"],
+      ["FAQ", "/#faq"],
+    ]) {
+      await expect(nav.getByRole("link", { name })).toHaveAttribute("href", href);
+    }
+  });
+
+  test("footer links to the privacy policy, the Play Store, and social profiles", async ({
+    page,
+  }) => {
+    const footer = page.locator("footer");
+
+    await expect(footer.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
       "href",
-      "/#showcase",
+      "/privacy-policy",
     );
-    await expect(page.getByRole("link", { name: "Features" })).toHaveAttribute(
+    await expect(footer.getByRole("link", { name: "Google Play" })).toHaveAttribute(
       "href",
-      "/#features",
+      playStoreUrl,
     );
-    await expect(page.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "/#faq");
+    await expect(footer.getByRole("link", { name: "Instagram" })).toHaveAttribute(
+      "href",
+      "https://www.instagram.com/dariomatias_dev/",
+    );
+    await expect(footer.getByRole("link", { name: "Dário Matias" })).toHaveAttribute(
+      "href",
+      portfolioUrl,
+    );
+  });
+
+  test("serves English at the root, whatever language the browser asks for", async ({
+    browser,
+  }) => {
+    const context = await browser.newContext({ locale: "pt-BR" });
+    const page = await context.newPage();
+
+    await page.goto("/");
+
+    await expect(page).toHaveURL(/vercel\.app\/$|localhost:\d+\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Learn Flutter");
+
+    await context.close();
+  });
+
+  test("switching back to English lands on the unprefixed page", async ({ page, isMobile }) => {
+    test.skip(isMobile, "desktop header only; mobile lists languages in the menu");
+
+    await page.goto("/pt-BR");
+    await page.locator("header").getByRole("button", { name: "Idioma: Português" }).click();
+    await page.getByRole("menuitem", { name: "English" }).click();
+
+    await expect(page).toHaveURL(/vercel\.app\/$|localhost:\d+\/$/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Learn Flutter");
+  });
+
+  test("header switches the page's language", async ({ page, isMobile }) => {
+    test.skip(isMobile, "desktop header only; mobile lists languages in the menu");
+
+    await page.locator("header").getByRole("button", { name: "Language: English" }).click();
+    await page.getByRole("menuitem", { name: "Español" }).click();
+
+    await expect(page).toHaveURL(/\/es$/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("Aprende Flutter");
   });
 });
 
@@ -70,15 +115,13 @@ test.describe("mobile menu", () => {
     await page.goto("/");
 
     await page.getByRole("button", { name: "Open menu" }).click();
-    // The mobile menu duplicates the header's nav links; scope to the one
-    // rendered inside the open menu, not the (hidden) desktop nav.
     await expect(page.getByRole("button", { name: "Close menu" })).toBeVisible();
 
     await page.getByRole("button", { name: "Close menu" }).click();
     await expect(page.getByRole("button", { name: "Close menu" })).not.toBeVisible();
   });
 
-  test("links to the page's own sections and privacy policy", async ({ page }) => {
+  test("links to the page's own sections", async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 800 });
     await page.goto("/");
 
@@ -94,10 +137,6 @@ test.describe("mobile menu", () => {
       "/#features",
     );
     await expect(dialog.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "/#faq");
-    await expect(dialog.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute(
-      "href",
-      "/privacy-policy",
-    );
   });
 
   test("opens as an accessible dialog, traps focus, and returns it on Escape", async ({ page }) => {
@@ -110,7 +149,6 @@ test.describe("mobile menu", () => {
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
 
-    // Tabbing through the whole menu should never leave the dialog.
     for (let i = 0; i < 10; i++) {
       await page.keyboard.press("Tab");
       await expect(dialog.locator(":focus")).toHaveCount(1);
@@ -135,10 +173,10 @@ test.describe("screenshots carousel", () => {
     await expect(prevButton).toBeDisabled();
 
     await nextButton.click();
-    await expect(secondSlideDot.locator("span")).toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
+    await expect(secondSlideDot).toHaveAttribute("aria-current", "true");
 
     await prevButton.click();
-    await expect(secondSlideDot.locator("span")).not.toHaveClass(/(^|\s)bg-brand-accent(\s|$)/);
+    await expect(secondSlideDot).not.toHaveAttribute("aria-current");
   });
 
   test("dot buttons meet the 24px minimum touch target size", async ({ page }) => {
@@ -153,24 +191,30 @@ test.describe("screenshots carousel", () => {
   test("opens and closes the image viewer, with click and with Escape", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("button", { name: "View screenshot 1", exact: true }).click();
+    await page
+      .getByRole("button", { name: "Enlarge screenshot: Home, with every component group" })
+      .click();
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
 
-    await page.getByRole("button", { name: "Close Image Viewer" }).click();
+    await page.getByRole("button", { name: "Close image viewer" }).click();
     await expect(dialog).not.toBeVisible();
 
-    await page.getByRole("button", { name: "View screenshot 1", exact: true }).click();
+    await page
+      .getByRole("button", { name: "Enlarge screenshot: Home, with every component group" })
+      .click();
     await expect(dialog).toBeVisible();
 
     await page.keyboard.press("Escape");
     await expect(dialog).not.toBeVisible();
   });
 
-  test("traps focus while open and returns it to the thumbnail on Escape", async ({ page }) => {
+  test("traps focus while open and returns it to the slide on Escape", async ({ page }) => {
     await page.goto("/");
 
-    const thumbnail = page.getByRole("button", { name: "View screenshot 1", exact: true });
+    const thumbnail = page.getByRole("button", {
+      name: "Enlarge screenshot: Home, with every component group",
+    });
     await thumbnail.click();
 
     const dialog = page.getByRole("dialog");
@@ -187,14 +231,34 @@ test.describe("screenshots carousel", () => {
   });
 });
 
+test.describe("screenshot viewer", () => {
+  test("closes on a click beside the screenshot, but not on the screenshot itself", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    await page
+      .getByRole("button", { name: "Enlarge screenshot: Home, with every component group" })
+      .click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+
+    await dialog.getByRole("img").click();
+    await expect(dialog).toBeVisible();
+
+    await page.mouse.click(10, 10);
+    await expect(dialog).not.toBeVisible();
+  });
+});
+
 test.describe("FAQ", () => {
   test("expands a question", async ({ page }) => {
     await page.goto("/");
 
     const question = page.getByRole("button", {
-      name: "Is the app completely free?",
+      name: "Is FlutterGuide really free?",
     });
-    const answer = page.getByText("Yes, FlutterGuide is free and open-source", {
+    const answer = page.getByText("There's no premium tier and no account", {
       exact: false,
     });
 
@@ -207,7 +271,7 @@ test.describe("FAQ", () => {
     await page.goto("/");
 
     const question = page.getByRole("button", {
-      name: "Is the app completely free?",
+      name: "Is FlutterGuide really free?",
     });
     await question.focus();
 

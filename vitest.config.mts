@@ -28,14 +28,13 @@ export default defineConfig({
         "**/*.types.ts",
         "**/index.ts",
         // Plain variant/data objects: nothing to branch on.
-        "src/shared/motion/**",
-        "src/features/features-showcase/data/features.ts",
-        "src/features/about/data/links.ts",
+        "src/features/**/data/**",
         "src/shared/lib/catalog-stats.ts",
-        "src/features/theme-customization/lib/code-snippet.ts",
-        "src/features/whats-new/data/releases.ts",
+        "src/features/examples/lib/code-snippet.ts",
         // next-intl wiring: declarative config, no logic of our own.
         "src/i18n/routing.ts",
+        "src/proxy.ts",
+        "src/shared/lib/fonts.ts",
         "src/i18n/navigation.ts",
         "src/i18n/request.ts",
         // shadcn/Radix primitives: styling only, no logic of our own.
@@ -47,7 +46,6 @@ export default defineConfig({
         "src/app/robots.ts",
         "src/app/[locale]/opengraph-image.tsx",
         // Trivial passthrough wrappers, no logic of our own.
-        "src/shared/components/motion-provider.tsx",
         "src/shared/lib/cn.ts",
         // Test infrastructure, not application code.
         "src/shared/lib/test-utils.tsx",

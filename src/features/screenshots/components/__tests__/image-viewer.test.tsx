@@ -5,10 +5,6 @@ import { ImageViewer } from "@/features/screenshots/components/image-viewer";
 import { Dialog } from "@/shared/components/ui/dialog";
 import { renderWithIntl } from "@/shared/lib/test-utils";
 
-// next/image wraps onLoad/onError with its own image-decoding logic
-// (calls `img.decode()`, unavailable in jsdom), so firing DOM load/error
-// events never reaches the real component's handlers. A plain <img> mock
-// routes them through React's normal event system instead.
 vi.mock("next/image", () => ({
   default: ({
     src,
@@ -22,14 +18,14 @@ vi.mock("next/image", () => ({
     onLoad?: () => void;
     onError?: () => void;
     ref?: React.Ref<HTMLImageElement>;
-    // eslint-disable-next-line @next/next/no-img-element -- intentional stand-in for next/image, see the comment above.
+    // eslint-disable-next-line @next/next/no-img-element -- plain <img> stand-in: next/image's load events don't fire in jsdom.
   }) => <img ref={ref} src={src} alt={alt} onLoad={onLoad} onError={onError} />,
 }));
 
-const renderViewer = (props: { src: string; alt: string }) =>
+const renderViewer = (props: { src: string; alt: string; onClose?: () => void }) =>
   renderWithIntl(
     <Dialog open>
-      <ImageViewer {...props} />
+      <ImageViewer onClose={() => {}} {...props} />
     </Dialog>,
   );
 
@@ -66,5 +62,16 @@ describe("ImageViewer", () => {
     expect(screen.queryByRole("status")).not.toBeInTheDocument();
 
     completeSpy.mockRestore();
+  });
+
+  it("closes on a click outside the screenshot, but not on the screenshot itself", () => {
+    const onClose = vi.fn();
+    renderViewer({ src: "/screenshots/01_home.png", alt: "Home screen", onClose });
+
+    fireEvent.click(screen.getByAltText("Home screen"));
+    expect(onClose).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole("dialog"));
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

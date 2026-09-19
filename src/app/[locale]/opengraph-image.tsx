@@ -13,9 +13,9 @@ export default function Image() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#101214",
+        backgroundColor: "#050a17",
         backgroundImage:
-          "radial-gradient(circle at 50% 30%, rgba(179, 185, 196, 0.25), transparent 60%)",
+          "radial-gradient(circle at 50% 20%, rgba(47, 108, 246, 0.35), transparent 60%), radial-gradient(circle at 85% 90%, rgba(138, 125, 255, 0.25), transparent 50%)",
       }}
     >
       <div
@@ -34,10 +34,10 @@ export default function Image() {
           display: "flex",
           marginTop: 24,
           fontSize: 32,
-          color: "#a1a1aa",
+          color: "#8db4ff",
         }}
       >
-        The essential companion for Flutter developers
+        Learn Flutter by example
       </div>
     </div>,
     size,
