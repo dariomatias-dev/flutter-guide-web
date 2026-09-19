@@ -11,7 +11,7 @@ import type { ReactElement } from "react";
 // each test file wiring its own provider.
 export const renderWithIntl = (ui: ReactElement, options?: RenderOptions) =>
   render(
-    <NextIntlClientProvider locale="en" messages={messages}>
+    <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
       {ui}
     </NextIntlClientProvider>,
     options,

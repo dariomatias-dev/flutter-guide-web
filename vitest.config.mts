@@ -40,43 +40,31 @@ export default defineConfig({
         "src/i18n/request.ts",
         // shadcn/Radix primitives: styling only, no logic of our own.
         "src/shared/components/ui/**",
-        // Static sections: hardcoded markup, no props, no branches.
-        "src/features/catalog/components/catalog-section.tsx",
-        "src/features/languages/components/languages-section.tsx",
-        "src/features/share/components/share-section.tsx",
-        "src/features/whats-new/components/whats-new-section.tsx",
-        "src/features/quality/components/quality-section.tsx",
-        "src/features/learning-path/components/learning-path-section.tsx",
-        "src/features/theme-customization/components/theme-customization-section.tsx",
-        "src/features/theme-customization/components/theme-customization-content.tsx",
-        "src/features/contribution/components/contribution-section.tsx",
-        "src/features/official-resources/components/official-resources-section.tsx",
-        "src/features/features-showcase/components/features-section.tsx",
-        "src/features/screenshots/components/screenshots-section.tsx",
-        "src/features/about/components/about-me-section.tsx",
-        "src/features/legal/components/privacy-policy-content.tsx",
         // Next.js metadata route conventions: static data or markup, no
-        // branches of our own.
+        // branches of our own. sitemap.ts has real branching logic (locale
+        // prefixing) and has its own test, so it's not excluded here.
         "src/app/manifest.ts",
         "src/app/robots.ts",
-        "src/app/sitemap.ts",
-        "src/app/opengraph-image.tsx",
-        // Trivial passthrough wrapper, no logic of our own.
+        "src/app/[locale]/opengraph-image.tsx",
+        // Trivial passthrough wrappers, no logic of our own.
         "src/shared/components/motion-provider.tsx",
+        "src/shared/lib/cn.ts",
+        // Test infrastructure, not application code.
+        "src/shared/lib/test-utils.tsx",
       ],
       // Floor, not a target: measured minus a small margin (actual was
-      // 83.05/75/72.22/85.58 on 2026-09-14). Known gaps — hero-section.tsx
-      // (no dedicated test, covered indirectly by e2e/no-js.spec.ts and
-      // e2e/reduced-motion.spec.ts), and a few branches in
-      // image-viewer.tsx/screenshots-carousel.tsx — are a backlog, not a
-      // reason to lower this further. Raise it whenever a change
-      // measurably improves the aggregate; lowering it needs a reason in
-      // the commit message.
+      // 98.23/96.36/97.26/100 on 2026-09-17). One known gap —
+      // `onDotButtonClick` in screenshots-carousel.tsx never sees a
+      // truthy `emblaApi` under jsdom (slide widths report as 0, so embla
+      // never fully initializes); the real click-to-navigate behavior is
+      // covered by e2e/navigation.spec.ts instead. Raise this whenever a
+      // change measurably improves the aggregate; lowering it needs a
+      // reason in the commit message.
       thresholds: {
-        statements: 81,
-        branches: 73,
-        functions: 70,
-        lines: 84,
+        statements: 96,
+        branches: 94,
+        functions: 95,
+        lines: 98,
       },
     },
   },
