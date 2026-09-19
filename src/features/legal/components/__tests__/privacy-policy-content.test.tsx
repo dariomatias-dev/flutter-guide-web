@@ -6,10 +6,6 @@ import { PrivacyPolicyContent } from "@/features/legal/components/privacy-policy
 
 import messages from "../../../../../messages/en.json";
 
-// `next-intl/server`'s `getTranslations` refuses to run outside a real
-// server request context (it errors under jsdom). `createTranslator` is
-// the client-safe building block it uses internally, so it's a faithful
-// stand-in here.
 vi.mock("next-intl/server", () => ({
   getTranslations: async (namespace: "PrivacyPolicy") =>
     createTranslator({ locale: "en", messages, namespace }),
