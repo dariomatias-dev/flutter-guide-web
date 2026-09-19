@@ -70,13 +70,12 @@ su propio deep link desde el sitio
 
 ## Stack Tecnológico
 
-- **[Next.js](https://nextjs.org/)** (App Router) - framework de React,
-  completamente estático.
+- **[Next.js](https://nextjs.org/)** (App Router) - framework de React: páginas estáticas, con
+  regeneración cada hora en las que muestran datos de versiones.
 - **[React](https://react.dev/)** y **[TypeScript](https://www.typescriptlang.org/)**.
 - **[Tailwind CSS](https://tailwindcss.com/)** - estilos utility-first.
 - **[Radix UI](https://www.radix-ui.com/)** - primitivas accesibles
   (diálogo, accordion), envueltas al estilo shadcn.
-- **[Motion](https://motion.dev/)** - animación.
 - **[Embla Carousel](https://www.embla-carousel.com/)** - el carrusel de
   capturas de pantalla.
 - **[Vitest](https://vitest.dev/)** y **[Testing Library](https://testing-library.com/)** - pruebas unitarias y de componentes.

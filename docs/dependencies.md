@@ -30,7 +30,7 @@ dedicated change, not a Renovate PR.
 2. Run `pnpm run verify` locally on the PR's branch.
 3. If it's a single low-risk package (a patch or minor bump with a clean
    `verify`), merge it as-is.
-4. If it touches something with visible UI (`motion`, `embla-carousel-react`,
+4. If it touches something with visible UI (`embla-carousel-react`,
    `tailwindcss`, `@radix-ui/*`), check the app in a browser before merging,
    not just the test suite — visual regressions do not fail tests.
 5. If `verify` fails, decide whether the fix belongs in the same PR (small,

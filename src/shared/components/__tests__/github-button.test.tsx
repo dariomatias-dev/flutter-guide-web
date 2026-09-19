@@ -19,4 +19,10 @@ describe("GithubButton", () => {
 
     expect(screen.queryByRole("button")).not.toBeInTheDocument();
   });
+
+  it("uses the outlined light variant on light bands", () => {
+    renderWithIntl(<GithubButton tone="light" />);
+
+    expect(screen.getByRole("link", { name: /view on github/i })).toHaveClass("bg-white");
+  });
 });

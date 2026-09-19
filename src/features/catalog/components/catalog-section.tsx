@@ -1,70 +1,118 @@
-"use client";
-
-import { Code2, Layers, LayoutTemplate, Package, Puzzle } from "lucide-react";
-import { motion } from "motion/react";
+import { AppWindow, Blocks, Braces, Package, Puzzle } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { CountUp } from "@/shared/components/count-up";
+import { highlightOnLight } from "@/shared/components/highlight";
+import { SectionHeading } from "@/shared/components/section-heading";
 import { catalogStats, catalogTotal } from "@/shared/lib/catalog-stats";
-import { cardItemVariants } from "@/shared/motion/card-item-variants";
-import { cardsContainerVariants } from "@/shared/motion/cards-container-variants";
-import { headerVariants } from "@/shared/motion/header-variants";
-import { textItemVariants } from "@/shared/motion/text-item-variants";
+import { revealDelay } from "@/shared/lib/reveal";
 
-const stats = [
-  { icon: Layers, count: catalogStats.widgets, labelKey: "widgets" },
-  { icon: Package, count: catalogStats.packages, labelKey: "packages" },
-  { icon: Code2, count: catalogStats.functions, labelKey: "functions" },
-  { icon: Puzzle, count: catalogStats.elements, labelKey: "elements" },
-  { icon: LayoutTemplate, count: catalogStats.uis, labelKey: "uis" },
+import { PackagesMarquee } from "./packages-marquee";
+
+import type { LucideIcon } from "lucide-react";
+
+type Category = Exclude<keyof typeof catalogStats, "widgets">;
+
+const smallCategories: { key: Category; icon: LucideIcon }[] = [
+  { key: "packages", icon: Package },
+  { key: "functions", icon: Braces },
+  { key: "elements", icon: Puzzle },
+  { key: "uis", icon: AppWindow },
+];
+
+/** Component groups from the app's home screen, in the same order. */
+const widgetGroups = [
+  "text",
+  "button",
+  "form",
+  "picker",
+  "list",
+  "layout",
+  "navigation",
+  "dialog",
+  "display",
+  "effects",
+  "interaction",
+  "builder",
 ] as const;
 
 export const CatalogSection = () => {
   const t = useTranslations("Catalog");
 
   return (
-    <section id="catalog" className="w-full px-4 py-20 sm:px-8 md:py-28">
-      <div className="mx-auto max-w-5xl">
-        <motion.div
-          className="text-center"
-          variants={headerVariants}
-          initial={false}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          <motion.h2
-            variants={textItemVariants}
-            className="text-4xl font-extrabold tracking-tighter sm:text-5xl"
-          >
-            {t("title")}
-          </motion.h2>
+    <section id="catalog" className="bg-white py-24 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <SectionHeading
+            tone="light"
+            eyebrow={t("eyebrow")}
+            title={t.rich("title", { hl: highlightOnLight })}
+            subtitle={t("subtitle")}
+          />
 
-          <motion.p
-            variants={textItemVariants}
-            className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400"
-          >
-            {t("subtitle", { count: catalogTotal })}
-          </motion.p>
-        </motion.div>
+          <div className="reveal flex items-baseline gap-3 lg:text-right">
+            <span className="text-heading text-6xl font-extrabold tracking-tighter tabular-nums sm:text-7xl">
+              <CountUp value={catalogTotal} />
+            </span>
+            <span className="text-body max-w-28 text-sm leading-snug font-medium">
+              {t("total")}
+            </span>
+          </div>
+        </div>
 
-        <motion.div
-          className="mt-16 flex flex-wrap justify-center gap-6"
-          variants={cardsContainerVariants}
-          initial={false}
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {stats.map(({ icon: Icon, count, labelKey }) => (
-            <motion.div
-              key={labelKey}
-              variants={cardItemVariants}
-              className="border-brand-surface-raised bg-brand-surface-elevated/50 flex w-40 flex-col items-center gap-3 rounded-xl border px-6 py-8 text-center shadow-lg"
+        <div className="mt-14 grid gap-5 lg:grid-cols-3 lg:grid-rows-2">
+          <article className="reveal bg-ink-900 relative flex flex-col overflow-hidden rounded-3xl p-8 text-white lg:row-span-2">
+            <div
+              aria-hidden="true"
+              className="bg-brand-500/30 absolute -right-20 -bottom-20 size-72 rounded-full blur-3xl"
+            />
+            <div className="relative flex items-center justify-between">
+              <span className="text-brand-300 flex size-12 items-center justify-center rounded-2xl bg-white/10">
+                <Blocks className="size-6" aria-hidden="true" />
+              </span>
+              <span className="text-5xl font-extrabold tracking-tighter tabular-nums">
+                <CountUp value={catalogStats.widgets} />
+              </span>
+            </div>
+            <h3 className="relative mt-8 text-2xl font-bold">{t("categories.widgets.title")}</h3>
+            <p className="relative mt-2 text-slate-300">{t("categories.widgets.description")}</p>
+            <ul className="relative mt-8 flex flex-wrap gap-2 lg:mt-auto">
+              {widgetGroups.map((group) => (
+                <li
+                  key={group}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200"
+                >
+                  {t(`groups.${group}`)}
+                </li>
+              ))}
+            </ul>
+          </article>
+
+          {smallCategories.map(({ key, icon: Icon }, index) => (
+            <article
+              key={key}
+              style={revealDelay(index + 1)}
+              className="reveal group bg-paper ring-line flex flex-col rounded-3xl p-7 ring-1 transition-[translate,box-shadow,background-color] duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_24px_50px_-25px_rgb(31_95_224/0.4)]"
             >
-              <Icon className="text-brand-accent h-8 w-8" />
-              <span className="text-3xl font-bold text-white">{count}</span>
-              <span className="text-sm text-zinc-400">{t(labelKey)}</span>
-            </motion.div>
+              <div className="flex items-center justify-between">
+                <span className="text-brand-600 ring-line flex size-11 items-center justify-center rounded-xl bg-white ring-1">
+                  <Icon className="size-5" aria-hidden="true" />
+                </span>
+                <span className="text-heading text-4xl font-extrabold tracking-tighter tabular-nums">
+                  <CountUp value={catalogStats[key]} />
+                </span>
+              </div>
+              <h3 className="text-heading mt-6 text-lg font-bold">
+                {t(`categories.${key}.title`)}
+              </h3>
+              <p className="text-body mt-1.5 text-sm leading-relaxed">
+                {t(`categories.${key}.description`)}
+              </p>
+            </article>
           ))}
-        </motion.div>
+        </div>
+
+        <PackagesMarquee />
       </div>
     </section>
   );

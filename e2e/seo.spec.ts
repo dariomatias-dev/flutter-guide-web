@@ -38,13 +38,15 @@ test.describe("SEO metadata", () => {
     );
   });
 
-  test("sitemap.xml lists both pages", async ({ request }) => {
+  test("sitemap.xml lists every page", async ({ request }) => {
     const response = await request.get("/sitemap.xml");
     const body = await response.text();
 
     expect(response.headers()["content-type"]).toContain("application/xml");
     expect(body).toContain("<loc>https://flutter-guide-web.vercel.app</loc>");
     expect(body).toContain("<loc>https://flutter-guide-web.vercel.app/privacy-policy</loc>");
+    expect(body).toContain("<loc>https://flutter-guide-web.vercel.app/pt-BR/privacy-policy</loc>");
+    expect(body).toContain("<loc>https://flutter-guide-web.vercel.app/changelog</loc>");
   });
 
   test("robots.txt allows everything and points to the sitemap", async ({ request }) => {

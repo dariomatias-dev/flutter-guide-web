@@ -1,9 +1,7 @@
-"use client";
-
-import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
-import { elementAnimation } from "@/shared/motion/section-animation";
+import { highlightOnDark } from "@/shared/components/highlight";
+import { SectionHeading } from "@/shared/components/section-heading";
 
 import { ScreenshotsCarousel } from "./screenshots-carousel";
 
@@ -11,18 +9,25 @@ export const ScreenshotsSection = () => {
   const t = useTranslations("Screenshots");
 
   return (
-    <section id="showcase" className="relative w-full py-20 md:py-28">
-      <div className="mx-auto flex max-w-6xl flex-col items-center px-4 text-center">
-        <motion.div {...elementAnimation}>
-          <h2 className="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl">
-            {t("title")}
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-400">{t("subtitle")}</p>
-        </motion.div>
+    <section
+      id="showcase"
+      className="bg-ink-950 relative isolate overflow-hidden py-24 text-white lg:py-32"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="bg-brand-600/15 absolute -top-32 left-1/4 h-96 w-160 rounded-full blur-[120px]" />
+      </div>
 
-        <motion.div {...elementAnimation} className="mt-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          tone="dark"
+          eyebrow={t("eyebrow")}
+          title={t.rich("title", { hl: highlightOnDark })}
+          subtitle={t("subtitle")}
+        />
+
+        <div className="reveal mt-14">
           <ScreenshotsCarousel />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

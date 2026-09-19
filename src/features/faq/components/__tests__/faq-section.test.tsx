@@ -29,10 +29,16 @@ describe("FaqSection", () => {
     expect(screen.queryByText(answer)).not.toBeInTheDocument();
     await user.click(questionButton);
 
-    // Not toBeVisible(): the item's whileInView entrance animation leaves
-    // it at opacity: 0 in jsdom (see e2e/navigation.spec.ts for the real
-    // browser check).
     expect(await screen.findByText(answer)).toBeInTheDocument();
     expect(questionButton).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("links to GitHub issues for anything not covered", () => {
+    renderWithIntl(<FaqSection />);
+
+    expect(screen.getByRole("link", { name: /Ask on GitHub/ })).toHaveAttribute(
+      "href",
+      "https://github.com/dariomatias-dev/flutter_guide_app/issues",
+    );
   });
 });

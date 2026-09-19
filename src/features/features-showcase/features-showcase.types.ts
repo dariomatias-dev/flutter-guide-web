@@ -1,13 +1,6 @@
-import type { ElementType } from "react";
+import type { LucideIcon } from "lucide-react";
 
 export interface Feature {
-  icon: ElementType;
-  key:
-    | "livePreviews"
-    | "favorites"
-    | "search"
-    | "deepLinks"
-    | "languages"
-    | "codeThemes"
-    | "lightDarkMode";
+  icon: LucideIcon;
+  key: "livePreview" | "sourceCode" | "organized" | "favorites" | "codeThemes" | "languages";
 }

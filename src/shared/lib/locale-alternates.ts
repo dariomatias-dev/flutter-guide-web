@@ -1,15 +1,19 @@
 import { routing } from "@/i18n/routing";
 
-// Builds the `alternates.languages` map for a page's metadata: one entry
-// per configured locale, pointing at that locale's version of `pathname`
-// (unprefixed for the default locale, matching `localePrefix: "as-needed"`),
-// plus "x-default" pointing at the unprefixed path.
+/** A page's path in `locale`: unprefixed for the default locale, prefixed otherwise. */
+export const localePath = (locale: string, pathname: string) => {
+  if (locale === routing.defaultLocale) return pathname;
+  return pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;
+};
+
+/** Builds a page's `alternates.languages` metadata for every locale. */
 export const localeAlternates = (pathname: string): Record<string, string> => {
-  const languages: Record<string, string> = { "x-default": pathname };
+  const languages: Record<string, string> = {
+    "x-default": localePath(routing.defaultLocale, pathname),
+  };
 
   for (const locale of routing.locales) {
-    const prefix = locale === routing.defaultLocale ? "" : `/${locale}`;
-    languages[locale] = `${prefix}${pathname}`;
+    languages[locale] = localePath(locale, pathname);
   }
 
   return languages;

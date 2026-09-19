@@ -1,6 +1,4 @@
-// Counted from flutter_guide_app's sample_definitions/{widgets,functions,
-// packages,elements,uis}.dart on 2026-09-13. Re-count from those files
-// after a content-adding release and update here.
+/** Catalog counts from the app's sample_definitions (counted 2026-09-13). */
 export const catalogStats = {
   widgets: 143,
   functions: 13,

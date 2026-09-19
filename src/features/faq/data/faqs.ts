@@ -1,12 +1,12 @@
 import type { FAQ } from "@/features/faq/faq.types";
 
-// Question/answer text lives in messages/*.json under Faq.items.<key>.
+/** Question/answer text lives in messages/*.json under Faq.items.<key>. */
 export const faqs: FAQ[] = [
   { key: "free" },
-  { key: "updateFrequency" },
   { key: "commercialUse" },
   { key: "ios" },
+  { key: "docs" },
   { key: "languages" },
-  { key: "shareLink" },
+  { key: "updates" },
   { key: "contribute" },
 ];

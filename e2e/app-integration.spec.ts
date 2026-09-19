@@ -2,10 +2,6 @@ import { expect, test } from "@playwright/test";
 
 import type { Page } from "@playwright/test";
 
-// The app depends on these routes to keep working: breaking any of them
-// breaks something for real users of the FlutterGuide Android app, not just
-// the site. See plan.md's "Invariantes" section.
-
 test.describe("app integration invariants", () => {
   test("assetlinks.json verifies the Android App Links", async ({ request }) => {
     const response = await request.get("/.well-known/assetlinks.json");
@@ -40,10 +36,6 @@ test.describe("app integration invariants", () => {
     expect(response?.status()).toBe(200);
   });
 
-  // `window.location.href = "flutterguide://..."` produces no real page
-  // navigation (Chromium can't handle the unknown scheme), but Playwright
-  // still observes it as a failed `request` for that URL, so that's what
-  // these tests wait for instead of a navigation event.
   for (const category of ["widgets", "functions", "packages", "elements", "uis"]) {
     test(`/${category}/x tries to open the app`, async ({ page }) => {
       const deepLinkRequest = page.waitForRequest(`flutterguide://open.app/${category}/x`);
@@ -82,9 +74,6 @@ test.describe("app integration invariants", () => {
   });
 
   test("an app link preserves the hash in the fallback link", async ({ page }) => {
-    // A URL fragment is never sent as part of a network request, so this
-    // checks the rendered fallback link's href instead of a request, unlike
-    // the query string case above.
     await page.goto("/widgets/x#section");
 
     await expect(page.getByRole("link", { name: "Open in App" })).toHaveAttribute(

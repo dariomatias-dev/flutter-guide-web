@@ -10,3 +10,27 @@ export const playStoreUrl =
 export const githubUrl = "https://github.com/dariomatias-dev/flutter_guide_app";
 export const contributingUrl = `${githubUrl}/blob/main/docs/contributing.md`;
 export const issuesUrl = `${githubUrl}/issues`;
+export const changelogUrl = `${githubUrl}/blob/main/CHANGELOG.md`;
+
+/** Host of the links the app shares (component_sample_app_bar_actions.dart). */
+export const appLinkHost = "flutterguide.app";
+
+export const author = {
+  name: "Dário Matias",
+  portfolioUrl: "https://dariomatias-dev.com/",
+  githubUrl: "https://github.com/dariomatias-dev",
+  linkedinUrl: "https://www.linkedin.com/in/dariomatias-dev/",
+  instagramUrl: "https://www.instagram.com/dariomatias_dev/",
+} as const;
+
+export const flutterResources = {
+  flutterDocs: "https://docs.flutter.dev",
+  dartDocs: "https://dart.dev/guides",
+  pubDev: "https://pub.dev",
+  youtube: "https://www.youtube.com/@flutterdev",
+} as const;
+
+/** Raw CHANGELOG.md on the app's default branch. */
+export const changelogSourceUrl =
+  "https://raw.githubusercontent.com/dariomatias-dev/flutter_guide_app/main/CHANGELOG.md";
+export const releasesUrl = `${githubUrl}/releases`;

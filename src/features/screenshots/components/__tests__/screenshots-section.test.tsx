@@ -8,7 +8,11 @@ describe("ScreenshotsSection", () => {
   it("renders the title and the carousel", () => {
     renderWithIntl(<ScreenshotsSection />);
 
-    expect(screen.getByRole("heading", { name: "The App in Action" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "View screenshot 1" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Every screen, made to learn." }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Enlarge screenshot: Home, with every component group" }),
+    ).toBeInTheDocument();
   });
 });

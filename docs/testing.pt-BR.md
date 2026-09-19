@@ -34,11 +34,8 @@ silenciosamente, sem nada no `pnpm lint` ou `tsc` pra pegar.
 O que deliberadamente **não** é perseguido, e fica excluído da cobertura
 em `vitest.config.mts`:
 
-- **Dado puro e objetos de variante**: `shared/motion/**`, os arrays
-  estáticos em `features/*/data/*.ts` (exceto `faqs.ts`, exercitado
-  indiretamente via `faq-section.test.tsx`), e
-  `theme-customization/lib/code-snippet.ts`, e
-  `whats-new/data/releases.ts`. Nada pra ramificar.
+- **Dado puro**: os arrays estáticos em `features/*/data/**` e o código
+  de exemplo em `examples/lib/code-snippet.ts`. Nada pra ramificar.
 - **Primitivas shadcn/Radix** (`shared/components/ui/**`): só
   estilização, sem lógica nossa.
 - **`app/[locale]/page.tsx` e `app/[locale]/privacy-policy/page.tsx`**:
@@ -62,14 +59,9 @@ consertá-lo aumentar o número em vez de ser esquecido silenciosamente:
 - **Gaps do jsdom são reais e merecem um comentário, não um gambiarra.**
   `IntersectionObserver`, `ResizeObserver` e `matchMedia` simplesmente não
   existem no jsdom; veja os polyfills em `vitest.setup.ts` — o
-  `whileInView` do `framer-motion` precisa do primeiro, o
-  `embla-carousel` precisa dos outros dois.
-- **A propagação de stagger do Framer Motion nem sempre resolve no
-  jsdom**, mesmo com o `IntersectionObserver` com polyfill (veja o
-  comentário em `faq-section.test.tsx`): um item aninhado sob um pai
-  `whileInView` pode ficar preso na sua variante `hidden`. Verifique
-  `toBeInTheDocument()`/atributos de estado ali em vez de
-  `toBeVisible()`, e deixe a checagem visual de verdade pro e2e.
+  `embla-carousel` precisa deles. Também não há App Router, então o
+  `vitest.setup.ts` fixa o `usePathname()` do `next/navigation` em `/`
+  pro seletor de idioma do footer.
 - **O embla-carousel precisa de layout de verdade** (larguras de slide,
   entradas de `ResizeObserver` com dimensões reais) pra decidir até onde
   consegue rolar, o que o jsdom não consegue fornecer. Navegação de
@@ -79,8 +71,7 @@ consertá-lo aumentar o número em vez de ser esquecido silenciosamente:
 - **`onLoad`/`onError` do `next/image` não chegam no componente via
   `fireEvent.load`/`fireEvent.error`**: internamente ele chama
   `img.decode()`, que o jsdom não implementa, então o wrapper que
-  chamaria o handler de verdade nunca roda. `image-viewer.test.tsx` e
-  `screenshot-thumbnail.test.tsx` mockam o `next/image` pra uma `<img>`
+  chamaria o handler de verdade nunca roda. `image-viewer.test.tsx` mocka o `next/image` pra uma `<img>`
   simples, pra que as props passem pelo sistema de eventos normal do
   React.
 - **`getTranslations` de `next-intl/server` lança erro sob jsdom**
@@ -103,9 +94,10 @@ namespace }`, que funciona isolado), mocke `next-intl/server` com
 reducedMotion="user"` (`motion-provider.tsx`) neutraliza só animações de
   transform/layout por design da própria lib, não de opacidade — então o
   axe podia capturar uma cor interpolada no meio do fade como falha de
-  contraste, mesmo com `reducedMotion: "reduce"` no teste. Corrigido
-  esperando o header chegar a `opacity: 1` antes de rodar
-  `axe.analyze()`, em vez de mexer na animação em si.
+  contraste, mesmo com `reducedMotion: "reduce"` no teste. O redesign
+  removeu o Motion de vez (toda animação agora é CSS, e a regra global de
+  `prefers-reduced-motion` no `globals.css` cancela todas), então a causa
+  sumiu junto com a espera por `opacity: 1` que a contornava.
 
 ## Rodando as suítes
 

@@ -8,20 +8,27 @@ import { renderWithIntl } from "@/shared/lib/test-utils";
 import messages from "../../../../../messages/en.json";
 
 describe("FeaturesSection", () => {
-  it("renders the title and one card per feature, with its title and description", () => {
+  it("renders the title and one item per feature, with its title and description", () => {
     renderWithIntl(<FeaturesSection />);
 
     expect(
-      screen.getByRole("heading", { name: "A Powerful Toolkit in Your Pocket" }),
+      screen.getByRole("heading", { level: 2, name: "Why FlutterGuide?" }),
     ).toBeInTheDocument();
 
     for (const { key } of features) {
-      const copy = messages.Features[key as keyof typeof messages.Features] as {
-        title: string;
-        description: string;
-      };
-      expect(screen.getByRole("heading", { name: copy.title })).toBeInTheDocument();
-      expect(screen.getByText(copy.description)).toBeInTheDocument();
+      const item = messages.Features.items[key];
+      expect(screen.getByRole("heading", { level: 3, name: item.title })).toBeInTheDocument();
+      expect(screen.getByText(item.description)).toBeInTheDocument();
     }
+  });
+
+  it("introduces the author, without a photo, and links to their portfolio", () => {
+    renderWithIntl(<FeaturesSection />);
+
+    expect(screen.queryByRole("img", { name: "Dário Matias" })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Meet the author/ })).toHaveAttribute(
+      "href",
+      "https://dariomatias-dev.com/",
+    );
   });
 });
