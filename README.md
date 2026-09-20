@@ -1,33 +1,41 @@
 <br>
 <div align="center">
-<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js">
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-<img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS">
+</div>
+<br>
+
+<div align="center">
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/actions/workflows/ci.yml">
+    <img src="https://github.com/dariomatias-dev/flutter-guide-web/actions/workflows/ci.yml/badge.svg" alt="CI: build passing">
+  </a>
+  <a href="https://codecov.io/github/dariomatias-dev/flutter-guide-web">
+    <img src="https://codecov.io/github/dariomatias-dev/flutter-guide-web/graph/badge.svg" alt="Coverage reported to Codecov">
+  </a>
+  <img src="https://img.shields.io/badge/node-%3E%3D24-339933?logo=node.js&logoColor=white" alt="Node.js: 24 or newer">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT">
+  </a>
 </div>
 <br>
 
 <p align="center">
-<a href="https://github.com/dariomatias-dev/flutter-guide-web/actions/workflows/ci.yml"><img src="https://github.com/dariomatias-dev/flutter-guide-web/actions/workflows/ci.yml/badge.svg" alt="CI: build passing"></a>
-<a href="https://codecov.io/github/dariomatias-dev/flutter-guide-web"><img src="https://codecov.io/github/dariomatias-dev/flutter-guide-web/graph/badge.svg" alt="Coverage reported to Codecov"></a>
-<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT"></a>
-<img src="https://img.shields.io/badge/node-%3E%3D24-339933?logo=node.js&logoColor=white" alt="Node.js: 24 or newer">
-</p>
-
-<p align="center">
-<strong>English</strong> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português (BR)</a>
+  <strong>English</strong> · <a href="README.es.md">Español</a> · <a href="README.pt-BR.md">Português (BR)</a>
 </p>
 
 <h1 align="center">FlutterGuide</h1>
 
 <p align="center">
-The official website for the FlutterGuide Android app: a free, open-source catalog of runnable Flutter and Dart samples, each with a live preview and its source code.
-<br>
-<a href="#about-the-project"><strong>Explore the docs »</strong></a>
-<br>
-<br>
-<a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=bug_report.yml">Report Bug</a> ·
-<a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=feature_request.yml">Request Feature</a>
+  The official website for the FlutterGuide Android app: a free, open-source catalog of runnable Flutter and Dart samples, each with a live preview and its source code.
+  <br>
+  <a href="#about-the-project"><strong>Explore the docs »</strong></a>
+  <br>
+  <br>
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=bug_report.yml">Report Bug</a>
+  ·
+  <a href="https://github.com/dariomatias-dev/flutter-guide-web/issues/new?template=feature_request.yml">Request Feature</a>
 </p>
 
 ## Table of Contents
