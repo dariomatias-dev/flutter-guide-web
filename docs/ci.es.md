@@ -10,12 +10,18 @@ Corre en cada push a `main` y en cada pull request.
   Solo en pull request, ya que no hay título de PR en un push simple.
 - **`quality`**: `format:check`, `lint`, `typecheck`. Un gate obligatorio.
 - **`unit`**: `test:coverage`, exigiendo los umbrales en
-  `vitest.config.mts`, y luego sube a Codecov (`fail_ci_if_error: false`,
-  así que un token faltante nunca bloquea un PR). Un gate obligatorio.
+  `vitest.config.mts`, y luego sube a Codecov. Codecov rechaza las subidas
+  sin token, así que el paso se omite cuando no hay `CODECOV_TOKEN` y falla
+  el job cuando una subida con token falla: un fallo silencioso dejaría la
+  insignia de cobertura informando un commit anterior. Un gate
+  obligatorio.
 - **`vulnerabilities`**: `pnpm audit`, `osv-scanner` contra el lockfile,
   `gitleaks`. Solo informativo (`continue-on-error` en cada paso).
 - **`build`**: `next build`, sube `.next` como artefacto para `e2e` y
-  `lighthouse`. Un gate obligatorio.
+  `lighthouse`. Las actions de artefacto siguen fijadas en v4, que es lo
+  que soporta el servidor de artefactos local de `act` (nektos/act#6022), y
+  la subida necesita `include-hidden-files` porque `.next` empieza por
+  punto. Un gate obligatorio.
 - **`e2e`**: descarga el artefacto del build, corre la suite de
   Playwright. Un gate obligatorio.
 - **`lighthouse`**: descarga el artefacto del build, corre `lhci autorun`
@@ -44,9 +50,8 @@ Comprobable con `act`:
   `act` porque su payload de evento simulado no tiene
   `repository.owner`, así que este job solo se ejercita de verdad con un
   push real.
-- `act -j unit`: corre de verdad, **incluyendo la subida a Codecov** — su
-  modo sin token para repositorios públicos publica de verdad. No
-  ejecutes este job con `act` más de lo necesario.
+- `act -j unit`: corre de verdad. La subida a Codecov se omite, ya que
+  `act` no tiene `CODECOV_TOKEN`.
 - `act -j lighthouse`: el job en sí pasa, pero `lhci` falla su
   healthcheck porque la imagen Docker de `act` no tiene Chrome instalado
   (el runner real `ubuntu-latest` sí lo tiene).

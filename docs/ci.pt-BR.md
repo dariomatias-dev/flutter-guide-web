@@ -10,12 +10,17 @@ Roda em todo push pra `main` e todo pull request.
   Só em pull request, já que não há título de PR num push simples.
 - **`quality`**: `format:check`, `lint`, `typecheck`. Um gate obrigatório.
 - **`unit`**: `test:coverage`, garantindo os pisos em `vitest.config.mts`,
-  depois envia pro Codecov (`fail_ci_if_error: false`, então um token
-  ausente nunca bloqueia um PR). Um gate obrigatório.
+  depois envia pro Codecov. O Codecov recusa envios sem token, então o
+  passo é pulado quando `CODECOV_TOKEN` não existe e falha o job quando um
+  envio com token dá errado: uma falha silenciosa deixaria o badge de
+  cobertura mostrando um commit antigo. Um gate obrigatório.
 - **`vulnerabilities`**: `pnpm audit`, `osv-scanner` contra o lockfile,
   `gitleaks`. Só relatório (`continue-on-error` em cada passo).
 - **`build`**: `next build`, envia `.next` como artefato pro `e2e` e pro
-  `lighthouse`. Um gate obrigatório.
+  `lighthouse`. As actions de artefato ficam fixadas na v4, que é o que o
+  servidor de artefatos local do `act` suporta (nektos/act#6022), e o
+  envio precisa de `include-hidden-files` porque `.next` começa com ponto.
+  Um gate obrigatório.
 - **`e2e`**: baixa o artefato do build, roda a suíte do Playwright. Um
   gate obrigatório.
 - **`lighthouse`**: baixa o artefato do build, roda `lhci autorun` contra
@@ -43,9 +48,8 @@ Testável via `act`:
   sob o `act` porque o payload de evento simulado não tem
   `repository.owner`, então esse job só é exercitado de verdade por um
   push real.
-- `act -j unit`: roda de verdade, **incluindo o upload pro Codecov** — o
-  modo sem token dele pra repositórios públicos publica de verdade. Não
-  rode esse job com `act` mais do que o necessário.
+- `act -j unit`: roda de verdade. O upload pro Codecov é pulado, já que o
+  `act` não tem `CODECOV_TOKEN`.
 - `act -j lighthouse`: o job em si passa, mas o `lhci` falha no
   healthcheck porque a imagem Docker do `act` não tem Chrome instalado
   (o runner `ubuntu-latest` de verdade tem).

@@ -15,9 +15,6 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium-desktop", use: { ...devices["Desktop Chrome"] } },
-    // Runs only smoke.spec.ts, app-integration.spec.ts, a11y.spec.ts and
-    // navigation.spec.ts (real mobile UA/touch/viewport, for the mobile
-    // menu, carousel, and FAQ interactions).
     {
       name: "mobile-chrome",
       use: { ...devices["Pixel 7"] },
@@ -25,9 +22,6 @@ export default defineConfig({
     },
   ],
   webServer: {
-    // Unlike npm, pnpm forwards extra args to the underlying script without
-    // needing a "--" separator; passing one here makes Next's CLI treat
-    // "--port" itself as a positional project-directory argument and fail.
     command: process.env.CI
       ? `pnpm run start --port ${PORT}`
       : `pnpm run build && pnpm run start --port ${PORT}`,

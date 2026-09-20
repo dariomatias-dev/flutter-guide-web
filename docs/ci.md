@@ -10,12 +10,17 @@ Runs on every push to `main` and every pull request.
   Pull-request-only, since there's no PR title on a plain push.
 - **`quality`**: `format:check`, `lint`, `typecheck`. A hard gate.
 - **`unit`**: `test:coverage`, enforcing the thresholds in
-  `vitest.config.mts`, then uploads to Codecov (`fail_ci_if_error: false`,
-  so a missing token never blocks a PR). A hard gate.
+  `vitest.config.mts`, then uploads to Codecov. Codecov rejects tokenless
+  uploads, so the step is skipped when `CODECOV_TOKEN` isn't set and fails
+  the job when an upload with a token fails: a silent failure would leave
+  the coverage badge reporting an older commit. A hard gate.
 - **`vulnerabilities`**: `pnpm audit`, `osv-scanner` against the lockfile,
   `gitleaks`. Report-only (`continue-on-error` on every step).
 - **`build`**: `next build`, uploads `.next` as an artifact for `e2e` and
-  `lighthouse`. A hard gate.
+  `lighthouse`. The artifact actions stay pinned to v4, which is what
+  `act`'s local artifact server supports (nektos/act#6022), and the upload
+  needs `include-hidden-files` because `.next` is dot-prefixed. A hard
+  gate.
 - **`e2e`**: downloads the build artifact, runs the Playwright suite. A
   hard gate.
 - **`lighthouse`**: downloads the build artifact, runs `lhci autorun`
@@ -41,9 +46,8 @@ Testable via `act`:
 - `act -j vulnerabilities`: runs for real; `gitleaks-action` fails under
   `act` because its simulated event payload is missing
   `repository.owner`, so this job is really only exercised by a real push.
-- `act -j unit`: runs for real, **including the Codecov upload** — its
-  tokenless mode for public repos actually publishes. Do not run this job
-  with `act` more than necessary.
+- `act -j unit`: runs for real. The Codecov upload is skipped, since
+  `act` has no `CODECOV_TOKEN`.
 - `act -j lighthouse`: the job itself passes, but `lhci` fails its
   healthcheck because `act`'s Docker image has no Chrome installed (the
   real `ubuntu-latest` runner does).

@@ -1,6 +1,6 @@
 import baseConfig from "./commitlint.config.mjs";
 
-// Used only by the commit-lint CI job, against the PR title.
+/** The commit-lint CI job's config, applied to the pull request title. */
 const config = {
   ...baseConfig,
   defaultIgnores: false,

@@ -8,7 +8,7 @@ export function extractHeadingLevels(markdown) {
   return [...markdown.matchAll(/^(#{1,6})\s+.+$/gm)].map((m) => m[1].length);
 }
 
-// Base (English) markdown files: not a locale variant of another file.
+/** The base (English) markdown files in a directory. */
 export function findBaseMarkdownFiles(dir) {
   return readdirSync(dir)
     .filter((file) => file.endsWith(".md"))
@@ -20,8 +20,7 @@ export function localePathFor(baseFilePath, locale) {
   return baseFilePath.replace(/\.md$/, `.${locale}.md`);
 }
 
-// Compares heading-level sequences: same count, same levels, same order.
-// Doesn't compare text, since translated headings read differently.
+/** Checks a file's translations for the same heading-level sequence. */
 export function checkParity(baseFilePath) {
   const baseLevels = extractHeadingLevels(readFileSync(baseFilePath, "utf-8"));
   const problems = [];

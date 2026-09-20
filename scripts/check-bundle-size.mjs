@@ -2,9 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { gzipSync } from "node:zlib";
 
-// Measured 2026-09-13 (`pnpm build`): 361,410 and 334,657 bytes gzip.
-// See docs/performance.md. Measures the default locale's (en) output,
-// since that's what a visitor gets at the unprefixed route.
+/** Gzip budgets per route, in bytes; see docs/performance.md. */
 export const budgets = {
   "/": { html: "en.html", budgetBytes: 420_000 },
   "/privacy-policy": { html: "en/privacy-policy.html", budgetBytes: 390_000 },
