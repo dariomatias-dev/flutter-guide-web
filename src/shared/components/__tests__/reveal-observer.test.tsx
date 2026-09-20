@@ -73,6 +73,41 @@ describe("RevealObserver with elements out of view", () => {
   });
 });
 
+describe("RevealObserver with mutations", () => {
+  it("doesn't re-observe an element that's moved while still pending, and ignores non-element mutations", async () => {
+    const observeSpy = vi.fn();
+    class SilentObserver {
+      observe = observeSpy;
+      unobserve = () => {};
+      disconnect = () => {};
+    }
+    const setupObserver = globalThis.IntersectionObserver;
+    vi.stubGlobal("IntersectionObserver", SilentObserver);
+
+    render(<RevealObserver />);
+
+    const moved = document.createElement("div");
+    moved.className = "reveal";
+    moved.dataset.testid = "moved";
+    const originalParent = document.createElement("section");
+    originalParent.append(moved);
+    document.body.append(originalParent);
+
+    await waitFor(() => expect(observeSpy).toHaveBeenCalledTimes(1));
+
+    const newParent = document.createElement("section");
+    document.body.append(newParent);
+    newParent.append(moved);
+    document.body.append(document.createTextNode("just some text"));
+
+    await waitFor(() => expect(observeSpy).toHaveBeenCalledTimes(1));
+
+    originalParent.remove();
+    newParent.remove();
+    vi.stubGlobal("IntersectionObserver", setupObserver);
+  });
+});
+
 describe("RevealObserver after a scroll jump", () => {
   it("reveals elements carried above the viewport without ever crossing it", async () => {
     class SilentObserver {
@@ -106,5 +141,18 @@ describe("RevealObserver after a scroll jump", () => {
     expect(document.querySelector('[data-testid="still-below"]')).not.toHaveClass("is-visible");
 
     vi.stubGlobal("IntersectionObserver", setupObserver);
+  });
+});
+
+describe("RevealObserver's scroll handling", () => {
+  it("coalesces scroll events into a single frame", () => {
+    const rafSpy = vi.spyOn(window, "requestAnimationFrame");
+    render(<RevealObserver />);
+
+    fireEvent.scroll(window);
+    fireEvent.scroll(window);
+
+    expect(rafSpy).toHaveBeenCalledTimes(1);
+    rafSpy.mockRestore();
   });
 });

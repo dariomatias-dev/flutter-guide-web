@@ -26,4 +26,25 @@ describe("CountUp", () => {
 
     expect(screen.getByText("46", { selector: '[aria-hidden="true"]' })).toBeInTheDocument();
   });
+
+  it("stays at its starting value while out of view", () => {
+    class NotIntersectingObserver {
+      constructor(private callback: IntersectionObserverCallback) {}
+      observe = (target: Element) => {
+        this.callback(
+          [{ target, isIntersecting: false } as IntersectionObserverEntry],
+          this as unknown as IntersectionObserver,
+        );
+      };
+      disconnect = () => {};
+    }
+    const setupObserver = globalThis.IntersectionObserver;
+    vi.stubGlobal("IntersectionObserver", NotIntersectingObserver);
+
+    render(<CountUp value={200} />);
+
+    expect(screen.getByText("200", { selector: '[aria-hidden="true"]' })).toBeInTheDocument();
+
+    vi.stubGlobal("IntersectionObserver", setupObserver);
+  });
 });

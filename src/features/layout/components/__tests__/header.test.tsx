@@ -1,6 +1,6 @@
 import { fireEvent, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { Header } from "@/features/layout/components/header";
 import { renderWithIntl } from "@/shared/lib/test-utils";
@@ -102,6 +102,36 @@ describe("Header", () => {
     expect(within(nav).getByRole("link", { name: "Features" })).not.toHaveAttribute("aria-current");
 
     main.remove();
+  });
+
+  it("doesn't move the underline for a section that isn't in view", () => {
+    class NeverIntersecting {
+      constructor(private callback: IntersectionObserverCallback) {}
+      observe = (target: Element) => {
+        this.callback(
+          [{ target, isIntersecting: false } as IntersectionObserverEntry],
+          this as unknown as IntersectionObserver,
+        );
+      };
+      unobserve = () => {};
+      disconnect = () => {};
+    }
+    const setupObserver = globalThis.IntersectionObserver;
+    vi.stubGlobal("IntersectionObserver", NeverIntersecting);
+
+    const main = document.createElement("main");
+    main.innerHTML = '<section id="hero"></section>';
+    document.body.append(main);
+
+    renderWithIntl(<Header />);
+
+    const nav = screen.getByRole("navigation", { name: "Primary" });
+    for (const link of within(nav).getAllByRole("link")) {
+      expect(link).not.toHaveAttribute("aria-current");
+    }
+
+    main.remove();
+    vi.stubGlobal("IntersectionObserver", setupObserver);
   });
 
   it("offers a language picker, and a language list in the mobile menu", async () => {
