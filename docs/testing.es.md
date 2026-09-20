@@ -1,10 +1,13 @@
 # Pruebas
 
-## Qué merece realmente una prueba aquí
+## La cobertura es un piso, no una meta
 
-La cobertura es un piso, no una meta. Ver los umbrales y su razón de ser
-en `vitest.config.mts`. Lo que importa más que el número es _qué_
-probar:
+Los umbrales en `vitest.config.mts` son lo medido menos un margen
+pequeño (lo medido era 99.11/99.06/98.63/100 el 2026-09-20, umbrales
+ajustados a 97/97/97/99), no una meta hacia la que escribir pruebas.
+Súbelos cuando un cambio mejore el agregado de forma medible; bajar uno
+necesita un motivo en el mensaje del commit. Lo que importa más que el
+número es _qué_ probar:
 
 - **Lógica real**: un cálculo, una rama, un fragmento de estado que
   puede estar mal. El emparejamiento de categoría de
@@ -19,19 +22,14 @@ probar:
   verificación — es exactamente el tipo de cosa que un error de copiar y
   pegar rompe silenciosamente.
 
-Cada sección "estática" (`catalog-section.tsx`, `languages-section.tsx`,
-`share-section.tsx`, `whats-new-section.tsx`, `quality-section.tsx`,
-`learning-path-section.tsx`, `theme-customization-content.tsx`,
-`theme-customization-section.tsx`, `contribution-section.tsx`,
-`official-resources-section.tsx`, `features-section.tsx`,
-`about-me-section.tsx`, `screenshots-section.tsx`, `hero-section.tsx` y
-`privacy-policy-content.tsx`) tiene su propia prueba ahora: el título
-traducido se renderiza, cada card/enlace proveniente de datos está
-presente, y los enlaces externos apuntan al lugar correcto. Incluso
-"markup fijo sin ramas" merece una verificación de renderizado — es
-exactamente el tipo de archivo que un copiar y pegar erróneo o una clave
-de traducción faltante rompe silenciosamente, sin nada en `pnpm lint` o
-`tsc` que lo detecte.
+Cada componente de sección (`features/*/components/*-section.tsx` y
+`*-content.tsx`) tiene su propia prueba: el título traducido se
+renderiza, cada card/enlace proveniente de datos está presente, y los
+enlaces externos apuntan al lugar correcto. Incluso "markup fijo sin
+ramas" merece una verificación de renderizado — es exactamente el tipo
+de archivo que un copiar y pegar erróneo o una clave de traducción
+faltante rompe silenciosamente, sin nada en `pnpm lint` o `tsc` que lo
+detecte.
 
 Lo que deliberadamente **no** se persigue, y queda excluido de la
 cobertura en `vitest.config.mts`:
@@ -44,6 +42,20 @@ cobertura en `vitest.config.mts`:
 - **`app/[locale]/page.tsx` y `app/[locale]/privacy-policy/page.tsx`**:
   composición pura de componentes de feature ya probados, sin lógica
   propia. Cubiertos de verdad por `e2e/smoke.spec.ts` en su lugar.
+- **Configuración declarativa sin ramas propias** (`i18n/routing.ts`,
+  `i18n/navigation.ts`, `proxy.ts`, `shared/lib/fonts.ts`) y
+  **convenciones de ruta generadas** (`app/manifest.ts`,
+  `app/robots.ts`, `app/[locale]/opengraph-image.tsx`). `i18n/request.ts`
+  parece igual pero no lo es: elige un idioma de reserva, que es una rama
+  real, así que se prueba directamente (ver "Dobles de prueba" abajo) en
+  vez de excluirse.
+
+Un archivo que solo exporta constantes (`shared/lib/site.ts`,
+`shared/lib/catalog-stats.ts`) no necesita una entrada de exclusión ni
+una prueba propia: sus únicas "declaraciones" (incluido un `.reduce`
+sobre un arreglo literal) se ejecutan en el momento en que algo importa
+el módulo, así que aparece al 100% en cuanto una prueba lo toca.
+`catalog-stats.ts` llevaba una entrada de exclusión que nunca necesitó.
 
 ## Brecha conocida, no exclusión
 
@@ -56,6 +68,18 @@ arreglarla suba el número en vez de olvidarse en silencio:
   clic en un botón de dot en la prueba de componente siempre cae en la
   rama de retorno anticipado. El comportamiento real de navegar al hacer
   clic está cubierto por `e2e/navigation.spec.ts`.
+
+## Inestabilidades conocidas en la cobertura
+
+- **El porcentaje de ramas de `count-up.tsx` varía en cerca de una rama
+  entre ejecuciones idénticas** (99.06% en una, 98.6% en la otra). La
+  prueba "lands on the final value once the animation ends" dispara un
+  bucle de `requestAnimationFrame` real con 50ms de duración; que termine
+  en un tick o en varios depende de qué tan rápida sea la máquina que
+  corre la prueba, lo que voltea la rama `if (progress < 1) frame =
+requestAnimationFrame(tick)`. El margen entre el agregado medido y el
+  umbral de `branches` lo absorbe; simular los temporizadores para fijar
+  esa rama no compensa la indirección extra por una sola rama.
 
 ## Dobles de prueba
 

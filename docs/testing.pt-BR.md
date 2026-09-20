@@ -1,9 +1,13 @@
 # Testes
 
-## O que realmente merece um teste aqui
+## Cobertura é um piso, não uma meta
 
-Cobertura é um piso, não uma meta. Veja os pisos e o porquê deles em
-`vitest.config.mts`. O que importa mais que o número é _o quê_ testar:
+Os pisos em `vitest.config.mts` são o medido menos uma margem pequena
+(medido era 99.11/99.06/98.63/100 em 2026-09-20, pisos ajustados pra
+97/97/97/99), não uma meta pra escrever teste em direção a ela. Suba-os
+sempre que uma mudança melhorar o agregado de forma mensurável; baixar um
+piso precisa de um motivo na mensagem do commit. O que importa mais que o
+número é _o quê_ testar:
 
 - **Lógica de verdade**: um cálculo, um branch, um pedaço de estado que
   pode dar errado. O casamento de categoria do `resolveAppDeepLink`, o
@@ -18,18 +22,13 @@ Cobertura é um piso, não uma meta. Veja os pisos e o porquê deles em
   — é exatamente o tipo de coisa que um erro de copiar e colar quebra
   silenciosamente.
 
-Toda seção "estática" (`catalog-section.tsx`, `languages-section.tsx`,
-`share-section.tsx`, `whats-new-section.tsx`, `quality-section.tsx`,
-`learning-path-section.tsx`, `theme-customization-content.tsx`,
-`theme-customization-section.tsx`, `contribution-section.tsx`,
-`official-resources-section.tsx`, `features-section.tsx`,
-`about-me-section.tsx`, `screenshots-section.tsx`, `hero-section.tsx` e
-`privacy-policy-content.tsx`) tem seu próprio teste agora: o título
-traduzido renderiza, cada card/link vindo de dado está presente, e os
-links externos apontam pro lugar certo. Até "markup fixo sem branch"
-merece uma verificação de renderização — é exatamente o tipo de arquivo
-que um copiar-colar errado ou uma chave de tradução faltando quebra
-silenciosamente, sem nada no `pnpm lint` ou `tsc` pra pegar.
+Todo componente de seção (`features/*/components/*-section.tsx` e
+`*-content.tsx`) tem seu próprio teste: o título traduzido renderiza,
+cada card/link vindo de dado está presente, e os links externos apontam
+pro lugar certo. Até "markup fixo sem branch" merece uma verificação de
+renderização — é exatamente o tipo de arquivo que um copiar-colar errado
+ou uma chave de tradução faltando quebra silenciosamente, sem nada no
+`pnpm lint` ou `tsc` pra pegar.
 
 O que deliberadamente **não** é perseguido, e fica excluído da cobertura
 em `vitest.config.mts`:
@@ -41,6 +40,20 @@ em `vitest.config.mts`:
 - **`app/[locale]/page.tsx` e `app/[locale]/privacy-policy/page.tsx`**:
   composição pura de componentes de feature já testados, sem lógica
   própria. Cobertos de verdade pelo `e2e/smoke.spec.ts` em vez disso.
+- **Configuração declarativa sem branch nosso** (`i18n/routing.ts`,
+  `i18n/navigation.ts`, `proxy.ts`, `shared/lib/fonts.ts`) e
+  **convenções de rota geradas** (`app/manifest.ts`, `app/robots.ts`,
+  `app/[locale]/opengraph-image.tsx`). O `i18n/request.ts` parece igual
+  mas não é: ele escolhe um idioma de reserva, que é um branch de
+  verdade, então é testado direto (veja "Dublês de teste" abaixo) em vez
+  de excluído.
+
+Um arquivo que só exporta constantes (`shared/lib/site.ts`,
+`shared/lib/catalog-stats.ts`) não precisa de entrada de exclusão nem de
+teste próprio: as únicas "declarações" dele (incluindo um `.reduce` sobre
+um array literal) rodam no momento em que qualquer coisa importa o
+módulo, então ele já aparece com 100% assim que um teste o toca. O
+`catalog-stats.ts` carregava uma entrada de exclusão que nunca precisou.
 
 ## Gap conhecido, não exclusão
 
@@ -53,6 +66,18 @@ consertá-lo aumentar o número em vez de ser esquecido silenciosamente:
   clicar num botão de dot no teste de componente sempre cai no branch de
   retorno antecipado. O comportamento real de navegar ao clicar é coberto
   por `e2e/navigation.spec.ts`.
+
+## Instabilidades conhecidas na cobertura
+
+- **A porcentagem de branch do `count-up.tsx` varia em cerca de um
+  branch entre execuções idênticas** (99.06% numa, 98.6% na outra). O
+  teste "lands on the final value once the animation ends" dispara um
+  loop de `requestAnimationFrame` de verdade com 50ms de duração; se ele
+  termina em um tick ou em vários depende da velocidade da máquina
+  rodando o teste, o que vira o branch `if (progress < 1) frame =
+requestAnimationFrame(tick)`. A margem entre o agregado medido e o
+  piso de `branches` absorve isso; simular os timers pra fixar esse
+  branch não compensa pela indireção extra por causa de um branch só.
 
 ## Dublês de teste
 
